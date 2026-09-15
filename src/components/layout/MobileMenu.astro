@@ -1,0 +1,174 @@
+---
+// MobileMenu.astro - Accessible mobile navigation drawer
+---
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu__backdrop" id="mobile-menu-backdrop"></div>
+    <div class="mobile-menu__panel">
+        <nav class="mobile-menu__nav" aria-label="Navegación móvil">
+            <a href="/" class="mobile-menu__link">Inicio</a>
+            <a href="#servicios" class="mobile-menu__link">Servicios</a>
+            <a href="#como-trabajo" class="mobile-menu__link">Cómo trabajo</a>
+            <a href="#sobre-mi" class="mobile-menu__link">Sobre mí</a>
+            <a href="#contacto" class="mobile-menu__link">Contacto</a>
+        </nav>
+
+        <div class="mobile-menu__actions">
+            <a href="#contacto" class="btn btn-primary w-full">
+                Pedir cita
+            </a>
+            <a href="tel:+34614992148" class="mobile-menu__phone">
+                <span>Llamar directamente:</span>
+                <strong>614 99 21 48</strong>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    function initMobileMenu() {
+        const toggleBtn = document.getElementById("header-menu-btn");
+        const menu = document.getElementById("mobile-menu");
+        const backdrop = document.getElementById("mobile-menu-backdrop");
+        const links = menu?.querySelectorAll(".mobile-menu__link");
+
+        if (!toggleBtn || !menu || menu.dataset.initialized) return;
+        menu.dataset.initialized = "true";
+
+        const activeBtn = toggleBtn;
+        const activeMenu = menu;
+
+        function openMenu() {
+            activeMenu.classList.add("is-open");
+            activeMenu.setAttribute("aria-hidden", "false");
+            activeBtn.setAttribute("aria-expanded", "true");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeMenu() {
+            activeMenu.classList.remove("is-open");
+            activeMenu.setAttribute("aria-hidden", "true");
+            activeBtn.setAttribute("aria-expanded", "false");
+            document.body.style.overflow = "";
+        }
+
+        activeBtn.addEventListener("click", () => {
+            const isOpen = activeMenu.classList.contains("is-open");
+            if (isOpen) closeMenu();
+            else openMenu();
+        });
+
+        backdrop?.addEventListener("click", closeMenu);
+
+        links?.forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        window.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && menu.classList.contains("is-open")) {
+                closeMenu();
+            }
+        });
+    }
+
+    initMobileMenu();
+    document.addEventListener("astro:page-load", initMobileMenu);
+</script>
+
+<style>
+    .mobile-menu {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        pointer-events: none;
+        visibility: hidden;
+        transition: visibility 0.3s ease;
+    }
+
+    .mobile-menu.is-open {
+        pointer-events: auto;
+        visibility: visible;
+    }
+
+    .mobile-menu__backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(23, 54, 97, 0.3);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .mobile-menu.is-open .mobile-menu__backdrop {
+        opacity: 1;
+    }
+
+    .mobile-menu__panel {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(85vw, 360px);
+        background: #fdfcf9;
+        padding: 6rem 2rem 2.5rem 2rem;
+        box-shadow: -10px 0 30px rgba(23, 54, 97, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+        box-sizing: border-box;
+    }
+
+    .mobile-menu.is-open .mobile-menu__panel {
+        transform: translateX(0);
+    }
+
+    .mobile-menu__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .mobile-menu__link {
+        color: var(--color-primary-dark);
+        font-size: 1.25rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .mobile-menu__link:hover {
+        color: var(--color-primary);
+    }
+
+    .mobile-menu__actions {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+    }
+
+    .mobile-menu__phone {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        font-size: 0.88rem;
+        color: var(--color-text-soft);
+        gap: 0.25rem;
+    }
+
+    .mobile-menu__phone strong {
+        color: var(--color-primary);
+        font-size: 1.15rem;
+    }
+
+    @media (min-width: 981px) {
+        .mobile-menu {
+            display: none;
+        }
+    }
+</style>

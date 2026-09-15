@@ -1,0 +1,268 @@
+---
+// Header.astro - Global Navigation
+---
+
+<header class="header">
+    <div class="header__inner">
+        <a href="/" class="header__brand" aria-label="PsicoInfantil Castellón">
+            <span class="header__brand-main">PsicoInfantil</span>
+            <span class="header__brand-sub">Castellón</span>
+        </a>
+
+        <nav class="header__nav" aria-label="Navegación principal">
+            <a href="/">Inicio</a>
+            <a href="#servicios">Servicios</a>
+            <a href="#como-trabajo">Cómo trabajo</a>
+            <a href="#sobre-mi">Sobre mí</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+
+        <a href="#contacto" class="header__cta">
+            Pedir cita
+            <span aria-hidden="true">↗</span>
+        </a>
+
+        <button
+            class="header__menu"
+            type="button"
+            aria-label="Abrir menú"
+            aria-expanded="false"
+            id="header-menu-btn"
+        >
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</header>
+
+<style>
+    .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+
+        z-index: 1000;
+
+        background: rgba(247, 245, 240, 0.62);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+
+        border-bottom: 1px solid rgba(23, 54, 97, 0.04);
+    }
+
+    .header__inner {
+        width: min(100% - 2rem, 1400px);
+        min-height: 88px;
+
+        margin-inline: auto;
+
+        display: grid;
+        grid-template-columns: auto 1fr auto auto;
+        align-items: center;
+
+        gap: clamp(1.5rem, 4vw, 4rem);
+    }
+
+    .header__brand {
+        display: inline-flex;
+        flex-direction: column;
+
+        line-height: 1;
+
+        text-decoration: none;
+    }
+
+    .header__brand-main {
+        color: var(--color-primary-dark);
+
+        font-size: 1.5rem;
+        font-weight: 750;
+
+        letter-spacing: -0.04em;
+    }
+
+    .header__brand-sub {
+        margin-top: 0.28rem;
+
+        color: var(--color-primary);
+
+        font-size: 0.69rem;
+        font-weight: 700;
+
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+    }
+
+    .header__nav {
+        justify-self: center;
+
+        display: flex;
+        align-items: center;
+
+        gap: clamp(1.6rem, 2.5vw, 2.8rem);
+    }
+
+    .header__nav a {
+        position: relative;
+
+        color: var(--color-text);
+
+        font-size: 1rem;
+        font-weight: 600;
+
+        text-decoration: none;
+
+        transition:
+            color 0.2s ease,
+            opacity 0.2s ease;
+    }
+
+    .header__nav a::after {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        bottom: -0.5rem;
+
+        width: 100%;
+        height: 1px;
+
+        background: var(--color-primary);
+
+        transform: scaleX(0);
+        transform-origin: right;
+
+        transition: transform 0.25s ease;
+    }
+
+    .header__nav a:hover {
+        color: var(--color-primary-dark);
+    }
+
+    .header__nav a:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .header__cta {
+        display: inline-flex;
+        align-items: center;
+
+        gap: 0.5rem;
+
+        padding: 0.9rem 1.25rem;
+
+        color: var(--color-primary-dark);
+
+        border: 1px solid rgba(23, 54, 97, 0.14);
+        border-radius: 999px;
+
+        background: rgba(255, 255, 255, 0.42);
+
+        font-size: 0.98rem;
+        font-weight: 700;
+
+        text-decoration: none;
+
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .header__cta:hover {
+        background: rgba(255, 255, 255, 0.72);
+
+        border-color: rgba(23, 54, 97, 0.22);
+
+        transform: translateY(-1px);
+    }
+
+    .header__cta span {
+        transition: transform 0.2s ease;
+    }
+
+    .header__cta:hover span {
+        transform: translate(2px, -2px);
+    }
+
+    .header__menu {
+        display: none;
+
+        width: 44px;
+        height: 44px;
+
+        padding: 0;
+
+        border: 1px solid rgba(23, 54, 97, 0.1);
+        border-radius: 50%;
+
+        background: rgba(255, 255, 255, 0.34);
+
+        cursor: pointer;
+    }
+
+    .header__menu span {
+        display: block;
+
+        width: 18px;
+        height: 1px;
+
+        margin-inline: auto;
+
+        background: var(--color-primary-dark);
+
+        transition: transform 0.2s ease;
+    }
+
+    .header__menu span + span {
+        margin-top: 5px;
+    }
+
+    @media (max-width: 980px) {
+        .header__inner {
+            min-height: 76px;
+
+            grid-template-columns: auto 1fr auto;
+        }
+
+        .header__nav {
+            display: none;
+        }
+
+        .header__cta {
+            justify-self: end;
+        }
+
+        .header__menu {
+            display: block;
+        }
+    }
+
+    @media (max-width: 620px) {
+        .header__inner {
+            width: min(100% - 1.25rem, 1400px);
+            min-height: 70px;
+
+            gap: 0.75rem;
+        }
+
+        .header__brand-main {
+            font-size: 1.22rem;
+        }
+
+        .header__brand-sub {
+            font-size: 0.61rem;
+        }
+
+        .header__cta {
+            display: none;
+        }
+
+        .header__menu {
+            justify-self: end;
+        }
+    }
+</style>

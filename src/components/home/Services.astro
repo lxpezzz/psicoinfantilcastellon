@@ -1,0 +1,488 @@
+---
+import { Image } from "astro:assets";
+import { ArrowRight } from "lucide-astro";
+import { services } from "../../data/services";
+---
+
+<section class="services" id="servicios">
+    <div class="services__container">
+        <!-- Section Header (Left Aligned, No Eyebrow) -->
+        <header class="services__header">
+            <h2 class="services__title">Cómo puedo ayudaros</h2>
+            <p class="services__intro">
+                Soluciones concretas para entender qué está pasando y acompañar
+                a cada niño, adolescente y familia.
+            </p>
+        </header>
+
+        <!-- Bento Mosaic Grid -->
+        <div class="services__bento">
+            {
+                services.map((service) => (
+                    <a
+                        href={service.href}
+                        class={`service-card ${service.bentoClass} ${service.isPrincipal ? `service-card--${service.principalVariant}` : ""}`}
+                        aria-label={`Ver servicio: ${service.title}`}
+                    >
+                        <div class="service-card__media">
+                            <Image
+                                src={service.image}
+                                alt={service.alt}
+                                class="service-card__img"
+                                width={service.isPrincipal ? 720 : 540}
+                                height={service.isPrincipal ? 480 : 360}
+                                quality={85}
+                                format="webp"
+                                loading="lazy"
+                            />
+                            <div class="service-card__overlay" aria-hidden="true" />
+                        </div>
+
+                        <div class="service-card__body">
+                            <div class="service-card__copy">
+                                <h3 class="service-card__title">
+                                    {service.title}
+                                </h3>
+                                <p class="service-card__text">
+                                    {service.description}
+                                </p>
+                            </div>
+
+                            <span class="service-card__link">
+                                <span>Descubrir</span>
+                                <ArrowRight
+                                    size={16}
+                                    stroke-width={2}
+                                    aria-hidden="true"
+                                    class="service-card__arrow"
+                                />
+                            </span>
+                        </div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ==========================================================================
+       Services Section Base
+       Refined editorial atmosphere, warm blueprint tone matching the Hero,
+       Problems and Process sections.
+       ========================================================================== */
+    .services {
+        position: relative;
+        overflow: hidden;
+        background-color: #f7f6f2;
+        background-image:
+            linear-gradient(to right, rgba(23, 54, 97, 0.018) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 54, 97, 0.018) 1px, transparent 1px);
+        background-size: 36px 36px;
+        padding-block: clamp(5rem, 8vw, 7.5rem);
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+    }
+
+    .services__container {
+        width: min(100% - 2.5rem, 1220px);
+        margin-inline: auto;
+        box-sizing: border-box;
+    }
+
+    /* Left-Aligned Header (Strict: No eyebrow) */
+    .services__header {
+        text-align: left;
+        max-width: 760px;
+        margin-bottom: clamp(2.5rem, 4.5vw, 3.75rem);
+    }
+
+    .services__title {
+        margin: 0 0 1rem;
+        color: var(--color-primary-dark);
+        font-size: clamp(2.2rem, 4vw, 3.25rem);
+        font-weight: 750;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+    }
+
+    .services__intro {
+        margin: 0;
+        color: var(--color-text-soft);
+        font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+        line-height: 1.6;
+        text-wrap: balance;
+    }
+
+    /* ==========================================================================
+       Desktop Bento Mosaic Grid (12 Columns)
+       Row 1: [Principal 1: 7 cols] [Secundario 1: 5 cols]
+       Row 2: [Secundario 2: 3 cols] [Secundario 3: 3 cols] [Secundario 4: 3 cols] [Secundario 5: 3 cols]
+       Row 3: [Secundario 6: 5 cols] [Principal 2: 7 cols]
+       ========================================================================== */
+    .services__bento {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: clamp(1.25rem, 2vw, 1.75rem);
+    }
+
+    /* Column Spans */
+    .service-card--span-7 {
+        grid-column: span 7;
+    }
+
+    .service-card--span-5 {
+        grid-column: span 5;
+    }
+
+    .service-card--span-3 {
+        grid-column: span 3;
+    }
+
+    /* ==========================================================================
+       Bento Service Card (Interactive, Photo-Centric, Lightweight)
+       Avoids heavy opaque white cards and harsh shadows; relies on fine hairlines,
+       frosted surfaces, and rich imagery.
+       ========================================================================== */
+    .service-card {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        text-decoration: none;
+        color: inherit;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.62);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        box-sizing: border-box;
+        transition:
+            transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+            border-color 0.3s ease,
+            background-color 0.3s ease,
+            box-shadow 0.3s ease;
+    }
+
+    .service-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(36, 79, 158, 0.2);
+        background: rgba(255, 255, 255, 0.88);
+        box-shadow:
+            0 16px 36px -10px rgba(23, 54, 97, 0.1),
+            0 4px 12px -2px rgba(23, 54, 97, 0.04);
+    }
+
+    /* Media Area & Image Zoom */
+    .service-card__media {
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        background-color: #e9eff5;
+    }
+
+    .service-card__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        will-change: transform;
+    }
+
+    .service-card:hover .service-card__img {
+        transform: scale(1.045);
+    }
+
+    /* Subtle image overlay for tonal harmony and contrast balance */
+    .service-card__overlay {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: linear-gradient(
+            to bottom,
+            rgba(23, 54, 97, 0) 60%,
+            rgba(23, 54, 97, 0.08) 100%
+        );
+    }
+
+    /* Card Content Body */
+    .service-card__body {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: clamp(1.2rem, 1.6vw, 1.5rem);
+        gap: 1.15rem;
+    }
+
+    .service-card__copy {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .service-card__title {
+        margin: 0;
+        color: var(--color-primary-dark);
+        font-size: clamp(1.08rem, 1.25vw, 1.25rem);
+        font-weight: 750;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        transition: color 0.25s ease;
+    }
+
+    .service-card:hover .service-card__title {
+        color: var(--color-primary);
+    }
+
+    .service-card__text {
+        margin: 0;
+        color: #445970;
+        font-size: clamp(0.88rem, 0.96vw, 0.94rem);
+        line-height: 1.55;
+        font-weight: 420;
+    }
+
+    /* Link with subtle arrow micro-interaction */
+    .service-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--color-primary);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin-top: auto;
+    }
+
+    .service-card__arrow {
+        transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .service-card:hover .service-card__arrow {
+        transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       Principal Cards: Expansive 7-Column Bento Feature Layout
+       - Desktop: Horizontal split (one with media on the left, one on the right)
+       - Larger visual prominence and richer storytelling
+       ========================================================================== */
+    @media (min-width: 1041px) {
+        .service-card--principal {
+            display: grid;
+            grid-template-columns: 1.15fr 1fr;
+            min-height: 380px;
+        }
+
+        .service-card--content-first {
+            grid-template-columns: 1fr 1.15fr;
+        }
+
+        .service-card--content-first .service-card__media {
+            order: 2;
+        }
+
+        .service-card--content-first .service-card__body {
+            order: 1;
+        }
+
+        .service-card--principal .service-card__media {
+            aspect-ratio: auto;
+            height: 100%;
+            min-height: 380px;
+        }
+
+        .service-card--principal .service-card__body {
+            padding: clamp(1.8rem, 2.4vw, 2.5rem);
+            gap: 1.5rem;
+        }
+
+        .service-card--principal .service-card__title {
+            font-size: clamp(1.35rem, 1.7vw, 1.6rem);
+            line-height: 1.25;
+            letter-spacing: -0.025em;
+        }
+
+        .service-card--principal .service-card__text {
+            font-size: clamp(0.96rem, 1.05vw, 1.04rem);
+            line-height: 1.6;
+        }
+
+        .service-card--principal .service-card__link {
+            font-size: 0.98rem;
+        }
+
+        /* 3-column cards fine-tuning */
+        .service-card--span-3 .service-card__media {
+            aspect-ratio: 16 / 11;
+        }
+
+        .service-card--span-3 .service-card__title {
+            font-size: 1.05rem;
+        }
+
+        .service-card--span-3 .service-card__text {
+            font-size: 0.88rem;
+            line-height: 1.5;
+        }
+    }
+
+    /* ==========================================================================
+       Tablet Breakpoint (max-width: 1040px and > 680px): 2 Columns
+       Principals span across 2 columns as prominent anchors; secondaries pair up.
+       ========================================================================== */
+    @media (max-width: 1040px) and (min-width: 681px) {
+        .services__bento {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.35rem;
+        }
+
+        /* Reset all desktop spans */
+        .service-card--span-7,
+        .service-card--span-5,
+        .service-card--span-3 {
+            grid-column: span 1;
+        }
+
+        /* The 2 Principals span full 2 columns as horizontal hero cards */
+        .service-card--principal {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            min-height: 320px;
+        }
+
+        .service-card--principal .service-card__media {
+            aspect-ratio: auto;
+            height: 100%;
+            min-height: 320px;
+        }
+
+        .service-card--principal .service-card__body {
+            padding: 1.8rem;
+        }
+
+        .service-card--principal .service-card__title {
+            font-size: 1.35rem;
+        }
+
+        .service-card--content-first {
+            grid-template-columns: 1fr 1.1fr;
+        }
+
+        .service-card--content-first .service-card__media {
+            order: 2;
+        }
+
+        .service-card--content-first .service-card__body {
+            order: 1;
+        }
+    }
+
+    /* ==========================================================================
+       Mobile Breakpoint (max-width: 680px): 1 Column
+       Large prominent photographs, clean hierarchy, tailored for 390px screens.
+       Zero horizontal overflow.
+       ========================================================================== */
+    @media (max-width: 680px) {
+        .services {
+            padding-block: 4.25rem 3.75rem;
+            background-image:
+                linear-gradient(to right, rgba(23, 54, 97, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(23, 54, 97, 0.012) 1px, transparent 1px);
+        }
+
+        .services__container {
+            width: 100%;
+            padding-inline: 18px;
+        }
+
+        .services__header {
+            margin-bottom: 2rem;
+        }
+
+        .services__title {
+            font-size: clamp(1.9rem, 7.2vw, 2.35rem);
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+        }
+
+        .services__intro {
+            font-size: 1rem;
+            line-height: 1.55;
+        }
+
+        /* 1 Column Stack */
+        .services__bento {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+        }
+
+        .service-card,
+        .service-card--span-7,
+        .service-card--span-5,
+        .service-card--span-3,
+        .service-card--principal {
+            grid-column: 1 / -1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            border-radius: 1.15rem;
+        }
+
+        .service-card--content-first .service-card__media,
+        .service-card--content-first .service-card__body {
+            order: unset !important;
+        }
+
+        .service-card__media {
+            aspect-ratio: 16 / 10 !important;
+            height: auto !important;
+            min-height: unset !important;
+        }
+
+        .service-card__body {
+            padding: 1.35rem 1.25rem;
+            gap: 1rem;
+        }
+
+        .service-card__title {
+            font-size: 1.2rem;
+            line-height: 1.28;
+            margin-bottom: 0.35rem;
+        }
+
+        .service-card__text {
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        .service-card__link {
+            font-size: 0.94rem;
+            padding-top: 0.25rem;
+        }
+
+        /* Give Principals slightly more punch on mobile */
+        .service-card--principal .service-card__media {
+            aspect-ratio: 16 / 9.5 !important;
+        }
+
+        .service-card--principal .service-card__title {
+            font-size: 1.26rem;
+        }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        .service-card,
+        .service-card__img,
+        .service-card__arrow,
+        .service-card__title {
+            transition: none !important;
+            transform: none !important;
+        }
+    }
+</style>

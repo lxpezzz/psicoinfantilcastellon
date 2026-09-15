@@ -1,0 +1,809 @@
+---
+import {
+    ClipboardCheck,
+    FileText,
+    Home,
+    GraduationCap,
+    ArrowRight,
+} from "lucide-astro";
+
+const steps = [
+    {
+        number: "01",
+        label: "DETECTAR",
+        title: "Evaluación a medida",
+        description:
+            "Analizo qué está ocurriendo con una evaluación adaptada a cada niño o adolescente.",
+        icon: ClipboardCheck,
+        variant: "ice",
+    },
+    {
+        number: "02",
+        label: "ENTENDER",
+        title: "Informe claro",
+        description:
+            "Te explico los resultados sin tecnicismos y con una hoja de ruta concreta.",
+        icon: FileText,
+        variant: "sand",
+    },
+    {
+        number: "03",
+        label: "APLICAR",
+        title: "Pautas para casa",
+        description:
+            "Transformamos el diagnóstico en acciones prácticas para el día a día.",
+        icon: Home,
+        variant: "rose",
+    },
+    {
+        number: "04",
+        label: "COORDINAR",
+        title: "Coordinación escolar",
+        description:
+            "Cuando es necesario, trabajamos también con el colegio para avanzar en la misma dirección.",
+        icon: GraduationCap,
+        variant: "sage",
+    },
+];
+---
+
+<section class="process" id="como-trabajo">
+    <div class="process__container">
+        <header class="process__header">
+            <p class="process__eyebrow">Cómo trabajo</p>
+            <h2 class="process__title">De la duda a un plan claro</h2>
+            <p class="process__intro">
+                Un proceso pensado para entender qué está ocurriendo, explicarlo
+                con claridad y convertirlo en pasos concretos para casa y
+                colegio.
+            </p>
+        </header>
+
+        <div class="process__grid">
+            {
+                steps.map((step) => {
+                    const IconComponent = step.icon;
+                    return (
+                        <article class={`process-step process-step--${step.variant}`}>
+                            <div class="process-step__axis" aria-hidden="true">
+                                <span class="process-step__dot" />
+                                <span class="process-step__line" />
+                            </div>
+
+                            <div class="process-step__card">
+                                <span class="process-step__label">
+                                    <span class="process-step__label-num">{step.number}</span>
+                                    {step.label}
+                                </span>
+
+                                <div class="process-step__header">
+                                    <span class="process-step__number">
+                                        {step.number}
+                                    </span>
+                                    <div class="process-step__icon-wrap">
+                                        <IconComponent
+                                            class="process-step__icon"
+                                            size={22}
+                                            stroke-width={1.6}
+                                            aria-hidden="true"
+                                        />
+                                    </div>
+                                </div>
+
+                                <h3 class="process-step__title">{step.title}</h3>
+                                <p class="process-step__text">{step.description}</p>
+                            </div>
+                        </article>
+                    );
+                })
+            }
+        </div>
+
+        <footer class="process__footer">
+            <div class="process__footer-inner">
+                <p class="process__footer-lead">
+                    Sin tecnicismos. Sin etiquetas precipitadas. Con pasos
+                    concretos.
+                </p>
+                <a href="#contacto" class="btn btn-primary process__cta-btn">
+                    <span>Conoce mi forma de trabajar</span>
+                    <ArrowRight size={16} stroke-width={1.8} aria-hidden="true" />
+                </a>
+            </div>
+        </footer>
+    </div>
+</section>
+
+<style>
+    /* ==========================================================================
+       Process Section
+       Clean editorial aesthetic with subtle background watermark ("MÉTODO 360º"),
+       neutral light blue-gray timeline axis, individual soft pastel icon enclosures,
+       and refined frosted step cards.
+       ========================================================================== */
+    .process {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background: linear-gradient(118deg, #fbf8f1 0%, #f6f7f5 48%, #edf2f6 100%);
+        padding-block: clamp(5rem, 8vw, 7.5rem);
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+    }
+
+    /* Ambient Watermark Background */
+    .process::before {
+        content: "MÉTODO 360º";
+        position: absolute;
+        z-index: -1;
+        top: clamp(7.5rem, 12vw, 11rem);
+        left: 50%;
+        width: max-content;
+        transform: translateX(-50%);
+        color: rgba(23, 54, 97, 0.032);
+        font-size: clamp(5rem, 13vw, 12rem);
+        font-weight: 800;
+        line-height: 0.8;
+        letter-spacing: -0.055em;
+        white-space: nowrap;
+        pointer-events: none;
+        user-select: none;
+    }
+
+    .process__container {
+        width: min(100% - 2.5rem, 1220px);
+        margin-inline: auto;
+        box-sizing: border-box;
+    }
+
+    /* Header */
+    .process__header {
+        position: relative;
+        text-align: center;
+        max-width: 740px;
+        margin-inline: auto;
+        margin-bottom: clamp(3rem, 5vw, 4.25rem);
+    }
+
+    .process__eyebrow {
+        display: inline-block;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin: 0 0 0.9rem;
+    }
+
+    .process__title {
+        margin: 0 0 1rem;
+        color: var(--color-primary-dark);
+        font-size: clamp(2.2rem, 4vw, 3.15rem);
+        font-weight: 750;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+    }
+
+    .process__intro {
+        margin: 0 auto;
+        max-width: 640px;
+        color: var(--color-text-soft);
+        font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+        line-height: 1.65;
+        text-wrap: balance;
+    }
+
+    /* ==========================================================================
+       Timeline Grid (Desktop: 4 Columns)
+       ========================================================================== */
+    .process__grid {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: clamp(1.25rem, 2vw, 2rem);
+    }
+
+    /* Subtle depth: gently soften unhovered items when one is hovered */
+    .process__grid:hover .process-step:not(:hover) {
+        opacity: 0.82;
+    }
+
+    .process-step {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: opacity 0.3s ease;
+    }
+
+    /* ==========================================================================
+       Timeline Axis: Neutral Light Blue-Gray Connector Line & Refined Nodes
+       ========================================================================== */
+    .process-step__axis {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        position: relative;
+    }
+
+    .process-step__dot {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: var(--color-primary);
+        box-shadow:
+            0 0 0 4px #fbf8f1,
+            0 0 0 7px rgba(23, 54, 97, 0.12),
+            0 2px 6px rgba(23, 54, 97, 0.08);
+        flex-shrink: 0;
+        position: relative;
+        z-index: 2;
+        transition:
+            transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
+            background-color 0.28s ease,
+            box-shadow 0.28s ease;
+    }
+
+    /* Neutral light blue-gray timeline line */
+    .process-step__line {
+        height: 2px;
+        flex-grow: 1;
+        background: rgba(23, 54, 97, 0.15);
+        margin-right: calc(-1 * clamp(1.25rem, 2vw, 2rem));
+        position: relative;
+        z-index: 1;
+        transition: background-color 0.28s ease;
+    }
+
+    .process-step:last-child .process-step__line {
+        display: none;
+    }
+
+    /* ==========================================================================
+       Step Card: Refined Frosted Surface
+       ========================================================================== */
+    .process-step__card {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        padding: clamp(1.35rem, 1.7vw, 1.75rem);
+        border-radius: 1.25rem;
+        background: rgba(255, 255, 255, 0.58);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        box-sizing: border-box;
+        transition:
+            background-color 0.28s ease,
+            border-color 0.28s ease,
+            transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
+            box-shadow 0.28s ease;
+    }
+
+    /* Step Label (DETECTAR, ENTENDER, etc.) - Sober Blue-Gray */
+    .process-step__label {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin: 0 0 1rem;
+        width: fit-content;
+        color: #47607a;
+        background: rgba(23, 54, 97, 0.05);
+        border: 1px solid rgba(23, 54, 97, 0.06);
+        padding: 0.22rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 750;
+        line-height: 1;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        transition: border-color 0.25s ease, color 0.25s ease;
+    }
+
+    .process-step__label-num {
+        color: #71889f;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Step Top Row: Number + Icon with Ambient Halo */
+    .process-step__header {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    /* Base ambient halo */
+    .process-step__header::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 30%;
+        transform: translate(-50%, -50%);
+        width: 110px;
+        height: 70px;
+        border-radius: 50%;
+        filter: blur(8px);
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.85;
+        transition: opacity 0.28s ease, transform 0.28s ease;
+    }
+
+    /* Numbers: strictly in primary blue */
+    .process-step__number {
+        font-size: clamp(2.6rem, 3.6vw, 3.4rem);
+        font-weight: 800;
+        line-height: 0.85;
+        letter-spacing: -0.04em;
+        color: var(--color-primary);
+        font-variant-numeric: tabular-nums;
+        opacity: 0.9;
+        position: relative;
+        z-index: 1;
+        transition:
+            transform 0.28s ease,
+            opacity 0.28s ease;
+    }
+
+    /* Icon Enclosure Base: Lucide icon in dark navy */
+    .process-step__icon-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        border: 1px solid transparent;
+        color: var(--color-primary-dark);
+        flex-shrink: 0;
+        position: relative;
+        z-index: 1;
+        transition:
+            transform 0.28s cubic-bezier(0.23, 1, 0.32, 1),
+            background-color 0.28s ease,
+            border-color 0.28s ease,
+            box-shadow 0.28s ease;
+    }
+
+    .process-step__icon {
+        flex-shrink: 0;
+    }
+
+    /* Titles: strictly in dark navy */
+    .process-step__title {
+        margin: 0 0 0.65rem;
+        color: var(--color-primary-dark);
+        font-size: clamp(1.2rem, 1.4vw, 1.38rem);
+        font-weight: 750;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+    }
+
+    .process-step__text {
+        margin: 0;
+        color: #445970;
+        font-size: clamp(0.92rem, 1vw, 0.98rem);
+        line-height: 1.6;
+        font-weight: 420;
+    }
+
+    /* ==========================================================================
+       Soft Pastel Variations for Each Stage
+       01: Azul hielo (Ice Blue)
+       02: Beige / arena claro (Light Sand)
+       03: Rosa empolvado suave (Dusty Rose)
+       04: Verde salvia claro (Light Sage)
+       ========================================================================== */
+
+    /* Stage 01: Azul hielo */
+    .process-step--ice .process-step__icon-wrap {
+        background: #eaf3fb;
+        border-color: #d1e3f3;
+    }
+
+    .process-step--ice .process-step__header::before {
+        background: radial-gradient(
+            ellipse at center,
+            rgba(36, 79, 158, 0.08) 0%,
+            transparent 70%
+        );
+    }
+
+    .process-step--ice .process-step__label {
+        border-color: rgba(36, 79, 158, 0.12);
+        color: #2a5796;
+    }
+
+    /* Stage 02: Beige / arena claro */
+    .process-step--sand .process-step__icon-wrap {
+        background: #f8f3eb;
+        border-color: #ebe2d2;
+    }
+
+    .process-step--sand .process-step__header::before {
+        background: radial-gradient(
+            ellipse at center,
+            rgba(200, 175, 135, 0.12) 0%,
+            transparent 70%
+        );
+    }
+
+    .process-step--sand .process-step__label {
+        border-color: rgba(180, 150, 110, 0.18);
+        color: #6d5b3f;
+    }
+
+    /* Stage 03: Rosa empolvado suave */
+    .process-step--rose .process-step__icon-wrap {
+        background: #faf0f0;
+        border-color: #eddcdc;
+    }
+
+    .process-step--rose .process-step__header::before {
+        background: radial-gradient(
+            ellipse at center,
+            rgba(215, 170, 170, 0.11) 0%,
+            transparent 70%
+        );
+    }
+
+    .process-step--rose .process-step__label {
+        border-color: rgba(190, 120, 120, 0.16);
+        color: #7a4e4e;
+    }
+
+    /* Stage 04: Verde salvia claro */
+    .process-step--sage .process-step__icon-wrap {
+        background: #edf5f0;
+        border-color: #d3e7da;
+    }
+
+    .process-step--sage .process-step__header::before {
+        background: radial-gradient(
+            ellipse at center,
+            rgba(135, 185, 155, 0.13) 0%,
+            transparent 70%
+        );
+    }
+
+    .process-step--sage .process-step__label {
+        border-color: rgba(70, 130, 100, 0.16);
+        color: #38634b;
+    }
+
+    /* ==========================================================================
+       Hover States & Subtle Interactions
+       ========================================================================== */
+    @media (hover: hover) and (pointer: fine) {
+        .process-step:hover .process-step__card {
+            background: rgba(255, 255, 255, 0.92);
+            border-color: rgba(23, 54, 97, 0.14);
+            transform: translateY(-3px);
+            box-shadow:
+                0 14px 30px -10px rgba(23, 54, 97, 0.08),
+                0 4px 12px -2px rgba(23, 54, 97, 0.03);
+        }
+
+        .process-step:hover .process-step__dot {
+            transform: scale(1.15);
+            background: var(--color-primary-dark);
+            box-shadow:
+                0 0 0 4px #fbf8f1,
+                0 0 0 8px rgba(23, 54, 97, 0.18),
+                0 4px 12px rgba(23, 54, 97, 0.15);
+        }
+
+        .process-step:hover .process-step__line {
+            background: rgba(23, 54, 97, 0.28);
+        }
+
+        .process-step:hover .process-step__header::before {
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1.18);
+        }
+
+        .process-step:hover .process-step__number {
+            transform: translateY(-1px);
+            opacity: 1;
+        }
+
+        .process-step:hover .process-step__icon-wrap {
+            transform: translateY(-2px) scale(1.06);
+        }
+
+        /* Hover pastel icon glows */
+        .process-step--ice:hover .process-step__icon-wrap {
+            background: #e3effa;
+            border-color: #c0daf0;
+            box-shadow: 0 6px 16px rgba(36, 79, 158, 0.12);
+        }
+
+        .process-step--sand:hover .process-step__icon-wrap {
+            background: #f4ecdf;
+            border-color: #dfd0bb;
+            box-shadow: 0 6px 16px rgba(180, 150, 110, 0.14);
+        }
+
+        .process-step--rose:hover .process-step__icon-wrap {
+            background: #f6e6e6;
+            border-color: #e2caca;
+            box-shadow: 0 6px 16px rgba(190, 120, 120, 0.14);
+        }
+
+        .process-step--sage:hover .process-step__icon-wrap {
+            background: #e3efe7;
+            border-color: #c1ded8;
+            box-shadow: 0 6px 16px rgba(70, 140, 100, 0.14);
+        }
+    }
+
+    /* ==========================================================================
+       Integrated Bottom CTA Bar (Strict: Blue CTA button)
+       ========================================================================== */
+    .process__footer {
+        margin-top: clamp(3.5rem, 5.5vw, 4.75rem);
+    }
+
+    .process__footer-inner {
+        max-width: 880px;
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.75rem;
+        padding: 0.95rem 1.4rem 0.95rem 2rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.72);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        box-shadow: 0 6px 20px rgba(23, 54, 97, 0.04);
+        box-sizing: border-box;
+    }
+
+    .process__footer-lead {
+        margin: 0;
+        color: var(--color-primary-dark);
+        font-size: clamp(0.98rem, 1.2vw, 1.1rem);
+        font-weight: 600;
+        line-height: 1.45;
+        text-wrap: balance;
+    }
+
+    /* Primary Blue CTA Button */
+    .process__cta-btn {
+        flex-shrink: 0;
+        min-height: 44px;
+        padding: 0.7rem 1.5rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        font-weight: 650;
+        font-size: 0.92rem;
+        border-radius: 999px;
+        background: var(--color-primary);
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(36, 79, 158, 0.16);
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .process__cta-btn:hover {
+        transform: translateY(-2px);
+        background: var(--color-primary-dark);
+        box-shadow: 0 8px 20px rgba(23, 54, 97, 0.2);
+    }
+
+    .process__cta-btn svg {
+        transition: transform 0.2s ease;
+    }
+
+    .process__cta-btn:hover svg {
+        transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       Tablet Breakpoint (max-width: 1040px and > 680px): 2x2 Grid
+       ========================================================================== */
+    @media (max-width: 1040px) and (min-width: 681px) {
+        .process__grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.75rem 2rem;
+        }
+
+        /* 2x2 Horizontal Sub-timelines (01 -> 02, and 03 -> 04) */
+        .process-step:nth-child(2) .process-step__line,
+        .process-step:nth-child(4) .process-step__line {
+            display: none;
+        }
+
+        .process-step:nth-child(1) .process-step__line,
+        .process-step:nth-child(3) .process-step__line {
+            margin-right: -2rem;
+            display: block;
+        }
+
+        .process__footer-inner {
+            max-width: 720px;
+            padding: 1.1rem 1.6rem;
+            gap: 1.5rem;
+        }
+    }
+
+    /* ==========================================================================
+       Mobile Breakpoint (max-width: 680px): Vertical Timeline
+       Dedicated continuous line connecting dots on the left, tailored for 390px.
+       ========================================================================== */
+    @media (max-width: 680px) {
+        .process {
+            padding-block: 4.25rem 3.75rem;
+        }
+
+        .process::before {
+            top: 7.5rem;
+            left: 18px;
+            transform: none;
+            font-size: clamp(4.5rem, 24vw, 6.5rem);
+            color: rgba(23, 54, 97, 0.026);
+        }
+
+        .process__container {
+            width: 100%;
+            padding-inline: 18px;
+        }
+
+        .process__header {
+            text-align: left;
+            margin-bottom: 2.25rem;
+        }
+
+        .process__eyebrow {
+            font-size: 0.78rem;
+            margin-bottom: 0.7rem;
+        }
+
+        .process__title {
+            font-size: clamp(1.9rem, 7.2vw, 2.35rem);
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.85rem;
+        }
+
+        .process__intro {
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Vertical continuous timeline */
+        .process__grid {
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            position: relative;
+            padding-left: 0.25rem;
+        }
+
+        .process-step {
+            position: relative;
+            padding-left: 2.4rem;
+        }
+
+        /* Continuous vertical connector line in neutral blue-gray */
+        .process-step::before {
+            content: "";
+            position: absolute;
+            left: 7.5px;
+            top: 24px;
+            bottom: -24px;
+            width: 2px;
+            background: rgba(23, 54, 97, 0.15);
+            z-index: 1;
+        }
+
+        .process-step:last-child::before {
+            display: none;
+        }
+
+        .process-step__axis {
+            margin-bottom: 0;
+            position: static;
+        }
+
+        .process-step__dot {
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 17px;
+            height: 17px;
+            z-index: 2;
+        }
+
+        .process-step__line {
+            display: none;
+        }
+
+        .process-step__card {
+            padding: 1.2rem 1.15rem;
+            border-radius: 1rem;
+        }
+
+        .process-step__label {
+            font-size: 0.68rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .process-step__header {
+            margin-bottom: 0.85rem;
+        }
+
+        .process-step__number {
+            font-size: 2.35rem;
+        }
+
+        .process-step__icon-wrap {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+        }
+
+        .process-step__title {
+            font-size: 1.15rem;
+            line-height: 1.28;
+            margin-bottom: 0.45rem;
+        }
+
+        .process-step__text {
+            font-size: 0.92rem;
+            line-height: 1.55;
+        }
+
+        /* Mobile CTA Card */
+        .process__footer {
+            margin-top: 2.5rem;
+        }
+
+        .process__footer-inner {
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+            padding: 1.35rem 1.2rem;
+            gap: 1.15rem;
+            border-radius: 1.1rem;
+        }
+
+        .process__footer-lead {
+            font-size: 0.98rem;
+            line-height: 1.45;
+        }
+
+        .process__cta-btn {
+            width: 100%;
+            justify-content: center;
+            min-height: 44px;
+        }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        .process-step,
+        .process-step__card,
+        .process-step__dot,
+        .process-step__line,
+        .process-step__number,
+        .process-step__icon-wrap,
+        .process-step__title,
+        .process-step__header::before,
+        .process__cta-btn,
+        .process__cta-btn svg {
+            transition: none !important;
+            animation: none !important;
+        }
+    }
+</style>

@@ -1,0 +1,555 @@
+---
+import { Image } from "astro:assets";
+import senalesAlertaImg from "../../images/senales-alerta.webp";
+import {
+    Compass,
+    BookOpen,
+    TrendingDown,
+    CircleAlert,
+    Sparkles,
+    CircleHelp,
+    ArrowRight,
+} from "lucide-astro";
+
+const situations = [
+    {
+        number: "01",
+        title: "Le cuesta concentrarse",
+        description:
+            "Se dispersa con cualquier estímulo cotidiano, le cuesta mantener el foco y las tareas que deberían llevar minutos se alargan durante horas sin avanzar.",
+        icon: Compass,
+    },
+    {
+        number: "02",
+        title: "Leer o escribir se ha convertido en una lucha",
+        description:
+            "Lee con lentitud o esfuerzo excesivo, confunde letras, evita las tareas de lectoescritura o cada tarde de deberes acaba sistemáticamente en tensión.",
+        icon: BookOpen,
+    },
+    {
+        number: "03",
+        title: "Sus notas han bajado sin una razón clara",
+        description:
+            "A pesar de estudiar y dedicar horas en casa, los resultados no reflejan su capacidad real ni su esfuerzo, generando desánimo e impotencia.",
+        icon: TrendingDown,
+    },
+    {
+        number: "04",
+        title: "Se frustra o se bloquea con facilidad",
+        description:
+            "Reacciona con enfado, abatimiento o ansiedad ante las dificultades. Empieza a dudar de su capacidad y prefiere rendirse antes de intentar.",
+        icon: CircleAlert,
+    },
+    {
+        number: "05",
+        title: "Sospecháis TDAH, dislexia o altas capacidades",
+        description:
+            "Observáis señales diferentes y necesitáis una evaluación diagnóstica rigurosa y especializada para salir de dudas con certezas, sin etiquetas precipitadas.",
+        icon: Sparkles,
+    },
+    {
+        number: "06",
+        title: "Ya tenéis un diagnóstico, pero no sabéis qué hacer ahora",
+        description:
+            "Tenéis un informe clínico lleno de tecnicismos, pero os falta una hoja de ruta práctica para casa y la coordinación necesaria con su colegio.",
+        icon: CircleHelp,
+    },
+];
+
+const leftSituations = situations.slice(0, 3);
+const rightSituations = situations.slice(3, 6);
+---
+
+<section class="problems" id="situaciones">
+    <div class="problems__container">
+        <!-- Centered Header -->
+        <header class="problems__header">
+            <p class="problems__eyebrow">Señales que vemos a menudo</p>
+            <h2 class="problems__title">
+                ¿Te suena alguna de estas situaciones?
+            </h2>
+        </header>
+
+        <!-- Editorial Composition: 3 Left | Hero Center Image | 3 Right -->
+        <div class="problems__composition">
+            <!-- Left Column: Situations 01, 02, 03 -->
+            <div class="problems__col problems__col--left">
+                {
+                    leftSituations.map((item) => {
+                        const IconComponent = item.icon;
+                        return (
+                            <article class="problem-card">
+                                <div class="problem-card__top">
+                                    <span class="problem-card__number">
+                                        {item.number}
+                                    </span>
+                                    <div class="problem-card__icon-wrap">
+                                        <IconComponent
+                                            class="problem-card__icon"
+                                            size={17}
+                                            stroke-width={1.6}
+                                            aria-hidden="true"
+                                        />
+                                    </div>
+                                </div>
+                                <h3 class="problem-card__title">
+                                    {item.title}
+                                </h3>
+                                <p class="problem-card__text">
+                                    {item.description}
+                                </p>
+                            </article>
+                        );
+                    })
+                }
+            </div>
+
+            <!-- Center Column: Protagonist Editorial Paper Sheet -->
+            <div class="problems__center">
+                <div class="problems__paper-wrap" aria-hidden="true">
+                    <Image
+                        src={senalesAlertaImg}
+                        alt="Notas sobre señales de alerta escritas a mano"
+                        class="problems__paper-img"
+                        width={680}
+                        height={680}
+                        quality={85}
+                        format="webp"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+
+            <!-- Right Column: Situations 04, 05, 06 -->
+            <div class="problems__col problems__col--right">
+                {
+                    rightSituations.map((item) => {
+                        const IconComponent = item.icon;
+                        return (
+                            <article class="problem-card">
+                                <div class="problem-card__top">
+                                    <span class="problem-card__number">
+                                        {item.number}
+                                    </span>
+                                    <div class="problem-card__icon-wrap">
+                                        <IconComponent
+                                            class="problem-card__icon"
+                                            size={17}
+                                            stroke-width={1.6}
+                                            aria-hidden="true"
+                                        />
+                                    </div>
+                                </div>
+                                <h3 class="problem-card__title">
+                                    {item.title}
+                                </h3>
+                                <p class="problem-card__text">
+                                    {item.description}
+                                </p>
+                            </article>
+                        );
+                    })
+                }
+            </div>
+        </div>
+
+        <!-- Clean, Understated CTA below entire composition -->
+        <div class="problems__cta">
+            <p class="problems__cta-text">
+                Si te reconoces en alguna de estas situaciones, el siguiente paso
+                es entender qué está ocurriendo.
+            </p>
+
+            <a href="#como-trabajo" class="btn btn-primary problems__cta-btn">
+                <span>Ver cómo trabajo</span>
+                <ArrowRight size={16} stroke-width={1.8} aria-hidden="true" />
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ==========================================================================
+       Problems Section: High-End Editorial Composition
+       Warm blueprint texture, balanced 3-column layout with protagonist paper
+       sheet in center and compact, refined situational cards.
+       ========================================================================== */
+    .problems {
+        position: relative;
+        overflow: hidden;
+        background-color: #f7f6f2;
+        background-image:
+            linear-gradient(to right, rgba(23, 54, 97, 0.018) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(23, 54, 97, 0.018) 1px, transparent 1px);
+        background-size: 36px 36px;
+        padding-block: clamp(5rem, 8vw, 7.5rem);
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+    }
+
+    .problems__container {
+        width: min(100% - 2.5rem, 1220px);
+        margin-inline: auto;
+        box-sizing: border-box;
+    }
+
+    /* Section Header (Centered) */
+    .problems__header {
+        text-align: center;
+        max-width: 720px;
+        margin-inline: auto;
+        margin-bottom: clamp(3rem, 5vw, 4.25rem);
+    }
+
+    .problems__eyebrow {
+        display: inline-block;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--color-primary);
+        margin: 0 0 0.9rem;
+    }
+
+    .problems__title {
+        margin: 0;
+        color: var(--color-primary-dark);
+        font-size: clamp(2.2rem, 4vw, 3.15rem);
+        font-weight: 750;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+    }
+
+    /* ==========================================================================
+       Composition Grid (Desktop: 3 Columns)
+       Left column (3 cards) | Center hero image | Right column (3 cards)
+       ========================================================================== */
+    .problems__composition {
+        display: grid;
+        grid-template-columns: 1fr minmax(320px, 380px) 1fr;
+        align-items: center;
+        gap: clamp(1.5rem, 2.4vw, 2.5rem);
+    }
+
+    .problems__col {
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 1.4vw, 1.35rem);
+    }
+
+    /* Compact Editorial Problem Cards */
+    .problem-card {
+        position: relative;
+        background: rgba(255, 255, 255, 0.65);
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        border-radius: 1rem;
+        padding: clamp(1.15rem, 1.5vw, 1.4rem) clamp(1.25rem, 1.6vw, 1.5rem);
+        box-sizing: border-box;
+        transition:
+            background-color 0.25s ease,
+            border-color 0.25s ease,
+            transform 0.25s ease,
+            box-shadow 0.25s ease;
+    }
+
+    .problem-card:hover {
+        background: rgba(255, 255, 255, 0.92);
+        border-color: rgba(23, 54, 97, 0.14);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px -6px rgba(23, 54, 97, 0.06);
+    }
+
+    .problem-card__top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.65rem;
+    }
+
+    .problem-card__number {
+        font-size: 0.92rem;
+        font-weight: 800;
+        color: var(--color-primary);
+        font-variant-numeric: tabular-nums;
+        letter-spacing: -0.01em;
+    }
+
+    .problem-card__icon-wrap {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 7px;
+        background: rgba(36, 79, 158, 0.06);
+        color: var(--color-primary);
+        transition:
+            background-color 0.2s ease,
+            transform 0.2s ease;
+    }
+
+    .problem-card:hover .problem-card__icon-wrap {
+        background: rgba(36, 79, 158, 0.1);
+        transform: scale(1.06);
+    }
+
+    .problem-card__title {
+        margin: 0 0 0.4rem;
+        color: var(--color-primary-dark);
+        font-size: clamp(1.02rem, 1.15vw, 1.1rem);
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+    }
+
+    .problem-card__text {
+        margin: 0;
+        color: #445970;
+        font-size: clamp(0.88rem, 0.95vw, 0.94rem);
+        line-height: 1.55;
+        font-weight: 420;
+    }
+
+    /* ==========================================================================
+       Center Protagonist Paper Sheet
+       ========================================================================== */
+    .problems__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .problems__paper-wrap {
+        position: relative;
+        width: 100%;
+        max-width: 380px;
+        display: flex;
+        justify-content: center;
+        pointer-events: none;
+        animation: paperFloat 6s ease-in-out infinite alternate;
+        will-change: transform;
+    }
+
+    @keyframes paperFloat {
+        0% {
+            transform: translateY(0px) rotate(0deg);
+        }
+        100% {
+            transform: translateY(-10px) rotate(-0.8deg);
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .problems__paper-wrap {
+            animation: none;
+        }
+    }
+
+    .problems__paper-img {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        transform: rotate(1.8deg);
+        border-radius: 10px;
+        box-shadow:
+            0 24px 50px -12px rgba(23, 54, 97, 0.16),
+            0 8px 20px -4px rgba(23, 54, 97, 0.08);
+        transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+    }
+
+    /* ==========================================================================
+       Clean, Understated CTA
+       Lighter visual weight, secondary to the centerpiece image.
+       ========================================================================== */
+    .problems__cta {
+        margin-top: clamp(3rem, 5vw, 4.25rem);
+        max-width: 760px;
+        margin-inline: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        padding: 0.85rem 1.4rem 0.85rem 2rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        box-shadow: 0 4px 16px rgba(23, 54, 97, 0.03);
+        box-sizing: border-box;
+    }
+
+    .problems__cta-text {
+        margin: 0;
+        color: var(--color-primary-dark);
+        font-size: clamp(0.92rem, 1.05vw, 0.98rem);
+        font-weight: 550;
+        line-height: 1.4;
+    }
+
+    .problems__cta-btn {
+        flex-shrink: 0;
+        min-height: 42px;
+        padding: 0.65rem 1.4rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-weight: 650;
+        font-size: 0.92rem;
+        border-radius: 999px;
+        background: var(--color-primary);
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 4px 14px rgba(36, 79, 158, 0.16);
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease,
+            box-shadow 0.2s ease;
+    }
+
+    .problems__cta-btn:hover {
+        transform: translateY(-2px);
+        background: var(--color-primary-dark);
+        box-shadow: 0 8px 20px rgba(23, 54, 97, 0.2);
+    }
+
+    .problems__cta-btn svg {
+        transition: transform 0.2s ease;
+    }
+
+    .problems__cta-btn:hover svg {
+        transform: translateX(3px);
+    }
+
+    /* ==========================================================================
+       Tablet Breakpoint (max-width: 1040px and > 680px)
+       Organized without overlaps: Center image on top, 2-column cards below.
+       ========================================================================== */
+    @media (max-width: 1040px) {
+        .problems__composition {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+
+        .problems__center {
+            grid-column: 1 / -1;
+            order: -1;
+            margin-bottom: 1.5rem;
+        }
+
+        .problems__paper-wrap {
+            max-width: 320px;
+        }
+
+        .problems__paper-img {
+            transform: rotate(1.2deg);
+        }
+
+        .problems__cta {
+            max-width: 660px;
+            padding: 0.9rem 1.5rem;
+        }
+    }
+
+    /* ==========================================================================
+       Mobile Breakpoint (max-width: 680px)
+       Strict sequence: Title → Protagonist Image → Situations Vertical → CTA
+       Zero horizontal overflow, tailored specifically for 390px viewports.
+       ========================================================================== */
+    @media (max-width: 680px) {
+        .problems {
+            padding-block: 4rem 3.5rem;
+            background-image:
+                linear-gradient(to right, rgba(23, 54, 97, 0.012) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(23, 54, 97, 0.012) 1px, transparent 1px);
+        }
+
+        .problems__container {
+            width: 100%;
+            padding-inline: 18px;
+        }
+
+        .problems__header {
+            margin-bottom: 1.75rem;
+        }
+
+        .problems__eyebrow {
+            font-size: 0.78rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .problems__title {
+            font-size: clamp(1.85rem, 6.8vw, 2.25rem);
+            line-height: 1.18;
+            letter-spacing: -0.03em;
+        }
+
+        /* Pure vertical flex flow */
+        .problems__composition {
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+
+        /* 1. Protagonist Image First below Title */
+        .problems__center {
+            order: -1;
+            margin-bottom: 1.25rem;
+        }
+
+        .problems__paper-wrap {
+            width: min(84%, 290px);
+            max-width: 290px;
+        }
+
+        .problems__paper-img {
+            transform: rotate(1deg);
+            box-shadow:
+                0 14px 30px -8px rgba(23, 54, 97, 0.13),
+                0 4px 12px -3px rgba(23, 54, 97, 0.06);
+        }
+
+        /* 2. Situations Vertical */
+        .problems__col {
+            gap: 0.85rem;
+        }
+
+        .problem-card {
+            padding: 1.15rem 1.15rem;
+            border-radius: 0.85rem;
+        }
+
+        .problem-card__title {
+            font-size: 1.02rem;
+            line-height: 1.3;
+        }
+
+        .problem-card__text {
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
+
+        /* 3. CTA below entire composition */
+        .problems__cta {
+            margin-top: 2rem;
+            flex-direction: column;
+            align-items: stretch;
+            text-align: center;
+            padding: 1.35rem 1.2rem;
+            gap: 1.1rem;
+            border-radius: 1.1rem;
+        }
+
+        .problems__cta-text {
+            font-size: 0.94rem;
+            line-height: 1.45;
+        }
+
+        .problems__cta-btn {
+            width: 100%;
+            justify-content: center;
+            min-height: 44px;
+        }
+    }
+</style>

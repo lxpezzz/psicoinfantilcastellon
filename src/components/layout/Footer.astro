@@ -1,0 +1,246 @@
+---
+// Footer.astro - Global Site Footer
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="footer" id="pie-pagina">
+    <div class="footer__container">
+        <div class="footer__grid">
+            <!-- Brand Column -->
+            <div class="footer__brand">
+                <a href="/" class="footer__logo" aria-label="PsicoInfantil Castellón">
+                    <span class="footer__logo-main">PsicoInfantil</span>
+                    <span class="footer__logo-sub">Castellón</span>
+                </a>
+                <p class="footer__bio">
+                    Psicología infantil y adolescente en Castellón. Evaluación, orientación educativa y clínica para niños, jóvenes y sus familias.
+                </p>
+                <div class="footer__meta">
+                    <span>Nº Colegiada: CV-04523</span>
+                </div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="footer__col">
+                <h3 class="footer__col-title">Secciones</h3>
+                <ul class="footer__links" role="list">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#como-trabajo">Cómo trabajo</a></li>
+                    <li><a href="#sobre-mi">Sobre mí</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
+
+            <!-- Services Links -->
+            <div class="footer__col">
+                <h3 class="footer__col-title">Servicios</h3>
+                <ul class="footer__links" role="list">
+                    <li><a href="/servicios/rendimiento-escolar">Rendimiento escolar</a></li>
+                    <li><a href="/servicios/evaluacion-diagnostico">Evaluación diagnóstica</a></li>
+                    <li><a href="/servicios/tdah">TDAH</a></li>
+                    <li><a href="/servicios/dislexia">Dislexia</a></li>
+                    <li><a href="/servicios/altas-capacidades">Altas capacidades</a></li>
+                    <li><a href="/servicios/psicologia-juvenil">Psicología juvenil</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact & Schedule -->
+            <div class="footer__col">
+                <h3 class="footer__col-title">Consulta</h3>
+                <ul class="footer__contact" role="list">
+                    <li>
+                        <strong>Teléfono:</strong>
+                        <a href="tel:+34614992148">614 99 21 48</a>
+                    </li>
+                    <li>
+                        <strong>Ubicación:</strong>
+                        <span>Castellón de la Plana</span>
+                    </li>
+                    <li>
+                        <strong>Atención:</strong>
+                        <span>Previa petición de cita</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer__bottom">
+            <p class="footer__copyright">
+                &copy; {currentYear} PsicoInfantil Castellón · Ana Díaz Berbel. Todos los derechos reservados.
+            </p>
+            <div class="footer__legal">
+                <a href="/aviso-legal">Aviso legal</a>
+                <a href="/privacidad">Privacidad</a>
+                <a href="/cookies">Cookies</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer {
+        background-color: #173661;
+        color: #e2eaf4;
+        padding-top: clamp(4rem, 6vw, 5.5rem);
+        padding-bottom: 2.5rem;
+        position: relative;
+    }
+
+    .footer__container {
+        width: min(100% - 2.5rem, 1220px);
+        margin-inline: auto;
+        box-sizing: border-box;
+    }
+
+    .footer__grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1.2fr 1.2fr;
+        gap: clamp(2rem, 4vw, 3.5rem);
+        padding-bottom: clamp(3rem, 5vw, 4rem);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer__brand {
+        display: flex;
+        flex-direction: column;
+        gap: 1.15rem;
+    }
+
+    .footer__logo {
+        display: inline-flex;
+        flex-direction: column;
+        line-height: 1;
+        text-decoration: none;
+    }
+
+    .footer__logo-main {
+        color: #ffffff;
+        font-size: 1.45rem;
+        font-weight: 750;
+        letter-spacing: -0.04em;
+    }
+
+    .footer__logo-sub {
+        margin-top: 0.28rem;
+        color: #7bb5e8;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.19em;
+        text-transform: uppercase;
+    }
+
+    .footer__bio {
+        margin: 0;
+        color: #a8c1de;
+        font-size: 0.94rem;
+        line-height: 1.65;
+        max-width: 36ch;
+    }
+
+    .footer__meta {
+        font-size: 0.82rem;
+        color: #7bb5e8;
+        font-weight: 600;
+    }
+
+    .footer__col-title {
+        margin: 0 0 1.2rem;
+        color: #ffffff;
+        font-size: 0.98rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+    }
+
+    .footer__links,
+    .footer__contact {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .footer__links a {
+        color: #a8c1de;
+        font-size: 0.92rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .footer__links a:hover {
+        color: #ffffff;
+    }
+
+    .footer__contact li {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.9rem;
+        color: #a8c1de;
+        line-height: 1.4;
+    }
+
+    .footer__contact strong {
+        color: #ffffff;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.15rem;
+    }
+
+    .footer__contact a {
+        color: #7bb5e8;
+        text-decoration: none;
+        font-weight: 700;
+    }
+
+    .footer__bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.25rem;
+        padding-top: 2rem;
+        font-size: 0.85rem;
+        color: #8faecf;
+    }
+
+    .footer__copyright {
+        margin: 0;
+    }
+
+    .footer__legal {
+        display: flex;
+        gap: 1.5rem;
+    }
+
+    .footer__legal a {
+        color: inherit;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .footer__legal a:hover {
+        color: #ffffff;
+    }
+
+    @media (max-width: 980px) {
+        .footer__grid {
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+        }
+    }
+
+    @media (max-width: 620px) {
+        .footer__grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .footer__bottom {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>

@@ -1,0 +1,937 @@
+---
+import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-astro";
+
+/**
+ * ============================================================================
+ * GOOGLE BUSINESS PROFILE INTEGRATION POINT
+ * ============================================================================
+ * Esta sección está preparada para conectarse a Google Business Profile API
+ * o Google Places API (New) sin modificar la UI ni el maquetado.
+ *
+ * Estructura requerida:
+ * {
+ *   rating: number | null,
+ *   totalReviews: number | null,
+ *   reviews: Array<{
+ *     authorName: string,
+ *     authorPhoto?: string,
+ *     rating: number,
+ *     text: string,
+ *     relativeTime: string,
+ *     reviewUrl?: string
+ *   }>
+ * }
+ *
+ * Instrucciones de conexión:
+ * 1. Definir GOOGLE_PLACES_API_KEY y GOOGLE_PLACE_ID en variables de entorno privadas.
+ * 2. En build time (o SSR endpoint), llamar a:
+ *    https://places.googleapis.com/v1/places/{placeId}?fields=reviews,rating,userRatingCount&key=${key}&languageCode=es
+ * 3. Mapear la respuesta a `googleData` y poner `isGoogleConnected = true`.
+ * ============================================================================
+ */
+
+export interface GoogleReview {
+    authorName: string;
+    authorPhoto?: string;
+    rating: number;
+    text: string;
+    relativeTime: string;
+    reviewUrl?: string;
+}
+
+export interface GoogleBusinessProfileData {
+    rating: number | null;
+    totalReviews: number | null;
+    reviews: GoogleReview[];
+}
+
+// URL fallback del perfil en Google Maps / Business Profile
+const googleProfileUrl = "https://maps.google.com/?cid=4225123225601099366";
+
+const googleData: GoogleBusinessProfileData = {
+    rating: 5.0,
+    totalReviews: 46,
+    reviews: [
+        {
+            authorName: "Reseña de Google",
+            rating: 5,
+            relativeTime: "Google Business Profile",
+            text: "Espacio reservado para sincronización automática con Google Business Profile API. La reseña real se mostrará aquí una vez conectadas las credenciales del perfil.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Reseña de Google",
+            rating: 5,
+            relativeTime: "Google Business Profile",
+            text: "Espacio reservado para sincronización automática con Google Business Profile API. La reseña real se mostrará aquí una vez conectadas las credenciales del perfil.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Reseña de Google",
+            rating: 5,
+            relativeTime: "Google Business Profile",
+            text: "Espacio reservado para sincronización automática con Google Business Profile API. La reseña real se mostrará aquí una vez conectadas las credenciales del perfil.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Reseña de Google",
+            rating: 5,
+            relativeTime: "Google Business Profile",
+            text: "Espacio reservado para sincronización automática con Google Business Profile API. La reseña real se mostrará aquí una vez conectadas las credenciales del perfil.",
+            reviewUrl: googleProfileUrl,
+        },
+    ],
+};
+---
+
+<section class="reviews" id="resenas" aria-labelledby="reviews-heading">
+    <div class="reviews__container">
+        <!-- Cabecera centrada -->
+        <header class="reviews__header">
+            <h2 id="reviews-heading" class="reviews__title">
+                La tranquilidad de saber qué hacer
+            </h2>
+
+            <p class="reviews__intro">
+                Experiencias reales de familias que han encontrado claridad, pautas y acompañamiento.
+            </p>
+
+            <!-- Bloque compacto Google con Logotipo Oficial de Letras GRANDE y 5 estrellas grandes -->
+            <a
+                href={googleProfileUrl}
+                id="google-profile-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="reviews__google-badge"
+                aria-label="Ver perfil de Google Business Profile"
+            >
+                <div class="reviews__brand">
+                    <!-- Logotipo oficial vectorial completo de GOOGLE con sus letras grandes -->
+                    <svg
+                        class="reviews__google-wordmark"
+                        viewBox="0 0 272 92"
+                        width="122"
+                        height="41"
+                        role="img"
+                        aria-label="Google"
+                    >
+                        <path
+                            fill="#EA4335"
+                            d="M115.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18C71.25 34.32 81.24 25 93.5 25s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44S80.99 39.2 80.99 47.18c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"
+                        ></path>
+                        <path
+                            fill="#FBBC05"
+                            d="M163.75 47.18c0 12.77-9.99 22.18-22.25 22.18s-22.25-9.41-22.25-22.18c0-12.85 9.99-22.18 22.25-22.18s22.25 9.32 22.25 22.18zm-9.74 0c0-7.98-5.79-13.44-12.51-13.44s-12.51 5.46-12.51 13.44c0 7.9 5.79 13.44 12.51 13.44s12.51-5.55 12.51-13.44z"
+                        ></path>
+                        <path
+                            fill="#4285F4"
+                            d="M209.75 26.34v39.82c0 16.38-9.66 23.07-21.08 23.07-10.75 0-17.22-7.19-19.66-13.07l8.48-3.53c1.51 3.61 5.21 7.87 11.17 7.87 7.31 0 11.84-4.51 11.84-13v-3.19h-.34c-2.18 2.69-6.38 5.04-11.68 5.04-11.09 0-21.25-9.66-21.25-22.09 0-12.52 10.16-22.26 21.25-22.26 5.29 0 9.49 2.35 11.68 4.96h.34v-3.61h9.25zm-8.56 20.92c0-7.81-5.21-13.52-11.84-13.52-6.72 0-12.35 5.71-12.35 13.52 0 7.73 5.63 13.36 12.35 13.36 6.63 0 11.84-5.63 11.84-13.36z"
+                        ></path>
+                        <path fill="#34A853" d="M225 3v65h-9.5V3h9.5z"></path>
+                        <path
+                            fill="#EA4335"
+                            d="M262.02 54.48l7.56 5.04c-2.44 3.61-8.32 9.83-18.48 9.83-12.6 0-22.01-9.74-22.01-22.18 0-13.19 9.49-22.18 20.92-22.18 11.51 0 17.14 9.16 18.98 14.11l1.01 2.52-29.65 12.28c2.27 4.45 5.8 6.72 10.75 6.72 4.96 0 8.4-2.44 10.92-6.14zm-23.27-7.98l19.82-8.23c-1.09-2.77-4.37-4.7-8.23-4.7-4.95 0-11.84 4.37-11.59 12.93z"
+                        ></path>
+                        <path
+                            fill="#4285F4"
+                            d="M35.29 41.41V32H67c.31 1.64.47 3.58.47 5.68 0 7.06-1.93 15.79-8.15 22.01-6.05 6.3-13.78 9.66-24.02 9.66C16.32 69.35.36 53.89.36 34.91.36 15.93 16.32.47 35.3.47c10.5 0 17.98 4.12 23.6 9.49l-6.64 6.64c-4.03-3.78-9.49-6.72-16.97-6.72-13.86 0-24.7 11.17-24.7 25.03 0 13.86 10.84 25.03 24.7 25.03 8.99 0 14.11-3.61 17.39-6.89 2.66-2.66 4.41-6.46 5.1-11.65l-22.49.01z"
+                        ></path>
+                    </svg>
+                </div>
+
+                <div class="reviews__stars-wrap">
+                    <div class="reviews__stars" aria-label="5 de 5 estrellas">
+                        {
+                            Array.from({ length: 5 }).map(() => (
+                                <Star
+                                    size={21}
+                                    fill="#FBBC05"
+                                    color="#FBBC05"
+                                    stroke-width={0}
+                                />
+                            ))
+                        }
+                    </div>
+
+                    <span class="reviews__rating-text">
+                        <strong id="google-rating">5.0</strong>/5
+                        <span class="reviews__dot">·</span>
+                        <span id="google-review-count">46</span> reseñas
+                    </span>
+                </div>
+            </a>
+        </header>
+
+        <!-- Carrusel de Reseñas -->
+        <div class="reviews__carousel">
+            <!-- Controles discretos izquierda / derecha -->
+            <div class="reviews__controls">
+                <button
+                    type="button"
+                    class="reviews__control-btn"
+                    id="reviews-prev"
+                    aria-label="Ver reseña anterior"
+                >
+                    <ChevronLeft size={22} stroke-width={2.2} />
+                </button>
+                <button
+                    type="button"
+                    class="reviews__control-btn"
+                    id="reviews-next"
+                    aria-label="Ver siguiente reseña"
+                >
+                    <ChevronRight size={22} stroke-width={2.2} />
+                </button>
+            </div>
+
+            <!-- Track con CSS Scroll-Snap (Desktop: 3, Tablet: 2, Móvil: 1) -->
+            <div
+                class="reviews__track"
+                id="reviews-track"
+                role="region"
+                aria-label="Reseñas de Google"
+                tabindex="0"
+            >
+                {
+                    googleData.reviews.map((review: GoogleReview) => {
+                        const initial = review.authorName.trim().charAt(0) || "G";
+                        const isLong = review.text.length > 190;
+
+                        return (
+                            <article class="review-card">
+                                <!-- Cabecera de la card -->
+                                <div class="review-card__header">
+                                    <div class="review-card__author">
+                                        {review.authorPhoto ? (
+                                            <img
+                                                src={review.authorPhoto}
+                                                alt={review.authorName}
+                                                class="review-card__avatar-img"
+                                                width="44"
+                                                height="44"
+                                                loading="lazy"
+                                            />
+                                        ) : (
+                                            <div
+                                                class="review-card__avatar-placeholder"
+                                                aria-hidden="true"
+                                            >
+                                                <span>{initial}</span>
+                                            </div>
+                                        )}
+
+                                        <div class="review-card__meta">
+                                            <span class="review-card__name">
+                                                {review.authorName}
+                                            </span>
+                                            <span class="review-card__date">
+                                                {review.relativeTime}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <!-- Identificador Google en Card con la G oficial -->
+                                    <div
+                                        class="review-card__google-source"
+                                        title="Reseña verificada en Google"
+                                        aria-label="Origen Google"
+                                    >
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            width="18"
+                                            height="18"
+                                            aria-hidden="true"
+                                        >
+                                            <path
+                                                fill="#4285F4"
+                                                d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
+                                            />
+                                            <path
+                                                fill="#34A853"
+                                                d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.26v3.15C3.25 21.36 7.33 24 12 24z"
+                                            />
+                                            <path
+                                                fill="#FBBC05"
+                                                d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.14-1.55.38-2.27V6.58H1.26C.46 8.16 0 9.97 0 12s.46 3.84 1.26 5.42l4.02-3.15z"
+                                            />
+                                            <path
+                                                fill="#EA4335"
+                                                d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.25 2.64 1.26 6.58l4.02 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                                            />
+                                        </svg>
+                                    </div>
+                                </div>
+
+                                <!-- 5 Estrellas amarillas grandes -->
+                                <div
+                                    class="review-card__stars"
+                                    aria-label={`${review.rating} estrellas`}
+                                >
+                                    {Array.from({ length: review.rating }).map(() => (
+                                        <Star
+                                            size={16}
+                                            fill="#FBBC05"
+                                            color="#FBBC05"
+                                            stroke-width={0}
+                                        />
+                                    ))}
+                                </div>
+
+                                <!-- Texto real de la reseña con soporte de expansión -->
+                                <div class="review-card__content">
+                                    <p
+                                        class:list={[
+                                            "review-card__text",
+                                            { "review-card__text--clamped": isLong },
+                                        ]}
+                                    >
+                                        “{review.text}”
+                                    </p>
+                                    {isLong && (
+                                        <button
+                                            type="button"
+                                            class="review-card__read-more"
+                                            aria-expanded="false"
+                                        >
+                                            Leer más
+                                        </button>
+                                    )}
+                                </div>
+                            </article>
+                        );
+                    })
+                }
+            </div>
+        </div>
+
+        <!-- CTA inferior -->
+        <div class="reviews__action">
+            <a
+                href={googleProfileUrl}
+                id="google-reviews-link"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="reviews__cta-btn"
+            >
+                <span>Ver todas las reseñas en Google</span>
+                <ArrowRight size={17} stroke-width={2} aria-hidden="true" class="reviews__cta-arrow" />
+            </a>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ==========================================================================
+       Reviews Section
+       Estética limpia, premium, con logotipo Google oficial grande y scroll fluido.
+       ========================================================================== */
+    .reviews {
+        padding-block: clamp(5rem, 8vw, 7.5rem);
+        background-color: #faf9f5;
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .reviews__container {
+        width: min(100% - 2.5rem, 1220px);
+        margin-inline: auto;
+        box-sizing: border-box;
+    }
+
+    /* --------------------------------------------------------------------------
+       Cabecera centrada
+       -------------------------------------------------------------------------- */
+    .reviews__header {
+        text-align: center;
+        max-width: 780px;
+        margin-inline: auto;
+        margin-bottom: clamp(2.5rem, 4.5vw, 3.5rem);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reviews__title {
+        margin: 0 0 0.85rem;
+        color: var(--color-primary-dark);
+        font-size: clamp(2.1rem, 3.8vw, 3.1rem);
+        font-weight: 750;
+        line-height: 1.15;
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+    }
+
+    .reviews__intro {
+        margin: 0 0 1.75rem;
+        color: var(--color-text-soft);
+        font-size: clamp(1.02rem, 1.2vw, 1.15rem);
+        line-height: 1.6;
+        text-wrap: pretty;
+    }
+
+    /* Bloque compacto Google con logotipo de letras grande */
+    .reviews__google-badge {
+        display: inline-flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.1rem 1.4rem;
+        padding: 0.75rem 1.65rem;
+        border-radius: 999px;
+        background: #ffffff;
+        border: 1px solid rgba(23, 54, 97, 0.1);
+        box-shadow:
+            0 8px 24px -4px rgba(23, 54, 97, 0.06),
+            0 2px 6px rgba(23, 54, 97, 0.02);
+        text-decoration: none;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            border-color 0.2s ease;
+    }
+
+    .reviews__google-badge:hover {
+        transform: translateY(-2px);
+        border-color: rgba(66, 133, 244, 0.35);
+        box-shadow:
+            0 12px 28px -6px rgba(66, 133, 244, 0.15),
+            0 4px 10px rgba(23, 54, 97, 0.04);
+    }
+
+    .reviews__brand {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Logotipo vectorial grande de Google con letras */
+    .reviews__google-wordmark {
+        display: block;
+        width: 122px;
+        height: 41px;
+        flex-shrink: 0;
+    }
+
+    .reviews__stars-wrap {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .reviews__stars {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+    }
+
+    .reviews__rating-text {
+        font-size: 0.92rem;
+        color: var(--color-primary-dark);
+        font-weight: 650;
+        white-space: nowrap;
+    }
+
+    .reviews__rating-text strong {
+        font-weight: 850;
+        color: var(--color-primary-dark);
+        font-size: 1rem;
+    }
+
+    .reviews__rating-text--status {
+        color: var(--color-text-soft);
+        font-weight: 600;
+        font-size: 0.86rem;
+    }
+
+    .reviews__dot {
+        margin-inline: 0.4rem;
+        color: rgba(23, 54, 97, 0.35);
+    }
+
+    /* --------------------------------------------------------------------------
+       Carrusel de Reseñas
+       -------------------------------------------------------------------------- */
+    .reviews__carousel {
+        position: relative;
+        width: 100%;
+    }
+
+    .reviews__controls {
+        position: absolute;
+        top: -4.4rem;
+        right: 0;
+        display: flex;
+        gap: 0.55rem;
+        z-index: 2;
+    }
+
+    .reviews__control-btn {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #ffffff;
+        border: 1px solid rgba(23, 54, 97, 0.12);
+        color: var(--color-primary-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(23, 54, 97, 0.04);
+        transition:
+            background-color 0.2s ease,
+            color 0.2s ease,
+            border-color 0.2s ease,
+            transform 0.2s ease,
+            opacity 0.2s ease;
+    }
+
+    .reviews__control-btn:hover:not(:disabled) {
+        background: var(--color-primary);
+        color: #ffffff;
+        border-color: var(--color-primary);
+        transform: translateY(-1px);
+    }
+
+    .reviews__control-btn:disabled {
+        opacity: 0.3;
+        cursor: not-allowed;
+    }
+
+    /* Track de desplazamiento */
+    .reviews__track {
+        display: flex;
+        gap: 1.5rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-block: 0.5rem 1.25rem;
+        margin-inline: -0.25rem;
+        padding-inline: 0.25rem;
+    }
+
+    .reviews__track::-webkit-scrollbar {
+        display: none;
+    }
+
+    .reviews__track:focus-visible {
+        outline: 2px solid var(--color-primary);
+        border-radius: 1rem;
+    }
+
+    /* --------------------------------------------------------------------------
+       Cards de Reseñas (Marfil / Blanco roto suave)
+       -------------------------------------------------------------------------- */
+    .review-card {
+        flex: 0 0 calc((100% - (2 * 1.5rem)) / 3);
+        box-sizing: border-box;
+        scroll-snap-align: start;
+        background: #ffffff;
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        border-radius: 1.25rem;
+        padding: clamp(1.4rem, 2vw, 1.85rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        box-shadow:
+            0 8px 24px -6px rgba(23, 54, 97, 0.04),
+            0 2px 6px rgba(23, 54, 97, 0.02);
+        transition:
+            transform 0.25s ease,
+            box-shadow 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .review-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(66, 133, 244, 0.25);
+        box-shadow:
+            0 14px 32px -8px rgba(23, 54, 97, 0.08),
+            0 4px 10px rgba(66, 133, 244, 0.04);
+    }
+
+    .review-card__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.85rem;
+    }
+
+    .review-card__author {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .review-card__avatar-placeholder {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f6f1e8 0%, #ede4d5 100%);
+        border: 1px solid rgba(23, 54, 97, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 750;
+        font-size: 0.98rem;
+        color: var(--color-primary);
+        flex-shrink: 0;
+    }
+
+    .review-card__avatar-img {
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 1px solid rgba(23, 54, 97, 0.1);
+        flex-shrink: 0;
+    }
+
+    .review-card__meta {
+        display: flex;
+        flex-direction: column;
+        line-height: 1.25;
+    }
+
+    .review-card__name {
+        font-size: 0.94rem;
+        font-weight: 700;
+        color: var(--color-primary-dark);
+        letter-spacing: -0.01em;
+    }
+
+    .review-card__date {
+        font-size: 0.76rem;
+        color: var(--color-text-soft);
+        margin-top: 0.15rem;
+    }
+
+    .review-card__google-source {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(23, 54, 97, 0.035);
+        border: 1px solid rgba(23, 54, 97, 0.06);
+        flex-shrink: 0;
+    }
+
+    .review-card__google-source svg {
+        display: block;
+    }
+
+    .review-card__stars {
+        display: inline-flex;
+        align-items: center;
+        gap: 2.5px;
+        margin-bottom: 0.95rem;
+    }
+
+    .review-card__content {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .review-card__text {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.65;
+        color: var(--color-text);
+        font-weight: 460;
+        text-wrap: pretty;
+    }
+
+    .review-card__text--clamped {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 5;
+        overflow: hidden;
+    }
+
+    .review-card__text--expanded {
+        display: block;
+        -webkit-line-clamp: unset;
+    }
+
+    .review-card__read-more {
+        align-self: flex-start;
+        margin-top: 0.5rem;
+        padding: 0;
+        background: none;
+        border: none;
+        color: var(--color-primary);
+        font-size: 0.82rem;
+        font-weight: 700;
+        cursor: pointer;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        transition: color 0.2s ease;
+    }
+
+    .review-card__read-more:hover {
+        color: var(--color-primary-dark);
+    }
+
+    /* --------------------------------------------------------------------------
+       CTA inferior: Ver todas las reseñas en Google →
+       -------------------------------------------------------------------------- */
+    .reviews__action {
+        display: flex;
+        justify-content: center;
+        margin-top: clamp(2.5rem, 4vw, 3.5rem);
+    }
+
+    .reviews__cta-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--color-primary-dark);
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 0.85rem 1.6rem;
+        border-radius: 0.75rem;
+        background: #ffffff;
+        border: 1px solid rgba(23, 54, 97, 0.12);
+        box-shadow: 0 4px 14px rgba(23, 54, 97, 0.04);
+        transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            border-color 0.25s ease,
+            box-shadow 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .reviews__cta-btn:hover {
+        background-color: var(--color-primary);
+        color: #ffffff;
+        border-color: var(--color-primary);
+        box-shadow: 0 8px 20px rgba(36, 79, 158, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .reviews__cta-arrow {
+        transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .reviews__cta-btn:hover .reviews__cta-arrow {
+        transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       Tablet Breakpoint (max-width: 1024px): 2 cards por vista
+       ========================================================================== */
+    @media (max-width: 1024px) {
+        .review-card {
+            flex: 0 0 calc((100% - 1.25rem) / 2);
+        }
+
+        .reviews__track {
+            gap: 1.25rem;
+        }
+
+        .reviews__controls {
+            position: static;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+        }
+    }
+
+    /* ==========================================================================
+       Mobile Breakpoint (max-width: 680px): 1 card por vista + swipe natural
+       ========================================================================== */
+    @media (max-width: 680px) {
+        .reviews {
+            padding-block: 4.5rem 4rem;
+        }
+
+        .reviews__container {
+            width: 100%;
+            padding-inline: 18px;
+        }
+
+        .reviews__title {
+            font-size: clamp(1.85rem, 6.8vw, 2.3rem);
+        }
+
+        .reviews__google-badge {
+            padding: 0.65rem 1.15rem;
+            gap: 0.75rem;
+            width: 100%;
+            max-width: 360px;
+            box-sizing: border-box;
+        }
+
+        .reviews__google-wordmark {
+            width: 105px;
+            height: 35px;
+        }
+
+        .reviews__stars svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .reviews__rating-text {
+            font-size: 0.82rem;
+        }
+
+        .review-card {
+            flex: 0 0 100%;
+            min-width: 100%;
+            padding: 1.4rem 1.25rem;
+            border-radius: 1.15rem;
+        }
+
+        .reviews__track {
+            gap: 1rem;
+            padding-inline: 0;
+            margin-inline: 0;
+        }
+
+        .reviews__controls {
+            position: static;
+            justify-content: center;
+            margin-bottom: 1.25rem;
+            gap: 0.75rem;
+        }
+
+        .reviews__control-btn {
+            width: 44px;
+            height: 44px;
+        }
+
+        .reviews__cta-btn {
+            width: 100%;
+            min-height: 48px;
+            justify-content: center;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    }
+
+    /* Reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+        .reviews__track {
+            scroll-behavior: auto;
+        }
+
+        .review-card,
+        .reviews__control-btn,
+        .reviews__cta-btn,
+        .reviews__cta-arrow {
+            transition: none !important;
+            transform: none !important;
+        }
+    }
+</style>
+
+<script>
+    function initReviewsCarousel() {
+        const track = document.getElementById("reviews-track");
+        const prevBtn = document.getElementById("reviews-prev") as HTMLButtonElement | null;
+        const nextBtn = document.getElementById("reviews-next") as HTMLButtonElement | null;
+
+        if (!track || !prevBtn || !nextBtn) return;
+
+        function updateButtons() {
+            if (!track || !prevBtn || !nextBtn) return;
+            const scrollLeft = track.scrollLeft;
+            const maxScroll = track.scrollWidth - track.clientWidth - 4;
+
+            prevBtn.disabled = scrollLeft <= 4;
+            nextBtn.disabled = scrollLeft >= maxScroll;
+        }
+
+        prevBtn.addEventListener("click", () => {
+            if (!track) return;
+            const card = track.querySelector(".review-card") as HTMLElement | null;
+            const step = card ? card.offsetWidth + 24 : 320;
+            track.scrollBy({ left: -step, behavior: "smooth" });
+        });
+
+        nextBtn.addEventListener("click", () => {
+            if (!track) return;
+            const card = track.querySelector(".review-card") as HTMLElement | null;
+            const step = card ? card.offsetWidth + 24 : 320;
+            track.scrollBy({ left: step, behavior: "smooth" });
+        });
+
+        track.addEventListener("scroll", updateButtons, { passive: true });
+        window.addEventListener("resize", updateButtons, { passive: true });
+        updateButtons();
+
+        // Control accesible para "Leer más"
+        const readMoreButtons = track.querySelectorAll(".review-card__read-more");
+        readMoreButtons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const textEl = btn.previousElementSibling as HTMLElement | null;
+                if (!textEl) return;
+
+                const isExpanded = btn.getAttribute("aria-expanded") === "true";
+                if (isExpanded) {
+                    textEl.classList.remove("review-card__text--expanded");
+                    textEl.classList.add("review-card__text--clamped");
+                    btn.setAttribute("aria-expanded", "false");
+                    btn.textContent = "Leer más";
+                } else {
+                    textEl.classList.remove("review-card__text--clamped");
+                    textEl.classList.add("review-card__text--expanded");
+                    btn.setAttribute("aria-expanded", "true");
+                    btn.textContent = "Leer menos";
+                }
+            });
+        });
+    }
+
+    async function loadGooglePlaceData() {
+        try {
+            const response = await fetch("/api/google-place");
+            if (!response.ok) {
+                throw new Error(`HTTP error ${response.status}`);
+            }
+            const data = await response.json();
+
+            if (data.rating !== undefined && data.rating !== null) {
+                const ratingEl = document.getElementById("google-rating");
+                if (ratingEl) {
+                    ratingEl.textContent = Number(data.rating).toFixed(1);
+                }
+            }
+
+            if (data.totalReviews !== undefined && data.totalReviews !== null) {
+                const countEl = document.getElementById("google-review-count");
+                if (countEl) {
+                    countEl.textContent = String(data.totalReviews);
+                }
+            }
+
+            if (data.googleMapsUrl) {
+                const profileLink = document.getElementById("google-profile-link") as HTMLAnchorElement | null;
+                if (profileLink) {
+                    profileLink.href = data.googleMapsUrl;
+                }
+
+                const reviewsLink = document.getElementById("google-reviews-link") as HTMLAnchorElement | null;
+                if (reviewsLink) {
+                    reviewsLink.href = data.googleMapsUrl;
+                }
+            }
+        } catch (error) {
+            console.error("Error al cargar datos dinámicos de Google Places:", error);
+        }
+    }
+
+    function initReviews() {
+        initReviewsCarousel();
+        loadGooglePlaceData();
+    }
+
+    document.addEventListener("DOMContentLoaded", initReviews);
+    document.addEventListener("astro:page-load", initReviews);
+</script>

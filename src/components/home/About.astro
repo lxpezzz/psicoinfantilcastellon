@@ -1,0 +1,427 @@
+---
+import { Image } from "astro:assets";
+import { ArrowRight, Award, GraduationCap, Users } from "lucide-astro";
+import anaImg from "../../images/about/ana-diaz.webp";
+---
+
+<section class="about" id="sobre-mi">
+    <div class="about__container">
+        <!-- Visual Column: Editorial Portrait of Ana -->
+        <div class="about__visual">
+            <div class="about__portrait-frame">
+                <Image
+                    src={anaImg}
+                    alt="Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón"
+                    class="about__portrait-img"
+                    width={840}
+                    height={980}
+                    quality={90}
+                    format="webp"
+                    loading="lazy"
+                />
+            </div>
+        </div>
+
+        <!-- Content Column: Editorial Interview Style -->
+        <div class="about__content">
+            <header class="about__header">
+                <p class="about__eyebrow">Sobre mí</p>
+                <h2 class="about__title">
+                    Más de 20 años ayudando a familias a entender qué está
+                    pasando y qué hacer después.
+                </h2>
+            </header>
+
+            <div class="about__bio">
+                <p>
+                    Soy Ana Díaz Berbel, psicóloga especializada en intervención
+                    educativa y clínica en Castellón. Mi trabajo une evaluación,
+                    familia y colegio para convertir las dudas en decisiones
+                    claras y herramientas útiles para el día a día.
+                </p>
+            </div>
+
+            <!-- Prominent Personal Quote (Pull-Quote) -->
+            <blockquote class="about__quote">
+                <p class="about__quote-text">
+                    “Mi trabajo no termina cuando entrego un informe. Empieza
+                    cuando conseguimos que familia y colegio sepan qué hacer.”
+                </p>
+            </blockquote>
+
+            <!-- 3 Discrete Authority Proof Points -->
+            <ul class="about__authority" role="list">
+                <li class="about__authority-item about__authority-item--rose">
+                    <span class="about__authority-icon" aria-hidden="true">
+                        <Award size={16} stroke-width={2} />
+                    </span>
+                    <span class="about__authority-text">
+                        +20 años de experiencia
+                    </span>
+                </li>
+
+                <li class="about__authority-item about__authority-item--blue">
+                    <span class="about__authority-icon" aria-hidden="true">
+                        <GraduationCap size={16} stroke-width={2} />
+                    </span>
+                    <span class="about__authority-text">
+                        Coordinación con centros educativos
+                    </span>
+                </li>
+
+                <li class="about__authority-item about__authority-item--sage">
+                    <span class="about__authority-icon" aria-hidden="true">
+                        <Users size={16} stroke-width={2} />
+                    </span>
+                    <span class="about__authority-text">
+                        Intervención con niños, adolescentes y familias
+                    </span>
+                </li>
+            </ul>
+
+            <!-- CTA Link -->
+            <div class="about__action">
+                <a href="/sobre-mi" class="about__cta-link">
+                    <span>Leer mi trayectoria completa</span>
+                    <ArrowRight
+                        size={17}
+                        stroke-width={2}
+                        aria-hidden="true"
+                        class="about__cta-arrow"
+                    />
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ==========================================================================
+       About Section
+       Warm editorial interview layout with high-end, human typography.
+       ========================================================================== */
+    .about {
+        background-color: #faf9f5;
+        padding-block: clamp(5rem, 8vw, 7.5rem);
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about__container {
+        width: min(100% - 2.5rem, 1220px);
+        margin-inline: auto;
+        display: grid;
+        grid-template-columns: minmax(320px, 4.8fr) minmax(420px, 6.2fr);
+        gap: clamp(3rem, 5.5vw, 5.5rem);
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    /* --------------------------------------------------------------------------
+       Visual Column: Editorial Portrait of Ana
+       -------------------------------------------------------------------------- */
+    .about__visual {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Subtle organic halo in dusty rose and sage behind the frame */
+    .about__visual::before {
+        content: "";
+        position: absolute;
+        top: -6%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 106%;
+        height: 110%;
+        border-radius: 42% 58% 65% 35% / 45% 42% 58% 55%;
+        background: linear-gradient(
+            135deg,
+            rgba(223, 162, 170, 0.22) 0%,
+            rgba(191, 205, 190, 0.22) 100%
+        );
+        filter: blur(28px);
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .about__portrait-frame {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 480px;
+        aspect-ratio: 4 / 4.7;
+        border-radius: 1.75rem;
+        overflow: hidden;
+        background: linear-gradient(155deg, #fbf7ef 0%, #ede6d8 100%);
+        border: 1px solid rgba(23, 54, 97, 0.09);
+        box-shadow:
+            0 20px 48px -12px rgba(23, 54, 97, 0.09),
+            0 4px 14px -2px rgba(23, 54, 97, 0.03);
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+    }
+
+    .about__portrait-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 58% bottom;
+        display: block;
+        transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        will-change: transform;
+    }
+
+    .about__portrait-frame:hover .about__portrait-img {
+        transform: scale(1.025);
+    }
+
+    /* --------------------------------------------------------------------------
+       Content Column: Typography & Authority Points
+       -------------------------------------------------------------------------- */
+    .about__content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+    }
+
+    .about__header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about__eyebrow {
+        margin: 0 0 0.85rem;
+        color: var(--color-primary);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        line-height: 1.35;
+    }
+
+    .about__title {
+        margin: 0;
+        color: var(--color-primary-dark);
+        font-size: clamp(2rem, 3vw, 2.7rem);
+        font-weight: 750;
+        line-height: 1.16;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
+    }
+
+    .about__bio p {
+        margin: 0;
+        color: var(--color-text-soft);
+        font-size: clamp(1rem, 1.1vw, 1.12rem);
+        line-height: 1.7;
+        text-wrap: pretty;
+    }
+
+    /* Prominent Pull-Quote in First Person with Dusty Rose (#DFA2AA) Accent */
+    .about__quote {
+        margin: 0.25rem 0;
+        padding: 1.2rem 1.5rem;
+        background: rgba(223, 162, 170, 0.07);
+        border-left: 3.5px solid #dfa2aa;
+        border-radius: 0 0.9rem 0.9rem 0;
+        border-top: 1px solid rgba(223, 162, 170, 0.18);
+        border-right: 1px solid rgba(223, 162, 170, 0.18);
+        border-bottom: 1px solid rgba(223, 162, 170, 0.18);
+    }
+
+    .about__quote-text {
+        margin: 0;
+        color: var(--color-primary-dark);
+        font-size: clamp(1.06rem, 1.2vw, 1.18rem);
+        font-weight: 650;
+        line-height: 1.55;
+        letter-spacing: -0.015em;
+        text-wrap: pretty;
+    }
+
+    /* 3 Discrete Authority Proof Points with Soft Warm/Natural Accents */
+    .about__authority {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem 0.9rem;
+    }
+
+    .about__authority-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.55rem 0.95rem;
+        border-radius: 0.65rem;
+        box-shadow: 0 2px 6px rgba(23, 54, 97, 0.02);
+        transition: transform 0.2s ease;
+    }
+
+    /* 01: Soft Dusty Rose */
+    .about__authority-item--rose {
+        background: rgba(223, 162, 170, 0.14);
+        border: 1px solid rgba(223, 162, 170, 0.35);
+    }
+
+    .about__authority-item--rose .about__authority-icon {
+        color: #b35f6c;
+    }
+
+    /* 02: Soft Blue Accent */
+    .about__authority-item--blue {
+        background: rgba(36, 79, 158, 0.07);
+        border: 1px solid rgba(36, 79, 158, 0.18);
+    }
+
+    .about__authority-item--blue .about__authority-icon {
+        color: var(--color-primary);
+    }
+
+    /* 03: Soft Sage Green */
+    .about__authority-item--sage {
+        background: rgba(191, 205, 190, 0.28);
+        border: 1px solid rgba(191, 205, 190, 0.45);
+    }
+
+    .about__authority-item--sage .about__authority-icon {
+        color: #4a6c53;
+    }
+
+    .about__authority-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+    }
+
+    .about__authority-text {
+        color: var(--color-primary-dark);
+        font-size: 0.88rem;
+        font-weight: 650;
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+    }
+
+    /* CTA Link */
+    .about__action {
+        padding-top: 0.5rem;
+    }
+
+    .about__cta-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.55rem;
+        color: var(--color-primary-dark);
+        font-size: 1rem;
+        font-weight: 700;
+        text-decoration: none;
+        padding: 0.85rem 1.6rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(23, 54, 97, 0.12);
+        box-shadow: 0 4px 14px rgba(23, 54, 97, 0.04);
+        transition:
+            background-color 0.25s ease,
+            color 0.25s ease,
+            border-color 0.25s ease,
+            box-shadow 0.25s ease,
+            transform 0.25s ease;
+    }
+
+    .about__cta-link:hover {
+        background-color: var(--color-primary);
+        color: #ffffff;
+        border-color: var(--color-primary);
+        box-shadow: 0 8px 20px rgba(36, 79, 158, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .about__cta-arrow {
+        transition: transform 0.25s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .about__cta-link:hover .about__cta-arrow {
+        transform: translateX(4px);
+    }
+
+    /* ==========================================================================
+       Tablet Breakpoint (max-width: 1024px)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+        .about__container {
+            grid-template-columns: 1fr 1.25fr;
+            gap: 2.75rem;
+        }
+
+        .about__authority-text {
+            white-space: normal;
+        }
+    }
+
+    /* ==========================================================================
+       Mobile Breakpoint (max-width: 768px)
+       ========================================================================== */
+    @media (max-width: 768px) {
+        .about {
+            padding-block: 4.5rem 4rem;
+        }
+
+        .about__container {
+            width: 100%;
+            padding-inline: 20px;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .about__visual {
+            max-width: 380px;
+            margin-inline: auto;
+        }
+
+        .about__portrait-frame {
+            aspect-ratio: 4 / 4.4;
+            border-radius: 1.4rem;
+        }
+
+        .about__title {
+            font-size: clamp(1.85rem, 6.8vw, 2.25rem);
+        }
+
+        .about__authority {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.65rem;
+        }
+
+        .about__authority-item {
+            width: 100%;
+            box-sizing: border-box;
+            white-space: normal;
+        }
+
+        .about__cta-link {
+            width: 100%;
+            min-height: 48px;
+            justify-content: center;
+            box-sizing: border-box;
+            text-align: center;
+        }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+        .about__portrait-img,
+        .about__cta-link,
+        .about__cta-arrow {
+            transition: none !important;
+            transform: none !important;
+        }
+    }
+</style>

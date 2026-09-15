@@ -1,0 +1,573 @@
+---
+import PhoneCTA from "../ui/PhoneCTA.astro";
+import GoogleRating from "../ui/GoogleRating.astro";
+---
+
+<section class="hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__overlay" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+        <div class="hero__content">
+            <!-- Eyebrow: strictly one line across the top on mobile -->
+            <p class="hero__eyebrow">
+                Psicología infantil y adolescente en Castellón
+            </p>
+
+            <!-- Compact Phone CTA (top-right corner on mobile, hidden on desktop) -->
+            <a
+                href="tel:+34614992148"
+                class="hero__compact-phone"
+                aria-label="Llamar al 614 99 21 48"
+            >
+                <span class="hero__compact-phone-q">¿Te preocupa algo de tu hijo?</span>
+                <span class="hero__compact-phone-sub">Hablemos con calma.</span>
+                <span class="hero__compact-phone-num">614 99 21 48</span>
+            </a>
+
+            <!-- Upper Zone: H1 positioned on the left, leaving the right side clear for the portrait in the background -->
+            <div class="hero__heading-wrap">
+                <h1>Entender qué le pasa es el primer paso para ayudarle.</h1>
+            </div>
+
+            <!-- Lower Zone in normal flow: starts clearly below H1 + portrait -->
+            <div class="hero__lower">
+                <p class="hero__description">
+                    Evaluamos qué está ocurriendo y te damos una hoja de ruta clara
+                    para ayudarle en casa, en el colegio y en su día a día.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="#contacto" class="btn btn-primary">
+                        Hablemos de tu caso
+                    </a>
+
+                    <a href="#como-trabajo" class="hero__link">
+                        Conoce cómo trabajo
+                        <span aria-hidden="true">→</span>
+                    </a>
+                </div>
+
+                <!-- Floating CTA on Desktop, hidden on mobile -->
+                <PhoneCTA class="hero__card-cta" />
+
+                <!-- Google Reviews Badge -->
+                <GoogleRating class="hero__reviews-badge" />
+
+                <p class="hero__trust">
+                    +20 años de experiencia
+                    <span>·</span>
+                    Castellón
+                    <span>·</span>
+                    Coordinación con familia y colegio
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* ==========================================================================
+       Hero Section Base (Desktop)
+       - Minimum 780px on desktop
+       - Authentic room/office background with framed portrait on right wall
+       - Zero horizontal overflow
+       ========================================================================== */
+    .hero {
+        position: relative;
+        min-height: 780px;
+        min-height: 100dvh;
+        width: 100%;
+        max-width: 100vw;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        background-color: #f7f5f0;
+        box-sizing: border-box;
+    }
+
+    /* 1. Single Dedicated Background Layer covering 100% of Hero */
+    .hero__bg {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        background-image: url("/images/hero-bg.webp");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center right;
+        pointer-events: none;
+    }
+
+    /* 2. Readability Overlay Layer */
+    .hero__overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background: linear-gradient(
+            90deg,
+            rgba(247, 245, 240, 0.98) 0%,
+            rgba(247, 245, 240, 0.94) 28%,
+            rgba(247, 245, 240, 0.65) 40%,
+            rgba(247, 245, 240, 0.15) 50%,
+            rgba(247, 245, 240, 0) 58%
+        );
+    }
+
+    /* 3. Content Layer */
+    .hero__inner {
+        position: relative;
+        z-index: 2;
+        width: min(100% - 2rem, 1400px);
+        min-height: 780px;
+        min-height: 100dvh;
+        margin-inline: auto;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: clamp(3rem, 5vw, 4.5rem);
+        padding-bottom: clamp(3rem, 5vw, 4.5rem);
+        box-sizing: border-box;
+    }
+
+    .hero__content {
+        width: min(100%, 680px);
+        box-sizing: border-box;
+    }
+
+    /* Desktop reset for mobile-specific wrappers */
+    .hero__compact-phone {
+        display: none;
+    }
+
+    .hero__heading-wrap {
+        display: block;
+    }
+
+    .hero__lower {
+        display: block;
+    }
+
+    .hero__eyebrow {
+        margin: 0 0 1.2rem;
+        color: var(--color-primary);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        line-height: 1.4;
+    }
+
+    .hero h1 {
+        margin: 0 0 1.4rem;
+        font-size: clamp(2.6rem, 3.8vw, 4.1rem);
+        line-height: 1.06;
+        letter-spacing: -0.04em;
+        color: var(--color-text);
+        overflow-wrap: break-word;
+    }
+
+    .hero__description {
+        max-width: 52ch;
+        margin: 0 0 2.2rem;
+        color: var(--color-text-soft);
+        font-size: clamp(1.02rem, 1.25vw, 1.15rem);
+        line-height: 1.7;
+    }
+
+    .hero__actions {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1.2rem 1.6rem;
+        margin-bottom: 2.2rem;
+    }
+
+    .hero__actions .btn-primary {
+        min-height: 48px;
+        padding: 0.85rem 1.6rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 650;
+        font-size: 1rem;
+        box-shadow: 0 10px 24px rgba(36, 79, 158, 0.16);
+    }
+
+    .hero__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 48px;
+        color: var(--color-primary-dark);
+        font-weight: 650;
+        font-size: 1rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .hero__link:hover {
+        color: var(--color-primary);
+    }
+
+    .hero__link span {
+        display: inline-block;
+        transition: transform 0.2s ease;
+    }
+
+    .hero__link:hover span {
+        transform: translateX(4px);
+    }
+
+    /* Desktop positioning for PhoneCTA */
+    :global(.hero__card-cta) {
+        position: absolute !important;
+        top: clamp(2rem, 3.5vw, 3rem) !important;
+        right: clamp(0.5rem, 2vw, 2rem) !important;
+        z-index: 4 !important;
+        width: 272px !important;
+    }
+
+    .hero__trust {
+        max-width: 600px;
+        margin: 0;
+        padding-top: 1.2rem;
+        border-top: 1px solid rgba(23, 54, 97, 0.12);
+        color: var(--color-text-soft);
+        font-size: 0.86rem;
+        line-height: 1.6;
+    }
+
+    .hero__trust span {
+        margin-inline: 0.45rem;
+        color: rgba(23, 54, 97, 0.3);
+    }
+
+    /* Desktop positioning for GoogleRating */
+    :global(.hero__reviews-badge) {
+        position: absolute !important;
+        z-index: 4 !important;
+        left: clamp(58%, 61%, 63%) !important;
+        transform: translateX(-50%) !important;
+        top: calc(50% + 236px) !important;
+    }
+
+    :global(.hero__reviews-badge:hover) {
+        transform: translateX(-50%) translateY(-2px) !important;
+    }
+
+    /* ==========================================================================
+       Tablet Breakpoint (max-width: 1024px)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+        .hero {
+            min-height: 780px;
+            min-height: 100dvh;
+        }
+
+        .hero__inner {
+            min-height: 780px;
+            min-height: 100dvh;
+        }
+
+        .hero__bg {
+            background-position: 70% center;
+        }
+
+        .hero__overlay {
+            background: linear-gradient(
+                90deg,
+                rgba(247, 245, 240, 0.98) 0%,
+                rgba(247, 245, 240, 0.93) 38%,
+                rgba(247, 245, 240, 0.7) 52%,
+                rgba(247, 245, 240, 0.2) 65%,
+                rgba(247, 245, 240, 0) 75%
+            );
+        }
+
+        .hero__content {
+            width: min(100%, 620px);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.2rem, 3.5vw, 3rem);
+        }
+
+        :global(.hero__card-cta) {
+            top: 2rem !important;
+            right: 0.5rem !important;
+            width: 260px !important;
+        }
+
+        :global(.hero__reviews-badge) {
+            left: 52% !important;
+            top: calc(50% + 205px) !important;
+        }
+    }
+
+    /* ==========================================================================
+       Mobile Breakpoint (max-width: 680px)
+       - Continuous canvas: single background covering 100% of the Hero
+       - Background position calibrated so portrait is clearly to the right of H1
+       - No separate card/image for the portrait
+       - H1 restricted to left half in normal flow
+       - Compact phone CTA in upper-right corner without overlapping face or text
+       - Lower functional zone starts cleanly below upper visual zone
+       - Zero horizontal overflow, optimized for 390px
+       ========================================================================== */
+    @media (max-width: 680px) {
+        .hero {
+            min-height: auto;
+            width: 100%;
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            background-color: #f7f5f0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 1. Single Continuous Background Image for 100% of the Hero */
+        .hero__bg {
+            display: block;
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background-image: url("/images/hero-bg.webp");
+            background-repeat: no-repeat;
+            background-size: auto 500px;
+            /* Keep the portrait centred inside the 42% visual column. */
+            background-position: 44% top;
+            pointer-events: none;
+        }
+
+        /* 2. Soft Localized Gradient: crisp readability on the left, clear view of Ana on the right */
+        .hero__overlay {
+            display: block;
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                /* Horizontal: readable text on the left, clear unobstructed view of the portrait on the right */
+                linear-gradient(
+                    90deg,
+                    rgba(247, 245, 240, 0.96) 0%,
+                    rgba(247, 245, 240, 0.92) 45%,
+                    rgba(247, 245, 240, 0.7) 52%,
+                    rgba(247, 245, 240, 0.12) 62%,
+                    transparent 72%
+                ),
+                /* Vertical: soft fade down below the portrait frame into solid marfil */
+                linear-gradient(
+                    180deg,
+                    rgba(247, 245, 240, 0.15) 0%,
+                    transparent 18%,
+                    transparent 340px,
+                    rgba(247, 245, 240, 0.75) 420px,
+                    rgba(247, 245, 240, 0.95) 540px,
+                    #f7f5f0 100%
+                );
+        }
+
+        .hero__inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            min-height: auto;
+            padding: 1.4rem 18px 2.5rem 18px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            box-sizing: border-box;
+        }
+
+        .hero__content {
+            position: relative;
+            width: 100%;
+            max-width: 100%;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Eyebrow: strictly ONE single line across the top */
+        .hero__eyebrow {
+            font-size: clamp(0.64rem, 2.6vw, 0.72rem);
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-primary);
+            margin: 0 0 0.9rem 0;
+            white-space: nowrap;
+            line-height: 1.2;
+            max-width: 100%;
+        }
+
+        /* Compact Phone CTA in Top-Right corner (above the portrait, no overlap with face or H1) */
+        .hero__compact-phone {
+            position: absolute;
+            top: 1.65rem;
+            right: 0;
+            z-index: 4;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 0.32rem 0.5rem;
+            border-radius: 0.55rem;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(23, 54, 97, 0.12);
+            box-shadow: 0 4px 12px rgba(23, 54, 97, 0.05);
+            text-decoration: none;
+            width: min(33vw, 120px);
+            max-width: 120px;
+            box-sizing: border-box;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .hero__compact-phone:active {
+            transform: scale(0.98);
+        }
+
+        .hero__compact-phone-q {
+            font-size: 0.55rem;
+            color: var(--color-text-soft);
+            font-weight: 600;
+            line-height: 1.15;
+        }
+
+        .hero__compact-phone-sub {
+            font-size: 0.54rem;
+            color: var(--color-primary-dark);
+            font-weight: 600;
+            line-height: 1.15;
+            white-space: nowrap;
+        }
+
+        .hero__compact-phone-num {
+            font-size: 0.73rem;
+            color: var(--color-primary);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-top: 0.12rem;
+            white-space: nowrap;
+            letter-spacing: -0.01em;
+        }
+
+        /* Upper Zone: real 58/42 grid, with the background portrait occupying the empty right track. */
+        .hero__heading-wrap {
+            width: 100%;
+            max-width: none;
+            min-height: 276px;
+            display: grid;
+            grid-template-columns: minmax(0, 58fr) minmax(0, 42fr);
+            align-items: start;
+            margin-bottom: 0.95rem;
+        }
+
+        .hero h1 {
+            grid-column: 1;
+            min-width: 0;
+            font-size: clamp(1.63rem, 6vw, 2rem);
+            line-height: 1.08;
+            letter-spacing: -0.035em;
+            color: var(--color-text);
+            margin: 5rem 0 0;
+            text-wrap: balance;
+        }
+
+        /* Lower Functional Zone: In normal document flow, begins cleanly below the portrait */
+        .hero__lower {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            min-width: 0;
+        }
+
+        .hero__description {
+            font-size: 1.02rem;
+            line-height: 1.6;
+            color: var(--color-text-soft);
+            margin: 0 0 1.6rem 0;
+            max-width: 100%;
+            overflow-wrap: anywhere;
+            text-wrap: pretty;
+        }
+
+        .hero__actions {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0.85rem;
+            margin-bottom: 1.15rem;
+            width: 100%;
+        }
+
+        .hero__actions .btn-primary {
+            width: 100%;
+            min-height: 52px;
+            font-size: 1.02rem;
+            font-weight: 650;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+            border-radius: 0.85rem;
+            box-shadow: 0 8px 22px rgba(36, 79, 158, 0.18);
+        }
+
+        .hero__link {
+            width: 100%;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.98rem;
+            font-weight: 650;
+            color: var(--color-primary-dark);
+        }
+
+        :global(.hero__card-cta) {
+            display: none !important;
+        }
+
+        :global(.hero__reviews-badge) {
+            position: static !important;
+            transform: none !important;
+            width: fit-content !important;
+            margin-inline: auto !important;
+            margin-bottom: 1.5rem !important;
+            display: inline-flex !important;
+        }
+
+        :global(.hero__reviews-badge:hover) {
+            transform: translateY(-2px) !important;
+        }
+
+        .hero__trust {
+            width: 100%;
+            max-width: 100%;
+            margin: 0;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(23, 54, 97, 0.1);
+            color: var(--color-text-soft);
+            font-size: 0.84rem;
+            line-height: 1.55;
+            text-align: center;
+            box-sizing: border-box;
+            overflow-wrap: anywhere;
+        }
+
+        .hero__trust span {
+            margin-inline: 0.4rem;
+            color: rgba(23, 54, 97, 0.35);
+        }
+    }
+</style>
