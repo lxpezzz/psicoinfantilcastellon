@@ -16,20 +16,9 @@
     border: 0 !important;
 }
 
-/* Alignment utilities */
-.text-center {
-    text-align: center;
-}
-
-.text-left {
-    text-align: left;
-}
-
-.text-right {
-    text-align: right;
-}
-
-/* Layout helpers */
-.w-full {
-    width: 100%;
+/* Shared section width; each component keeps its responsive overrides. */
+.section-container {
+    width: min(100% - 2.5rem, 1220px);
+    margin-inline: auto;
+    box-sizing: border-box;
 }

@@ -1,21 +1,21 @@
 ---
-// MobileMenu.astro - Accessible mobile navigation drawer
+const linkClass = "mobile-menu__link text-[var(--color-primary-dark)]! text-[1.25rem] font-bold no-underline transition-[color] duration-200 ease-[ease] [&:hover]:text-[var(--color-primary)]!";
 ---
 
-<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
-    <div class="mobile-menu__backdrop" id="mobile-menu-backdrop"></div>
-    <div class="mobile-menu__panel">
-        <nav class="mobile-menu__nav" aria-label="Navegación móvil secundaria">
-            <a href="#como-trabajo" class="mobile-menu__link">Cómo trabajo</a>
-            <a href="#sobre-mi" class="mobile-menu__link">Sobre mí</a>
-            <a href="#resenas" class="mobile-menu__link">Reseñas</a>
-            <a href="#faq" class="mobile-menu__link">Preguntas frecuentes</a>
+<div class="mobile-menu group/mobile-menu fixed inset-0 z-[999] pointer-events-none invisible transition-[visibility] duration-300 ease-[ease] [&.is-open]:pointer-events-auto [&.is-open]:visible min-[981px]:hidden" id="mobile-menu" aria-hidden="true">
+    <div class="absolute inset-0 bg-[rgba(23,54,97,0.3)] backdrop-blur-[4px] opacity-0 transition-opacity duration-300 ease-[ease] group-[.is-open]/mobile-menu:opacity-100" id="mobile-menu-backdrop"></div>
+    <div class="absolute top-0 right-0 bottom-0 w-[min(85vw,360px)] bg-[#fdfcf9] pt-24 px-8 pb-10 shadow-[-10px_0_30px_rgba(23,54,97,0.1)] flex flex-col justify-between [transform:translateX(100%)] transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] box-border group-[.is-open]/mobile-menu:[transform:translateX(0)]">
+        <nav class="flex flex-col gap-5" aria-label="Navegación móvil secundaria">
+            <a href="#como-trabajo" class={linkClass}>Cómo trabajo</a>
+            <a href="#sobre-mi" class={linkClass}>Sobre mí</a>
+            <a href="#resenas" class={linkClass}>Reseñas</a>
+            <a href="#faq" class={linkClass}>Preguntas frecuentes</a>
         </nav>
 
-        <div class="mobile-menu__actions">
-            <a href="tel:+34614992148" class="mobile-menu__phone">
+        <div class="flex flex-col gap-5 pt-8 border-t border-[rgba(23,54,97,0.08)]">
+            <a href="tel:+34614992148" class="flex flex-col items-center no-underline text-[0.88rem] text-[var(--color-text-soft)]! gap-1">
                 <span>Consulta telefónica:</span>
-                <strong>614 99 21 48</strong>
+                <strong class="text-[var(--color-primary)] text-[1.15rem]">614 99 21 48</strong>
             </a>
         </div>
     </div>
@@ -75,100 +75,3 @@
     document.addEventListener("astro:page-load", initMobileMenu);
 </script>
 
-<style>
-    .mobile-menu {
-        position: fixed;
-        inset: 0;
-        z-index: 999;
-        pointer-events: none;
-        visibility: hidden;
-        transition: visibility 0.3s ease;
-    }
-
-    .mobile-menu.is-open {
-        pointer-events: auto;
-        visibility: visible;
-    }
-
-    .mobile-menu__backdrop {
-        position: absolute;
-        inset: 0;
-        background: rgba(23, 54, 97, 0.3);
-        backdrop-filter: blur(4px);
-        -webkit-backdrop-filter: blur(4px);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-
-    .mobile-menu.is-open .mobile-menu__backdrop {
-        opacity: 1;
-    }
-
-    .mobile-menu__panel {
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: min(85vw, 360px);
-        background: #fdfcf9;
-        padding: 6rem 2rem 2.5rem 2rem;
-        box-shadow: -10px 0 30px rgba(23, 54, 97, 0.1);
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
-        box-sizing: border-box;
-    }
-
-    .mobile-menu.is-open .mobile-menu__panel {
-        transform: translateX(0);
-    }
-
-    .mobile-menu__nav {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-    }
-
-    .mobile-menu__link {
-        color: var(--color-primary-dark);
-        font-size: 1.25rem;
-        font-weight: 700;
-        text-decoration: none;
-        transition: color 0.2s ease;
-    }
-
-    .mobile-menu__link:hover {
-        color: var(--color-primary);
-    }
-
-    .mobile-menu__actions {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(23, 54, 97, 0.08);
-    }
-
-    .mobile-menu__phone {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-        font-size: 0.88rem;
-        color: var(--color-text-soft);
-        gap: 0.25rem;
-    }
-
-    .mobile-menu__phone strong {
-        color: var(--color-primary);
-        font-size: 1.15rem;
-    }
-
-    @media (min-width: 981px) {
-        .mobile-menu {
-            display: none;
-        }
-    }
-</style>

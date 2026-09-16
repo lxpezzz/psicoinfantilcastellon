@@ -61,7 +61,7 @@ const rightSituations = situations.slice(3, 6);
 ---
 
 <section class="problems" id="situaciones">
-    <div class="problems__container">
+    <div class="section-container problems__container">
         <!-- Centered Header -->
         <header class="problems__header">
             <p class="problems__eyebrow">Señales que vemos a menudo</p>
@@ -115,6 +115,8 @@ const rightSituations = situations.slice(3, 6);
                         height={680}
                         quality={85}
                         format="webp"
+                        widths={[290, 340, 580, 680]}
+                        sizes="(max-width: 680px) min(290px, 84vw), (max-width: 1040px) 320px, 340px"
                         loading="lazy"
                     />
                 </div>
@@ -184,12 +186,6 @@ const rightSituations = situations.slice(3, 6);
         background-size: 36px 36px;
         padding-block: clamp(5rem, 8vw, 7.5rem);
         border-top: 1px solid rgba(23, 54, 97, 0.08);
-    }
-
-    .problems__container {
-        width: min(100% - 2.5rem, 1220px);
-        margin-inline: auto;
-        box-sizing: border-box;
     }
 
     /* Section Header (Centered) */

@@ -20,21 +20,34 @@ import GoogleRating from "../ui/GoogleRating.astro";
                 class="hero__compact-phone"
                 aria-label="Llamar al 614 99 21 48"
             >
-                <span class="hero__compact-phone-q">¿Te preocupa algo de tu hijo?</span>
+                <span class="hero__compact-phone-q"
+                    >¿Te preocupa algo de tu hijo?</span
+                >
                 <span class="hero__compact-phone-sub">Hablemos con calma.</span>
                 <span class="hero__compact-phone-num">614 99 21 48</span>
             </a>
 
             <!-- Upper Zone: H1 positioned on the left, leaving the right side clear for the portrait in the background -->
             <div class="hero__heading-wrap">
-                <h1>Entender qué le pasa es el primer paso para ayudarle.</h1>
+                <h1>
+                    Entender qué le pasa es el primer paso para{" "}
+                    <strong
+                        class="relative inline-block z-0 bg-gradient-to-r from-[#244f9e] to-[#6f8fc7] bg-clip-text font-bold text-transparent"
+                    >
+                        ayudarle
+                        <span
+                            class="absolute -bottom-1 left-0 -z-10 h-3 w-full rotate-[-1deg] rounded-full bg-[#DFA2AA]/30"
+                            aria-hidden="true"></span>
+                    </strong>.
+                </h1>
             </div>
 
             <!-- Lower Zone in normal flow: starts clearly below H1 + portrait -->
             <div class="hero__lower">
                 <p class="hero__description">
-                    Evaluamos qué está ocurriendo y te damos una hoja de ruta clara
-                    para ayudarle en casa, en el colegio y en su día a día.
+                    Evaluamos qué está ocurriendo y te damos una hoja de ruta
+                    clara para ayudarle en casa, en el colegio y en su día a
+                    día.
                 </p>
 
                 <div class="hero__actions">
@@ -360,15 +373,15 @@ import GoogleRating from "../ui/GoogleRating.astro";
                     transparent 72%
                 ),
                 /* Vertical: soft fade down below the portrait frame into solid marfil */
-                linear-gradient(
-                    180deg,
-                    rgba(247, 245, 240, 0.15) 0%,
-                    transparent 18%,
-                    transparent 340px,
-                    rgba(247, 245, 240, 0.75) 420px,
-                    rgba(247, 245, 240, 0.95) 540px,
-                    #f7f5f0 100%
-                );
+                    linear-gradient(
+                        180deg,
+                        rgba(247, 245, 240, 0.15) 0%,
+                        transparent 18%,
+                        transparent 340px,
+                        rgba(247, 245, 240, 0.75) 420px,
+                        rgba(247, 245, 240, 0.95) 540px,
+                        #f7f5f0 100%
+                    );
         }
 
         .hero__inner {
@@ -427,7 +440,9 @@ import GoogleRating from "../ui/GoogleRating.astro";
             width: min(33vw, 120px);
             max-width: 120px;
             box-sizing: border-box;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .hero__compact-phone:active {

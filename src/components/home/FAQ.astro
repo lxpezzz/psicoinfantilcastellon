@@ -3,26 +3,26 @@ import { ChevronDown } from "lucide-astro";
 import { faqs } from "../../data/faq";
 ---
 
-<section class="faq" id="faq">
-    <div class="faq__container">
-        <header class="faq__header">
-            <p class="faq__eyebrow">Dudas frecuentes</p>
-            <h2 class="faq__title">Preguntas habituales de las familias</h2>
-            <p class="faq__intro">
+<section class="py-[clamp(5rem,8vw,7.5rem)] bg-[#f7f6f2] border-t border-[rgba(23,54,97,0.08)]" id="faq">
+    <div class="w-[min(100%-2.5rem,900px)] mx-auto box-border">
+        <header class="text-center mb-[clamp(2.5rem,4vw,3.5rem)]">
+            <p class="m-0 mb-[0.85rem] text-[var(--color-primary)] text-[0.82rem] font-bold tracking-[0.1em] uppercase">Dudas frecuentes</p>
+            <h2 class="m-0 mb-4 text-[var(--color-primary-dark)] text-[clamp(2.1rem,3.5vw,2.9rem)] font-[750] leading-[1.15] tracking-[-0.035em] text-balance">Preguntas habituales de las familias</h2>
+            <p class="m-0 text-[var(--color-text-soft)] text-[clamp(1rem,1.2vw,1.15rem)] leading-[1.6] text-balance">
                 Respuestas claras para que sepáis exactamente qué esperar desde el primer contacto.
             </p>
         </header>
 
-        <div class="faq__list">
+        <div class="flex flex-col gap-4">
             {
                 faqs.map((faq, index) => (
-                    <details class="faq__item" open={index === 0}>
-                        <summary class="faq__question">
+                    <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-[1.15rem] overflow-hidden transition-[border-color,box-shadow] duration-200 ease-[ease] [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]" open={index === 0}>
+                        <summary class="py-[1.35rem] px-[1.6rem] text-[1.08rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
                             <span>{faq.question}</span>
-                            <ChevronDown size={18} class="faq__icon" aria-hidden="true" />
+                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-250 ease-[ease] shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
                         </summary>
-                        <div class="faq__answer">
-                            <p>{faq.answer}</p>
+                        <div class="pt-0 px-[1.6rem] pb-[1.4rem] text-[var(--color-text-soft)] text-[0.98rem] leading-[1.65]">
+                            <p class="m-0">{faq.answer}</p>
                         </div>
                     </details>
                 ))
@@ -31,105 +31,3 @@ import { faqs } from "../../data/faq";
     </div>
 </section>
 
-<style>
-    .faq {
-        padding-block: clamp(5rem, 8vw, 7.5rem);
-        background-color: #f7f6f2;
-        border-top: 1px solid rgba(23, 54, 97, 0.08);
-    }
-
-    .faq__container {
-        width: min(100% - 2.5rem, 900px);
-        margin-inline: auto;
-        box-sizing: border-box;
-    }
-
-    .faq__header {
-        text-align: center;
-        margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
-    }
-
-    .faq__eyebrow {
-        margin: 0 0 0.85rem;
-        color: var(--color-primary);
-        font-size: 0.82rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-    }
-
-    .faq__title {
-        margin: 0 0 1rem;
-        color: var(--color-primary-dark);
-        font-size: clamp(2.1rem, 3.5vw, 2.9rem);
-        font-weight: 750;
-        line-height: 1.15;
-        letter-spacing: -0.035em;
-        text-wrap: balance;
-    }
-
-    .faq__intro {
-        margin: 0;
-        color: var(--color-text-soft);
-        font-size: clamp(1rem, 1.2vw, 1.15rem);
-        line-height: 1.6;
-        text-wrap: balance;
-    }
-
-    .faq__list {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .faq__item {
-        background: #ffffff;
-        border: 1px solid rgba(23, 54, 97, 0.09);
-        border-radius: 1.15rem;
-        overflow: hidden;
-        transition: border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .faq__item[open] {
-        border-color: rgba(36, 79, 158, 0.2);
-        box-shadow: 0 8px 24px rgba(23, 54, 97, 0.05);
-    }
-
-    .faq__question {
-        padding: 1.35rem 1.6rem;
-        font-size: 1.08rem;
-        font-weight: 700;
-        color: var(--color-primary-dark);
-        cursor: pointer;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        user-select: none;
-        list-style: none;
-    }
-
-    .faq__question::-webkit-details-marker {
-        display: none;
-    }
-
-    .faq__icon {
-        color: var(--color-primary);
-        transition: transform 0.25s ease;
-        flex-shrink: 0;
-    }
-
-    .faq__item[open] .faq__icon {
-        transform: rotate(180deg);
-    }
-
-    .faq__answer {
-        padding: 0 1.6rem 1.4rem;
-        color: var(--color-text-soft);
-        font-size: 0.98rem;
-        line-height: 1.65;
-    }
-
-    .faq__answer p {
-        margin: 0;
-    }
-</style>

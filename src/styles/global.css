@@ -1,5 +1,16 @@
+@import "tailwindcss" source("../");
 @import "./variables.css";
 @import "./utilities.css";
+
+@theme {
+    --color-primary: var(--color-primary);
+    --color-primary-dark: var(--color-primary-dark);
+    --color-primary-light: var(--color-primary-light);
+    --color-accent: var(--color-accent);
+    --color-text: var(--color-text);
+    --color-text-soft: var(--color-text-soft);
+    --color-border: var(--color-border);
+}
 
 *,
 *::before,
@@ -49,34 +60,9 @@ p {
     margin-top: 0;
 }
 
-.container {
-    width: min(100% - 2rem, var(--container));
-    margin-inline: auto;
-}
 .site-main {
     padding-top: 88px;
 }
-.section {
-    padding-block: var(--space-9);
-}
-
-.section-title {
-    max-width: 760px;
-    margin-bottom: var(--space-7);
-}
-
-.section-title h2 {
-    margin-bottom: var(--space-3);
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    line-height: 1.05;
-}
-
-.section-title p {
-    margin-bottom: 0;
-    color: var(--color-text-soft);
-    font-size: var(--text-lg);
-}
-
 /* Botones */
 .btn {
     min-height: 46px;

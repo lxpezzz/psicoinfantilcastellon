@@ -20,89 +20,16 @@ const cleanPhone = phone.replace(/\s+/g, "");
 
 <a
     href={`tel:+34${cleanPhone}`}
-    class:list={["phone-cta", className]}
+    class:list={["phone-cta flex items-center gap-[0.85rem] py-[0.85rem] px-[1.1rem] rounded-2xl bg-white/84 backdrop-blur-[12px] border border-[rgba(23,54,97,0.08)] shadow-[0_10px_28px_rgba(23,54,97,0.07)] no-underline cursor-pointer box-border transition-[transform,background-color,box-shadow,border-color] duration-200 ease-[ease] [&:hover]:[transform:translateY(-2px)] [&:hover]:bg-white/94 [&:hover]:border-[rgba(36,79,158,0.2)] [&:hover]:shadow-[0_14px_34px_rgba(23,54,97,0.11)]", className]}
     aria-label={`Llamar para hablar de tu caso: ${phone}`}
 >
-    <div class="phone-cta__icon" aria-hidden="true">
+    <div class="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white grid place-items-center shrink-0" aria-hidden="true">
         <HeartHandshake size={20} stroke-width={1.8} />
     </div>
-    <div class="phone-cta__body">
-        <span class="phone-cta__question">{question}</span>
-        <span class="phone-cta__tagline">{tagline}</span>
-        <span class="phone-cta__phone">{phone}</span>
+    <div class="flex flex-col min-w-0">
+        <span class="text-[0.76rem] text-[var(--color-text-soft)] font-medium leading-[1.25] truncate">{question}</span>
+        <span class="text-[0.88rem] text-[var(--color-primary-dark)] font-[650] leading-[1.25] mt-[0.1rem]">{tagline}</span>
+        <span class="text-[1.05rem] text-[var(--color-primary)] font-[750] leading-[1.2] mt-1 tracking-[0.02em]">{phone}</span>
     </div>
 </a>
 
-<style>
-    .phone-cta {
-        display: flex;
-        align-items: center;
-        gap: 0.85rem;
-        padding: 0.85rem 1.1rem;
-        border-radius: 1rem;
-        background: rgba(255, 255, 255, 0.84);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(23, 54, 97, 0.08);
-        box-shadow: 0 10px 28px rgba(23, 54, 97, 0.07);
-        text-decoration: none;
-        cursor: pointer;
-        box-sizing: border-box;
-        transition:
-            transform 0.2s ease,
-            background-color 0.2s ease,
-            box-shadow 0.2s ease,
-            border-color 0.2s ease;
-    }
-
-    .phone-cta:hover {
-        transform: translateY(-2px);
-        background: rgba(255, 255, 255, 0.94);
-        border-color: rgba(36, 79, 158, 0.2);
-        box-shadow: 0 14px 34px rgba(23, 54, 97, 0.11);
-    }
-
-    .phone-cta__icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background: var(--color-primary);
-        color: white;
-        display: grid;
-        place-items: center;
-        flex-shrink: 0;
-    }
-
-    .phone-cta__body {
-        display: flex;
-        flex-direction: column;
-        min-width: 0;
-    }
-
-    .phone-cta__question {
-        font-size: 0.76rem;
-        color: var(--color-text-soft);
-        font-weight: 500;
-        line-height: 1.25;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .phone-cta__tagline {
-        font-size: 0.88rem;
-        color: var(--color-primary-dark);
-        font-weight: 650;
-        line-height: 1.25;
-        margin-top: 0.1rem;
-    }
-
-    .phone-cta__phone {
-        font-size: 1.05rem;
-        color: var(--color-primary);
-        font-weight: 750;
-        line-height: 1.2;
-        margin-top: 0.25rem;
-        letter-spacing: 0.02em;
-    }
-</style>
