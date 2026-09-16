@@ -4,7 +4,12 @@ import "../styles/global.css";
 const {
 	title = "Psicoinfantil Castellón",
 	description = "Psicología infantil y adolescente en Castellón",
+	canonical = new URL(Astro.url.pathname, Astro.site).href,
+	image = "/og/psicoinfantil_og.webp",
 } = Astro.props;
+
+const canonicalURL = new URL(canonical, Astro.site);
+const imageURL = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -15,6 +20,26 @@ const {
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
+
+		<!-- Canonical -->
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:locale" content="es_ES" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:image" content={imageURL} />
+		<meta property="og:site_name" content="Psicoinfantil Castellón" />
+
+		<!-- Twitter / X -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={imageURL} />
+
+		<!-- Favicons -->
 		<link rel="icon" href="/favicon.ico" sizes="any" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />

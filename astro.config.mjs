@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://www.psicoinfantil.com',
+  site: 'https://www.psicoinfantilcastellon.es',
   integrations: [sitemap()],
   vite: {
     plugins: [tailwindcss()],
