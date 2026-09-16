@@ -4,13 +4,11 @@ import { Phone } from "lucide-astro";
 
 <header class="header">
     <div class="header__inner">
-        <a href="/" class="header__brand" aria-label="Inicio">
+        <a href="/" class="header__logo-link" aria-label="Ir al inicio">
             <img
                 src="/logo_psicoinfantil.svg"
                 alt="Psico Infantil Castellón"
                 class="header__logo"
-                width="130"
-                height="80"
                 loading="eager"
             />
         </a>
@@ -79,35 +77,14 @@ import { Phone } from "lucide-astro";
 
         gap: clamp(1.5rem, 4vw, 4rem);
     }
-
-    .header__brand {
+    .header__logo {
+        width: 180px;
+        height: auto;
+    }
+    .header__logo-link {
         display: inline-flex;
-        flex-direction: column;
-
-        line-height: 1;
-
+        align-items: center;
         text-decoration: none;
-    }
-
-    .header__brand-main {
-        color: var(--color-primary-dark);
-
-        font-size: 1.5rem;
-        font-weight: 750;
-
-        letter-spacing: -0.04em;
-    }
-
-    .header__brand-sub {
-        margin-top: 0.28rem;
-
-        color: var(--color-primary);
-
-        font-size: 0.69rem;
-        font-weight: 700;
-
-        letter-spacing: 0.19em;
-        text-transform: uppercase;
     }
 
     .header__nav {
@@ -294,17 +271,13 @@ import { Phone } from "lucide-astro";
     @media (max-width: 620px) {
         .header__inner {
             width: min(100% - 1.25rem, 1400px);
-            min-height: 70px;
+            min-height: 88px;
 
             gap: 0.5rem;
         }
-
-        .header__brand-main {
-            font-size: 1.22rem;
-        }
-
-        .header__brand-sub {
-            font-size: 0.61rem;
+        .header__logo {
+            width: 135px;
+            height: auto;
         }
 
         .header__cta {
