@@ -9,6 +9,8 @@ import psicologiaJuvenilImg from "../images/servicios/psicologia_juvenil.webp";
 import evaluacionImg from "../images/servicios/evaluacion.webp";
 import informesImg from "../images/servicios/informes.webp";
 
+
+
 export interface ServiceItem {
     id: string;
     title: string;

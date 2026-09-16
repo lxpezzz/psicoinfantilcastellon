@@ -9,14 +9,15 @@ import Services from "../components/home/Services.astro";
 import About from "../components/home/About.astro";
 import Reviews from "../components/home/Reviews.astro";
 import FAQ from "../components/home/FAQ.astro";
-import FinalCTA from "../components/home/FinalCTA.astro";
 import Contact from "../components/home/Contact.astro";
 import Footer from "../components/layout/Footer.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
 ---
 
 <Layout
 	title="Psicología infantil en Castellón | PsicoInfantil"
 	description="Psicología infantil y adolescente en Castellón. Evaluación, orientación e intervención para niños, adolescentes y familias."
+	
 >
 	<Header />
 	<MobileMenu />
@@ -28,8 +29,8 @@ import Footer from "../components/layout/Footer.astro";
 		<About />
 		<Reviews />
 		<FAQ />
-		<FinalCTA />
 		<Contact />
 	</main>
 	<Footer />
+	<BottomNav />
 </Layout>

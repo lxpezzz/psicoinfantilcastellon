@@ -1,0 +1,235 @@
+---
+import { Home, PanelsTopLeft, Mail } from "lucide-astro";
+---
+
+<!-- Navegación inferior fija estilo app/Instagram, visible solo en móvil (<= 680px) -->
+<nav class="bottom-nav" id="bottom-nav" aria-label="Navegación rápida inferior">
+    <div class="bottom-nav__inner">
+        <!-- 1. Inicio -->
+        <a
+            href="/"
+            class="bottom-nav__item"
+            aria-label="Inicio"
+            id="bottom-nav-home"
+        >
+            <Home
+                size={23}
+                stroke-width={1.8}
+                class="bottom-nav__icon"
+                aria-hidden="true"
+            />
+        </a>
+
+        <!-- 2. Servicios -->
+        <a href="#servicios" class="bottom-nav__item" aria-label="Servicios">
+            <PanelsTopLeft
+                size={23}
+                stroke-width={1.8}
+                class="bottom-nav__icon"
+                aria-hidden="true"
+            />
+        </a>
+
+        <!-- 3. Contacto -->
+        <a href="#contacto" class="bottom-nav__item" aria-label="Contacto">
+            <Mail
+                size={23}
+                stroke-width={1.8}
+                class="bottom-nav__icon"
+                aria-hidden="true"
+            />
+        </a>
+
+        <!-- 4. WhatsApp -->
+        <a
+            href="https://wa.me/34614992148"
+            class="bottom-nav__item bottom-nav__item--wa"
+            aria-label="WhatsApp"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            <svg
+                width="23"
+                height="23"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                class="bottom-nav__icon bottom-nav__icon--wa"
+                aria-hidden="true"
+            >
+                <path
+                    d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.78 14.07c-.24.68-1.2 1.25-1.74 1.32-.49.07-1.12.1-3.27-.79-2.58-1.07-4.22-3.69-4.35-3.86-.13-.17-1.05-1.39-1.05-2.66 0-1.27.67-1.89.91-2.15.24-.26.52-.33.69-.33.17 0 .34 0 .49.01.16.01.37-.06.58.44.22.52.74 1.8.8 1.93.07.13.11.29.02.46-.09.18-.14.29-.27.45-.14.15-.29.35-.41.47-.14.13-.28.28-.12.56.16.27.7 1.15 1.5 1.87 1.03.92 1.9 1.2 2.17 1.34.27.13.43.11.59-.07.16-.18.69-.8.88-1.08.18-.27.37-.23.62-.14.25.1 1.58.74 1.85.88.27.13.45.2.52.31.07.11.07.65-.17 1.33z"
+                ></path>
+            </svg>
+        </a>
+    </div>
+</nav>
+
+<style>
+    /* --------------------------------------------------------------------------
+       Visible únicamente en móvil (<= 680px)
+       -------------------------------------------------------------------------- */
+    .bottom-nav {
+        display: none;
+    }
+
+    @media (max-width: 680px) {
+        /* Añade espacio inferior al contenido para que la barra nunca tape contenido, formulario ni footer */
+        :global(body) {
+            padding-bottom: calc(
+                76px + env(safe-area-inset-bottom, 0px)
+            ) !important;
+        }
+
+        .bottom-nav {
+            display: block;
+            position: fixed;
+            bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+            left: 12px;
+            right: 12px;
+            margin-inline: auto;
+            max-width: 420px;
+            height: 58px;
+            z-index: 990; /* Por debajo del menú móvil (z-index: 999) y header (1000) */
+            pointer-events: auto;
+            transition:
+                transform 0.3s cubic-bezier(0.23, 1, 0.32, 1),
+                opacity 0.25s ease,
+                visibility 0.25s ease;
+        }
+
+        /* Ocultar completamente cuando el menú móvil está abierto */
+        .bottom-nav.is-hidden,
+        :global(body.mobile-menu-open) .bottom-nav,
+        :global(body:has(.mobile-menu.is-open)) .bottom-nav {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transform: translateY(120%);
+        }
+
+        .bottom-nav__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(25px) saturate(145%);
+            -webkit-backdrop-filter: blur(25px) saturate(145%);
+            border: 1px solid rgba(23, 54, 97, 0.09);
+            border-radius: 20px;
+            box-shadow:
+                0 10px 28px -6px rgba(23, 54, 97, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.03);
+            padding-inline: 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .bottom-nav__item {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #173661;
+            text-decoration: none;
+            position: relative;
+            border-radius: 14px;
+            transition:
+                color 0.2s ease,
+                transform 0.15s ease,
+                background-color 0.2s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .bottom-nav__item:active {
+            transform: scale(0.88);
+            background-color: rgba(23, 54, 97, 0.05);
+        }
+
+        .bottom-nav__item:focus-visible {
+            outline: 2px solid #244f9e;
+            outline-offset: -2px;
+        }
+
+        .bottom-nav__icon {
+            display: block;
+            transition: transform 0.2s ease;
+        }
+
+        .bottom-nav__item:hover .bottom-nav__icon {
+            color: #244f9e;
+        }
+
+        /* WhatsApp en verde sutilmente armonizado o color brand */
+        .bottom-nav__item--wa {
+            color: #1f7a4a;
+        }
+
+        .bottom-nav__item--wa:hover {
+            color: #16653c;
+        }
+    }
+
+    /* Ajustes específicos para 390px, 375px y 360px */
+    @media (max-width: 390px) {
+        .bottom-nav {
+            left: 10px;
+            right: 10px;
+            height: 56px;
+        }
+
+        .bottom-nav__inner {
+            border-radius: 18px;
+        }
+    }
+</style>
+
+<script>
+    function initBottomNav() {
+        const bottomNav = document.getElementById("bottom-nav");
+        const homeBtn = document.getElementById("bottom-nav-home");
+        const menu = document.getElementById("mobile-menu");
+
+        if (!bottomNav) return;
+
+        // Comportamiento de clics en la barra inferior
+        bottomNav.querySelectorAll(".bottom-nav__item").forEach((item) => {
+            item.addEventListener("click", (e) => {
+                // Si el menú móvil está abierto, cerrarlo
+                if (
+                    menu?.classList.contains("is-open") ||
+                    document.body.classList.contains("mobile-menu-open")
+                ) {
+                    window.dispatchEvent(new CustomEvent("mobile-menu:close"));
+                }
+
+                // Smooth scroll para Inicio
+                if (item === homeBtn || item.getAttribute("href") === "/") {
+                    if (
+                        window.location.pathname === "/" ||
+                        window.location.pathname === ""
+                    ) {
+                        e.preventDefault();
+                        window.scrollTo({ top: 0, behavior: "smooth" });
+                    }
+                }
+            });
+        });
+
+        // Observar cambios en el menú móvil para sincronizar la visibilidad
+        if (menu) {
+            const observer = new MutationObserver(() => {
+                const isOpen = menu.classList.contains("is-open");
+                bottomNav.classList.toggle("is-hidden", isOpen);
+            });
+            observer.observe(menu, {
+                attributes: true,
+                attributeFilter: ["class"],
+            });
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", initBottomNav);
+    document.addEventListener("astro:page-load", initBottomNav);
+</script>

@@ -1,6 +1,7 @@
 import type { APIRoute } from "astro";
 
-export const prerender = false;
+// En modo estático puro (LucusHost), prerenderizamos el endpoint en build time
+export const prerender = true;
 
 export const GET: APIRoute = async () => {
     const apiKey = import.meta.env.GOOGLE_PLACES_API_KEY || process.env.GOOGLE_PLACES_API_KEY;

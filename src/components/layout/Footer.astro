@@ -1,89 +1,112 @@
 ---
 // Footer.astro - Global Site Footer
-const currentYear = new Date().getFullYear();
+import { Phone, Mail, MapPin } from "lucide-astro";
+
+const currentYear = 2026;
 ---
 
-<footer class="footer" id="pie-pagina">
+<footer class="footer" id="pie-pagina" aria-label="Pie de página">
     <div class="footer__container">
-        <div class="footer__grid">
-            <!-- Brand Column -->
+        <!-- Zona Superior: Marca a la izquierda / Contacto a la derecha -->
+        <div class="footer__top">
+            <!-- Izquierda: Logo y descripción -->
             <div class="footer__brand">
-                <a href="/" class="footer__logo" aria-label="PsicoInfantil Castellón">
-                    <span class="footer__logo-main">PsicoInfantil</span>
-                    <span class="footer__logo-sub">Castellón</span>
-                </a>
-                <p class="footer__bio">
-                    Psicología infantil y adolescente en Castellón. Evaluación, orientación educativa y clínica para niños, jóvenes y sus familias.
+                <img
+                    src="/logo-psicoinfantil.svg"
+                    alt="Psico Infantil Castellón"
+                    class="header__logo"
+                    width="180"
+                    height="70"
+                    loading="eager"
+                />
+                <p class="footer__tagline">
+                    Psicología infantil y adolescente en Castellón
                 </p>
-                <div class="footer__meta">
-                    <span>Nº Colegiada: CV-04523</span>
-                </div>
             </div>
 
-            <!-- Navigation Links -->
-            <div class="footer__col">
-                <h3 class="footer__col-title">Secciones</h3>
-                <ul class="footer__links" role="list">
-                    <li><a href="/">Inicio</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#como-trabajo">Cómo trabajo</a></li>
-                    <li><a href="#sobre-mi">Sobre mí</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </div>
+            <!-- Derecha: Solo teléfono, email y ubicación -->
+            <div class="footer__contact">
+                <div class="footer__contact-list">
+                    <!-- Teléfono clicable -->
+                    <a
+                        href="tel:+34614992148"
+                        class="footer__contact-item footer__contact-item--phone"
+                    >
+                        <Phone
+                            size={15}
+                            class="footer__item-icon"
+                            aria-hidden="true"
+                        />
+                        <span>614 99 21 48</span>
+                    </a>
 
-            <!-- Services Links -->
-            <div class="footer__col">
-                <h3 class="footer__col-title">Servicios</h3>
-                <ul class="footer__links" role="list">
-                    <li><a href="/servicios/rendimiento-escolar">Rendimiento escolar</a></li>
-                    <li><a href="/servicios/evaluacion-diagnostico">Evaluación diagnóstica</a></li>
-                    <li><a href="/servicios/tdah">TDAH</a></li>
-                    <li><a href="/servicios/dislexia">Dislexia</a></li>
-                    <li><a href="/servicios/altas-capacidades">Altas capacidades</a></li>
-                    <li><a href="/servicios/psicologia-juvenil">Psicología juvenil</a></li>
-                </ul>
-            </div>
+                    <!-- Email clicable -->
+                    <a
+                        href="mailto:info@psicoinfantil.com"
+                        class="footer__contact-item footer__contact-item--email"
+                    >
+                        <Mail
+                            size={15}
+                            class="footer__item-icon"
+                            aria-hidden="true"
+                        />
+                        <span>info@psicoinfantil.com</span>
+                    </a>
 
-            <!-- Contact & Schedule -->
-            <div class="footer__col">
-                <h3 class="footer__col-title">Consulta</h3>
-                <ul class="footer__contact" role="list">
-                    <li>
-                        <strong>Teléfono:</strong>
-                        <a href="tel:+34614992148">614 99 21 48</a>
-                    </li>
-                    <li>
-                        <strong>Ubicación:</strong>
+                    <!-- Ubicación / Dirección -->
+                    <div
+                        class="footer__contact-item footer__contact-item--address"
+                    >
+                        <MapPin
+                            size={15}
+                            class="footer__item-icon"
+                            aria-hidden="true"
+                        />
                         <span>Castellón de la Plana</span>
-                    </li>
-                    <li>
-                        <strong>Atención:</strong>
-                        <span>Previa petición de cita</span>
-                    </li>
-                </ul>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <!-- Separador muy fino y discreto -->
+        <hr class="footer__divider" aria-hidden="true" />
+
+        <!-- Zona Inferior: Copyright y Enlaces Legales -->
         <div class="footer__bottom">
             <p class="footer__copyright">
-                &copy; {currentYear} PsicoInfantil Castellón · Ana Díaz Berbel. Todos los derechos reservados.
+                &copy; {currentYear} PsicoInfantil Castellón
             </p>
-            <div class="footer__legal">
+
+            <nav class="footer__legal" aria-label="Enlaces legales">
                 <a href="/aviso-legal">Aviso legal</a>
-                <a href="/privacidad">Privacidad</a>
-                <a href="/cookies">Cookies</a>
-            </div>
+                <span class="footer__dot" aria-hidden="true">·</span>
+                <a href="/privacidad">
+                    <span class="footer__legal-desktop"
+                        >Política de privacidad</span
+                    >
+                    <span class="footer__legal-mobile">Privacidad</span>
+                </a>
+                <span class="footer__dot" aria-hidden="true">·</span>
+                <a href="/cookies">
+                    <span class="footer__legal-desktop"
+                        >Política de cookies</span
+                    >
+                    <span class="footer__legal-mobile">Cookies</span>
+                </a>
+            </nav>
         </div>
     </div>
 </footer>
 
 <style>
+    /* --------------------------------------------------------------------------
+       Footer Global: Azul marino profundo, sin cards, sin sombras
+       -------------------------------------------------------------------------- */
     .footer {
-        background-color: #173661;
-        color: #e2eaf4;
-        padding-top: clamp(4rem, 6vw, 5.5rem);
-        padding-bottom: 2.5rem;
+        background-color: #173661; /* Azul marino profundo coherente con la identidad */
+        color: #f8fafc; /* Blanco roto para texto principal */
+        padding-top: clamp(3rem, 4.5vw, 4rem);
+        padding-bottom: clamp(2rem, 3.5vw, 2.75rem);
         position: relative;
     }
 
@@ -93,18 +116,23 @@ const currentYear = new Date().getFullYear();
         box-sizing: border-box;
     }
 
-    .footer__grid {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1.2fr 1.2fr;
-        gap: clamp(2rem, 4vw, 3.5rem);
-        padding-bottom: clamp(3rem, 5vw, 4rem);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    /* --------------------------------------------------------------------------
+       Zona Superior Desktop: Izquierda (Marca) / Derecha (Contacto)
+       Acercado hacia el centro para reducir la sensación de vacío central
+       -------------------------------------------------------------------------- */
+    .footer__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: clamp(2.5rem, 5vw, 4.5rem);
+        max-width: 1040px; /* Acercamiento hacia el centro */
+        margin-inline: auto;
     }
 
+    /* Izquierda: Logo y Subtítulo */
     .footer__brand {
         display: flex;
         flex-direction: column;
-        gap: 1.15rem;
     }
 
     .footer__logo {
@@ -112,98 +140,116 @@ const currentYear = new Date().getFullYear();
         flex-direction: column;
         line-height: 1;
         text-decoration: none;
+        transition: opacity 0.2s ease;
     }
 
+    .footer__logo:hover {
+        opacity: 0.92;
+    }
+
+    /* Logo/nombre aprox. 6-7% más grande */
     .footer__logo-main {
         color: #ffffff;
         font-size: 1.45rem;
         font-weight: 750;
-        letter-spacing: -0.04em;
+        letter-spacing: -0.035em;
     }
 
     .footer__logo-sub {
         margin-top: 0.28rem;
-        color: #7bb5e8;
-        font-size: 0.68rem;
+        color: #9ccbf5;
+        font-size: 0.7rem;
         font-weight: 700;
         letter-spacing: 0.19em;
         text-transform: uppercase;
     }
 
-    .footer__bio {
-        margin: 0;
-        color: #a8c1de;
-        font-size: 0.94rem;
-        line-height: 1.65;
+    /* Subtítulo con mayor contraste y presencia */
+    .footer__tagline {
+        margin: 0.7rem 0 0;
+        font-size: 0.93rem;
+        color: rgba(248, 250, 252, 0.85); /* Mayor nitidez y contraste */
+        line-height: 1.5;
         max-width: 36ch;
     }
 
-    .footer__meta {
-        font-size: 0.82rem;
-        color: #7bb5e8;
-        font-weight: 600;
-    }
-
-    .footer__col-title {
-        margin: 0 0 1.2rem;
-        color: #ffffff;
-        font-size: 0.98rem;
-        font-weight: 700;
-        letter-spacing: -0.01em;
-    }
-
-    .footer__links,
+    /* Derecha: Contacto (teléfono, email, ubicación) */
     .footer__contact {
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        display: flex;
+        align-items: flex-start;
+        text-align: right;
+    }
+
+    /* Mayor separación vertical entre las 3 líneas */
+    .footer__contact-list {
         display: flex;
         flex-direction: column;
-        gap: 0.75rem;
+        align-items: flex-end;
+        gap: 0.85rem; /* Más aire entre líneas */
     }
 
-    .footer__links a {
-        color: #a8c1de;
-        font-size: 0.92rem;
+    .footer__contact-item {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.93rem;
+        color: rgba(248, 250, 252, 0.82);
         text-decoration: none;
         transition: color 0.2s ease;
     }
 
-    .footer__links a:hover {
+    .footer__item-icon {
+        color: #9ccbf5;
+        flex-shrink: 0;
+    }
+
+    /* Teléfono clicable */
+    a.footer__contact-item--phone {
         color: #ffffff;
+        font-weight: 650;
+        font-size: 1rem;
+        letter-spacing: 0.01em;
     }
 
-    .footer__contact li {
-        display: flex;
-        flex-direction: column;
-        font-size: 0.9rem;
-        color: #a8c1de;
-        line-height: 1.4;
+    a.footer__contact-item--phone:hover {
+        color: #9ccbf5;
+        text-decoration: underline;
+        text-underline-offset: 3px;
     }
 
-    .footer__contact strong {
+    /* Email clicable */
+    a.footer__contact-item--email:hover {
         color: #ffffff;
-        font-size: 0.78rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.15rem;
+        text-decoration: underline;
+        text-underline-offset: 3px;
     }
 
-    .footer__contact a {
-        color: #7bb5e8;
-        text-decoration: none;
-        font-weight: 700;
+    /* Ubicación / Dirección */
+    .footer__contact-item--address {
+        color: rgba(248, 250, 252, 0.75);
     }
 
+    /* --------------------------------------------------------------------------
+       Separador muy fino y discreto
+       -------------------------------------------------------------------------- */
+    .footer__divider {
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin: 2.25rem 0 1.5rem;
+        width: 100%;
+    }
+
+    /* --------------------------------------------------------------------------
+       Zona Inferior: Copyright (Izquierda) / Enlaces Legales (Derecha)
+       -------------------------------------------------------------------------- */
     .footer__bottom {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
         gap: 1.25rem;
-        padding-top: 2rem;
-        font-size: 0.85rem;
-        color: #8faecf;
+        font-size: 0.83rem;
+        color: rgba(248, 250, 252, 0.65);
     }
 
     .footer__copyright {
@@ -212,35 +258,188 @@ const currentYear = new Date().getFullYear();
 
     .footer__legal {
         display: flex;
-        gap: 1.5rem;
+        align-items: center;
+        gap: 0.75rem;
     }
 
     .footer__legal a {
-        color: inherit;
+        color: rgba(248, 250, 252, 0.68);
         text-decoration: none;
         transition: color 0.2s ease;
     }
 
     .footer__legal a:hover {
         color: #ffffff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
     }
 
-    @media (max-width: 980px) {
-        .footer__grid {
-            grid-template-columns: 1fr 1fr;
-            gap: 2.5rem;
-        }
+    .footer__dot {
+        color: rgba(248, 250, 252, 0.3);
+        user-select: none;
     }
 
-    @media (max-width: 620px) {
-        .footer__grid {
-            grid-template-columns: 1fr;
-            gap: 2rem;
+    .footer__legal-mobile {
+        display: none;
+    }
+
+    .footer__legal-desktop {
+        display: inline;
+    }
+
+    /* --------------------------------------------------------------------------
+       MÓVIL (< 768px):
+       - Muy compacto, padding 2.25rem–2.75rem
+       - Sin navegación principal (Inicio, Servicios, Contacto)
+       - Orden exacto:
+         1. Logo / nombre PsicoInfantil Castellón
+         2. “Psicología infantil y adolescente en Castellón”
+         3. Teléfono
+         4. Email
+         5. Castellón de la Plana
+         6. Aviso legal · Privacidad · Cookies
+         7. © 2026 PsicoInfantil Castellón
+       -------------------------------------------------------------------------- */
+    @media (max-width: 768px) {
+        .footer {
+            padding-top: 2.5rem;
+            padding-bottom: 2.5rem;
         }
 
+        .footer__container {
+            width: 100%;
+            padding-inline: 1.25rem;
+        }
+
+        .footer__top {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.25rem;
+            max-width: 100%;
+        }
+
+        /* 1 y 2: Logo y Subtítulo */
+        .footer__brand {
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer__logo-main {
+            font-size: 1.32rem;
+        }
+
+        .footer__tagline {
+            margin-top: 0.35rem;
+            font-size: 0.88rem;
+            max-width: 32ch;
+            text-align: center;
+            color: rgba(248, 250, 252, 0.85);
+        }
+
+        /* 3, 4 y 5: Teléfono, Email, Dirección */
+        .footer__contact {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+        }
+
+        .footer__contact-list {
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            gap: 0.65rem;
+        }
+
+        /* 3. Teléfono primero */
+        .footer__contact-item--phone {
+            order: 1;
+            font-size: 1.05rem;
+            padding: 0.35rem 0.6rem;
+            min-height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 4. Email segundo */
+        .footer__contact-item--email {
+            order: 2;
+            font-size: 0.92rem;
+            padding: 0.25rem 0.5rem;
+            min-height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* 5. Dirección tercera */
+        .footer__contact-item--address {
+            order: 3;
+            font-size: 0.85rem;
+            margin-top: 0.15rem;
+        }
+
+        /* Separador centrado y discreto */
+        .footer__divider {
+            width: 50px;
+            margin: 1.4rem auto;
+            border-top-color: rgba(255, 255, 255, 0.08);
+        }
+
+        /* Zona inferior: 6. Legal primero, 7. Copyright después */
         .footer__bottom {
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
+            text-align: center;
+            gap: 0.75rem;
+        }
+
+        .footer__legal {
+            order: 1;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .footer__legal a {
+            padding: 0.25rem 0.35rem;
+            font-size: 0.82rem;
+        }
+
+        .footer__legal-desktop {
+            display: none;
+        }
+
+        .footer__legal-mobile {
+            display: inline;
+        }
+
+        .footer__copyright {
+            order: 2;
+            font-size: 0.78rem;
+            color: rgba(248, 250, 252, 0.55);
+        }
+    }
+
+    /* Microajustes específicos para pantallas estrechas (390px o menor) */
+    @media (max-width: 400px) {
+        .footer {
+            padding-top: 2.25rem;
+            padding-bottom: 2.25rem;
+        }
+
+        .footer__container {
+            padding-inline: 1rem;
+        }
+
+        .footer__tagline {
+            font-size: 0.85rem;
+        }
+
+        .footer__contact-item--phone {
+            font-size: 1rem;
         }
     }
 </style>

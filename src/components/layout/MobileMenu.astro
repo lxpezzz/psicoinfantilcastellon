@@ -5,20 +5,16 @@
 <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <div class="mobile-menu__backdrop" id="mobile-menu-backdrop"></div>
     <div class="mobile-menu__panel">
-        <nav class="mobile-menu__nav" aria-label="Navegación móvil">
-            <a href="/" class="mobile-menu__link">Inicio</a>
-            <a href="#servicios" class="mobile-menu__link">Servicios</a>
+        <nav class="mobile-menu__nav" aria-label="Navegación móvil secundaria">
             <a href="#como-trabajo" class="mobile-menu__link">Cómo trabajo</a>
             <a href="#sobre-mi" class="mobile-menu__link">Sobre mí</a>
-            <a href="#contacto" class="mobile-menu__link">Contacto</a>
+            <a href="#resenas" class="mobile-menu__link">Reseñas</a>
+            <a href="#faq" class="mobile-menu__link">Preguntas frecuentes</a>
         </nav>
 
         <div class="mobile-menu__actions">
-            <a href="#contacto" class="btn btn-primary w-full">
-                Pedir cita
-            </a>
             <a href="tel:+34614992148" class="mobile-menu__phone">
-                <span>Llamar directamente:</span>
+                <span>Consulta telefónica:</span>
                 <strong>614 99 21 48</strong>
             </a>
         </div>
@@ -42,6 +38,7 @@
             activeMenu.classList.add("is-open");
             activeMenu.setAttribute("aria-hidden", "false");
             activeBtn.setAttribute("aria-expanded", "true");
+            document.body.classList.add("mobile-menu-open");
             document.body.style.overflow = "hidden";
         }
 
@@ -49,8 +46,11 @@
             activeMenu.classList.remove("is-open");
             activeMenu.setAttribute("aria-hidden", "true");
             activeBtn.setAttribute("aria-expanded", "false");
+            document.body.classList.remove("mobile-menu-open");
             document.body.style.overflow = "";
         }
+
+        window.addEventListener("mobile-menu:close", closeMenu);
 
         activeBtn.addEventListener("click", () => {
             const isOpen = activeMenu.classList.contains("is-open");
