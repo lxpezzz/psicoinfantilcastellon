@@ -1,20 +1,11 @@
-REGLA DE ASSETS
+﻿# Imágenes y assets
 
-Usa src/assets para:
-- fotografías;
-- capturas de demos;
-- imágenes de producto;
-- imágenes utilizadas directamente por componentes Astro.
-
-Prioriza astro:assets y <Image />.
-
-Usa public únicamente cuando el recurso necesite una URL pública directa, por ejemplo:
-- favicon;
-- robots.txt;
-- archivos descargables;
-- recursos externos estáticos;
-- demos estáticas completas.
-
-No dupliques el mismo asset entre src/assets y public.
-
-No construyas imágenes o mockups complejos mediante CSS si existe o existirá un asset real.
+- Imágenes importadas: src/images/, agrupadas por sección o feature.
+- Prioriza astro:assets y <Image /> para contenido cuando corresponda.
+- public/ para URL directa: favicon, robots, OG, descargables, fondos CSS y demos estáticas.
+- No dupliques assets ni muevas existentes solo para uniformar.
+- Usa capturas y assets reales para representar productos, fotografías o interfaces existentes; evita reconstrucciones HTML complejas.
+- Si falta un asset necesario, indícalo. No inventes capturas ni funcionalidades para sustituirlo.
+- CSS y SVG para decoración sencilla; no conviertas contenido funcional o texto importante en imágenes.
+- Alt descriptivo para contenido y vacío para decoración; reserva dimensiones o proporción.
+- Carga diferida fuera del contenido inicial cuando corresponda; prioriza la imagen LCP identificada.

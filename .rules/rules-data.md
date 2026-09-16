@@ -1,30 +1,14 @@
-REGLA DATA / SINGLE SOURCE OF TRUTH
+﻿# Datos y fuente de verdad
 
-No hardcodees repetidamente información de 7DStudio dentro de componentes.
+- No repitas datos de la marca o profesional en varios componentes.
+- src/data/ para datos compartidos cuando tenga sentido: marca, teléfono, email, WhatsApp, redes, URLs, servicios y datos legales.
+- Componentes presentan datos sin copias divergentes. Textos únicos pueden permanecer locales.
+- Fuente coherente para cifras, reseñas y enlaces externos.
 
-Datos reutilizables como:
-- nombre de marca;
-- email;
-- teléfono;
-- WhatsApp;
-- redes sociales;
-- CTAs;
-- URLs;
-- productos;
-- servicios;
-- datos legales;
-
-deben vivir en /src/data cuando tenga sentido.
-
-El componente debe encargarse de presentación.
-Los datos deben encargarse de contenido.
-
-No lleves esta regla al extremo:
-textos únicos que solo aparecen una vez pueden permanecer en el componente.
-
----
-
-# REGLAS CRÍTICAS
-
-## CRITICAL DATA INTEGRITY
-Never invent, infer or modify prices, quantities, guarantees, discounts, statistics, performance claims, product materials or service inclusions. If a value is not explicitly present in the project, omit it instead of inventing it.
+## Integridad
+- No inventes precios, cantidades, garantías, descuentos, estadísticas, credenciales, resultados, testimonios, materiales o servicios incluidos.
+- Modifícalos solo con información proporcionada o validada por el usuario.
+- Si falta un dato necesario, indícalo; no lo inventes ni omitas silenciosamente si impide completar la tarea.
+- No presentes datos demo como verificados ni confirmaciones simuladas como acciones reales.
+- Respeta demos autorizadas y explica limitaciones al usuario.
+- No expongas claves privadas en cliente o archivos públicos.
