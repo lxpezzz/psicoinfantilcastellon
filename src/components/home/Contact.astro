@@ -290,6 +290,8 @@ import cuadroContacto from "../../images/contact/cuadro_contacto.webp";
         display: block;
         width: 100%;
         height: auto;
+        object-fit: contain;
+        object-position: center bottom;
     }
 
     .contact__placeholder {
@@ -727,19 +729,10 @@ import cuadroContacto from "../../images/contact/cuadro_contacto.webp";
             grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
             gap: 2.25rem;
         }
-
-        .contact__portrait-frame {
-            aspect-ratio: 4 / 5.4;
-        }
     }
 
     /* --------------------------------------------------------------------------
-       Móvil (< 820px): Orden Exacto
-       1. H2
-       2. texto
-       3. formulario
-       4. teléfono / microgarantías
-       5. imagen
+       Móvil (< 820px):
        -------------------------------------------------------------------------- */
     @media (max-width: 820px) {
         .contact {
@@ -791,7 +784,6 @@ import cuadroContacto from "../../images/contact/cuadro_contacto.webp";
 
         .contact__portrait-frame {
             max-width: 100%;
-            aspect-ratio: 16 / 11;
         }
 
         .contact__placeholder {

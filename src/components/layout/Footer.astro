@@ -12,7 +12,7 @@ const currentYear = 2026;
             <!-- Izquierda: Logo y descripción -->
             <div class="footer__brand">
                 <img
-                    src="/logo-psicoinfantil.svg"
+                    src="/logo_psicoinfantil_white.svg"
                     alt="Psico Infantil Castellón"
                     class="header__logo"
                     width="180"
@@ -124,9 +124,6 @@ const currentYear = 2026;
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
-        gap: clamp(2.5rem, 5vw, 4.5rem);
-        max-width: 1040px; /* Acercamiento hacia el centro */
-        margin-inline: auto;
     }
 
     /* Izquierda: Logo y Subtítulo */
@@ -243,13 +240,11 @@ const currentYear = 2026;
        Zona Inferior: Copyright (Izquierda) / Enlaces Legales (Derecha)
        -------------------------------------------------------------------------- */
     .footer__bottom {
+        max-width: 1220px;
+        margin-inline: auto;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        flex-wrap: wrap;
-        gap: 1.25rem;
-        font-size: 0.83rem;
-        color: rgba(248, 250, 252, 0.65);
     }
 
     .footer__copyright {
@@ -289,40 +284,47 @@ const currentYear = 2026;
 
     /* --------------------------------------------------------------------------
        MÓVIL (< 768px):
-       - Muy compacto, padding 2.25rem–2.75rem
-       - Sin navegación principal (Inicio, Servicios, Contacto)
-       - Orden exacto:
-         1. Logo / nombre PsicoInfantil Castellón
-         2. “Psicología infantil y adolescente en Castellón”
-         3. Teléfono
-         4. Email
-         5. Castellón de la Plana
-         6. Aviso legal · Privacidad · Cookies
-         7. © 2026 PsicoInfantil Castellón
        -------------------------------------------------------------------------- */
     @media (max-width: 768px) {
         .footer {
-            padding-top: 2.5rem;
-            padding-bottom: 2.5rem;
+            padding-top: 1.8rem;
+            padding-bottom: 1.8rem;
         }
 
         .footer__container {
             width: 100%;
             padding-inline: 1.25rem;
+            box-sizing: border-box;
         }
 
+        /* =========================
+       BLOQUE SUPERIOR
+       ========================= */
+
         .footer__top {
+            display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+
+            width: 100%;
+            max-width: 320px;
+            margin-inline: auto;
+
             gap: 1.25rem;
-            max-width: 100%;
         }
 
-        /* 1 y 2: Logo y Subtítulo */
+        /* Logo + subtítulo */
         .footer__brand {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
             align-items: center;
             text-align: center;
+        }
+
+        .footer__logo {
+            margin-inline: auto;
         }
 
         .footer__logo-main {
@@ -331,81 +333,132 @@ const currentYear = 2026;
 
         .footer__tagline {
             margin-top: 0.35rem;
+            margin-inline: auto;
+
+            max-width: 250px;
+
             font-size: 0.88rem;
-            max-width: 32ch;
+            line-height: 1.45;
+
             text-align: center;
             color: rgba(248, 250, 252, 0.85);
         }
 
-        /* 3, 4 y 5: Teléfono, Email, Dirección */
+        /* =========================
+       CONTACTO
+       ========================= */
+
         .footer__contact {
+            width: 100%;
+            max-width: 320px;
+            margin-inline: auto;
+
+            display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 100%;
         }
 
         .footer__contact-list {
-            align-items: center;
-            text-align: center;
             width: 100%;
-            gap: 0.65rem;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.1rem;
+            text-align: center;
         }
 
-        /* 3. Teléfono primero */
+        /* Todos los elementos comparten el mismo eje */
+        .footer__contact-item--phone,
+        .footer__contact-item--email,
+        .footer__contact-item--address {
+            width: 100%;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+            box-sizing: border-box;
+            gap: 0.5rem;
+        }
+
+        /* Teléfono */
         .footer__contact-item--phone {
             order: 1;
-            font-size: 1.05rem;
-            padding: 0.35rem 0.6rem;
+
             min-height: 44px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+
+            font-size: 1.05rem;
         }
 
-        /* 4. Email segundo */
+        /* Email */
         .footer__contact-item--email {
             order: 2;
-            font-size: 0.92rem;
-            padding: 0.25rem 0.5rem;
+
             min-height: 40px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+
+            font-size: 0.92rem;
         }
 
-        /* 5. Dirección tercera */
+        /* Dirección */
         .footer__contact-item--address {
             order: 3;
+
+            min-height: 36px;
+
             font-size: 0.85rem;
-            margin-top: 0.15rem;
         }
 
-        /* Separador centrado y discreto */
+        /* =========================
+       SEPARADOR
+       ========================= */
+
         .footer__divider {
-            width: 50px;
+            width: 54px;
             margin: 1.4rem auto;
+
             border-top-color: rgba(255, 255, 255, 0.08);
         }
 
-        /* Zona inferior: 6. Legal primero, 7. Copyright después */
+        /* =========================
+       BLOQUE INFERIOR
+       ========================= */
+
         .footer__bottom {
+            width: 100%;
+            max-width: 320px;
+            margin-inline: auto;
+
+            display: flex;
             flex-direction: column;
             align-items: center;
+
             text-align: center;
             gap: 0.75rem;
         }
 
+        /* Legales */
         .footer__legal {
             order: 1;
+
+            width: 100%;
+
+            display: flex;
             flex-wrap: wrap;
+            align-items: center;
             justify-content: center;
+
             gap: 0.5rem;
+            text-align: center;
         }
 
         .footer__legal a {
             padding: 0.25rem 0.35rem;
+
             font-size: 0.82rem;
+            text-align: center;
         }
 
         .footer__legal-desktop {
@@ -416,14 +469,24 @@ const currentYear = 2026;
             display: inline;
         }
 
+        /* Copyright */
         .footer__copyright {
             order: 2;
+
+            width: 100%;
+            margin: 0;
+
             font-size: 0.78rem;
+            text-align: center;
+
             color: rgba(248, 250, 252, 0.55);
         }
     }
 
-    /* Microajustes específicos para pantallas estrechas (390px o menor) */
+    /* =========================
+   PANTALLAS ESTRECHAS
+   ========================= */
+
     @media (max-width: 400px) {
         .footer {
             padding-top: 2.25rem;
@@ -434,12 +497,39 @@ const currentYear = 2026;
             padding-inline: 1rem;
         }
 
+        .footer__top,
+        .footer__contact,
+        .footer__bottom {
+            max-width: 300px;
+        }
+
         .footer__tagline {
+            max-width: 245px;
             font-size: 0.85rem;
         }
 
         .footer__contact-item--phone {
             font-size: 1rem;
+        }
+
+        .footer__contact-item--email {
+            font-size: 0.88rem;
+        }
+
+        .footer__contact-item--address {
+            font-size: 0.82rem;
+        }
+
+        .footer__legal {
+            gap: 0.35rem;
+        }
+
+        .footer__legal a {
+            font-size: 0.8rem;
+        }
+
+        .footer__copyright {
+            font-size: 0.76rem;
         }
     }
 </style>
