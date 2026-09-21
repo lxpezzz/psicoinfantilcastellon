@@ -1,0 +1,545 @@
+---
+import { Image } from "astro:assets";
+import {
+    Award,
+    GraduationCap,
+    School,
+    HeartHandshake,
+    Users,
+    Brain,
+    FileCheck,
+    Scale,
+    Sparkles,
+    CheckCircle2,
+    ArrowRight,
+    Phone,
+    Mail,
+    MapPin,
+    ShieldCheck,
+    ChevronDown,
+    Clock,
+    Quote,
+} from "lucide-astro";
+import anaImg from "../../images/about/ana-diaz.webp";
+---
+
+<article class="pt-[clamp(2rem,4vw,3.5rem)] pb-[clamp(4.5rem,8vw,7rem)] bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div class="section-container">
+        <!-- 1. Breadcrumbs de Navegación (sin eyebrow) -->
+        <nav class="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-text-soft)] mb-6 sm:mb-8" aria-label="Miga de pan">
+            <a href="/" class="text-[var(--color-primary)] no-underline hover:text-[var(--color-primary-dark)] hover:underline transition-colors">
+                Inicio
+            </a>
+            <span class="opacity-40" aria-hidden="true">/</span>
+            <span class="font-semibold text-[var(--color-primary-dark)]" aria-current="page">
+                Sobre mí
+            </span>
+        </nav>
+
+        <!-- 2. Hero Editorial: Titular, Presentación Íntima y Retrato Oficial -->
+        <header class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                <!-- Columna de Texto: 7 cols en Desktop -->
+                <div class="lg:col-span-7 flex flex-col items-start">
+                    <h1 class="text-[clamp(2.35rem,4.2vw,3.45rem)] font-extrabold leading-[1.12] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-6 [text-wrap:balance]">
+                        Detrás de cada dificultad escolar hay un niño que solo necesita que entendamos cómo funciona su mente.
+                    </h1>
+
+                    <p class="text-[clamp(1.05rem,1.25vw,1.18rem)] leading-[1.7] text-[var(--color-text-soft)] m-0 mb-6 [text-wrap:pretty]">
+                        Soy <strong>Ana Díaz Berbel</strong>, psicóloga sanitaria infantil y juvenil en Castellón con <strong>Nº de Colegiada CV-8027</strong>. Acompaño a familias y colegios a transformar la frustración del aprendizaje y las dudas en serenidad, herramientas prácticas y avances reales en el aula y en casa.
+                    </p>
+
+                    <!-- Cita Destacada (Pull-Quote con acento visual) -->
+                    <div class="relative w-full p-6 sm:p-7 bg-white/90 border border-[rgba(23,54,97,0.08)] rounded-2xl shadow-[0_8px_24px_rgba(23,54,97,0.03)] mb-8 overflow-hidden">
+                        <div class="absolute -top-3 -right-3 text-[rgba(36,79,158,0.06)] pointer-events-none" aria-hidden="true">
+                            <Quote size={88} />
+                        </div>
+                        <p class="relative z-[1] text-[1.02rem] sm:text-[1.08rem] italic leading-[1.65] font-medium text-[var(--color-primary-dark)] m-0">
+                            “Mi trabajo no concluye cuando entrego un informe en la mano; empieza de verdad cuando conseguimos que la familia y el colegio sepan exactamente qué hacer cada día.”
+                        </p>
+                    </div>
+
+                    <!-- Botones de Acción (Button-in-Button pattern) -->
+                    <div class="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+                        <a
+                            href="/#contacto"
+                            class="group inline-flex items-center justify-between gap-3 py-3.5 pl-6 pr-3 rounded-full text-[0.95rem] font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] shadow-[0_8px_20px_rgba(36,79,158,0.2)] hover:-translate-y-0.5 hover:shadow-[0_12px_28px_rgba(23,54,97,0.25)] transition-all no-underline w-full sm:w-auto"
+                        >
+                            <span>Hablemos de vuestro caso</span>
+                            <span class="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true">
+                                <ArrowRight size={16} />
+                            </span>
+                        </a>
+
+                        <a
+                            href="tel:+34614992148"
+                            class="inline-flex items-center justify-center gap-2.5 py-3.5 px-6 rounded-full text-[0.95rem] font-bold text-[var(--color-primary-dark)] bg-white border border-[rgba(23,54,97,0.12)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-0.5 transition-all no-underline w-full sm:w-auto shadow-sm"
+                        >
+                            <Phone size={17} class="text-[var(--color-primary)]" />
+                            <span>Llamar al 614 99 21 48</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna Visual: Retrato Oficial con Arquitectura Double-Bezel (5 cols en Desktop) -->
+                <div class="lg:col-span-5 flex flex-col items-center">
+                    <div class="relative w-full max-w-[430px] p-2 sm:p-3 bg-white border border-[rgba(23,54,97,0.08)] rounded-[2.25rem] shadow-[0_16px_40px_rgba(23,54,97,0.06)]">
+                        <div class="rounded-[calc(2.25rem-0.75rem)] overflow-hidden bg-[#eff3f8] aspect-[4/4.8] relative">
+                            <Image
+                                src={anaImg}
+                                alt="Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón colegiada CV-8027"
+                                class="w-full h-full object-cover object-top"
+                                width={840}
+                                height={1008}
+                                quality={92}
+                                format="webp"
+                                widths={[380, 480, 760, 840]}
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 430px, 430px"
+                                loading="eager"
+                                fetchpriority="high"
+                            />
+
+                            <!-- Tarjeta Flotante al Pie de la Foto -->
+                            <div class="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 bg-white/95 backdrop-blur-[12px] border border-[rgba(23,54,97,0.09)] rounded-2xl shadow-[0_8px_24px_rgba(23,54,97,0.08)]">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-9 h-9 rounded-xl bg-[rgba(36,79,158,0.1)] flex items-center justify-center text-[var(--color-primary)] shrink-0">
+                                        <ShieldCheck size={20} />
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <strong class="text-[0.92rem] font-bold text-[var(--color-primary-dark)] leading-tight">
+                                            Ana Díaz Berbel
+                                        </strong>
+                                        <span class="text-[0.78rem] text-[var(--color-text-soft)] font-medium">
+                                            Col. CV-8027 · COP Comunitat Valenciana
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 3. Bento de Credibilidad: 3 Cifras de Autoridad Indiscutible -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-label="Cifras clave y trayectoria de Ana Díaz">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+                <!-- Cifra 1: Dirección Ágora Lledó -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)]">
+                            <School size={24} />
+                        </div>
+                        <span class="text-[2.6rem] sm:text-[3rem] font-extrabold leading-none tracking-tight text-[var(--color-primary-dark)]">
+                            19
+                        </span>
+                    </div>
+                    <div>
+                        <h2 class="text-[1.15rem] font-bold text-[var(--color-primary-dark)] m-0 mb-2">
+                            Años dirigiendo orientación escolar
+                        </h2>
+                        <p class="text-[0.9rem] leading-[1.62] text-[var(--color-text-soft)] m-0">
+                            Lideré durante casi dos décadas el Departamento Psicopedagógico de <strong>Ágora Lledó International School</strong> en Castellón, coordinando diversidad y adaptaciones curriculares al más alto nivel.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cifra 2: Experiencia Clínica y Sanitaria -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a]">
+                            <Clock size={24} />
+                        </div>
+                        <span class="text-[2.6rem] sm:text-[3rem] font-extrabold leading-none tracking-tight text-[var(--color-primary-dark)]">
+                            +20
+                        </span>
+                    </div>
+                    <div>
+                        <h2 class="text-[1.15rem] font-bold text-[var(--color-primary-dark)] m-0 mb-2">
+                            Años de experiencia profesional
+                        </h2>
+                        <p class="text-[0.9rem] leading-[1.62] text-[var(--color-text-soft)] m-0">
+                            Más de dos décadas diagnosticando e interviniendo en TDAH, altas capacidades, dislexia, bajo rendimiento escolar y acompañamiento a adolescentes en Castellón de la Plana.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Cifra 3: Familias Acompañadas -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-5">
+                        <div class="w-12 h-12 rounded-2xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47]">
+                            <HeartHandshake size={24} />
+                        </div>
+                        <span class="text-[2.6rem] sm:text-[3rem] font-extrabold leading-none tracking-tight text-[var(--color-primary-dark)]">
+                            +250
+                        </span>
+                    </div>
+                    <div>
+                        <h2 class="text-[1.15rem] font-bold text-[var(--color-primary-dark)] m-0 mb-2">
+                            Familias guiadas con éxito
+                        </h2>
+                        <p class="text-[0.9rem] leading-[1.62] text-[var(--color-text-soft)] m-0">
+                            Padres y madres que han recuperado la tranquilidad, comprendiendo cómo aprende su hijo y viendo avances tangibles sin castigos ni agotamiento diario.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. El Gran Factor Diferencial: La Visión 360º (Colegio + Familia + Consulta) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-[var(--color-primary-dark)] rounded-[2rem] p-[clamp(2rem,5vw,3.75rem)] text-white shadow-[0_16px_40px_rgba(23,54,97,0.15)]">
+                <div class="max-w-[780px] mb-8 sm:mb-10">
+                    <div class="inline-flex items-center gap-2 py-1.5 px-3.5 bg-white/10 rounded-full text-[0.82rem] font-medium text-[#d1dced] mb-4">
+                        <Sparkles size={15} />
+                        <span>El verdadero valor diferencial</span>
+                    </div>
+                    <h2 class="text-[clamp(1.75rem,3.2vw,2.5rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white m-0 mb-4 [text-wrap:balance]">
+                        El puente que casi siempre falta entre el despacho del psicólogo y la realidad del aula escolar
+                    </h2>
+                    <p class="text-[1.02rem] leading-[1.68] text-[#d1dced] m-0 [text-wrap:pretty]">
+                        Muchos gabinetes entregan informes psicopedagógicos densos que acaban archivados en un cajón porque los profesores no saben cómo aterrizarlos con 25 alumnos en clase. Haber estado casi 20 años dentro de un colegio me permite ofrecer una visión 360º: <strong>hablo el mismo idioma que los docentes</strong> para que las adaptaciones se apliquen de verdad.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 border-t border-white/12 pt-8">
+                    <!-- Vértice 1: Consulta -->
+                    <div class="flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white mb-1">
+                            <Brain size={20} />
+                        </div>
+                        <strong class="text-[1.1rem] font-bold text-white">1. En la consulta</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            Evaluación clínica y psicométrica exhaustiva pero cercana, sin etiquetas estigmatizantes. Descubrimos el perfil cognitivo y las fortalezas del menor.
+                        </p>
+                    </div>
+
+                    <!-- Vértice 2: Colegio -->
+                    <div class="flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white mb-1">
+                            <School size={20} />
+                        </div>
+                        <strong class="text-[1.1rem] font-bold text-white">2. En el colegio</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            Propuestas viables para tutores y equipos de orientación. Informes rigurosos y respetuosos con la realidad docente para centros públicos, concertados y privados.
+                        </p>
+                    </div>
+
+                    <!-- Vértice 3: Hogar -->
+                    <div class="flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white mb-1">
+                            <HeartHandshake size={20} />
+                        </div>
+                        <strong class="text-[1.1rem] font-bold text-white">3. En el hogar</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            Pautas prácticas para las tardes de deberes. Desactivamos la frustración y dotamos a los padres de tranquilidad y estrategias que funcionan en el día a día.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Biografía y Vocación: La Historia de Ana Díaz -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[2rem] p-[clamp(1.75rem,4.5vw,3.5rem)] shadow-[0_8px_24px_rgba(23,54,97,0.03)]">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                    <div class="lg:col-span-5 flex flex-col justify-center">
+                        <h2 class="text-[clamp(1.6rem,2.6vw,2.15rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-4 [text-wrap:balance]">
+                            De La Coruña a liderar la psicopedagogía en Castellón
+                        </h2>
+                        <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0 mb-4">
+                            Nací en Galicia, pero Castellón es mi ciudad, mi hogar y donde he desarrollado íntegramente mi carrera profesional y mi familia.
+                        </p>
+                        <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
+                            Mi vocación comenzó al comprender que muchos niños tachados de "vagos", "distraídos" o "desmotivados" simplemente procesan la información de manera diferente. Ayudarles a entenderse y darles las llaves de su propio aprendizaje es la experiencia más gratificante de mi vida.
+                        </p>
+                    </div>
+
+                    <div class="lg:col-span-7 flex flex-col justify-center bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 sm:p-8">
+                        <h3 class="text-[1.12rem] font-bold text-[var(--color-primary-dark)] m-0 mb-3">
+                            Por qué creé PsicoInfantil Castellón
+                        </h3>
+                        <p class="text-[0.92rem] leading-[1.68] text-[var(--color-text-soft)] m-0 mb-4">
+                            Tras coordinar durante casi dos décadas equipos psicopedagógicos en un colegio de referencia internacional, sentí la necesidad de crear un espacio donde atender a las familias con el tiempo, la serenidad y la dedicación artesanal que cada niño merece.
+                        </p>
+                        <p class="text-[0.92rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                            En mi consulta en la <strong>Calle Río Támesis de Castellón</strong>, no trabajamos con protocolos impersonales ni prisas. Cada caso es único, cada evaluación es exhaustiva y cada familia encuentra un acompañamiento cálido y continuo desde la primera sesión.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Formación Académica, Rigor Forense y Colegiación -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="education-heading">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[2rem] p-[clamp(1.75rem,4.5vw,3.5rem)] shadow-[0_8px_24px_rgba(23,54,97,0.03)]">
+                <div class="max-w-[760px] mb-8">
+                    <h2 id="education-heading" class="text-[clamp(1.5rem,2.5vw,2rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        Formación académica continua y solvencia pericial
+                    </h2>
+                    <p class="text-[0.95rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        La empatía y la calidez son esenciales, pero sin un rigor metodológico intachable no hay resultados clínicos. Mi trayectoria está respaldada por titulaciones oficiales y actualización permanente:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Licenciatura -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                            <GraduationCap size={20} />
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Licenciada en Psicología</strong>
+                        <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[var(--color-primary)]">Universitat de València</span>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Especialización en psicología evolutiva, educativa y neuropsicología del desarrollo infantil y adolescente.
+                        </p>
+                    </div>
+
+                    <!-- Colegiatura Oficial -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
+                            <ShieldCheck size={20} />
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Colegiada Oficial CV-8027</strong>
+                        <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[#1e6e4a]">COP Comunitat Valenciana</span>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Garantía de ejercicio sanitario legal, cumplimiento deontológico estricto y seguro de responsabilidad civil médica.
+                        </p>
+                    </div>
+
+                    <!-- Máster Forense -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47] mb-1">
+                            <Scale size={20} />
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Máster en Psicología Forense</strong>
+                        <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[#8c3b47]">UNIR</span>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Aporta un estándar probatorio y pericial indispensable: informes con solidez técnica ante tribunales, centros y administraciones.
+                        </p>
+                    </div>
+
+                    <!-- Mediación Familiar -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                            <Users size={20} />
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Experta en Mediación Familiar</strong>
+                        <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[var(--color-primary)]">Didáctica y Resolución de Conflictos</span>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Especializada en restaurar la convivencia familiar, resolver desacuerdos educativos y establecer pautas de crianza positiva.
+                        </p>
+                    </div>
+
+                    <!-- Divulgación y Formación -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5 sm:col-span-2 lg:col-span-2">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
+                            <Award size={20} />
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Divulgadora y Conferenciante Educativa</strong>
+                        <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[#1e6e4a]">Formación a Claustros y Familias</span>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Imparto ponencias, seminarios y escuelas de padres sobre detección temprana de altas capacidades, dificultades lectoescritoras, gestión del TDAH en el aula y salud mental en la adolescencia en Castellón y la Comunitat Valenciana.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Los 4 Pilares de mi Método de Trabajo -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[2rem] p-[clamp(1.75rem,4.5vw,3.5rem)] shadow-[0_8px_24px_rgba(23,54,97,0.03)]">
+                <div class="max-w-[760px] mb-8 sm:mb-10">
+                    <h2 class="text-[clamp(1.5rem,2.5vw,2rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        Cómo trabajamos juntos: 4 principios irrenunciables
+                    </h2>
+                    <p class="text-[0.95rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Cada familia que cruza la puerta de PsicoInfantil Castellón encuentra un entorno seguro y una metodología basada en cuatro compromisos éticos:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Pilar 1 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 sm:p-7 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.88rem] flex items-center justify-center">01</span>
+                            <h3 class="text-[1.1rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Cero etiquetas limitantes
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Un diagnóstico no sirve para encasillar a un niño ni para limitar su futuro. Es únicamente una brújula científica que nos indica cómo funciona su mente y qué apoyos concretos necesita para desplegar todo su potencial.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 2 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 sm:p-7 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.88rem] flex items-center justify-center">02</span>
+                            <h3 class="text-[1.1rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Pruebas científicas estandarizadas
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            No trabajamos con suposiciones ni valoraciones improvisadas. Empleamos baterías de referencia internacional (WISC-V, PROLEC-SE-R, SENA, etc.) con baremos actualizados para garantizar diagnósticos diferenciales exactos.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 3 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 sm:p-7 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.88rem] flex items-center justify-center">03</span>
+                            <h3 class="text-[1.1rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Alianza incondicional con la familia
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Vosotros sois quienes mejor conocéis a vuestro hijo. Tras la evaluación, realizamos una sesión de devolución detallada, en un lenguaje comprensible y cercano, entregándoos pautas sencillas y realistas para el hogar.
+                        </p>
+                    </div>
+
+                    <!-- Pilar 4 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 sm:p-7 flex flex-col gap-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.88rem] flex items-center justify-center">04</span>
+                            <h3 class="text-[1.1rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Acompañamiento hasta el final
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            No nos desentendemos al entregar el informe. Quedamos a disposición de la familia para preparar reuniones con el colegio, resolver dudas de los profesores y ajustar las adaptaciones a lo largo del curso escolar.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Preguntas Frecuentes sobre la Consulta (FAQ) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="faq-about-heading">
+            <div class="max-w-[860px] mx-auto">
+                <header class="text-center mb-8 sm:mb-10">
+                    <h2 id="faq-about-heading" class="text-[clamp(1.75rem,3vw,2.35rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-3 [text-wrap:balance]">
+                        Preguntas habituales de las familias
+                    </h2>
+                    <p class="text-[0.98rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                        Respuestas directas a las dudas más comunes que surgen antes de acudir a la primera consulta.
+                    </p>
+                </header>
+
+                <div class="flex flex-col gap-4">
+                    <!-- Pregunta 1 -->
+                    <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-2xl overflow-hidden transition-[border-color,box-shadow] duration-200 ease-out [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]" open>
+                        <summary class="py-5 px-6 text-[1.05rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
+                            <span>¿Cómo sé si mi hijo necesita una evaluación o si es solo una etapa madurativa?</span>
+                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-200 shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
+                        </summary>
+                        <div class="pt-0 px-6 pb-5 text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] border-t border-[rgba(23,54,97,0.05)]">
+                            <p class="m-0">
+                                Si notas que el esfuerzo que dedica al estudio no se traduce en sus notas, si tarda horas interminables en hacer las tareas escolares, si se frustra con frecuencia o si el colegio os traslada dificultades reiteradas de atención o conducta, una valoración psicopedagógica es el camino más rápido para salir de dudas y evitar que la situación mine su autoestima.
+                            </p>
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 2 -->
+                    <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-2xl overflow-hidden transition-[border-color,box-shadow] duration-200 ease-out [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]">
+                        <summary class="py-5 px-6 text-[1.05rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
+                            <span>¿Qué validez legal y académica tienen tus informes psicopedagógicos?</span>
+                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-200 shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
+                        </summary>
+                        <div class="pt-0 px-6 pb-5 text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] border-t border-[rgba(23,54,97,0.05)]">
+                            <p class="m-0">
+                                Plena validez oficial. Como psicóloga colegiada sanitaria (Nº CV-8027) y con formación de Máster Oficial en Psicología Forense, todos los informes que emito cumplen con los estándares metodológicos exigidos por la Conselleria d'Educació y el Ministerio de Educación. Son válidos para solicitar adaptaciones curriculares en centros públicos, concertados y privados, así como para la tramitación de becas NEAE de apoyo educativo.
+                            </p>
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 3 -->
+                    <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-2xl overflow-hidden transition-[border-color,box-shadow] duration-200 ease-out [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]">
+                        <summary class="py-5 px-6 text-[1.05rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
+                            <span>¿Qué diferencia hay entre tu consulta y otros centros de psicología?</span>
+                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-200 shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
+                        </summary>
+                        <div class="pt-0 px-6 pb-5 text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] border-t border-[rgba(23,54,97,0.05)]">
+                            <p class="m-0">
+                                Mi factor diferencial decisivo es haber dirigido durante 19 años el departamento psicopedagógico de un colegio en Castellón. Conozco el sistema escolar por dentro: sé qué se le puede pedir a un profesor, cómo se redactan las adaptaciones viables y cómo lograr que el centro colabore sin fricciones en lugar de presentar resistencias.
+                            </p>
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 4 -->
+                    <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-2xl overflow-hidden transition-[border-color,box-shadow] duration-200 ease-out [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]">
+                        <summary class="py-5 px-6 text-[1.05rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
+                            <span>¿Cómo le explicamos a nuestro hijo que va a ir al psicólogo sin asustarle?</span>
+                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-200 shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
+                        </summary>
+                        <div class="pt-0 px-6 pb-5 text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] border-t border-[rgba(23,54,97,0.05)]">
+                            <p class="m-0">
+                                Siempre recomendamos explicárselo con total naturalidad: «Vamos a conocer a Ana, una especialista en aprendizaje que ayuda a los chicos a descubrir cómo funciona su cabeza para que estudiar sea más fácil y no se cansen tanto». En la consulta los niños se sienten cómodos, escuchados y sin presiones desde los primeros minutos.
+                            </p>
+                        </div>
+                    </details>
+
+                    <!-- Pregunta 5 -->
+                    <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-2xl overflow-hidden transition-[border-color,box-shadow] duration-200 ease-out [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]">
+                        <summary class="py-5 px-6 text-[1.05rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
+                            <span>¿A partir de qué edad y hasta qué edad atiendes en tu consulta?</span>
+                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-200 shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
+                        </summary>
+                        <div class="pt-0 px-6 pb-5 text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] border-t border-[rgba(23,54,97,0.05)]">
+                            <p class="m-0">
+                                Atiendo desde la etapa de Educación Infantil y Primaria (a partir de los 4-5 años en detección temprana de dificultades y altas capacidades) hasta la etapa de Educación Secundaria, Bachillerato y adolescencia (hasta los 18-20 años), tanto en dificultades de aprendizaje como en gestión emocional y orientación académica.
+                            </p>
+                        </div>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Bloque de Cierre y Contacto Directo (CTA de Confianza) -->
+        <section class="bg-gradient-to-br from-[#173661] to-[#244f9e] rounded-[2rem] p-[clamp(2rem,5vw,3.75rem)] text-white shadow-[0_16px_40px_rgba(23,54,97,0.2)]">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-8">
+                    <h3 class="text-[clamp(1.6rem,2.8vw,2.25rem)] font-extrabold text-white leading-[1.2] tracking-[-0.03em] m-0 mb-3 [text-wrap:balance]">
+                        ¿Damos el primer paso para ayudar a vuestro hijo?
+                    </h3>
+                    <p class="text-[1rem] leading-[1.65] text-[#d1dced] m-0 mb-6 max-w-[620px]">
+                        No tenéis por qué afrontar esta incertidumbre en soledad. Pongo a vuestra disposición más de 20 años de experiencia clínica y escolar para entender qué ocurre y encontrar juntos el mejor camino.
+                    </p>
+
+                    <div class="flex flex-wrap items-center gap-4">
+                        <a
+                            href="mailto:info@psicoinfantilcastellon.es"
+                            class="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-[0.95rem] font-bold bg-white text-[var(--color-primary-dark)] hover:bg-[#f0f4fa] hover:-translate-y-0.5 transition-all no-underline shadow-md w-full sm:w-auto"
+                        >
+                            <Mail size={17} class="text-[var(--color-primary-dark)]" />
+                            <span>info@psicoinfantilcastellon.es</span>
+                        </a>
+
+                        <a
+                            href="tel:+34614992148"
+                            class="inline-flex items-center justify-center gap-2 py-3.5 px-6 rounded-full text-[0.95rem] font-bold bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:-translate-y-0.5 transition-all no-underline w-full sm:w-auto"
+                        >
+                            <Phone size={17} />
+                            <span>Llamar al 614 99 21 48</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-4 bg-white/10 backdrop-blur-[12px] border border-white/15 rounded-2xl p-6 flex flex-col gap-3 text-[#d1dced] text-[0.88rem]">
+                    <div class="flex items-center gap-2 text-white font-bold text-[0.95rem]">
+                        <MapPin size={18} class="text-[var(--color-accent)] shrink-0" />
+                        <span>Consulta en Castellón</span>
+                    </div>
+                    <p class="m-0 leading-[1.6]">
+                        C/ Río Támesis, 1, Esc. 1, 4ºA<br />
+                        12005 Castellón de la Plana (Castellón)
+                    </p>
+                    <div class="pt-2 border-t border-white/10 flex items-center gap-2 text-[0.82rem]">
+                        <CheckCircle2 size={15} class="text-[#8dc7a8] shrink-0" />
+                        <span>Atención personalizada con cita previa</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</article>

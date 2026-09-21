@@ -1,0 +1,121 @@
+---
+import { Cookie, X } from "lucide-astro";
+---
+
+<div
+    id="cookie-banner"
+    class="fixed z-[998] bottom-5 right-5 left-5 sm:left-auto sm:max-w-[430px] bg-white/95 backdrop-blur-xl border border-[rgba(23,54,97,0.12)] rounded-2xl shadow-[0_16px_40px_-8px_rgba(23,54,97,0.22)] p-5 sm:p-6 transition-all duration-350 ease-[cubic-bezier(0.16,1,0.3,1)] opacity-0 translate-y-6 pointer-events-none max-sm:bottom-[calc(76px+env(safe-area-inset-bottom,0px))]"
+    role="dialog"
+    aria-labelledby="cookie-banner-title"
+    aria-describedby="cookie-banner-desc"
+>
+    <!-- Cabecera del aviso -->
+    <div class="flex items-start justify-between gap-3 mb-2.5">
+        <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] shrink-0">
+                <Cookie size={18} aria-hidden="true" />
+            </div>
+            <h3 id="cookie-banner-title" class="text-[0.98rem] font-bold text-[var(--color-primary-dark)] m-0 leading-snug">
+                Tu privacidad en PsicoInfantil
+            </h3>
+        </div>
+        <button
+            type="button"
+            id="cookie-banner-close"
+            class="w-7 h-7 rounded-full flex items-center justify-center text-[var(--color-text-soft)] hover:text-[var(--color-primary-dark)] hover:bg-[rgba(23,54,97,0.06)] transition-colors border-none bg-transparent p-0 cursor-pointer text-sm"
+            aria-label="Cerrar aviso de cookies"
+        >
+            <X size={15} />
+        </button>
+    </div>
+
+    <!-- Texto explicativo -->
+    <p id="cookie-banner-desc" class="text-[0.84rem] leading-[1.6] text-[var(--color-text-soft)] m-0 mb-4">
+        Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y cookies analíticas para saber qué contenidos ayudan más a las familias. Puedes aceptar todas, rechazar las analíticas o consultar nuestra <a href="/politica-de-cookies" class="text-[var(--color-primary)] font-semibold underline underline-offset-2 hover:text-[var(--color-primary-dark)]">política de cookies</a>.
+    </p>
+
+    <!-- Botones de acción -->
+    <div class="flex items-center gap-2.5 max-xs:flex-col">
+        <button
+            type="button"
+            id="cookie-accept-all"
+            class="flex-1 w-full inline-flex items-center justify-center py-2.5 px-3.5 rounded-xl text-[0.84rem] font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] shadow-[0_4px_12px_rgba(36,79,158,0.22)] hover:-translate-y-0.5 transition-all cursor-pointer border-none"
+        >
+            Aceptar todas
+        </button>
+        <button
+            type="button"
+            id="cookie-reject-optional"
+            class="flex-1 w-full inline-flex items-center justify-center py-2.5 px-3.5 rounded-xl text-[0.84rem] font-semibold text-[var(--color-primary-dark)] bg-white hover:bg-slate-50 border border-[rgba(23,54,97,0.15)] hover:border-[rgba(23,54,97,0.3)] transition-all cursor-pointer"
+        >
+            Rechazar opcionales
+        </button>
+    </div>
+</div>
+
+<script>
+    function initCookieBanner() {
+        const banner = document.getElementById("cookie-banner");
+        const acceptBtn = document.getElementById("cookie-accept-all");
+        const rejectBtn = document.getElementById("cookie-reject-optional");
+        const closeBtn = document.getElementById("cookie-banner-close");
+
+        if (!banner || banner.dataset.initialized) return;
+        banner.dataset.initialized = "true";
+
+        const CONSENT_KEY = "psico_cookie_consent";
+
+        function showBanner() {
+            banner.classList.remove("opacity-0", "translate-y-6", "pointer-events-none");
+            banner.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
+        }
+
+        function hideBanner() {
+            banner.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
+            banner.classList.add("opacity-0", "translate-y-6", "pointer-events-none");
+        }
+
+        // Comprobar si ya existe consentimiento previo en este navegador
+        const consent = localStorage.getItem(CONSENT_KEY);
+        if (!consent) {
+            // Mostrar sutilmente tras una pequeña pausa para no interrumpir el render inicial
+            setTimeout(() => {
+                showBanner();
+            }, 600);
+        }
+
+        acceptBtn?.addEventListener("click", () => {
+            localStorage.setItem(CONSENT_KEY, "all");
+            hideBanner();
+            window.dispatchEvent(
+                new CustomEvent("cookie-consent-updated", {
+                    detail: { analytics: true },
+                })
+            );
+        });
+
+        rejectBtn?.addEventListener("click", () => {
+            localStorage.setItem(CONSENT_KEY, "necessary_only");
+            hideBanner();
+            window.dispatchEvent(
+                new CustomEvent("cookie-consent-updated", {
+                    detail: { analytics: false },
+                })
+            );
+        });
+
+        closeBtn?.addEventListener("click", () => {
+            // Al cerrar sin elegir, asumimos rechazar opcionales provisionalmente
+            localStorage.setItem(CONSENT_KEY, "necessary_only");
+            hideBanner();
+        });
+
+        // Permitir volver a abrirlo desde enlaces de la web (ej: footer o política de cookies)
+        window.addEventListener("open-cookie-banner", () => {
+            showBanner();
+        });
+    }
+
+    initCookieBanner();
+    document.addEventListener("astro:page-load", initCookieBanner);
+</script>

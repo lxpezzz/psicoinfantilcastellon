@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import CookieBanner from "../components/ui/CookieBanner.astro";
 
 const {
 	title = "Psicoinfantil Castellón",
@@ -47,5 +48,6 @@ const imageURL = new URL(image, Astro.site);
 
 	<body>
 		<slot />
+		<CookieBanner />
 	</body>
 </html>

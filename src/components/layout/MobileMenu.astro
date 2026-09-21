@@ -1,22 +1,170 @@
 ---
-const linkClass = "mobile-menu__link text-[var(--color-primary-dark)]! text-[1.25rem] font-bold no-underline transition-[color] duration-200 ease-[ease] [&:hover]:text-[var(--color-primary)]!";
+import { ChevronLeft, ChevronRight, Phone } from "lucide-astro";
+import { services } from "../../data/services";
 ---
 
-<div class="mobile-menu group/mobile-menu fixed inset-0 z-[999] pointer-events-none invisible transition-[visibility] duration-300 ease-[ease] [&.is-open]:pointer-events-auto [&.is-open]:visible min-[981px]:hidden" id="mobile-menu" aria-hidden="true">
-    <div class="absolute inset-0 bg-[rgba(23,54,97,0.3)] backdrop-blur-[4px] opacity-0 transition-opacity duration-300 ease-[ease] group-[.is-open]/mobile-menu:opacity-100" id="mobile-menu-backdrop"></div>
-    <div class="absolute top-0 right-0 bottom-0 w-[min(85vw,360px)] bg-[#fdfcf9] pt-24 px-8 pb-10 shadow-[-10px_0_30px_rgba(23,54,97,0.1)] flex flex-col justify-between [transform:translateX(100%)] transition-transform duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] box-border group-[.is-open]/mobile-menu:[transform:translateX(0)]">
-        <nav class="flex flex-col gap-5" aria-label="Navegación móvil secundaria">
-            <a href="#como-trabajo" class={linkClass}>Cómo trabajo</a>
-            <a href="#sobre-mi" class={linkClass}>Sobre mí</a>
-            <a href="#resenas" class={linkClass}>Reseñas</a>
-            <a href="#faq" class={linkClass}>Preguntas frecuentes</a>
-        </nav>
+<div
+    class="mobile-menu group/mobile-menu fixed inset-0 z-[1050] pointer-events-none invisible transition-[visibility] duration-300 ease-[ease] [&.is-open]:pointer-events-auto [&.is-open]:visible min-[981px]:hidden"
+    id="mobile-menu"
+    aria-hidden="true"
+>
+    <!-- Fondo oscuro con desenfoque -->
+    <div
+        class="absolute inset-0 bg-[rgba(23,54,97,0.38)] backdrop-blur-[6px] opacity-0 transition-opacity duration-300 ease-[ease] group-[.is-open]/mobile-menu:opacity-100"
+        id="mobile-menu-backdrop"
+    ></div>
 
-        <div class="flex flex-col gap-5 pt-8 border-t border-[rgba(23,54,97,0.08)]">
-            <a href="tel:+34614992148" class="flex flex-col items-center no-underline text-[0.88rem] text-[var(--color-text-soft)]! gap-1">
-                <span>Consulta telefónica:</span>
-                <strong class="text-[var(--color-primary)] text-[1.15rem]">614 99 21 48</strong>
-            </a>
+    <!-- Cajón lateral deslizante (Drawer) -->
+    <div
+        class="absolute top-0 right-0 bottom-0 w-[min(90vw,380px)] bg-[#fdfcf9] shadow-[-12px_0_36px_rgba(23,54,97,0.15)] [transform:translateX(100%)] transition-transform duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] box-border group-[.is-open]/mobile-menu:[transform:translateX(0)] flex flex-col overflow-hidden"
+    >
+        <!-- Barra superior del menú con botón cerrar -->
+        <div class="flex items-center justify-between px-6 pt-5 pb-4 border-b border-[rgba(23,54,97,0.06)] shrink-0">
+            <span class="text-[0.78rem] font-bold tracking-widest uppercase text-[var(--color-text-soft)]">
+                Menú de navegación
+            </span>
+            <button
+                type="button"
+                class="w-9 h-9 rounded-full flex items-center justify-center text-[var(--color-primary-dark)] bg-[rgba(23,54,97,0.05)] hover:bg-[rgba(23,54,97,0.1)] transition-colors cursor-pointer border-none p-0 text-xl font-light"
+                id="mobile-menu-close-btn"
+                aria-label="Cerrar menú"
+            >
+                &times;
+            </button>
+        </div>
+
+        <!-- Contenedor Drill-Down deslizante estilo Apple -->
+        <div class="relative flex-1 overflow-hidden" id="mobile-slider">
+            
+            <!-- PANEL 1: Menú Principal -->
+            <div
+                class="absolute inset-0 flex flex-col justify-between px-6 py-5 overflow-y-auto transition-all duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] opacity-100 translate-x-0"
+                id="panel-main"
+            >
+                <nav class="flex flex-col divide-y divide-[rgba(23,54,97,0.06)]" aria-label="Navegación móvil principal">
+                    <a
+                        href="/"
+                        class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
+                    >
+                        Inicio
+                    </a>
+
+                    <!-- Botón disparador a la vista de Servicios -->
+                    <button
+                        type="button"
+                        class="mobile-nav-btn py-3.5 px-0 flex items-center justify-between text-[1.18rem] font-bold text-[var(--color-primary-dark)] transition-colors hover:text-[var(--color-primary)] cursor-pointer text-left w-full border-none bg-transparent"
+                        id="open-services-btn"
+                        aria-haspopup="true"
+                    >
+                        <span>Servicios</span>
+                        <div class="flex items-center gap-1.5 text-[var(--color-primary)] font-bold">
+                            <span class="text-[0.75rem] font-bold bg-[rgba(23,54,97,0.06)] px-2 py-0.5 rounded-full text-[var(--color-primary)]">
+                                8
+                            </span>
+                            <ChevronRight size={18} class="text-[rgba(23,54,97,0.4)]" />
+                        </div>
+                    </button>
+
+                    <a
+                        href="/#como-trabajo"
+                        class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
+                    >
+                        Cómo trabajo
+                    </a>
+                    <a
+                        href="/sobre-mi"
+                        class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
+                    >
+                        Sobre mí
+                    </a>
+                    <a
+                        href="/#faq"
+                        class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
+                    >
+                        Preguntas frecuentes
+                    </a>
+                    <a
+                        href="/#contacto"
+                        class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary)] no-underline transition-colors hover:text-[var(--color-primary-dark)]"
+                    >
+                        Pedir cita ↗
+                    </a>
+                </nav>
+
+                <!-- Pie de contacto directo -->
+                <div class="pt-6 border-t border-[rgba(23,54,97,0.08)] mt-auto">
+                    <a
+                        href="tel:+34614992148"
+                        class="flex items-center gap-3 p-3.5 rounded-xl bg-[rgba(23,54,97,0.04)] text-[var(--color-primary-dark)] no-underline transition-colors hover:bg-[rgba(23,54,97,0.08)]"
+                    >
+                        <div class="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center shrink-0">
+                            <Phone size={18} />
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="text-[0.76rem] font-medium text-[var(--color-text-soft)]">Consulta telefónica</span>
+                            <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">614 99 21 48</strong>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <!-- PANEL 2: Vista de Servicios (Drill-Down Apple style) -->
+            <div
+                class="absolute inset-0 flex flex-col justify-between px-6 py-5 overflow-y-auto transition-all duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] opacity-0 translate-x-full pointer-events-none"
+                id="panel-services"
+            >
+                <div>
+                    <!-- Botón de regreso con flecha izquierda estilo iOS -->
+                    <button
+                        type="button"
+                        class="inline-flex items-center gap-1 text-[0.95rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors p-0 bg-transparent border-none cursor-pointer mb-2"
+                        id="back-to-main-btn"
+                    >
+                        <ChevronLeft size={20} />
+                        <span>Menú principal</span>
+                    </button>
+
+                    <h3 class="text-[1.35rem] font-extrabold text-[var(--color-primary-dark)] m-0 pb-3 border-b border-[rgba(23,54,97,0.06)]">
+                        Nuestros Servicios
+                    </h3>
+
+                    <!-- Lista con los 8 servicios -->
+                    <div class="flex flex-col divide-y divide-[rgba(23,54,97,0.05)] mt-1">
+                        {
+                            services.map((service) => (
+                                <a
+                                    href={service.href}
+                                    class="mobile-menu__link py-3 flex items-center justify-between gap-2.5 no-underline group/item"
+                                >
+                                    <div class="flex flex-col gap-0.5">
+                                        <span class="text-[0.96rem] font-bold text-[var(--color-primary-dark)] transition-colors group-hover/item:text-[var(--color-primary)]">
+                                            {service.title}
+                                        </span>
+                                        <span class="text-[0.75rem] text-[var(--color-text-soft)] line-clamp-1 leading-snug">
+                                            {service.description}
+                                        </span>
+                                    </div>
+                                    <ChevronRight
+                                        size={16}
+                                        class="text-[rgba(23,54,97,0.3)] shrink-0 transition-transform group-hover/item:translate-x-0.5 group-hover/item:text-[var(--color-primary)]"
+                                    />
+                                </a>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <!-- Enlace al mosaico de la home -->
+                <div class="pt-4 mt-auto border-t border-[rgba(23,54,97,0.08)]">
+                    <a
+                        href="/#servicios"
+                        class="mobile-menu__link block text-center py-2.5 px-4 rounded-xl bg-[rgba(23,54,97,0.05)] text-[0.88rem] font-bold text-[var(--color-primary-dark)] no-underline hover:bg-[rgba(23,54,97,0.09)] transition-colors"
+                    >
+                        Ver todos los servicios en detalle →
+                    </a>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
@@ -24,41 +172,75 @@ const linkClass = "mobile-menu__link text-[var(--color-primary-dark)]! text-[1.2
 <script>
     function initMobileMenu() {
         const toggleBtn = document.getElementById("header-menu-btn");
+        const closeBtn = document.getElementById("mobile-menu-close-btn");
         const menu = document.getElementById("mobile-menu");
         const backdrop = document.getElementById("mobile-menu-backdrop");
         const links = menu?.querySelectorAll(".mobile-menu__link");
 
+        const openServicesBtn = document.getElementById("open-services-btn");
+        const backToMainBtn = document.getElementById("back-to-main-btn");
+        const panelMain = document.getElementById("panel-main");
+        const panelServices = document.getElementById("panel-services");
+
         if (!toggleBtn || !menu || menu.dataset.initialized) return;
         menu.dataset.initialized = "true";
 
-        const activeBtn = toggleBtn;
-        const activeMenu = menu;
-
         function openMenu() {
-            activeMenu.classList.add("is-open");
-            activeMenu.setAttribute("aria-hidden", "false");
-            activeBtn.setAttribute("aria-expanded", "true");
+            menu.classList.add("is-open");
+            menu.setAttribute("aria-hidden", "false");
+            toggleBtn.setAttribute("aria-expanded", "true");
             document.body.classList.add("mobile-menu-open");
             document.body.style.overflow = "hidden";
         }
 
         function closeMenu() {
-            activeMenu.classList.remove("is-open");
-            activeMenu.setAttribute("aria-hidden", "true");
-            activeBtn.setAttribute("aria-expanded", "false");
+            menu.classList.remove("is-open");
+            menu.setAttribute("aria-hidden", "true");
+            toggleBtn.setAttribute("aria-expanded", "false");
             document.body.classList.remove("mobile-menu-open");
             document.body.style.overflow = "";
+
+            // Volver al panel principal tras cerrarse
+            setTimeout(() => {
+                showMainPanel(false);
+            }, 350);
+        }
+
+        function showServicesPanel() {
+            if (!panelMain || !panelServices) return;
+            // Panel principal se desliza a la izquierda
+            panelMain.classList.remove("translate-x-0", "opacity-100");
+            panelMain.classList.add("-translate-x-1/4", "opacity-0", "pointer-events-none");
+
+            // Panel de servicios entra desde la derecha
+            panelServices.classList.remove("translate-x-full", "opacity-0", "pointer-events-none");
+            panelServices.classList.add("translate-x-0", "opacity-100");
+        }
+
+        function showMainPanel(withAnimation = true) {
+            if (!panelMain || !panelServices) return;
+            // Panel de servicios sale hacia la derecha
+            panelServices.classList.remove("translate-x-0", "opacity-100");
+            panelServices.classList.add("translate-x-full", "opacity-0", "pointer-events-none");
+
+            // Panel principal regresa al centro
+            panelMain.classList.remove("-translate-x-1/4", "opacity-0", "pointer-events-none");
+            panelMain.classList.add("translate-x-0", "opacity-100");
         }
 
         window.addEventListener("mobile-menu:close", closeMenu);
 
-        activeBtn.addEventListener("click", () => {
-            const isOpen = activeMenu.classList.contains("is-open");
+        toggleBtn.addEventListener("click", () => {
+            const isOpen = menu.classList.contains("is-open");
             if (isOpen) closeMenu();
             else openMenu();
         });
 
+        closeBtn?.addEventListener("click", closeMenu);
         backdrop?.addEventListener("click", closeMenu);
+
+        openServicesBtn?.addEventListener("click", showServicesPanel);
+        backToMainBtn?.addEventListener("click", () => showMainPanel(true));
 
         links?.forEach((link) => {
             link.addEventListener("click", closeMenu);
@@ -75,3 +257,29 @@ const linkClass = "mobile-menu__link text-[var(--color-primary-dark)]! text-[1.2
     document.addEventListener("astro:page-load", initMobileMenu);
 </script>
 
+<style>
+    .mobile-menu__link,
+    .mobile-nav-btn {
+        font-family: var(--font-base, inherit) !important;
+        font-size: 1.18rem;
+        font-weight: 700;
+        line-height: inherit;
+        letter-spacing: inherit;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    .mobile-nav-btn {
+        font-family: var(--font-base, inherit) !important;
+    }
+
+    .mobile-nav-btn * {
+        font-family: inherit;
+    }
+
+    #back-to-main-btn {
+        font-family: var(--font-base, inherit) !important;
+        -webkit-appearance: none;
+        appearance: none;
+    }
+</style>

@@ -1,0 +1,614 @@
+---
+import {
+    ShieldCheck,
+    Building2,
+    Lock,
+    Scale,
+    FileText,
+    Mail,
+    Phone,
+    MapPin,
+    HeartHandshake,
+    Clock,
+    UserCheck,
+    Users,
+    Eye,
+    RefreshCw,
+    Trash2,
+    Share2,
+    ExternalLink,
+    AlertCircle,
+    CheckCircle2,
+} from "lucide-astro";
+---
+
+<article class="pt-[clamp(2rem,4vw,3.5rem)] pb-[clamp(4rem,7vw,6.5rem)] bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div class="section-container">
+        <!-- 1. Cabecera Hero con Breadcrumbs y Título (sin eyebrow) -->
+        <header class="max-w-[860px] mx-auto text-center max-sm:text-left mb-[clamp(3rem,5vw,4.5rem)]">
+            <nav class="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-text-soft)] mb-6" aria-label="Miga de pan">
+                <a href="/" class="text-[var(--color-primary)] no-underline hover:text-[var(--color-primary-dark)] hover:underline transition-colors">
+                    Inicio
+                </a>
+                <span class="opacity-40" aria-hidden="true">/</span>
+                <span class="font-semibold text-[var(--color-primary-dark)]" aria-current="page">
+                    Política de Privacidad
+                </span>
+            </nav>
+
+            <h1 class="text-[clamp(2.35rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-5 [text-wrap:balance]">
+                Política de Privacidad y Protección de Datos
+            </h1>
+
+            <p class="text-[clamp(1.05rem,1.3vw,1.2rem)] leading-[1.7] text-[var(--color-text-soft)] m-0 mb-8 [text-wrap:pretty]">
+                En PsicoInfantil Castellón cuidamos con la máxima confidencialidad, rigor deontológico y empatía la información de cada niño, joven y familia. Te informamos de forma clara y transparente sobre el tratamiento de tus datos personales conforme al Reglamento General de Protección de Datos (RGPD) y la LOPDGDD.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center max-sm:items-start max-sm:flex-col gap-3 sm:gap-6 py-3.5 px-6 bg-white/70 backdrop-blur-[8px] border border-[rgba(23,54,97,0.07)] rounded-full max-sm:rounded-2xl text-[0.82rem] text-[var(--color-text-soft)] w-fit mx-auto max-sm:w-full">
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+                    Última revisión: Septiembre de 2026
+                </span>
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <Building2 size={14} aria-hidden="true" />
+                    Responsable: Ana Díaz (PsicoInfantil Castellón)
+                </span>
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <ShieldCheck size={14} aria-hidden="true" />
+                    RGPD (UE) 2016/679 · LOPDGDD 3/2018
+                </span>
+            </div>
+        </header>
+
+        <!-- 2. Datos del Responsable del Tratamiento (Bento destacado) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="controller-info-heading">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_12px_32px_rgba(23,54,97,0.04)]">
+                <div class="max-w-[760px] mb-8">
+                    <h2 id="controller-info-heading" class="text-[clamp(1.5rem,2.5vw,2rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        1. Responsable del tratamiento de tus datos
+                    </h2>
+                    <p class="text-[0.95rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        De conformidad con la normativa europea y española en materia de protección de datos, te informamos de que los datos de carácter personal facilitados a través de esta web o en el marco de la consulta serán tratados por:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Responsable -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Building2 size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Responsable legal</span>
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Ana Díaz</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Psicóloga · PsicoInfantil Castellón</span>
+                    </div>
+
+                    <!-- NIF -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <FileText size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Identificación fiscal</span>
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] font-mono">18949565A</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">N.I.F. persona física</span>
+                    </div>
+
+                    <!-- Domicilio -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <MapPin size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Domicilio profesional</span>
+                        </div>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">C/ Río Támesis, 1, Esc. 1, 4ºA</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">12005 Castellón de la Plana (Castellón)</span>
+                    </div>
+
+                    <!-- Email Privacidad -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Mail size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Canal de privacidad</span>
+                        </div>
+                        <a href="mailto:info@psicoinfantilcastellon.es" class="text-[0.98rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] underline transition-colors break-all">
+                            info@psicoinfantilcastellon.es
+                        </a>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Ejercicio de derechos y consultas</span>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Phone size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Atención telefónica</span>
+                        </div>
+                        <a href="tel:+34614992148" class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] hover:text-[var(--color-primary)] transition-colors">
+                            614 99 21 48
+                        </a>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Consultas previas y cita</span>
+                    </div>
+
+                    <!-- Compromiso -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <HeartHandshake size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Ámbito de actividad</span>
+                        </div>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Psicología infantil y juvenil</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Atención ética y confidencial</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Qué datos recopilamos y cómo los obtenemos (Categorías) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="max-w-[780px] mb-8">
+                    <h2 class="text-[clamp(1.4rem,2.2vw,1.85rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        2. ¿Qué datos recopilamos y cómo los obtenemos?
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        En PsicoInfantil Castellón aplicamos el principio de <strong>minimización de datos</strong> (art. 5.1.c del RGPD): únicamente solicitamos los datos estrictamente necesarios, adecuados y pertinentes para dar respuesta a tus solicitudes o prestarte nuestros servicios.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <!-- Datos de contacto e identificación -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)]">
+                            <UserCheck size={20} />
+                        </div>
+                        <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                            Datos identificativos y de contacto
+                        </h3>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Nombre y apellidos de los progenitores o tutores legales, teléfono de contacto, dirección de correo electrónico y localidad de residencia. Se recaban cuando completas el formulario de contacto de la web o nos escribes un correo electrónico.
+                        </p>
+                    </div>
+
+                    <!-- Datos orientativos de la consulta -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a]">
+                            <FileText size={20} />
+                        </div>
+                        <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                            Información preliminar del motivo de consulta
+                        </h3>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Edad orientativa o curso escolar del menor e inquietud o motivo de contacto que la familia decide compartir libremente para solicitar cita o valoración.
+                        </p>
+                        <p class="text-[0.8rem] leading-[1.55] text-[var(--color-text-soft)] bg-white p-3 rounded-xl border border-[rgba(23,54,97,0.06)] m-0">
+                            <strong class="text-[var(--color-primary-dark)]">Nota clínica:</strong> En este portal web no se solicitan datos de salud médica en profundidad. La anamnesis clínica y evaluación psicopedagógica completa se realiza exclusivamente de forma presencial y confidencial en consulta.
+                        </p>
+                    </div>
+
+                    <!-- Datos técnicos y de navegación -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47]">
+                            <Lock size={20} />
+                        </div>
+                        <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                            Datos de navegación técnica
+                        </h3>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Dirección IP anonimizada, fecha y hora de acceso, y parámetros técnicos del navegador para garantizar la seguridad de la conexión. Para más información sobre el uso de cookies y su configuración, consulta nuestra <a href="/politica-de-cookies" class="text-[var(--color-primary)] underline font-medium hover:text-[var(--color-primary-dark)]">Política de Cookies</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Finalidades del tratamiento (¿Para qué usamos los datos?) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="max-w-[780px] mb-8">
+                    <h2 class="text-[clamp(1.4rem,2.2vw,1.85rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        3. ¿Con qué finalidades tratamos tus datos personales?
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Los datos personales que nos facilitas se tratarán únicamente con las siguientes finalidades explícitas y legítimas:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-7">
+                    <!-- Finalidad 1 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.85rem] flex items-center justify-center">1</span>
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Atención y respuesta a consultas de las familias
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Atender, orientar y resolver las preguntas, mensajes o solicitudes de información recibidas a través del formulario de contacto de la web, correo electrónico o llamadas telefónicas.
+                        </p>
+                    </div>
+
+                    <!-- Finalidad 2 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.85rem] flex items-center justify-center">2</span>
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Coordinación de citas y agenda profesional
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Gestionar la solicitud de cita previa, calendarización de sesiones, confirmación de horarios y el seguimiento organizativo con los progenitores o tutores.
+                        </p>
+                    </div>
+
+                    <!-- Finalidad 3 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.85rem] flex items-center justify-center">3</span>
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Prestación del servicio de psicología infantil y juvenil
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Llevar a cabo las evaluaciones diagnósticas, sesiones terapéuticas, intervención en dificultades de aprendizaje (dislexia, TDAH, altas capacidades) y elaboración de informes orientativos acordados con la familia.
+                        </p>
+                    </div>
+
+                    <!-- Finalidad 4 -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-3">
+                            <span class="w-8 h-8 rounded-lg bg-[rgba(36,79,158,0.1)] text-[var(--color-primary)] font-bold text-[0.85rem] flex items-center justify-center">4</span>
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">
+                                Gestión contable, fiscal y facturación
+                            </h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Emitir las facturas correspondientes a las sesiones y servicios contratados, así como dar cumplimiento a las obligaciones tributarias y contables legales aplicables.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Garantía de no comercialización ni spam -->
+                <div class="bg-gradient-to-r from-[rgba(141,199,168,0.15)] to-[rgba(36,79,158,0.08)] border border-[rgba(141,199,168,0.3)] rounded-2xl p-5 sm:p-6 flex items-start gap-4">
+                    <div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-[#1e6e4a] shrink-0 shadow-sm">
+                        <CheckCircle2 size={22} />
+                    </div>
+                    <div>
+                        <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)] block mb-1">
+                            Compromiso de Cero Spam y Respeto Absoluto
+                        </strong>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            En PsicoInfantil Castellón <strong>no enviamos comunicaciones comerciales no solicitadas ni boletines publicitarios masivos</strong>. Tus datos jamás serán vendidos, alquilados ni transferidos a empresas publicitarias o terceros con fines mercantiles. Tampoco realizamos decisiones automatizadas ni perfilados comerciales con tu información.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Bases Jurídicas del Tratamiento (Legitimación) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="max-w-[780px] mb-8">
+                    <h2 class="text-[clamp(1.4rem,2.2vw,1.85rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        4. ¿Cuál es la legitimación legal para el tratamiento de tus datos?
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Cada tratamiento de datos que realizamos cuenta con un fundamento legal conforme al artículo 6 y al artículo 9 del RGPD:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-primary)]">Art. 6.1.a RGPD</span>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Consentimiento expreso</strong>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Al enviar el formulario de contacto o enviarnos una consulta, consientes voluntariamente el tratamiento de tus datos para que podamos responderte.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-primary)]">Art. 6.1.b RGPD</span>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Relación contractual</strong>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            La gestión de cita y la prestación de los servicios profesionales de psicología infantil y psicopedagogía solicitados por los padres o tutores.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-primary)]">Art. 6.1.c RGPD</span>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Obligación legal</strong>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Cumplimiento de las obligaciones fiscales, tributarias y contables derivadas de la facturación y la normativa sanitaria aplicable.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-primary)]">Art. 9.2.h RGPD</span>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Atención sanitaria</strong>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Tratamiento de datos asistenciales de salud en el marco del secreto profesional y de la Ley 41/2002 de autonomía del paciente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Protección Especial de Menores de Edad (Tarjeta azul marino destacada) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-[var(--color-primary-dark)] rounded-[1.75rem] p-[clamp(2rem,5vw,3.5rem)] text-white shadow-[0_16px_40px_rgba(23,54,97,0.15)]">
+                <div class="max-w-[760px] mb-7">
+                    <div class="inline-flex items-center gap-2 py-1 px-3 bg-white/10 rounded-full text-[0.8rem] font-medium text-[#cbd7e6] mb-4">
+                        <Users size={15} />
+                        <span>Protección especial de la infancia</span>
+                    </div>
+                    <h2 class="text-[clamp(1.75rem,3vw,2.35rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white m-0 mb-3">
+                        5. Tratamiento de datos de menores de edad
+                    </h2>
+                    <p class="text-[1rem] leading-[1.65] text-[#d1dced] m-0">
+                        En PsicoInfantil Castellón somos plenamente conscientes de la especial vulnerabilidad y derechos de niños, niñas y adolescentes:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9 border-t border-white/12 pt-7">
+                    <div class="flex flex-col gap-2">
+                        <strong class="text-[1.05rem] font-bold text-white">Consentimiento de padres o tutores legales</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            De acuerdo con el artículo 8 del RGPD y el artículo 7 de la Ley Orgánica 3/2018 (LOPDGDD), el tratamiento de los datos personales de menores de 14 años requiere el consentimiento explícito de sus titulares de la patria potestad o tutela legal. Todos los formularios del sitio web están diseñados para ser completados por los padres, madres o representantes legales.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <strong class="text-[1.05rem] font-bold text-white">Interés superior del menor y confidencialidad</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            Toda la información recabada durante la evaluación o intervención terapéutica se orienta exclusivamente al bienestar e interés superior del niño o adolescente, respetando su intimidad y salvaguardando los datos bajo estricto secreto profesional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Conservación de los Datos y Plazos Sanitarios -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="max-w-[780px] mb-8">
+                    <h2 class="text-[clamp(1.4rem,2.2vw,1.85rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        6. ¿Durante cuánto tiempo conservaremos tus datos?
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Los datos personales proporcionados se conservarán únicamente durante los plazos necesarios para la finalidad con la que fueron recabados o según los plazos legalmente establecidos:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <!-- Consultas Web -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <Clock size={18} />
+                            <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)]">Consultas informativas</strong>
+                        </div>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Los datos recibidos a través de formularios web o emails de consulta que no den lugar al inicio de una intervención psicológica se conservarán durante un período máximo de <strong>12 meses</strong> para atender posibles dudas de seguimiento, tras lo cual serán suprimidos.
+                        </p>
+                    </div>
+
+                    <!-- Documentación Asistencial y Clínica -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-2 text-[#1e6e4a]">
+                            <Scale size={18} />
+                            <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)]">Documentación clínica</strong>
+                        </div>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Conforme al artículo 21 de la <strong>Ley 41/2002</strong> de autonomía del paciente, las historias clínicas y expedientes asistenciales se conservarán como mínimo durante <strong>5 años</strong> contados desde la fecha del alta de cada proceso asistencial.
+                        </p>
+                    </div>
+
+                    <!-- Facturación y Fiscal -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-6 flex flex-col gap-2.5">
+                        <div class="flex items-center gap-2 text-[#8c3b47]">
+                            <FileText size={18} />
+                            <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)]">Facturación y contabilidad</strong>
+                        </div>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Los datos asociados a la emisión de facturas y registros contables se custodiarán durante los plazos fijados por la Ley General Tributaria y el Código de Comercio (mínimo de <strong>4 a 6 años</strong>).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Destinatarios de los datos y transferencias internacionales -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Destinatarios y cesiones -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <Share2 size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        7. Destinatarios y cesiones de datos
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        PsicoInfantil Castellón <strong>no cede ni vende datos a terceras empresas</strong> con fines comerciales, de prospección publicitaria ni de ningún otro tipo.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Únicamente tendrán acceso a la información:
+                    </p>
+                    <ul class="list-disc pl-5 space-y-1.5 text-[0.9rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                        <li><strong>Organismos públicos y Juzgados:</strong> cuando exista una obligación legal preceptiva o requerimiento judicial expreso.</li>
+                        <li><strong>Encargados de tratamiento indispensables:</strong> proveedores de servicios tecnológicos necesarios (alojamiento web seguro / hosting y soporte técnico bajo contrato vinculante de confidencialidad conforme al art. 28 del RGPD).</li>
+                    </ul>
+                </div>
+
+                <!-- Transferencias internacionales -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
+                        <ShieldCheck size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        8. Transferencias internacionales de datos
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        PsicoInfantil Castellón no realiza transferencias internacionales de datos fuera del <strong>Espacio Económico Europeo (EEE)</strong>.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Nuestros servidores y la infraestructura técnica de alojamiento web se encuentran alojados dentro de la Unión Europea bajo los más rigurosos estándares de seguridad y con plenas garantías en cumplimiento del RGPD.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 9. Derechos de las Personas Usuarias (Derechos ARCO+) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="user-rights-heading">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="max-w-[780px] mb-8">
+                    <h2 id="user-rights-heading" class="text-[clamp(1.4rem,2.2vw,1.85rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        9. ¿Cuáles son tus derechos y cómo puedes ejercerlos?
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Como usuario o representante legal de un menor, la legislación te otorga un conjunto de derechos que puedes ejercitar en cualquier momento de forma totalmente gratuita:
+                    </p>
+                </div>
+
+                <!-- Cuadrícula de Derechos -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mb-8">
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <Eye size={18} />
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Acceso</strong>
+                        </div>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Saber si en PsicoInfantil Castellón estamos tratando datos personales que te conciernen y obtener una copia de los mismos.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <RefreshCw size={18} />
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Rectificación</strong>
+                        </div>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Solicitar la corrección de aquellos datos que resulten inexactos, erróneos o incompletos.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <Trash2 size={18} />
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Supresión ("Al olvido")</strong>
+                        </div>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Pedir la eliminación de tus datos cuando, entre otros motivos, ya no sean necesarios para los fines que fueron recabados.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <Lock size={18} />
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Limitación del tratamiento</strong>
+                        </div>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Solicitar que suspendamos el tratamiento de tus datos en determinadas circunstancias (por ejemplo, mientras se verifica su exactitud).
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <Share2 size={18} />
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Portabilidad</strong>
+                        </div>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Recibir los datos personales que nos hayas facilitado en un formato estructurado, común y legible por máquina, o solicitar su traslado a otro responsable.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)]">
+                            <ShieldCheck size={18} />
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">Oposición y revocación</strong>
+                        </div>
+                        <p class="text-[0.86rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Oponerte al tratamiento de tus datos o retirar en cualquier momento el consentimiento previamente otorgado, sin que ello afecte a tratamientos anteriores.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Procedimiento para ejercer los derechos -->
+                <div class="p-6 rounded-2xl bg-[#fbfbfd] border border-[rgba(23,54,97,0.08)] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+                    <div class="max-w-[580px]">
+                        <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)] block mb-1">
+                            ¿Cómo puedes ejercer cualquiera de estos derechos?
+                        </strong>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Basta con enviar un correo electrónico a <a href="mailto:info@psicoinfantilcastellon.es" class="text-[var(--color-primary)] underline font-medium">info@psicoinfantilcastellon.es</a> o una comunicación escrita a nuestra sede en C/ Río Támesis, 1, Esc. 1, 4ºA, 12005 Castellón, indicando la referencia "Protección de Datos" y acompañando copia de un documento acreditativo de tu identidad.
+                        </p>
+                    </div>
+                    <a href="mailto:info@psicoinfantilcastellon.es?subject=Ejercicio%20de%20Derechos%20Protecci%C3%B3n%20de%20Datos" class="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full text-[0.88rem] font-bold bg-[var(--color-primary)] text-white shadow-sm hover:bg-[var(--color-primary-dark)] transition-all no-underline shrink-0 max-sm:w-full">
+                        <Mail size={16} />
+                        <span>Solicitar ejercicio de derechos</span>
+                    </a>
+                </div>
+
+                <!-- Tutela ante la AEPD -->
+                <div class="mt-6 pt-6 border-t border-[rgba(23,54,97,0.08)] flex items-start gap-3 text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)]">
+                    <AlertCircle size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
+                    <p class="m-0">
+                        Si consideras que no hemos atendido debidamente tus derechos o que el tratamiento de tus datos no se ajusta a la normativa vigente, tienes derecho a presentar una reclamación ante la autoridad de control: la <strong>Agencia Española de Protección de Datos (AEPD)</strong> a través de su sede electrónica en <a href="https://www.aepd.es" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] underline inline-flex items-center gap-1 font-medium">www.aepd.es <ExternalLink size={13} /></a> o por vía postal en C/ Jorge Juan, 6, 28001 Madrid.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Secreto Profesional y Medidas de Seguridad -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Secreto Profesional Sanitario -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <Scale size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        10. Secreto profesional y confidencialidad
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Toda la información tratada en el marco de la consulta psicológica está amparada por el <strong>deber deontológico de secreto profesional</strong>, regulado en el Código Deontológico de la Psicología.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Garantizamos una confidencialidad absoluta sobre cualquier dato clínico, diagnóstico, informe o circunstancia familiar compartida, tanto durante la prestación de los servicios como una vez finalizada la relación asistencial.
+                    </p>
+                </div>
+
+                <!-- Medidas de Seguridad Técnicas -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
+                        <Lock size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        11. Medidas de seguridad técnicas y organizativas
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        De conformidad con el artículo 32 del RGPD, PsicoInfantil Castellón ha adoptado las medidas técnicas y organizativas necesarias para garantizar un nivel de seguridad adecuado al riesgo de los datos tratados.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Entre estas medidas se incluye la navegación bajo protocolo seguro con cifrado <strong>SSL/TLS (HTTPS)</strong>, cortafuegos de seguridad en servidor, copias de seguridad periódicas y controles de acceso restringido a la documentación.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. Bloque de Dudas y Contacto Directo -->
+        <section class="bg-gradient-to-br from-[rgba(36,79,158,0.06)] to-[rgba(141,199,168,0.1)] border border-[rgba(36,79,158,0.12)] rounded-[1.5rem] p-[clamp(1.75rem,3vw,2.5rem)]" aria-label="Contacto para dudas de privacidad">
+            <h3 class="text-[1.25rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-2">
+                ¿Tienes cualquier duda o consulta sobre la privacidad de tus datos?
+            </h3>
+            <p class="text-[0.94rem] leading-[1.6] text-[var(--color-text-soft)] m-0 mb-6 max-w-[680px]">
+                En PsicoInfantil Castellón estamos a tu entera disposición para resolver cualquier pregunta sobre cómo custodiamos la información de tu familia o sobre el ejercicio de tus derechos:
+            </p>
+            <div class="flex flex-wrap gap-4 max-sm:flex-col">
+                <a href="mailto:info@psicoinfantilcastellon.es" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-[var(--color-primary)] text-white shadow-[0_6px_18px_rgba(36,79,158,0.16)] hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.22)] transition-all no-underline max-sm:w-full">
+                    <Mail size={16} />
+                    <span>info@psicoinfantilcastellon.es</span>
+                </a>
+                <a href="tel:+34614992148" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-white text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.12)] hover:bg-white/90 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-0.5 transition-all no-underline max-sm:w-full">
+                    <Phone size={16} />
+                    <span>Llamar al 614 99 21 48</span>
+                </a>
+            </div>
+        </section>
+    </div>
+</article>

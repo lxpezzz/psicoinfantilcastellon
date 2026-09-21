@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import AboutPage from "../components/about/AboutPage.astro";
+import Footer from "../components/layout/Footer.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
+---
+
+<Layout
+    title="Sobre mí | Ana Díaz Berbel · Psicóloga Infantil y Juvenil en Castellón"
+    description="Conoce a Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón (Col. CV-8027). Más de 20 años de experiencia clínica y 19 años dirigiendo el Departamento de Orientación de Ágora Lledó International School."
+>
+    <Header />
+    <MobileMenu />
+    <main class="site-main">
+        <AboutPage />
+    </main>
+    <Footer />
+    <BottomNav />
+</Layout>

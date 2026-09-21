@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import LegalNotice from "../components/legal/LegalNotice.astro";
+import Footer from "../components/layout/Footer.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
+---
+
+<Layout
+    title="Aviso Legal y Condiciones de Uso | PsicoInfantil Castellón"
+    description="Aviso legal, datos identificativos y condiciones de uso del sitio web de PsicoInfantil Castellón (Ana Díaz). Información transparente conforme a la LSSI-CE."
+>
+    <Header />
+    <MobileMenu />
+    <main class="site-main">
+        <LegalNotice />
+    </main>
+    <Footer />
+    <BottomNav />
+</Layout>

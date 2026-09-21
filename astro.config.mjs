@@ -7,6 +7,10 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   site: 'https://www.psicoinfantilcastellon.es',
   integrations: [sitemap()],
+  redirects: {
+    '/cookies': '/politica-de-cookies',
+    '/politica-de-privacidad': '/privacidad',
+  },
   vite: {
     plugins: [tailwindcss()],
   },

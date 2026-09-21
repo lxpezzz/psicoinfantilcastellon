@@ -1,0 +1,511 @@
+---
+import {
+    Cookie,
+    ShieldCheck,
+    SlidersHorizontal,
+    CheckCircle2,
+    ExternalLink,
+    Lock,
+    Info,
+    Phone,
+    Mail,
+} from "lucide-astro";
+---
+
+<article class="pt-[clamp(2rem,4vw,3.5rem)] pb-[clamp(4rem,7vw,6.5rem)] bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div class="section-container">
+        <!-- 1. Cabecera Hero con Breadcrumbs y Título -->
+        <header class="max-w-[860px] mx-auto text-center max-sm:text-left mb-[clamp(3rem,5vw,4.5rem)]">
+            <nav class="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-text-soft)] mb-6" aria-label="Miga de pan">
+                <a href="/" class="text-[var(--color-primary)] no-underline hover:text-[var(--color-primary-dark)] hover:underline transition-colors">
+                    Inicio
+                </a>
+                <span class="opacity-40" aria-hidden="true">/</span>
+                <span class="font-semibold text-[var(--color-primary-dark)]" aria-current="page">
+                    Política de Cookies
+                </span>
+            </nav>
+
+            <h1 class="text-[clamp(2.35rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-5 [text-wrap:balance]">
+                Política de Cookies
+            </h1>
+
+            <p class="text-[clamp(1.05rem,1.3vw,1.2rem)] leading-[1.7] text-[var(--color-text-soft)] m-0 mb-8 [text-wrap:pretty]">
+                En <strong class="text-[var(--color-primary-dark)] font-semibold">PsicoInfantil Castellón</strong> entendemos que la confianza de las familias comienza por el respeto más riguroso a su intimidad. Te explicamos de forma transparente, cercana y sin tecnicismos innecesarios qué cookies utilizamos, con qué finalidad y cómo puedes administrarlas libremente.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center max-sm:items-start max-sm:flex-col gap-3 sm:gap-6 py-3.5 px-6 bg-white/70 backdrop-blur-[8px] border border-[rgba(23,54,97,0.07)] rounded-full max-sm:rounded-2xl text-[0.82rem] text-[var(--color-text-soft)] w-fit mx-auto max-sm:w-full">
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+                    Última actualización: Septiembre de 2026
+                </span>
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <Lock size={14} aria-hidden="true" />
+                    Conforme a RGPD (UE 2016/679) y LSSI-CE
+                </span>
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <ShieldCheck size={14} aria-hidden="true" />
+                    Sin publicidad invasiva ni venta de datos
+                </span>
+            </div>
+        </header>
+
+        <!-- 2. Bento de Resumen: Claves de un vistazo -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-label="Aspectos esenciales de nuestra política">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Tarjeta 1: Highlight -->
+                <div class="bg-gradient-to-br from-white to-[#f4f8fc] border border-[rgba(36,79,158,0.16)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.04)] hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-0.5 transition-all flex flex-col gap-3.5">
+                    <div class="w-[46px] h-[46px] rounded-xl bg-[rgba(36,79,158,0.07)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <Cookie size={22} />
+                    </div>
+                    <h2 class="text-[1.2rem] font-[750] text-[var(--color-primary-dark)] m-0 leading-snug">
+                        ¿Qué es una cookie?
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Es un pequeño fichero técnico que se almacena en tu navegador al visitar nuestra web. Su objetivo exclusivo es recordar aspectos funcionales prácticos (como tus preferencias de navegación o mantener una visita segura). No es un programa ejecutable ni accede a tus archivos personales.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 2 -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.04)] hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-0.5 transition-all flex flex-col gap-3.5">
+                    <div class="w-[46px] h-[46px] rounded-xl bg-[rgba(36,79,158,0.07)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <ShieldCheck size={22} />
+                    </div>
+                    <h2 class="text-[1.2rem] font-[750] text-[var(--color-primary-dark)] m-0 leading-snug">
+                        Privacidad en consulta y web
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Como consulta sanitaria de psicología infantil y juvenil, el secreto profesional y la protección del menor son pilares inviolables. <strong class="text-[var(--color-primary-dark)]">Nunca</strong> registramos historiales clínicos, motivos de consulta, evaluaciones diagnósticas ni datos de menores a través de cookies.
+                    </p>
+                </div>
+
+                <!-- Tarjeta 3 -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.04)] hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-0.5 transition-all flex flex-col gap-3.5">
+                    <div class="w-[46px] h-[46px] rounded-xl bg-[rgba(36,79,158,0.07)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <SlidersHorizontal size={22} />
+                    </div>
+                    <h2 class="text-[1.2rem] font-[750] text-[var(--color-primary-dark)] m-0 leading-snug">
+                        Control total en tu mano
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Tú decides en todo momento. Puedes permitir, restringir o eliminar las cookies en cualquier instante desde las opciones de tu navegador web o rechazar las analíticas no esenciales sin perder acceso a ninguno de nuestros contenidos informativos ni de contacto.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Inventario detallado de Cookies -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="inventory-heading">
+            <div class="text-center max-w-[780px] mx-auto mb-[clamp(2rem,4vw,3rem)]">
+                <h2 id="inventory-heading" class="text-[clamp(1.85rem,3.2vw,2.6rem)] font-extrabold text-[var(--color-primary-dark)] leading-[1.18] tracking-[-0.03em] m-0 mb-3.5 [text-wrap:balance]">
+                    ¿Qué cookies utiliza este sitio web?
+                </h2>
+                <p class="text-[clamp(0.96rem,1.1vw,1.05rem)] leading-[1.65] text-[var(--color-text-soft)] m-0 [text-wrap:pretty]">
+                    Clasificamos las cookies según su finalidad para que conozcas con exactitud quién las emite, cuánto tiempo permanecen y cuál es su función técnica.
+                </p>
+            </div>
+
+            <!-- Bloque 1: Cookies Técnicas y Necesarias -->
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-[clamp(1.25rem,3.5vw,2.5rem)] shadow-[0_8px_26px_rgba(23,54,97,0.035)] mb-8">
+                <div class="mb-7">
+                    <div class="flex flex-wrap items-center gap-3 mb-2.5">
+                        <span class="inline-block text-[0.72rem] font-[750] uppercase tracking-[0.05em] py-1 px-2.5 rounded-full bg-[rgba(36,79,158,0.09)] text-[var(--color-primary)]">
+                            Siempre activas
+                        </span>
+                        <h3 class="text-[1.3rem] font-[750] text-[var(--color-primary-dark)] m-0">
+                            1. Cookies técnicas y estrictamente necesarias
+                        </h3>
+                    </div>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Son imprescindibles para el funcionamiento seguro de la web, la correcta distribución de contenidos y para recordar tu consentimiento. Al ser indispensables para prestar el servicio solicitado, están exentas de consentimiento previo conforme al artículo 22.2 de la LSSI-CE.
+                    </p>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-[rgba(23,54,97,0.07)]">
+                    <table class="w-full border-collapse text-left text-[0.88rem]">
+                        <thead class="bg-slate-50 text-[var(--color-primary-dark)] font-bold border-b border-[rgba(23,54,97,0.08)] whitespace-nowrap">
+                            <tr>
+                                <th scope="col" class="py-3.5 px-4.5">Cookie</th>
+                                <th scope="col" class="py-3.5 px-4.5">Titular</th>
+                                <th scope="col" class="py-3.5 px-4.5">Finalidad</th>
+                                <th scope="col" class="py-3.5 px-4.5">Duración</th>
+                                <th scope="col" class="py-3.5 px-4.5">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[rgba(23,54,97,0.05)]">
+                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
+                                <td class="py-4 px-4.5 align-top">
+                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
+                                        cookie_consent
+                                    </code>
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">PsicoInfantil (Propia)</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
+                                    Registra y recuerda si has aceptado o configurado la política de cookies para no solicitarlo repetidamente en cada página.
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">1 año</td>
+                                <td class="py-4 px-4.5 align-top">
+                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)] whitespace-nowrap">
+                                        Técnica
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
+                                <td class="py-4 px-4.5 align-top">
+                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
+                                        astro_session
+                                    </code>
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">PsicoInfantil (Propia)</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
+                                    Gestiona la sesión técnica durante la navegación para garantizar la estabilidad y navegación fluida.
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">Sesión</td>
+                                <td class="py-4 px-4.5 align-top">
+                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)] whitespace-nowrap">
+                                        Técnica
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
+                                <td class="py-4 px-4.5 align-top">
+                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
+                                        __cf_bm / sec_*
+                                    </code>
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">Seguridad CDN / Servidor</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
+                                    Distingue el tráfico de personas reales frente a robots automatizados que intentan saturar el servidor (protección anti-spam y ciberseguridad).
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">30 min - 24 horas</td>
+                                <td class="py-4 px-4.5 align-top">
+                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)] whitespace-nowrap">
+                                        Seguridad
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bloque 2: Cookies de Rendimiento y Analítica -->
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-[clamp(1.25rem,3.5vw,2.5rem)] shadow-[0_8px_26px_rgba(23,54,97,0.035)] mb-8">
+                <div class="mb-7">
+                    <div class="flex flex-wrap items-center gap-3 mb-2.5">
+                        <span class="inline-block text-[0.72rem] font-[750] uppercase tracking-[0.05em] py-1 px-2.5 rounded-full bg-[rgba(141,199,168,0.2)] text-[#1e6e4a]">
+                            Métricas anónimas
+                        </span>
+                        <h3 class="text-[1.3rem] font-[750] text-[var(--color-primary-dark)] m-0">
+                            2. Cookies analíticas y de rendimiento
+                        </h3>
+                    </div>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Nos permiten comprender qué temas de orientación familiar (como dislexia, TDAH o dificultades escolares) generan mayor interés en las familias de Castellón, ayudándonos a mejorar las explicaciones y recursos del sitio web. Toda la información se recopila de forma estadística, agregada y con anonimización de direcciones IP.
+                    </p>
+                </div>
+
+                <div class="overflow-x-auto rounded-2xl border border-[rgba(23,54,97,0.07)]">
+                    <table class="w-full border-collapse text-left text-[0.88rem]">
+                        <thead class="bg-slate-50 text-[var(--color-primary-dark)] font-bold border-b border-[rgba(23,54,97,0.08)] whitespace-nowrap">
+                            <tr>
+                                <th scope="col" class="py-3.5 px-4.5">Cookie</th>
+                                <th scope="col" class="py-3.5 px-4.5">Titular</th>
+                                <th scope="col" class="py-3.5 px-4.5">Finalidad</th>
+                                <th scope="col" class="py-3.5 px-4.5">Duración</th>
+                                <th scope="col" class="py-3.5 px-4.5">Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-[rgba(23,54,97,0.05)]">
+                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
+                                <td class="py-4 px-4.5 align-top">
+                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
+                                        _ga
+                                    </code>
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">Google Analytics (Google Ireland Ltd.)</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
+                                    Genera un identificador aleatorio y anónimo para calcular el número de visitas únicas a la web sin identificar personalmente a ningún visitante.
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">2 años</td>
+                                <td class="py-4 px-4.5 align-top">
+                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(141,199,168,0.2)] text-[#1e6e4a] whitespace-nowrap">
+                                        Analítica
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
+                                <td class="py-4 px-4.5 align-top">
+                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
+                                        _ga_*
+                                    </code>
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">Google Analytics (Google Ireland Ltd.)</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
+                                    Conserva el estado de la sesión para saber el tiempo medio de lectura o las secciones más consultadas de los servicios.
+                                </td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">2 años</td>
+                                <td class="py-4 px-4.5 align-top">
+                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(141,199,168,0.2)] text-[#1e6e4a] whitespace-nowrap">
+                                        Analítica
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Bloque 3: Servicios Externos Interactivos -->
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-[clamp(1.25rem,3.5vw,2.5rem)] shadow-[0_8px_26px_rgba(23,54,97,0.035)]">
+                <div class="mb-6">
+                    <div class="flex flex-wrap items-center gap-3 mb-2.5">
+                        <span class="inline-block text-[0.72rem] font-[750] uppercase tracking-[0.05em] py-1 px-2.5 rounded-full bg-[rgba(223,162,170,0.25)] text-[#8c3b47]">
+                            Servicios de terceros
+                        </span>
+                        <h3 class="text-[1.3rem] font-[750] text-[var(--color-primary-dark)] m-0">
+                            3. Herramientas externas integradas
+                        </h3>
+                    </div>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Para ofrecerte la máxima facilidad al contactar o ubicar la consulta presencial en Castellón de la Plana, integramos enlaces a plataformas externas reconocidas:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[1.02rem] font-bold text-[var(--color-primary-dark)]">Google Maps</span>
+                            <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)]">
+                                Ubicación
+                            </span>
+                        </div>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Permite visualizar de manera interactiva la ubicación de la consulta física en el centro de Castellón. Si interactúas con el mapa, Google puede instalar cookies técnicas para recordar tus preferencias de visualización o zoom.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 sm:p-6">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-[1.02rem] font-bold text-[var(--color-primary-dark)]">WhatsApp Directo</span>
+                            <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)]">
+                                Contacto
+                            </span>
+                        </div>
+                        <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                            Facilita escribirnos por WhatsApp con un solo clic. El enlace te redirige a los servidores seguros de WhatsApp (Meta Platforms), sin instalar cookies en tu navegador hasta que tú decides acceder voluntariamente a la aplicación.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Compromiso Ético: Lo que NUNCA hacemos -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="ethics-heading">
+            <div class="bg-[var(--color-primary-dark)] rounded-[1.75rem] p-[clamp(2rem,5vw,3.5rem)] text-white shadow-[0_16px_40px_rgba(23,54,97,0.15)]">
+                <div class="mb-8">
+                    <span class="inline-block text-[0.76rem] font-[750] uppercase tracking-[0.08em] bg-[rgba(223,162,170,0.2)] text-[#dfa2aa] py-1.5 px-3.5 rounded-full mb-3.5">
+                        Compromiso Deontológico
+                    </span>
+                    <h2 id="ethics-heading" class="text-[clamp(1.75rem,3vw,2.35rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white m-0 mb-3.5">
+                        Lo que NUNCA hacemos con las cookies
+                    </h2>
+                    <p class="text-[1rem] leading-[1.65] text-[#d1dced] max-w-[680px] m-0">
+                        La psicología infantil y juvenil exige el más riguroso estándar de ética y respeto a la intimidad. En este sitio web no encontrarás prácticas comerciales opacas:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9 border-t border-white/12 pt-8">
+                    <div class="flex gap-4 items-start">
+                        <CheckCircle2 size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <div>
+                            <strong class="block text-[1.02rem] font-bold text-white mb-1.5">
+                                Sin venta ni cesión de datos personales
+                            </strong>
+                            <p class="text-[0.88rem] leading-[1.6] text-[#cbd7e6] m-0">
+                                No comercializamos tus identificadores de navegación con corredores de información (data brokers) ni plataformas publicitarias.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <CheckCircle2 size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <div>
+                            <strong class="block text-[1.02rem] font-bold text-white mb-1.5">
+                                Sin publicidad programática ni retargeting
+                            </strong>
+                            <p class="text-[0.88rem] leading-[1.6] text-[#cbd7e6] m-0">
+                                No te perseguiremos con anuncios comerciales ni banners en otras webs tras consultar nuestros servicios o artículos.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <CheckCircle2 size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <div>
+                            <strong class="block text-[1.02rem] font-bold text-white mb-1.5">
+                                Protección reforzada para la infancia
+                            </strong>
+                            <p class="text-[0.88rem] leading-[1.6] text-[#cbd7e6] m-0">
+                                Jamás elaboramos perfiles conductuales ni comerciales sobre menores de edad en ninguna circunstancia.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 items-start">
+                        <CheckCircle2 size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
+                        <div>
+                            <strong class="block text-[1.02rem] font-bold text-white mb-1.5">
+                                Anonimización activa de direcciones IP
+                            </strong>
+                            <p class="text-[0.88rem] leading-[1.6] text-[#cbd7e6] m-0">
+                                Las métricas analíticas impiden asociar cualquier dato de navegación a tu persona, identidad o domicilio.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Cómo desactivar o eliminar cookies en tu navegador -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="management-heading">
+            <div class="text-center max-w-[780px] mx-auto mb-[clamp(2rem,4vw,3rem)]">
+                <h2 id="management-heading" class="text-[clamp(1.85rem,3.2vw,2.6rem)] font-extrabold text-[var(--color-primary-dark)] leading-[1.18] tracking-[-0.03em] m-0 mb-3.5 [text-wrap:balance]">
+                    Cómo gestionar o eliminar las cookies en tu navegador
+                </h2>
+                <p class="text-[clamp(0.96rem,1.1vw,1.05rem)] leading-[1.65] text-[var(--color-text-soft)] m-0 [text-wrap:pretty]">
+                    Puedes permitir, bloquear o borrar las cookies ya instaladas en cualquier momento a través del menú de configuración de tu navegador web habitual:
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Google Chrome -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-[1.15rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-3.5">
+                            Google Chrome
+                        </h3>
+                        <ol class="m-0 mb-6 pl-5 text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] space-y-2 list-decimal">
+                            <li>Abre el menú de opciones (icono de tres puntos arriba a la derecha).</li>
+                            <li>Entra en <strong class="text-[var(--color-primary-dark)]">Configuración &gt; Privacidad y seguridad</strong>.</li>
+                            <li>Haz clic en <strong class="text-[var(--color-primary-dark)]">Cookies de terceros</strong> para bloquearlas o eliminar datos de sitios.</li>
+                        </ol>
+                    </div>
+                    <a
+                        href="https://support.google.com/chrome/answer/95647?hl=es"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 text-[0.84rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] hover:translate-x-0.5 transition-all mt-auto no-underline"
+                    >
+                        <span>Instrucciones oficiales de Google Chrome</span>
+                        <ExternalLink size={14} />
+                    </a>
+                </div>
+
+                <!-- Apple Safari -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-[1.15rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-3.5">
+                            Apple Safari (iOS / Mac)
+                        </h3>
+                        <ol class="m-0 mb-6 pl-5 text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] space-y-2 list-decimal">
+                            <li>En Mac: accede a <strong class="text-[var(--color-primary-dark)]">Safari &gt; Ajustes &gt; Privacidad</strong>.</li>
+                            <li>En iPhone o iPad: ve a <strong class="text-[var(--color-primary-dark)]">Ajustes del sistema &gt; Safari &gt; Avanzado</strong>.</li>
+                            <li>Activa la opción <strong class="text-[var(--color-primary-dark)]">Bloquear todas las cookies</strong> o borra datos almacenados.</li>
+                        </ol>
+                    </div>
+                    <a
+                        href="https://support.apple.com/es-es/105082"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 text-[0.84rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] hover:translate-x-0.5 transition-all mt-auto no-underline"
+                    >
+                        <span>Instrucciones oficiales de Apple Safari</span>
+                        <ExternalLink size={14} />
+                    </a>
+                </div>
+
+                <!-- Mozilla Firefox -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-[1.15rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-3.5">
+                            Mozilla Firefox
+                        </h3>
+                        <ol class="m-0 mb-6 pl-5 text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] space-y-2 list-decimal">
+                            <li>Abre el menú principal (tres líneas horizontales) y pulsa en <strong class="text-[var(--color-primary-dark)]">Ajustes</strong>.</li>
+                            <li>Accede a la pestaña <strong class="text-[var(--color-primary-dark)]">Privacidad &amp; Seguridad</strong>.</li>
+                            <li>En el apartado <strong class="text-[var(--color-primary-dark)]">Cookies y datos del sitio</strong> pulsa en <em>Limpiar datos</em>.</li>
+                        </ol>
+                    </div>
+                    <a
+                        href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 text-[0.84rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] hover:translate-x-0.5 transition-all mt-auto no-underline"
+                    >
+                        <span>Instrucciones oficiales de Mozilla Firefox</span>
+                        <ExternalLink size={14} />
+                    </a>
+                </div>
+
+                <!-- Microsoft Edge -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col justify-between">
+                    <div>
+                        <h3 class="text-[1.15rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-3.5">
+                            Microsoft Edge
+                        </h3>
+                        <ol class="m-0 mb-6 pl-5 text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] space-y-2 list-decimal">
+                            <li>Haz clic en el icono de configuración (tres puntos) &gt; <strong class="text-[var(--color-primary-dark)]">Configuración</strong>.</li>
+                            <li>Selecciona <strong class="text-[var(--color-primary-dark)]">Cookies y permisos del sitio</strong> en el panel izquierdo.</li>
+                            <li>Elige <strong class="text-[var(--color-primary-dark)]">Administrar y eliminar cookies y datos del sitio</strong>.</li>
+                        </ol>
+                    </div>
+                    <a
+                        href="https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex items-center gap-1.5 text-[0.84rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] hover:translate-x-0.5 transition-all mt-auto no-underline"
+                    >
+                        <span>Instrucciones oficiales de Microsoft Edge</span>
+                        <ExternalLink size={14} />
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Marco Legal y Contacto -->
+        <section class="flex flex-col gap-8" aria-label="Información legal y contacto">
+            <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.08)] rounded-[1.4rem] p-7 sm:p-9">
+                <h3 class="flex items-center gap-2.5 text-[1.15rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-4">
+                    <Info size={20} class="text-[var(--color-primary)]" />
+                    Marco Legal y Responsable del Tratamiento
+                </h3>
+                <p class="text-[0.92rem] leading-[1.7] text-[var(--color-text-soft)] m-0 mb-3">
+                    El responsable del tratamiento de los datos asociados a este sitio web es <strong class="text-[var(--color-primary-dark)] font-semibold">PsicoInfantil Castellón</strong>, con consulta física profesional en Castellón de la Plana (Comunidad Valenciana, España). Esta política de cookies se rige por el Reglamento General de Protección de Datos (RGPD UE 2016/679), la Ley Orgánica de Protección de Datos y Garantía de Derechos Digitales (LOPDGDD 3/2018) y la Ley de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE 34/2002).
+                </p>
+                <p class="text-[0.92rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
+                    Puedes ejercer tus derechos de acceso, rectificación, supresión, limitación y revocación del consentimiento en cualquier momento mediante comunicación por escrito a nuestro canal de privacidad.
+                </p>
+            </div>
+
+            <div class="bg-gradient-to-br from-[rgba(36,79,158,0.06)] to-[rgba(141,199,168,0.1)] border border-[rgba(36,79,158,0.12)] rounded-[1.5rem] p-[clamp(1.75rem,3vw,2.5rem)]">
+                <h3 class="text-[1.25rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-2">
+                    ¿Tienes alguna duda sobre nuestra política?
+                </h3>
+                <p class="text-[0.94rem] leading-[1.6] text-[var(--color-text-soft)] m-0 mb-6 max-w-[680px]">
+                    Si necesitas aclarar cualquier punto acerca de cómo protegemos tu información o sobre la atención en consulta, estamos a tu entera disposición:
+                </p>
+                <div class="flex flex-wrap gap-4 max-sm:flex-col">
+                    <a href="tel:+34614992148" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-[var(--color-primary)] text-white shadow-[0_6px_18px_rgba(36,79,158,0.16)] hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.22)] transition-all no-underline max-sm:w-full">
+                        <Phone size={16} />
+                        <span>Llamar al 614 99 21 48</span>
+                    </a>
+                    <a href="mailto:info@psicoinfantilcastellon.es" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-white text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.12)] hover:bg-white/90 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-0.5 transition-all no-underline max-sm:w-full">
+                        <Mail size={16} />
+                        <span>info@psicoinfantilcastellon.es</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+</article>

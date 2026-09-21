@@ -1,0 +1,337 @@
+---
+import {
+    Scale,
+    Building2,
+    ShieldCheck,
+    FileText,
+    Gavel,
+    Lock,
+    MapPin,
+    Mail,
+    Phone,
+    ExternalLink,
+    AlertCircle,
+    UserCheck,
+} from "lucide-astro";
+---
+
+<article class="pt-[clamp(2rem,4vw,3.5rem)] pb-[clamp(4rem,7vw,6.5rem)] bg-[var(--color-bg)] text-[var(--color-text)]">
+    <div class="section-container">
+        <!-- 1. Cabecera Hero con Breadcrumbs y Título (sin eyebrow) -->
+        <header class="max-w-[860px] mx-auto text-center max-sm:text-left mb-[clamp(3rem,5vw,4.5rem)]">
+            <nav class="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-text-soft)] mb-6" aria-label="Miga de pan">
+                <a href="/" class="text-[var(--color-primary)] no-underline hover:text-[var(--color-primary-dark)] hover:underline transition-colors">
+                    Inicio
+                </a>
+                <span class="opacity-40" aria-hidden="true">/</span>
+                <span class="font-semibold text-[var(--color-primary-dark)]" aria-current="page">
+                    Aviso Legal
+                </span>
+            </nav>
+
+            <h1 class="text-[clamp(2.35rem,4.5vw,3.5rem)] font-extrabold leading-[1.1] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-5 [text-wrap:balance]">
+                Aviso Legal y Términos de Uso
+            </h1>
+
+            <p class="text-[clamp(1.05rem,1.3vw,1.2rem)] leading-[1.7] text-[var(--color-text-soft)] m-0 mb-8 [text-wrap:pretty]">
+                En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), ponemos a disposición de las familias y usuarios los datos identificativos y las condiciones que regulan el acceso y uso de este sitio web.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center max-sm:items-start max-sm:flex-col gap-3 sm:gap-6 py-3.5 px-6 bg-white/70 backdrop-blur-[8px] border border-[rgba(23,54,97,0.07)] rounded-full max-sm:rounded-2xl text-[0.82rem] text-[var(--color-text-soft)] w-fit mx-auto max-sm:w-full">
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
+                    Última revisión: Septiembre de 2026
+                </span>
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <Building2 size={14} aria-hidden="true" />
+                    Titular: Ana Díaz (PsicoInfantil Castellón)
+                </span>
+                <span class="inline-flex items-center gap-2 font-medium">
+                    <Scale size={14} aria-hidden="true" />
+                    Conforme a la Ley 34/2002 (LSSI-CE)
+                </span>
+            </div>
+        </header>
+
+        <!-- 2. Datos Identificativos del Titular (Bento destacado) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]" aria-labelledby="owner-info-heading">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-[clamp(1.5rem,4vw,2.75rem)] shadow-[0_12px_32px_rgba(23,54,97,0.04)]">
+                <div class="max-w-[760px] mb-8">
+                    <h2 id="owner-info-heading" class="text-[clamp(1.5rem,2.5vw,2rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        1. Datos identificativos del titular
+                    </h2>
+                    <p class="text-[0.95rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        De conformidad con la normativa española de la sociedad de la información, se detallan a continuación los datos de la entidad titular de este portal web:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                    <!-- Titular -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Building2 size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Titular de la actividad</span>
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Ana Díaz</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Psicología infantil y de la adolescencia</span>
+                    </div>
+
+                    <!-- NIF -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <FileText size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Identificación fiscal</span>
+                        </div>
+                        <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] font-mono">18949565A</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">N.I.F. persona física</span>
+                    </div>
+
+                    <!-- Domicilio -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <MapPin size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Domicilio profesional</span>
+                        </div>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">C/ Río Támesis, 1, Esc. 1, 4ºA</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">12005 Castellón de la Plana (Castellón)</span>
+                    </div>
+
+                    <!-- Correo electrónico -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Mail size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Correo de contacto</span>
+                        </div>
+                        <a href="mailto:info@psicoinfantilcastellon.es" class="text-[0.98rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] underline transition-colors break-all">
+                            info@psicoinfantilcastellon.es
+                        </a>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Consultas generales y legales</span>
+                    </div>
+
+                    <!-- Teléfono -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Phone size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Atención telefónica</span>
+                        </div>
+                        <a href="tel:+34614992148" class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] hover:text-[var(--color-primary)] transition-colors">
+                            614 99 21 48
+                        </a>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Cita previa y asesoramiento</span>
+                    </div>
+
+                    <!-- Dominio -->
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 flex flex-col gap-1.5">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <ExternalLink size={18} />
+                            <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Dominio oficial</span>
+                        </div>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">psicoinfantilcastellon.es</strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">Portal web de la consulta</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Objeto del Sitio Web y Condición de Usuario -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Objeto del sitio -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <FileText size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        2. Objeto del sitio web
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        El presente sitio web tiene por objeto ofrecer a las familias, educadores y tutores información clara y rigurosa sobre los servicios de psicología infantil y juvenil prestados por <strong>PsicoInfantil Castellón</strong>.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        A través del portal se difunden las áreas de intervención (evaluación diagnóstica, informes psicopedagógicos, tratamiento de dislexia, TDAH, altas capacidades, rendimiento escolar y orientación a padres), así como los canales para concertar citas y resolver consultas profesionales.
+                    </p>
+                </div>
+
+                <!-- Condición de usuario -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
+                        <UserCheck size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        3. Condición de usuario y aceptación
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        El acceso, navegación y utilización de cualquier sección de este sitio web atribuye la condición de <strong>Usuario</strong>, lo que implica la aceptación plena y sin reservas de todas y cada una de las disposiciones recogidas en este Aviso Legal desde el mismo momento en que se accede al portal.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Si el usuario no estuviera de acuerdo con alguna de las condiciones aquí estipuladas, deberá abstenerse de utilizar y navegar por el presente sitio web.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Condiciones de Uso y Responsabilidades del Usuario -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-[clamp(1.5rem,3.5vw,2.5rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="max-w-[780px] mb-7">
+                    <h2 class="text-[clamp(1.4rem,2.2vw,1.85rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-2.5">
+                        4. Obligaciones y uso adecuado del portal
+                    </h2>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        El usuario se compromete a realizar un uso diligente, correcto y lícito del sitio web de acuerdo con la legislación vigente, la moral, las buenas costumbres y el orden público:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 sm:p-6 flex flex-col gap-2">
+                        <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)]">Uso responsable y de buena fe</strong>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Queda terminantemente prohibido utilizar el portal para actividades ilícitas, contrarias a la buena fe o que infrinjan derechos de terceros o normativas vigentes.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 sm:p-6 flex flex-col gap-2">
+                        <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)]">Veracidad de los datos</strong>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            En las comunicaciones o solicitudes de cita que realice el usuario, éste garantiza que la información aportada es veraz, exacta y correspondiente a su propia identidad o representación legal.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#fbfbfd] border border-[rgba(23,54,97,0.06)] rounded-2xl p-5 sm:p-6 flex flex-col gap-2">
+                        <strong class="text-[1rem] font-bold text-[var(--color-primary-dark)]">Integridad y seguridad técnica</strong>
+                        <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            El usuario se abstendrá de introducir virus informáticos, ejecutar scripts dañinos o intentar vulnerar las medidas de seguridad del servidor o de la web.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Propiedad Intelectual e Industrial (Tarjeta azul marino destacada) -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-[var(--color-primary-dark)] rounded-[1.75rem] p-[clamp(2rem,5vw,3.5rem)] text-white shadow-[0_16px_40px_rgba(23,54,97,0.15)]">
+                <div class="max-w-[720px] mb-7">
+                    <h2 class="text-[clamp(1.75rem,3vw,2.35rem)] font-extrabold leading-[1.15] tracking-[-0.03em] text-white m-0 mb-3">
+                        5. Propiedad intelectual e industrial
+                    </h2>
+                    <p class="text-[1rem] leading-[1.65] text-[#d1dced] m-0">
+                        Todos los elementos que forman parte de este sitio web están rigurosamente protegidos por los derechos de propiedad intelectual e industrial españoles e internacionales:
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-9 border-t border-white/12 pt-7">
+                    <div class="flex flex-col gap-2">
+                        <strong class="text-[1.05rem] font-bold text-white">Titularidad exclusiva de contenidos</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            Los textos divulgativos, descripciones de intervención, estructura pedagógica, logotipos, marcas distintivas, fotografías, iconografía y el propio código fuente son propiedad exclusiva de <strong>Ana Díaz</strong> o cuentan con la preceptiva licencia de uso.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-col gap-2">
+                        <strong class="text-[1.05rem] font-bold text-white">Uso personal autorizado y límites comerciales</strong>
+                        <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
+                            Se autoriza la visualización, descarga e impresión de los materiales informativos única y exclusivamente para el uso personal, familiar y privado. Queda expresamente prohibida su copia, distribución, comunicación pública o transformación con fines lucrativos o comerciales sin autorización previa por escrito.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Exclusión de Garantías, Responsabilidad y Aviso Clínico -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Aviso Clínico Orientativo -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47] mb-1">
+                        <AlertCircle size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        6. Naturaleza informativa y aviso profesional
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Los contenidos, artículos y descripciones que aparecen en este portal tienen un carácter estrictamente <strong>informativo, pedagógico y orientativo</strong> para las familias.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        En ningún caso sustituyen ni deben ser interpretados como un diagnóstico clínico, dictamen psicopedagógico o tratamiento individualizado. Cada niño y adolescente presenta particularidades evolutivas que requieren una valoración directa y personalizada en consulta psicológica.
+                    </p>
+                </div>
+
+                <!-- Disponibilidad y Responsabilidad Técnica -->
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-7 sm:p-8 shadow-[0_8px_24px_rgba(23,54,97,0.035)] flex flex-col gap-3">
+                    <div class="w-11 h-11 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                        <ShieldCheck size={20} />
+                    </div>
+                    <h2 class="text-[1.25rem] font-bold text-[var(--color-primary-dark)] m-0">
+                        7. Exclusión de responsabilidad técnica
+                    </h2>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        La titular aplica los protocolos de seguridad necesarios para evitar la presencia de elementos lesivos en el servidor. No obstante, no se hace responsable de daños derivados de interferencias, omisiones, interrupciones técnicas imprevistas o virus informáticos ajenos a su control.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Asimismo, respecto a los enlaces externos a terceros (como WhatsApp o Google Maps), PsicoInfantil no asume responsabilidad sobre la disponibilidad o políticas de privacidad de dichas plataformas externas.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Modificaciones, Derecho de Exclusión y Jurisdicción -->
+        <section class="mb-[clamp(3.5rem,6vw,5.5rem)]">
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] p-[clamp(1.5rem,3.5vw,2.5rem)] shadow-[0_8px_24px_rgba(23,54,97,0.035)]">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Modificaciones -->
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <FileText size={18} />
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">Modificaciones</h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            La titular se reserva la facultad de actualizar, modificar o eliminar contenidos, servicios y la estructura de la web en cualquier momento sin necesidad de preaviso para mantener la máxima calidad informativa.
+                        </p>
+                    </div>
+
+                    <!-- Derecho de exclusión -->
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Lock size={18} />
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">Derecho de exclusión</h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            Se reserva el derecho a denegar o suspender el acceso al portal a aquellos usuarios que incumplan las presentes condiciones de uso o atenten contra la seguridad del sistema informático.
+                        </p>
+                    </div>
+
+                    <!-- Ley aplicable y fuero -->
+                    <div class="flex flex-col gap-2">
+                        <div class="flex items-center gap-2 text-[var(--color-primary)] mb-1">
+                            <Gavel size={18} />
+                            <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0">Ley y jurisdicción</h3>
+                        </div>
+                        <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                            La relación entre el titular y el usuario se rige íntegramente por la legislación española. Para cualquier litigio o controversia, ambas partes se someten a los <strong>Juzgados y Tribunales de Castellón de la Plana</strong>, sin perjuicio del fuero imperativo que asista al consumidor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. Bloque de Dudas y Contacto Directo -->
+        <section class="bg-gradient-to-br from-[rgba(36,79,158,0.06)] to-[rgba(141,199,168,0.1)] border border-[rgba(36,79,158,0.12)] rounded-[1.5rem] p-[clamp(1.75rem,3vw,2.5rem)]" aria-label="Contacto para cuestiones legales">
+            <h3 class="text-[1.25rem] font-[750] text-[var(--color-primary-dark)] m-0 mb-2">
+                ¿Tienes cualquier duda acerca de las condiciones de este portal?
+            </h3>
+            <p class="text-[0.94rem] leading-[1.6] text-[var(--color-text-soft)] m-0 mb-6 max-w-[680px]">
+                Si necesitas resolver alguna consulta sobre el aviso legal, la propiedad intelectual o solicitar información adicional sobre nuestra consulta, puedes contactarnos directamente:
+            </p>
+            <div class="flex flex-wrap gap-4 max-sm:flex-col">
+                <a href="mailto:info@psicoinfantilcastellon.es" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-[var(--color-primary)] text-white shadow-[0_6px_18px_rgba(36,79,158,0.16)] hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.22)] transition-all no-underline max-sm:w-full">
+                    <Mail size={16} />
+                    <span>info@psicoinfantilcastellon.es</span>
+                </a>
+                <a href="tel:+34614992148" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-white text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.12)] hover:bg-white/90 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-0.5 transition-all no-underline max-sm:w-full">
+                    <Phone size={16} />
+                    <span>Llamar al 614 99 21 48</span>
+                </a>
+            </div>
+        </section>
+    </div>
+</article>
