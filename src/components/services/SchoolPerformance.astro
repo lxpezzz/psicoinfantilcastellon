@@ -1,0 +1,247 @@
+---
+import {
+    ArrowUpRight,
+    BookOpenCheck,
+    Brain,
+    CalendarDays,
+    CircleAlert,
+    ClipboardCheck,
+    FileText,
+    HeartHandshake,
+    ListChecks,
+    Timer,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const schoolService = services.find(
+    (service) => service.id === "rendimiento-escolar",
+);
+
+if (!schoolService) {
+    throw new Error("No se ha encontrado el servicio de rendimiento escolar.");
+}
+
+const situations = [
+    {
+        icon: HeartHandshake,
+        text: "Se esfuerza, pero los resultados no acompañan.",
+    },
+    {
+        icon: ListChecks,
+        text: "Pasa horas estudiando y no sabe por dónde empezar.",
+    },
+    { icon: Timer, text: "Deja las tareas para el último momento." },
+    { icon: CircleAlert, text: "Se bloquea especialmente ante los exámenes." },
+    {
+        icon: CalendarDays,
+        text: "Le cuesta organizarse y llevar al día trabajos y agenda.",
+    },
+    {
+        icon: Brain,
+        text: "Los deberes están generando frustración o conflictos en casa.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Brain,
+        title: "Cómo aprende",
+        text: "Atención, comprensión, memoria y forma de enfrentarse a las tareas.",
+    },
+    {
+        number: "02",
+        icon: ClipboardCheck,
+        title: "Cómo se organiza",
+        text: "Planificación, gestión del tiempo, hábitos y técnicas de estudio.",
+    },
+    {
+        number: "03",
+        icon: HeartHandshake,
+        title: "Cómo lo está viviendo",
+        text: "Motivación, frustración, confianza y respuesta ante la presión académica.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: CalendarDays,
+        title: "Organización y planificación",
+        description: "Priorizar tareas, crear rutinas y anticipar el trabajo.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: BookOpenCheck,
+        title: "Técnicas de estudio",
+        description: "Encontrar estrategias que encajen con su forma de aprender.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: FileText,
+        title: "Comprensión y síntesis",
+        description: "Entender, seleccionar y organizar la información importante.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: ClipboardCheck,
+        title: "Preparación de exámenes",
+        description: "Planificar el estudio y llegar con mayor seguridad.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: Brain,
+        title: "Atención y concentración",
+        description: "Reducir distracciones y sostener mejor el foco.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: Timer,
+        title: "Gestión del tiempo",
+        description: "Distribuir tareas y evitar dejarlo todo para el final.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: ArrowUpRight,
+        title: "Autonomía",
+        description: "Aprender a trabajar con cada vez menos supervisión.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Confianza académica",
+        description: "Reconocer avances y afrontar los retos con más seguridad.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Evaluación y diagnóstico",
+        description: "Entender qué puede estar detrás",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+    {
+        title: "TDAH",
+        description: "Atención, impulsividad y organización",
+        href: "/servicios/tdah",
+    },
+    {
+        title: "Dislexia",
+        description: "Lectura, escritura y comprensión",
+        href: "/servicios/dislexia",
+    },
+    {
+        title: "Altas capacidades",
+        description: "Identificar necesidades específicas",
+        href: "/servicios/altas-capacidades",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿A partir de qué edad se puede trabajar el rendimiento escolar?",
+        answer: "Puede abordarse cuando las dificultades con el estudio, la organización o la autonomía empiezan a tener un peso en el día a día. El punto de partida se adapta a la etapa escolar y a lo que esté ocurriendo en cada caso.",
+    },
+    {
+        question: "¿Es lo mismo que dar clases particulares?",
+        answer: "No. El foco no es repasar una asignatura concreta, sino entender qué está dificultando el estudio y trabajar estrategias que puedan servirle de forma más autónoma.",
+    },
+    {
+        question: "¿Trabajáis técnicas de estudio?",
+        answer: "Sí, cuando son útiles para el caso. Las técnicas se integran dentro de un trabajo más amplio sobre comprensión, planificación, hábitos, atención y la forma de afrontar las tareas.",
+    },
+    {
+        question: "¿Cuánto tiempo dura la intervención?",
+        answer: "Depende de las necesidades detectadas, de los objetivos acordados y de cómo evolucione el proceso. Tras conocer el caso se puede orientar mejor cuál puede ser el siguiente paso.",
+    },
+    {
+        question:
+            "¿Puede haber un problema de aprendizaje aunque las notas no sean muy bajas?",
+        answer: "Sí. El sobreesfuerzo, el bloqueo, la desorganización o la frustración también aportan información. Las notas son una parte del contexto, pero no explican por sí solas cómo está viviendo el aprendizaje.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Rendimiento escolar"
+        eyebrow="RENDIMIENTO ESCOLAR"
+        title="Cuando estudiar cuesta más de lo que debería"
+        description="Hay niños y adolescentes que se esfuerzan, pasan horas delante de los apuntes y aun así no consiguen los resultados que esperan. Antes de exigirles más, conviene entender qué está dificultando su aprendizaje."
+        image={schoolService.image}
+        imageAlt={schoolService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Es falta de capacidad o falta de método?"
+        description="Un rendimiento bajo no siempre significa falta de esfuerzo. A veces el problema está en cómo se organiza, cómo comprende la información o cómo afronta el estudio."
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="Antes de intervenir, necesitamos entender qué está pasando"
+        description="No se trata solo de reunir técnicas de estudio. El punto de partida es observar qué puede estar interfiriendo y cómo encaja cada pieza."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="No se trata de estudiar más."
+        secondaryHighlight="más"
+        mainPhrase="Se trata de aprender a estudiar mejor."
+        mainHighlight="mejor"
+        explanation="El objetivo es que vaya adquiriendo estrategias que pueda utilizar de forma autónoma: organizarse, priorizar, comprender, preparar exámenes y gestionar mejor su tiempo."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué podemos trabajar?"
+        areas={areas}
+        description="Estrategias prácticas para que pueda organizarse mejor,
+    estudiar con más autonomía y afrontar el aprendizaje con seguridad."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Cuando el rendimiento es solo la señal"
+        description="En algunos casos las dificultades escolares pueden estar relacionadas con TDAH, dislexia, altas capacidades u otras necesidades específicas. Si aparecen señales que lo indiquen, puede ser necesario valorar algo más que el método de estudio."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ title="Preguntas frecuentes" faqs={faqs} />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="Si estudiar se ha convertido en una lucha, empecemos por entender por qué."
+        titleUnderline="por qué"
+        description="Cuéntame qué está ocurriendo y valoramos juntos cuál puede ser el siguiente paso."
+        primaryCtaText="Cuéntame vuestro caso"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

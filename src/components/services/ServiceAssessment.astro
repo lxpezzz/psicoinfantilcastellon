@@ -1,0 +1,185 @@
+---
+interface Perspective {
+    number?: string;
+    icon: any;
+    title: string;
+    text: string;
+    accentBorder?: string;
+    accentBadge?: string;
+}
+
+interface Props {
+    id?: string;
+    title: string;
+    description: string;
+    perspectives: Perspective[];
+}
+
+const {
+    id = "como-trabajamos",
+    title,
+    description,
+    perspectives,
+} = Astro.props;
+
+const defaultAccents = [
+    {
+        border: "border-[var(--color-primary)]",
+        tag: "text-[var(--color-primary)]",
+    },
+    { border: "border-[#5b9b78]", tag: "text-[#3f7a59]" },
+    { border: "border-[#c47b85]", tag: "text-[#a0525d]" },
+];
+---
+
+<section class="bg-[#eef3f0] py-[clamp(4rem,7.5vw,6.5rem)]" id={id}>
+    <div class="mx-auto w-[min(100%-2.5rem,1220px)]">
+        <div
+            class="grid items-start lg:grid-cols-[minmax(0,0.95fr)_minmax(300px,0.7fr)] lg:items-center lg:gap-16"
+        >
+            <header class="max-w-[700px]">
+                <h2
+                    class="m-0 text-[clamp(2rem,8vw,2.2rem)] font-[750] leading-[1.06] tracking-[-0.035em] text-[var(--color-primary-dark)] sm:text-[clamp(2rem,3.8vw,3.4rem)] [text-wrap:balance]"
+                >
+                    {title}
+                </h2>
+                <p
+                    class="mb-0 mt-0 max-w-[60ch] pt-[clamp(2rem,3vw,3rem)] text-[1.05rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]"
+                >
+                    {description}
+                </p>
+            </header>
+
+            <!-- Diagrama de las tres perspectivas de evaluación -->
+            <div class="relative hidden h-[280px] w-[320px] justify-self-end lg:block">
+                <div class="absolute right-0 top-0 origin-top-right">
+                    <div class="relative h-[280px] w-[320px]">
+                <svg
+                    class="pointer-events-none absolute inset-0 h-full w-full"
+                    viewBox="0 0 320 280"
+                    fill="none"
+                    aria-hidden="true"
+                >
+                    <path
+                        d="M 160 20 L 60 210 L 260 210 Z"
+                        stroke="rgb(36 79 158 / 0.2)"
+                        stroke-width="1"></path>
+                </svg>
+
+                <!-- Punto superior: centro 160, 20 -->
+                <div
+                    class="absolute left-1/2 top-[12px] -translate-x-1/2 text-center"
+                >
+                    <p
+                        class="absolute bottom-full left-1/2 m-0 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
+                    >
+                        Cómo aprende
+                    </p>
+                    <div class="mx-auto h-4 w-4 rounded-full bg-[#244f9e]">
+                    </div>
+                </div>
+
+                <!-- Punto inferior izquierdo: centro 60, 210 -->
+                <div
+                    class="absolute left-[60px] top-[202px] -translate-x-1/2 text-center"
+                >
+                    <div class="mx-auto h-4 w-4 rounded-full bg-[#8dc7a8]">
+                    </div>
+                    <p
+                        class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
+                    >
+                        Cómo se organiza
+                    </p>
+                </div>
+
+                <!-- Punto inferior derecho: centro 260, 210 -->
+                <div
+                    class="absolute left-[260px] top-[202px] -translate-x-1/2 text-center"
+                >
+                    <div class="mx-auto h-4 w-4 rounded-full bg-[#DFA2AA]">
+                    </div>
+                    <p
+                        class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
+                    >
+                        Cómo lo está viviendo
+                    </p>
+                </div>
+
+                <!-- Centro geométrico del triángulo -->
+                <div
+                    class="absolute left-1/2 top-[147px] -translate-x-1/2 -translate-y-1/2 text-center"
+                >
+                    <span
+                        class="block text-[3.25rem] font-bold leading-none text-[var(--color-primary-dark)]/10 lg:text-[2.6rem]"
+                    >
+                        360º
+                    </span>
+                    <span
+                        class="mt-1 hidden text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] lg:block"
+                    >
+                        Visión global
+                    </span>
+                </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-14 grid gap-8 md:grid-cols-3 md:gap-8">
+            {
+                perspectives.map(
+                    (
+                        {
+                            icon: Icon,
+                            title,
+                            text,
+                            number,
+                            accentBorder,
+                            accentBadge,
+                        },
+                        index,
+                    ) => {
+                        const num = number || `0${index + 1}`;
+                        const config =
+                            defaultAccents[index % defaultAccents.length];
+                        const borderClass = accentBorder || config.border;
+                        const tagClass = accentBadge || config.tag;
+
+                        return (
+                            <article
+                                class:list={[
+                                    "relative grid grid-cols-[auto_minmax(0,1fr)_auto] items-center gap-x-4 border-t-2 pt-4 transition-[transform] duration-200 md:pt-8",
+                                    borderClass,
+                                ]}
+                            >
+                                <div class="contents">
+                                    <span
+                                        class="grid h-11 w-11 place-items-center rounded-full bg-white text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.08)] shadow-sm"
+                                        aria-hidden="true"
+                                    >
+                                        <Icon size={21} stroke-width={1.8} />
+                                    </span>
+                                    <span
+                                        class:list={[
+                                            "col-start-3 row-start-1 pt-0 text-[0.84rem] font-bold tracking-[0.14em] select-none",
+                                            tagClass,
+                                        ]}
+                                    >
+                                        {num}
+                                    </span>
+                                </div>
+
+                                <h3 class="col-start-2 row-start-1 mb-0 mt-0 text-[1.2rem] font-[750] leading-[1.2] tracking-[-0.025em] text-[var(--color-primary-dark)] sm:text-[1.38rem]">
+                                    {title}
+                                </h3>
+
+                                <p class="col-span-full row-start-2 mb-0 mt-3 max-w-[34ch] text-[0.96rem] leading-[1.65] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                                    {text}
+                                </p>
+                            </article>
+                        );
+                    },
+                )
+            }
+        </div>
+    </div>
+</section>

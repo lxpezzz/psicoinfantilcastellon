@@ -1,0 +1,70 @@
+---
+interface Signal {
+    icon: any;
+    text: string;
+}
+
+interface Props {
+    title: string;
+    description: string;
+    signals: Signal[];
+}
+
+const { title, description, signals } = Astro.props;
+---
+
+<section
+    class="border-t border-[rgba(23,54,97,0.08)] bg-white py-[clamp(3.75rem,7vw,5.75rem)]"
+>
+    <div class="mx-auto w-[min(100%-2.5rem,1220px)]">
+        <div
+            class="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(480px,1.15fr)] lg:gap-14 xl:gap-16"
+        >
+            <header class="max-w-[540px] text-center lg:mx-0 lg:text-left">
+                <h2
+                    class="m-0 text-[clamp(2rem,3.8vw,3.4rem)] font-[750] leading-[1.06] tracking-[-0.035em] text-[var(--color-primary-dark)] [text-wrap:balance]"
+                >
+                    {title}
+                </h2>
+                <p
+                    class="mb-0 mt-6 pt-6 text-[1.05rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]"
+                >
+                    {description}
+                </p>
+            </header>
+
+            <ul
+                class="m-0 grid list-none gap-x-8 divide-y divide-[rgba(23,54,97,0.08)] p-0 sm:grid-cols-2 sm:divide-y-0"
+            >
+                {
+                    signals.map(({ icon: Icon, text }, index) => {
+                        const isEven = index % 2 === 0;
+                        const isNotLastRow =
+                            index <
+                            signals.length - (signals.length % 2 === 0 ? 2 : 1);
+
+                        return (
+                            <li
+                                class:list={[
+                                    "flex min-h-[104px] items-start gap-4 border-[rgba(23,54,97,0.08)] py-5 text-[0.98rem] font-[650] leading-[1.45] text-[var(--color-primary-dark)]",
+                                    isEven ? "sm:border-r sm:pr-8" : "sm:pl-8",
+                                    isNotLastRow ? "sm:border-b" : "",
+                                ]}
+                            >
+                                <span
+                                    class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[var(--color-primary-light)] text-[var(--color-primary)] border border-[rgba(36,79,158,0.12)]"
+                                    aria-hidden="true"
+                                >
+                                    <Icon size={20} stroke-width={1.8} />
+                                </span>
+                                <span class="pt-2 [text-wrap:pretty]">
+                                    {text}
+                                </span>
+                            </li>
+                        );
+                    })
+                }
+            </ul>
+        </div>
+    </div>
+</section>

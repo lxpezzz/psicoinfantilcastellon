@@ -1,0 +1,62 @@
+---
+interface Props {
+    secondaryPhrase: string;
+    secondaryHighlight?: string;
+    mainPhrase: string;
+    mainHighlight?: string;
+    explanation: string;
+}
+
+const {
+    secondaryPhrase,
+    secondaryHighlight,
+    mainPhrase,
+    mainHighlight,
+    explanation,
+} = Astro.props;
+
+const secondaryPhraseParts = secondaryHighlight
+    ? secondaryPhrase.split(secondaryHighlight)
+    : null;
+const mainPhraseParts = mainHighlight ? mainPhrase.split(mainHighlight) : null;
+---
+
+<section class="relative overflow-hidden bg-[var(--color-primary-dark)] py-[clamp(4.25rem,8vw,6.5rem)] text-white">
+    <!-- Detalle gráfico sutil: línea de acento superior muy discreta -->
+    <div class="absolute inset-x-0 top-0 h-px bg-white/10" aria-hidden="true"></div>
+
+    <div class="mx-auto w-[min(100%-2.5rem,1140px)]">
+        <div class="grid gap-8 md:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)] md:items-start lg:gap-14">
+            <!-- Frase secundaria (contraste) -->
+            <div class="pt-2">
+                <span class="inline-block h-1 w-8 rounded-full bg-[#dfa2aa]/80 mb-4" aria-hidden="true"></span>
+                <p class="m-0 text-[clamp(1.55rem,2.7vw,2.25rem)] font-[600] leading-[1.18] tracking-[-0.03em] text-[#9bb8d7] [text-wrap:balance]">
+                    {secondaryPhraseParts && secondaryPhraseParts.length === 2 ? (
+                        <>
+                            {secondaryPhraseParts[0]}
+                            <span class="text-[#dfa2aa]">{secondaryHighlight}</span>
+                            {secondaryPhraseParts[1]}
+                        </>
+                    ) : secondaryPhrase}
+                </p>
+            </div>
+
+            <!-- Frase protagonista + Explicación -->
+            <div class="border-t border-white/10 pt-6 md:border-t-0 md:border-l md:border-white/10 md:pl-10 lg:pl-12 md:pt-0">
+                <h2 class="m-0 text-[clamp(2.15rem,4vw,3.5rem)] font-[750] leading-[1.06] tracking-[-0.04em] text-white [text-wrap:balance]">
+                    {mainPhraseParts && mainPhraseParts.length === 2 ? (
+                        <>
+                            {mainPhraseParts[0]}
+                            <span class="text-[#dfa2aa]">{mainHighlight}</span>
+                            {mainPhraseParts[1]}
+                        </>
+                    ) : mainPhrase}
+                </h2>
+
+                <p class="mb-0 mt-0 max-w-[56ch] pt-6 text-[clamp(1rem,1.2vw,1.1rem)] leading-[1.7] text-[#d7e0eb] [text-wrap:pretty] lg:pt-8">
+                    {explanation}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>

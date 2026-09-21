@@ -1,0 +1,58 @@
+---
+export interface FAQItem {
+    question: string;
+    answer: string;
+}
+
+interface Props {
+    title?: string;
+    description?: string;
+    faqs: FAQItem[];
+}
+
+const { title = "Preguntas frecuentes", description, faqs } = Astro.props;
+---
+
+<section class="bg-[#eef3f0] py-[clamp(4rem,7.5vw,6.5rem)]" id="faq">
+    <div class="mx-auto w-[min(100%-2.5rem,840px)]">
+        <header class="text-left">
+            <h2
+                class="m-0 grid place-items-center text-[clamp(2rem,3.8vw,3.3rem)] font-[750] leading-[1.06] tracking-[-0.035em] text-[var(--color-primary-dark)]"
+            >
+                {title}
+            </h2>
+            {
+                description && (
+                    <p class="mb-0 mt-4 text-[1.05rem] leading-[1.65] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                        {description}
+                    </p>
+                )
+            }
+        </header>
+
+        <div
+            class="mt-12 divide-y divide-[rgba(23,54,97,0.12)] border-y border-[rgba(23,54,97,0.12)]"
+        >
+            {
+                faqs.map((faq, index) => (
+                    <details class="group" open={index === 0}>
+                        <summary class="flex min-h-[68px] w-full cursor-pointer list-none items-center justify-between gap-5 py-5 text-left text-[1.05rem] font-[700] leading-[1.4] text-[var(--color-primary-dark)] transition-colors duration-200 hover:text-[var(--color-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)] [&::-webkit-details-marker]:hidden">
+                            <span class="[text-wrap:balance]">
+                                {faq.question}
+                            </span>
+                            <span
+                                class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-white text-[var(--color-primary)] border border-[rgba(23,54,97,0.08)] text-[1.2rem] font-medium leading-none select-none transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-open:rotate-45 shadow-sm"
+                                aria-hidden="true"
+                            >
+                                +
+                            </span>
+                        </summary>
+                        <div class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                            <p class="m-0">{faq.answer}</p>
+                        </div>
+                    </details>
+                ))
+            }
+        </div>
+    </div>
+</section>

@@ -8,6 +8,7 @@ import asesoramientoPadresImg from "../images/servicios/asesoramiento_familiar.w
 import psicologiaJuvenilImg from "../images/servicios/psicologia_juvenil.webp";
 import evaluacionImg from "../images/servicios/evaluacion.webp";
 import informesImg from "../images/servicios/informes.webp";
+import helpImg from "../images/servicios-pagina/rendimiento-hero.webp";
 
 
 

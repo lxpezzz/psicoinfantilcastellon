@@ -1,0 +1,65 @@
+---
+import { ArrowRight, Phone } from "lucide-astro";
+
+interface Props {
+    title: string;
+    titleUnderline?: string;
+    description: string;
+    primaryCtaText?: string;
+    primaryCtaHref?: string;
+    phoneText?: string;
+    phoneHref?: string;
+}
+
+const {
+    title,
+    titleUnderline,
+    description,
+    primaryCtaText = "Cuéntame vuestro caso",
+    primaryCtaHref = "/#contacto",
+    phoneText = "También puedes llamar al 614 99 21 48",
+    phoneHref = "tel:+34614992148",
+} = Astro.props;
+
+const titleParts = titleUnderline ? title.split(titleUnderline) : null;
+const hasTitleUnderline = titleParts?.length === 2;
+---
+
+<section class="relative overflow-hidden bg-[#e5d0d2] py-[clamp(4rem,7vw,6rem)]" id="contacto">
+    <!-- Borde superior sutil -->
+    <div class="absolute inset-x-0 top-0 h-px bg-[rgba(23,54,97,0.08)]" aria-hidden="true"></div>
+
+    <div class="mx-auto grid w-[min(100%-2.5rem,1080px)] gap-8 md:grid-cols-[minmax(0,1.2fr)_auto] md:items-center">
+        <div class="max-w-[660px]">
+            <h2 class="m-0 text-[clamp(2.1rem,3.8vw,3.5rem)] font-[750] leading-[1.08] tracking-[-0.035em] text-[var(--color-primary-dark)] [text-wrap:balance]">
+                {hasTitleUnderline ? (
+                    <>
+                        {titleParts?.[0]}
+                        <span class="relative inline-block after:absolute after:inset-x-0 after:-bottom-[0.04em] after:h-[0.06em] after:rounded-full after:bg-white">
+                            {titleUnderline}
+                        </span>
+                        {titleParts?.[1]}
+                    </>
+                ) : title}
+            </h2>
+        </div>
+
+        <div class="flex flex-col gap-3.5 sm:flex-row sm:items-center md:w-[20rem] md:flex-col md:items-stretch shrink-0">
+            <a
+                href={primaryCtaHref}
+                class="group inline-flex min-h-[50px] w-full items-center justify-center gap-2.5 rounded-[0.9rem] bg-[var(--color-primary-dark)] px-6 py-3 text-center text-[0.98rem] font-bold text-white shadow-[0_10px_24px_-8px_rgba(23,54,97,0.35)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-[var(--color-primary)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary-dark)]"
+            >
+                <span class="text-white">{primaryCtaText}</span>
+                <ArrowRight size={18} stroke-width={2} class="text-white transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+
+            <a
+                href={phoneHref}
+                class="inline-flex min-h-[44px] w-full items-center justify-center gap-2 whitespace-nowrap px-2 py-2 text-[0.84rem] font-[700] text-[var(--color-primary-dark)] underline decoration-[rgba(23,54,97,0.35)] underline-offset-4 transition-colors duration-200 sm:text-[0.96rem] hover:text-[var(--color-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary-dark)]"
+            >
+                <Phone size={16} stroke-width={2} class="shrink-0" aria-hidden="true" />
+                <span>{phoneText}</span>
+            </a>
+        </div>
+    </div>
+</section>

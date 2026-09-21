@@ -1,0 +1,100 @@
+---
+export interface AreaItem {
+    icon: any;
+    title: string;
+    description: string;
+    span?: string;
+    bgVariant?: "primary" | "primary-dark" | "sage" | "sage-light" | "dusty-rose" | "blue-soft" | "white";
+}
+
+interface Props {
+    title: string;
+    description?: string;
+    areas: AreaItem[];
+}
+
+const { title, description, areas } = Astro.props;
+
+const variantStyles: Record<string, { card: string; icon: string }> = {
+    primary: {
+        card: "bg-[var(--color-primary)] text-white",
+        icon: "bg-white/15 text-white",
+    },
+    "primary-dark": {
+        card: "bg-[var(--color-primary-dark)] text-white",
+        icon: "bg-white/15 text-white",
+    },
+    sage: {
+        card: "bg-[#d9e8df] text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.06)]",
+        icon: "bg-white/80 text-[var(--color-primary)]",
+    },
+    "sage-light": {
+        card: "bg-[#edf0e9] text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.06)]",
+        icon: "bg-white/80 text-[var(--color-primary)]",
+    },
+    "dusty-rose": {
+        card: "bg-[#e5d0d2] text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.06)]",
+        icon: "bg-white/80 text-[var(--color-primary-dark)]",
+    },
+    "blue-soft": {
+        card: "bg-[#dfe9f3] text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.06)]",
+        icon: "bg-white/80 text-[var(--color-primary)]",
+    },
+    white: {
+        card: "bg-white text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.09)]",
+        icon: "bg-[var(--color-primary-light)] text-[var(--color-primary)]",
+    },
+};
+---
+
+<section class="bg-[#f7f5f0] py-[clamp(3.75rem,7vw,5.75rem)]">
+    <div class="mx-auto w-[min(100%-2.5rem,1220px)]">
+        <header class="max-w-[620px]">
+            <h2 class="m-0 text-[clamp(2rem,3.8vw,3.4rem)] font-[750] leading-[1.06] tracking-[-0.035em] text-[var(--color-primary-dark)]">
+                {title}
+            </h2>
+            {description && (
+                <p class="mt-3 pt-6 lg:pt-7 max-w-2xl text-lg leading-relaxed text-slate-600">
+                    {description}
+                </p>
+            )}
+        </header>
+
+        <div class="mt-10 grid grid-cols-1 gap-3.5 sm:grid-cols-2 md:grid-cols-12 md:gap-4">
+            {areas.map(({ icon: Icon, title, description, span = "md:col-span-4", bgVariant = "white" }, index) => {
+                const styles = variantStyles[bgVariant] || variantStyles.white;
+                const isTall = index < 2;
+
+                return (
+                    <article
+                        class:list={[
+                            "group flex min-h-[138px] items-center justify-between gap-5 rounded-[1.15rem] p-6 transition-[transform,background-color] duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1",
+                            span,
+                            styles.card,
+                            isTall ? "md:min-h-[195px]" : "",
+                        ]}
+                    >
+                        <div>
+                            <h3 class="m-0 max-w-[14ch] text-[clamp(1.15rem,1.7vw,1.45rem)] font-size-[clamp(1.125rem,2vw,2rem)] font-[750] leading-[1.18] tracking-[-0.025em]">
+                                {title}
+                            </h3>
+                            <p class="mb-0 pt-1 lg:pt-3 mt-3 max-w-[30ch] text-[0.875rem] leading-[1.4] opacity-75 [text-wrap:pretty]">
+                                {description}
+                            </p>
+                        </div>
+
+                        <span
+                            class:list={[
+                                "grid h-10 w-10 shrink-0 place-items-center rounded-full transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105",
+                                styles.icon,
+                            ]}
+                            aria-hidden="true"
+                        >
+                            <Icon size={19} stroke-width={1.8} />
+                        </span>
+                    </article>
+                );
+            })}
+        </div>
+    </div>
+</section>
