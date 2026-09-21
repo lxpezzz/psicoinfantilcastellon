@@ -1,0 +1,261 @@
+---
+import {
+    ArrowUpRight,
+    BookOpenCheck,
+    Brain,
+    CircleAlert,
+    ClipboardCheck,
+    FileCheck,
+    FileText,
+    GraduationCap,
+    HeartHandshake,
+    Laptop,
+    ListChecks,
+    Timer,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const dyslexiaService = services.find((service) => service.id === "dislexia");
+
+if (!dyslexiaService) {
+    throw new Error(
+        "No se ha encontrado el servicio de tratamiento y evaluación de dislexia.",
+    );
+}
+
+const situations = [
+    {
+        icon: BookOpenCheck,
+        text: "Lee muy despacio, se inventa palabras, confunde letras o se salta renglones.",
+    },
+    {
+        icon: CircleAlert,
+        text: "Se cansa rápido, se frustra y evita cualquier tarea que implique leer o escribir.",
+    },
+    {
+        icon: FileText,
+        text: "Comete faltas de ortografía continuas a pesar de memorizar y repasar las reglas.",
+    },
+    {
+        icon: Brain,
+        text: "Explica perfectamente un tema hablando, pero su escritura no refleja su capacidad real.",
+    },
+    {
+        icon: Timer,
+        text: "Tarda el triple en acabar una simple ficha y los deberes se alargan hasta la noche.",
+    },
+    {
+        icon: HeartHandshake,
+        text: "Suspende exámenes porque la lectura de los enunciados le juega malas pasadas o le falta tiempo.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: ClipboardCheck,
+        title: "Evaluación diferencial precisa",
+        text: "Mediante pruebas clínicas estandarizadas determinamos si se trata de dislexia o de un retraso madurativo en la adquisición lectora.",
+    },
+    {
+        number: "02",
+        icon: Brain,
+        title: "Procesamiento fonológico y ruta visual",
+        text: "Entrenamos la conciencia fonológica, la memoria de trabajo y la automatización grafema-fonema para liberar recursos cognitivos.",
+    },
+    {
+        number: "03",
+        icon: GraduationCap,
+        title: "Coordinación y visión de aula",
+        text: "20 años en departamentos de orientación en Castellón nos permiten asesorar al colegio para aplicar adaptaciones de acceso efectivas.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: BookOpenCheck,
+        title: "Conciencia fonológica y decodificación",
+        description:
+            "Entrenamiento en la mecánica lectora para pasar de inventar palabras a decodificar con precisión y soltura.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: FileText,
+        title: "Comprensión lectora eficaz",
+        description:
+            "Estrategias para extraer la idea principal, realizar inferencias y retener la información esencial sin agotamiento.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: Timer,
+        title: "Velocidad y fluidez lectora",
+        description:
+            "Ejercicios guiados para ampliar el campo visual, reducir fijaciones y eliminar el silabeo constante.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: ClipboardCheck,
+        title: "Expresión escrita y ortografía",
+        description:
+            "Estructuración de textos, orden sintáctico y afianzamiento de la ruta léxica para reducir errores ortográficos.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: FileCheck,
+        title: "Adaptaciones escolares en el aula",
+        description:
+            "Pautas para el colegio: enunciados claros, mayor tiempo en exámenes, soporte oral y exención de penalización ortográfica.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: ListChecks,
+        title: "Estrategias ante exámenes",
+        description:
+            "Técnicas específicas para abordar enunciados complejos, identificar palabras clave y evitar trampas de lectura.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: Laptop,
+        title: "Herramientas digitales de apoyo",
+        description:
+            "Uso de lectores de texto, conversores de voz y tecnología adaptada para potenciar su autonomía de estudio.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Confianza y autoestima académica",
+        description:
+            "Cortar el ciclo frustración-autoestima, desmontar el 'no valgo' y devolverle la seguridad en su propia inteligencia.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Evaluación y diagnóstico",
+        description: "Estudio clínico exhaustivo del aprendizaje",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Técnicas de estudio, organización y método",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Tratamiento y evaluación de TDAH",
+        description: "Atención, impulsividad y autorregulación",
+        href: "/servicios/tdah",
+    },
+    {
+        title: "Informes psicopedagógicos",
+        description: "Dictámenes oficiales para el colegio",
+        href: "/servicios/informes-psicopedagogicos",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿A qué edad se puede detectar e iniciar el tratamiento de la dislexia?",
+        answer: "Las señales tempranas en conciencia fonológica pueden identificarse a partir de los 5 años (último curso de Infantil). El diagnóstico formal suele consolidarse entre 2º y 3º de Primaria (7-8 años), pero la intervención preventiva debe comenzar en cuanto se detectan dificultades para evitar retrasos y frustración.",
+    },
+    {
+        question: "¿La dislexia se cura o desaparece con el tiempo?",
+        answer: "La dislexia no es una enfermedad, sino una condición neurobiológica en el procesamiento del lenguaje escrito. No desaparece, pero con una intervención especializada el cerebro genera rutas compensatorias eficaces que permiten automatizar la lectura, comprender con soltura y alcanzar el éxito académico y universitario.",
+    },
+    {
+        question: "¿En qué se diferencia esta intervención de las clases particulares?",
+        answer: "Un profesor particular repasa los deberes o temarios de las asignaturas. La intervención psicopedagógica en dislexia trabaja directamente sobre los procesos cognitivos subyacentes: conciencia fonológica, discriminación visual, memoria de trabajo y automatización grafema-fonema para que el niño pueda ser autónomo.",
+    },
+    {
+        question: "¿Qué adaptaciones puede y debe aplicar el colegio?",
+        answer: "La normativa educativa contempla medidas de acceso fundamentales: lectura en voz alta de enunciados si es necesario, tiempo adicional en exámenes, tipografías claras, no penalizar faltas de ortografía en contenidos no lingüísticos y fomentar la evaluación oral.",
+    },
+    {
+        question: "¿Cómo afecta la dislexia a la autoestima de mi hijo?",
+        answer: "Suele tener un impacto profundo: los niños ven que compañeros que se esfuerzan menos obtienen mejores notas y concluyen erróneamente que son 'menos inteligentes'. Ponerle nombre a la dificultad, validar su esfuerzo y dotarle de herramientas adaptadas corta de raíz el ciclo de indefensión y devuelve la seguridad.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Dislexia"
+        eyebrow="EVALUACIÓN Y TRATAMIENTO DE DISLEXIA"
+        title="Cuando leer y escribir cuesta el triple de lo que debería"
+        description="La dislexia no es falta de capacidad ni pereza; es una forma diferente de procesar la información escrita que genera un agotamiento invisible. Identifico las dificultades específicas de tu hijo y diseño el plan de reeducación necesario para que recupere la fluidez, la comprensión y la seguridad escolar."
+        image={dyslexiaService.image}
+        imageAlt={dyslexiaService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Su esfuerzo infinito no se traduce en una lectura fluida?"
+        description="Es agotador ver cómo tu hijo, siendo curioso e inteligente, se bloquea ante un simple texto o confunde letras una y otra vez. Si sientes que la lectura y la escritura se han convertido en una barrera que le impide demostrar todo lo que sabe, revisa si estas señales te resultan familiares:"
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="Atacar la raíz neurocognitiva y metodológica del problema"
+        description="Mi intervención no consiste en obligarle a 'leer más', sino en enseñarle a decodificar mejor. Trabajamos la mecánica del procesamiento fonológico y visual para liberar sus recursos mentales y destinarlos a lo importante: comprender y aprender."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="No se trata de leer más."
+        secondaryHighlight="más"
+        mainPhrase="Se trata de aprender a procesar mejor."
+        mainHighlight="procesar mejor"
+        explanation="Forzar a un niño con dislexia a leer el doble solo aumenta su rechazo y fatiga. Con el método adecuado automatizamos la mecánica lectora para equilibrar la balanza entre esfuerzo y rendimiento."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué trabajamos en la reeducación de la dislexia?"
+        areas={areas}
+        description="Un plan de intervención global para mejorar la fluidez lectora, dominar la escritura y asegurar adaptaciones justas en el centro escolar."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Servicios complementarios para su progreso escolar"
+        description="La dislexia a menudo convive o requiere coordinación con otras áreas como la evaluación diagnóstica formal, las técnicas de estudio o el déficit de atención."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ title="Preguntas frecuentes sobre dislexia" faqs={faqs} />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="¿Sientes que su esfuerzo no se refleja en sus notas? Hablemos."
+        titleUnderline="Hablemos"
+        description="Cuéntame vuestra situación. Si ves que la lectura se ha convertido en una tortura o evita escribir por miedo a equivocarse, estoy aquí para ayudaros a que la dislexia deje de ser un muro y vuelva a disfrutar aprendiendo."
+        primaryCtaText="Solicitar valoración"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

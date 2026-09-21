@@ -1,0 +1,267 @@
+---
+import {
+    ArrowUpRight,
+    Award,
+    Brain,
+    CircleAlert,
+    ClipboardCheck,
+    Compass,
+    FileCheck,
+    FileSpreadsheet,
+    FileText,
+    GraduationCap,
+    HeartHandshake,
+    ListChecks,
+    Scale,
+    School,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const reportService = services.find(
+    (service) => service.id === "informes-psicopedagogicos",
+);
+
+if (!reportService) {
+    throw new Error(
+        "No se ha encontrado el servicio de informes psicopedagógicos.",
+    );
+}
+
+const situations = [
+    {
+        icon: School,
+        text: "El colegio os solicita una valoración externa para activar medidas de apoyo.",
+    },
+    {
+        icon: FileCheck,
+        text: "Necesitáis un dictamen formal para tramitar adaptaciones curriculares o de acceso.",
+    },
+    {
+        icon: CircleAlert,
+        text: "Deseáis confirmar o descartar TDAH, dislexia, dificultades de aprendizaje o altas capacidades.",
+    },
+    {
+        icon: FileSpreadsheet,
+        text: "Requerís acreditación técnica para la solicitud de becas NEAE del Ministerio de Educación.",
+    },
+    {
+        icon: ListChecks,
+        text: "Contáis con un informe previo desactualizado que el centro escolar no está aplicando.",
+    },
+    {
+        icon: Compass,
+        text: "Buscáis una orientación vocacional y académica sólida basada en su potencial real.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Scale,
+        title: "Validez y especialización forense",
+        text: "Máster en Psicología Forense: aporto un nivel de detalle, objetividad y solidez técnica que garantiza la validez del informe en cualquier ámbito oficial.",
+    },
+    {
+        number: "02",
+        icon: GraduationCap,
+        title: "Conocimiento del sistema escolar",
+        text: "20 años dirigiendo departamentos de orientación en Castellón: sé exactamente qué información necesitan los orientadores para aplicar las medidas de inmediato.",
+    },
+    {
+        number: "03",
+        icon: HeartHandshake,
+        title: "Pautas prácticas post-diagnóstico",
+        text: "No entrego un informe y me despido; facilito pautas concretas para casa y coordinación directa con los tutores y el centro educativo.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: FileCheck,
+        title: "Adaptaciones curriculares oficiales",
+        description:
+            "Proporciona la base legal para que el centro escolar implemente medidas de acceso, cambios metodológicos o flexibilización de tiempos.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: Brain,
+        title: "Diagnóstico diferencial clínico",
+        description:
+            "Claridad técnica absoluta sobre si se trata de TDAH, dislexia, altas capacidades o dificultades específicas del aprendizaje.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: FileSpreadsheet,
+        title: "Tramitación de Becas NEAE",
+        description:
+            "Documentación psicopedagógica y diagnóstica requerida por el Ministerio de Educación para ayudas a alumnos con necesidad de apoyo.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: Award,
+        title: "Identificación de Altas Capacidades",
+        description:
+            "Dictamen formal de sobredotación y talento académico para la puesta en marcha de programas de enriquecimiento curricular.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: ListChecks,
+        title: "Segunda opinión experta",
+        description:
+            "Revisión y actualización de valoraciones previas para reajustar el enfoque de la intervención educativa al momento actual.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: ClipboardCheck,
+        title: "Pautas prácticas para el aula",
+        description:
+            "Guía de actuación directa para los profesores que facilita su labor y la integración escolar y académica del alumno.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: ArrowUpRight,
+        title: "Orientación vocacional",
+        description:
+            "Informes detallados para ayudar al alumno a elegir su futuro académico en ESO y Bachillerato basándose en sus capacidades reales.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Coordinación con el centro",
+        description:
+            "Enlace profesional con el equipo directivo y de orientación para asegurar que las recomendaciones se lleven a la práctica.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Evaluación y diagnóstico psicopedagógico",
+        description: "Estudio clínico y pruebas estandarizadas",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Técnicas de estudio, planificación y hábitos",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Tratamiento y evaluación de TDAH",
+        description: "Atención, impulsividad y autorregulación",
+        href: "/servicios/tdah",
+    },
+    {
+        title: "Tratamiento y evaluación de dislexia",
+        description: "Intervención en lectura, escritura y comprensión",
+        href: "/servicios/dislexia",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿Tiene validez oficial este informe ante los colegios e institutos?",
+        answer: "Sí. Los informes se elaboran con pruebas baremadas oficiales y bajo la normativa educativa vigente en la Comunidad Valenciana. Mi trayectoria de 20 años en departamentos de orientación y mi titulación de Máster en Psicología Forense garantizan que el documento ofrezca la solidez técnica y jurídica que exigen los centros educativos y la inspección.",
+    },
+    {
+        question:
+            "¿Cuál es la diferencia entre evaluación e informe psicopedagógico?",
+        answer: "La evaluación es el procedimiento clínico de sesiones donde se aplican pruebas, test y entrevistas para analizar el perfil del alumno. El informe psicopedagógico es el dictamen formal por escrito que recoge los resultados, conclusiones diagnósticas y las adaptaciones educativas recomendadas para el colegio.",
+    },
+    {
+        question:
+            "¿Sirve este informe para solicitar adaptaciones en la PAU (Selectividad)?",
+        answer: "Sí. Aporta la fundamentación técnica y diagnóstica oficial requerida para solicitar medidas de acceso, exenciones o tiempo adicional en exámenes oficiales de Secundaria, Bachillerato y pruebas de acceso a la universidad.",
+    },
+    {
+        question: "¿Cuánto tiempo se tarda en entregar el informe definitivo?",
+        answer: "Una vez concluidas las sesiones de valoración psicométrica, la redacción del informe técnico detallado se completa habitualmente en un plazo de 10 a 15 días laborables. Se entrega en mano durante una sesión de devolución explicativa con la familia.",
+    },
+    {
+        question: "¿Incluye el servicio coordinación directa con el colegio?",
+        answer: "Sí. Tras la sesión de devolución con vosotros, facilito pautas específicas para el tutor y, con vuestra conformidad, puedo contactar directamente con el departamento de orientación del centro educativo para asegurar la correcta interpretación de las medidas propuestas.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Informes psicopedagógicos"
+        eyebrow="INFORMES PSICOPEDAGÓGICOS"
+        title="¿Necesitas un documento riguroso para garantizar las adaptaciones que tu hijo necesita?"
+        description="Un informe no es solo un trámite; es la herramienta legal y educativa que asegura que el colegio reconozca y atienda las necesidades reales de tu hijo. Con casi 20 años de trayectoria en orientación escolar en Castellón y especialización en Psicología Forense, mis informes ofrecen el rigor clínico y la claridad pedagógica que los centros educativos requieren."
+        image={reportService.image}
+        imageAlt={reportService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Cuándo es imprescindible contar con una valoración formal?"
+        description="Un informe psicopedagógico detallado elimina la subjetividad y proporciona una hoja de ruta clara tanto para los docentes como para la familia. Es el documento que garantiza que su derecho a una educación adaptada se cumpla con todas las garantías."
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="Un informe debe ser un puente hacia soluciones, no un obstáculo burocrático"
+        description="Mis documentos hablan el idioma de los colegios porque he dirigido sus departamentos de orientación durante 20 años. Unimos el rigor forense con el conocimiento real de la dinámica del aula."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="Un informe no es solo un trámite."
+        secondaryHighlight="trámite"
+        mainPhrase="Es la llave legal y educativa para su bienestar."
+        mainHighlight="llave legal"
+        explanation="Dota a tu hijo de la seguridad educativa que merece. Elimina la incertidumbre, proporciona respaldo técnico ante el colegio y define exactamente las adaptaciones que necesita para avanzar."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="Beneficios y alcance del informe psicopedagógico"
+        areas={areas}
+        description="Dictámenes periciales y clínicos exhaustivos, elaborados para asegurar apoyos reales en el aula y reducir la frustración familiar."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Servicios complementarios a la valoración formal"
+        description="El informe diagnóstico abre la puerta a la intervención adecuada. Podemos coordinar un plan de reeducación o técnicas de estudio adaptadas a cada perfil."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ title="Preguntas frecuentes sobre informes" faqs={faqs} />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="¿Necesitáis un informe técnico válido? Hablemos."
+        titleUnderline="Hablemos"
+        description="Tras 20 años dirigiendo departamentos de orientación en Castellón, sé que un informe riguroso es la llave para que el colegio entienda y atienda las necesidades de vuestro hijo. Escríbeme sin compromiso y tracemos la mejor solución."
+        primaryCtaText="Solicitar informe oficial"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

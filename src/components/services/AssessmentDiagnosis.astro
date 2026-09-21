@@ -1,0 +1,263 @@
+---
+import {
+    ArrowUpRight,
+    Award,
+    Brain,
+    CircleAlert,
+    ClipboardCheck,
+    FileCheck,
+    FileText,
+    GraduationCap,
+    HeartHandshake,
+    ListChecks,
+    Scale,
+    School,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const evalService = services.find(
+    (service) => service.id === "evaluacion-diagnostico",
+);
+
+if (!evalService) {
+    throw new Error(
+        "No se ha encontrado el servicio de evaluación y diagnóstico.",
+    );
+}
+
+const situations = [
+    {
+        icon: CircleAlert,
+        text: "Sospechas de TDAH, dislexia, dificultades de aprendizaje o altas capacidades sin confirmar.",
+    },
+    {
+        icon: School,
+        text: "El colegio sugiere que 'le cuesta seguir el ritmo' o 'se distrae', pero no concreta el problema.",
+    },
+    {
+        icon: Brain,
+        text: "Sus notas no reflejan en absoluto las horas y el esfuerzo que dedica al estudio en casa.",
+    },
+    {
+        icon: HeartHandshake,
+        text: "Presenta bloqueos continuos, rechazo al colegio o episodios de ansiedad ante los exámenes.",
+    },
+    {
+        icon: FileText,
+        text: "Necesitáis un diagnóstico técnico formal para solicitar medidas de apoyo o adaptaciones.",
+    },
+    {
+        icon: ListChecks,
+        text: "El entorno dice 'ya madurará', pero el tiempo pasa y la frustración aumenta cada día.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Scale,
+        title: "Pruebas estandarizadas y rigor forense",
+        text: "Baterías clínicas baremadas oficialmente (escalas WISC, test de atención y neuropsicológicos) que sustituyen conjeturas por certezas científicas.",
+    },
+    {
+        number: "02",
+        icon: GraduationCap,
+        title: "20 años en departamentos de orientación",
+        text: "Conozco al detalle el sistema educativo en Castellón y traduzco los resultados en pautas pedagógicas viables que los profesores aplican en el aula.",
+    },
+    {
+        number: "03",
+        icon: HeartHandshake,
+        title: "Devolución cercana y plan de acción",
+        text: "Eliminamos la culpa para toda la familia, explicamos cómo procesa la información y entregamos un plan concreto desde el primer día.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: Brain,
+        title: "Evaluación cognitiva y neuropsicológica",
+        description:
+            "Estudio del perfil de inteligencia (CI), memoria de trabajo, velocidad de procesamiento y funciones ejecutivas.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: FileText,
+        title: "Dificultades Específicas de Aprendizaje",
+        description:
+            "Diagnóstico diferencial certero de dislexia, discalculia, disortografía y dificultades en la lectoescritura.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: ClipboardCheck,
+        title: "Evaluación de TDAH y atención",
+        description:
+            "Valoración clínica de la atención sostenida, impulsividad, inquietud motora y autorregulación en el aula y el hogar.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: Award,
+        title: "Detección de Altas Capacidades",
+        description:
+            "Identificación de sobredotación y talentos específicos para promover el enriquecimiento curricular y evitar el aburrimiento.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: FileCheck,
+        title: "Base técnica para medidas escolares",
+        description:
+            "Fundamentación psicopedagógica para solicitar adaptaciones curriculares de acceso, evaluación o metodología.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: ListChecks,
+        title: "Revisión y segunda opinión experta",
+        description:
+            "Actualización y contraste de diagnósticos previos que hayan quedado desfasados o no hayan servido para actuar.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: ArrowUpRight,
+        title: "Orientación vocacional y académica",
+        description:
+            "Exploración de aptitudes, competencias e intereses para la toma de decisiones en Secundaria y Bachillerato.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Pautas de intervención familiar",
+        description:
+            "Estrategias realistas para que padres y madres sepáis exactamente cómo acompañar su aprendizaje en casa.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Técnicas de estudio, planificación y autonomía",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Tratamiento y evaluación de TDAH",
+        description: "Atención, autorregulación y apoyo educativo",
+        href: "/servicios/tdah",
+    },
+    {
+        title: "Tratamiento y evaluación de dislexia",
+        description: "Reeducación en lectura, escritura y comprensión",
+        href: "/servicios/dislexia",
+    },
+    {
+        title: "Altas capacidades",
+        description: "Estimulación cognitiva y bienestar emocional",
+        href: "/servicios/altas-capacidades",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿Cuándo es el momento adecuado para solicitar una evaluación psicopedagógica?",
+        answer: "Cuando se observan discrepancias evidentes entre el esfuerzo que dedica y sus resultados, cuando el colegio traslada dificultades de atención o aprendizaje, o cuando aparecen bloqueos y desmotivación. Esperar pensando que 'ya madurará' suele cronificar el sufrimiento del menor.",
+    },
+    {
+        question: "¿Qué validez tienen las pruebas y el diagnóstico ante el colegio?",
+        answer: "Cuentan con la máxima validez. Aplico baterías estandarizadas oficiales y baremadas. Además, tras casi 20 años dirigiendo departamentos de orientación en Castellón y con formación de Máster en Psicología Forense, los resultados se presentan con la rigurosidad técnica que la inspección educativa y los orientadores escolares necesitan para activar medidas de apoyo.",
+    },
+    {
+        question: "¿Cuántas sesiones son necesarias para completar el diagnóstico?",
+        answer: "El proceso se desarrolla habitualmente en 3 a 5 sesiones: una primera entrevista en profundidad con los padres (anamnesis), sesiones individuales de evaluación con el menor mediante pruebas psicométricas y lúdicas adaptadas, y una sesión final de devolución con la entrega detallada del informe y las pautas de intervención.",
+    },
+    {
+        question: "¿Habrá coordinación con el colegio o instituto de mi hijo?",
+        answer: "Sí, siempre con el consentimiento de la familia. Puedo mantener contacto con el tutor o el equipo de orientación del centro escolar para contrastar datos y facilitar que las recomendaciones pedagógicas se apliquen eficazmente en el aula.",
+    },
+    {
+        question: "¿Un diagnóstico puede etiquetar negativamente a mi hijo?",
+        answer: "Al contrario. Un diagnóstico clínico riguroso elimina las etiquetas informales injustas como 'es vago', 'no quiere' o 'se distrae por molestar'. Ponerle nombre a la dificultad libera de culpa al menor y a la familia, protege su autoestima y proporciona una hoja de ruta con soluciones reales.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Evaluación y diagnóstico"
+        eyebrow="EVALUACIÓN Y DIAGNÓSTICO PSICOPEDAGÓGICO"
+        title="Sal de dudas y descubre con certeza qué frena el aprendizaje de tu hijo"
+        description="Identifico la barrera exacta en el aprendizaje de tu hijo mediante pruebas estandarizadas y rigor clínico para dejar de dar palos de ciego. Con casi 20 años de experiencia en orientación escolar en Castellón, transformo las dudas en un diagnóstico claro y un plan de acción eficaz."
+        image={evalService.image}
+        imageAlt={evalService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Sientes que algo no encaja pero no sabes exactamente qué es?"
+        description="Ver a tu hijo esforzarse sin resultados o notar señales de alerta sin saber qué ocurre genera una gran impotencia. Una evaluación a tiempo elimina las suposiciones y aporta el respaldo técnico para actuar con garantías."
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="Un diagnóstico debe ser un mapa claro para avanzar, no un laberinto de dudas"
+        description="Mis evaluaciones se realizan con el máximo rigor científico y visión real de aula. Sustituimos las conjeturas por datos clínicos objetivos y recomendaciones que los docentes entienden y aplican de inmediato."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="Un diagnóstico no es un punto final."
+        secondaryHighlight="punto final"
+        mainPhrase="Es el mapa claro para empezar a avanzar."
+        mainHighlight="mapa claro"
+        explanation="Ponerle nombre y comprender el origen de la dificultad elimina la culpa, protege la autoestima del menor y permite enfocar toda la energía familiar y escolar en lo que realmente funciona."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué valoramos en la evaluación?"
+        areas={areas}
+        description="Un protocolo exhaustivo que no solo detecta la dificultad, sino que explica cómo procesa la información tu hijo y qué necesita para progresar."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Del diagnóstico certero a la intervención eficaz"
+        description="La evaluación es el punto de partida que aclara el camino. En función de las necesidades identificadas, podemos iniciar un trabajo específico adaptado a cada dificultad de aprendizaje o del neurodesarrollo."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ title="Preguntas frecuentes sobre la evaluación" faqs={faqs} />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="Si necesitas salir de dudas de una vez por todas, hablemos."
+        titleUnderline="hablemos"
+        description="Cuéntame qué has observado en tu hijo y tracemos el plan de evaluación más adecuado para entender sus necesidades y proteger su futuro escolar."
+        primaryCtaText="Solicitar evaluación"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

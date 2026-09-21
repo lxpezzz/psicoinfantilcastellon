@@ -1,0 +1,272 @@
+---
+import {
+    ArrowUpRight,
+    Brain,
+    CircleAlert,
+    Compass,
+    DoorClosed,
+    FileText,
+    HeartCrack,
+    HeartHandshake,
+    ListChecks,
+    MessageSquare,
+    ShieldCheck,
+    Smartphone,
+    Sparkles,
+    Users,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const youthService = services.find(
+    (service) => service.id === "psicologia-juvenil",
+);
+
+if (!youthService) {
+    throw new Error(
+        "No se ha encontrado el servicio de psicología juvenil.",
+    );
+}
+
+const situations = [
+    {
+        icon: HeartCrack,
+        text: "Cambios bruscos de humor: irritabilidad continua, apatía o tristeza sin motivo aparente.",
+    },
+    {
+        icon: DoorClosed,
+        text: "Aislamiento excesivo: pasa el día encerrado en su habitación y evita la comunicación familiar.",
+    },
+    {
+        icon: FileText,
+        text: "Bajada repentina del rendimiento escolar: pérdida de motivación o abandono de hábitos.",
+    },
+    {
+        icon: Sparkles,
+        text: "Inseguridad y baja autoestima: autocrítica constante hacia su cuerpo, comparándose en redes.",
+    },
+    {
+        icon: CircleAlert,
+        text: "Conflictos frecuentes: las conversaciones cotidianas derivan en discusiones o batallas de poder.",
+    },
+    {
+        icon: Compass,
+        text: "Desorientación y ansiedad ante el futuro: miedo al 'qué pasará después' o indecisión vocacional.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Brain,
+        title: "Gestión de la ansiedad y emociones",
+        text: "Le doto de herramientas prácticas para identificar y regular el estrés académico, la presión social y esas emociones que a veces les desbordan.",
+    },
+    {
+        number: "02",
+        icon: ShieldCheck,
+        title: "Seguridad y criterio social",
+        text: "Trabajamos la autoestima y la asertividad para que aprendan a poner límites, gestionar la presión de grupo y moverse en su entorno digital con criterio propio.",
+    },
+    {
+        number: "03",
+        icon: Compass,
+        title: "Claridad de futuro y puente familiar",
+        text: "Orientación vocacional para proyectar su futuro con ilusión y pautas a los padres para recuperar la conexión sin batallas diarias.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: Brain,
+        title: "Gestión de ansiedad y estrés académico",
+        description:
+            "Técnicas de regulación emocional ante la autoexigencia, el bloqueo en exámenes y la sobrecarga lectiva.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: Compass,
+        title: "Orientación vocacional y salidas de futuro",
+        description:
+            "Descubrimiento de talentos, aptitudes y clarificación de itinerarios en ESO, Bachillerato y Formación Profesional.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: Sparkles,
+        title: "Autoestima e imagen corporal",
+        description:
+            "Superación de complejos, aceptación personal y gestión crítica de las comparaciones en redes sociales.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: Users,
+        title: "Habilidades sociales y presión de grupo",
+        description:
+            "Estrategias asertivas para aprender a decir 'no', poner límites y construir relaciones de amistad sanas.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: MessageSquare,
+        title: "Restauración de la comunicación familiar",
+        description:
+            "Pautas para que padres e hijos recuperen el diálogo constructivo sin caer en reproches ni batallas de poder.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Regulación del estado de ánimo",
+        description:
+            "Acompañamiento en momentos de tristeza, desgana o frustración para que recuperen la ilusión y el bienestar.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: Smartphone,
+        title: "Uso saludable de pantallas y redes",
+        description:
+            "Estrategias para gestionar el tiempo digital, prevenir adicciones a videojuegos y proteger el descanso.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: ListChecks,
+        title: "Resolución de crisis de identidad",
+        description:
+            "Un espacio seguro y confidencial donde resolver dudas sobre autoconcepto, valores y proyecto de vida.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Técnicas de estudio, planificación y método",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Asesoramiento a padres",
+        description: "Pautas de convivencia y vínculo en casa",
+        href: "/servicios/asesoramiento-padres",
+    },
+    {
+        title: "Tratamiento y evaluación de TDAH",
+        description: "Atención, autorregulación y funciones ejecutivas",
+        href: "/servicios/tdah",
+    },
+    {
+        title: "Evaluación y diagnóstico",
+        description: "Estudio clínico y perfil cognitivo completo",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿Cómo plantearle a mi hijo ir al psicólogo si muestra reticencia?",
+        answer: "Es muy común que muestren resistencia por miedo a sentirse 'juzgados' o pensar que 'creen que están locos'. La clave es presentarlo no como un reproche, sino como un espacio confidencial y exclusivo para él o ella, con una profesional externa al colegio y a la familia que le escuchará sin sermonear para ayudarle con aquello que le preocupe o agobie.",
+    },
+    {
+        question:
+            "¿Las sesiones con el adolescente son confidenciales respecto a los padres?",
+        answer: "Sí, la confidencialidad es la base indispensable de la confianza terapéutica con un joven. Lo que comparte en consulta es privado para que pueda abrirse con total sinceridad. No obstante, mantengo sesiones periódicas de asesoramiento con vosotros para orientaros en pautas de convivencia y, ante cualquier situación que comprometa su integridad o seguridad, se informa a la familia de inmediato.",
+    },
+    {
+        question:
+            "¿Cuándo deja de ser una 'etapa típica de la edad' para requerir intervención?",
+        answer: "Cuando el malestar, el aislamiento, la tristeza o la irritabilidad se prolongan durante semanas, interfieren notablemente en sus resultados académicos, deterioran gravemente la convivencia familiar o se manifiestan mediante somatizaciones constantes, ansiedad o conductas de riesgo.",
+    },
+    {
+        question:
+            "¿En qué consiste el trabajo de orientación vocacional?",
+        answer: "Aplicamos pruebas psicométricas estandarizadas de intereses profesionales, aptitudes intelectuales y valores laborales. Con los resultados, exploramos de manera realista y motivadora los itinerarios formativos (Bachilleratos, Grados Medios, Superiores o Universitarios) para que elija con seguridad y convicción.",
+    },
+    {
+        question:
+            "¿Cómo participamos los padres en el proceso de terapia juvenil?",
+        answer: "Aunque el trabajo individual se realiza con el adolescente, los padres sois parte indispensable de la solución. Realizamos una primera sesión conjunta o con vosotros para contextualizar la situación y mantenemos revisiones periódicas para trasladaros pautas de comunicación y límites adaptadas a su momento evolutivo.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Psicología juvenil"
+        eyebrow="PSICOLOGÍA JUVENIL Y ORIENTACIÓN A ADOLESCENTES"
+        title="¿Sientes que ya no logras conectar con tu hijo o hija?"
+        description="La adolescencia es una etapa de cambios profundos donde el 'no sé qué me pasa' es la respuesta más común. Mi labor es actuar como puente entre sus emociones y vuestra tranquilidad, proporcionándoles las herramientas necesarias para gestionar su identidad, sus estudios y sus relaciones con seguridad y bienestar."
+        image={youthService.image}
+        imageAlt={youthService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Es solo 'cosa de la edad' o necesita ayuda profesional?"
+        description="No es rebeldía sin causa; es una etapa compleja que necesita un puente de comunicación, no un muro de exigencias. Ver cómo tu hijo se distancia o reacciona con hostilidad genera una gran impotencia en casa. Si te preocupan estas señales, es el momento de intervenir:"
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="En esta etapa no necesita que le digan qué hacer, sino aprender a gestionar lo que siente"
+        description="Combinamos la psicología clínica con casi dos décadas de experiencia dirigiendo departamentos de orientación escolar en Castellón. Ofrecemos un espacio confidencial, cercano y libre de juicios para desbloquear su verdadero potencial."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="La adolescencia no es una etapa que deba sufrirse."
+        secondaryHighlight="sufrirse"
+        mainPhrase="Es una transición que se aprende a transitar con confianza."
+        mainHighlight="confianza"
+        explanation="Detrás de cada respuesta cortante o puerta cerrada hay un joven buscando su lugar en el mundo. Proporcionarle un espacio seguro y neutral le permite desbloquear su potencial y reencontrarse consigo mismo y con su familia."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué áreas trabajamos en el acompañamiento a adolescentes?"
+        areas={areas}
+        description="Un plan integral de bienestar emocional, éxito académico y comunicación familiar para que afronte esta etapa con seguridad y criterio propio."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Servicios complementarios para el bienestar juvenil"
+        description="La psicología juvenil se coordina habitualmente con las técnicas de rendimiento escolar, el asesoramiento a padres o la evaluación neuropsicológica formal."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ
+        title="Preguntas frecuentes sobre psicología juvenil"
+        faqs={faqs}
+    />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="¿Preparados para verle brillar de nuevo? Hablemos."
+        titleUnderline="Hablemos"
+        description="Ya sea por una crisis de estudios, distanciamiento o falta de motivación, estoy aquí para escucharos. Tras dos décadas orientando a cientos de adolescentes en Castellón, sé cómo hablar su idioma y desbloquear su potencial. Escríbeme sin compromiso."
+        primaryCtaText="Solicitar orientación"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

@@ -1,0 +1,262 @@
+---
+import {
+    Activity,
+    ArrowUpRight,
+    Brain,
+    CircleAlert,
+    Clock,
+    FileCheck,
+    FileText,
+    HeartHandshake,
+    ListChecks,
+    Sliders,
+    Target,
+    Users,
+    Zap,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const adhdService = services.find((service) => service.id === "tdah");
+
+if (!adhdService) {
+    throw new Error(
+        "No se ha encontrado el servicio de tratamiento y evaluación de TDAH.",
+    );
+}
+
+const situations = [
+    {
+        icon: Brain,
+        text: "Se distrae con facilidad o parece que está continuamente 'en las nubes'.",
+    },
+    {
+        icon: CircleAlert,
+        text: "Falla en los exámenes por no leer bien los enunciados o saltarse pasos por precipitación.",
+    },
+    {
+        icon: Clock,
+        text: "Empieza las tareas pero no las acaba, dejando deberes a medias por desorganización.",
+    },
+    {
+        icon: HeartHandshake,
+        text: "Pierde el control emocional con rapidez: se frustra, explota o le cuesta gestionar cambios.",
+    },
+    {
+        icon: Activity,
+        text: "Muestra inquietud motora continua: le cuesta permanecer sentado o toquetea objetos sin parar.",
+    },
+    {
+        icon: FileText,
+        text: "Dudas si es TDAH, inmadurez evolutiva, desmotivación o un bloqueo emocional no resuelto.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Target,
+        title: "Medición rigurosa de la atención",
+        text: "Descartamos otras causas aplicando pruebas clínicas específicas de atención sostenida, selectiva y dividida para medir su capacidad real.",
+    },
+    {
+        number: "02",
+        icon: Sliders,
+        title: "Entrenamiento en Funciones Ejecutivas",
+        text: "Trabajamos la autorregulación, el control de impulsos y la organización mental para que pase del caos al control autónomo.",
+    },
+    {
+        number: "03",
+        icon: Users,
+        title: "Acompañamiento a familia y aula",
+        text: "Coordinamos pautas prácticas para casa con el fin de frenar discusiones diarias e implementamos adaptaciones escolares viables.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: Brain,
+        title: "Entrenamiento en Funciones Ejecutivas",
+        description:
+            "Planificación, memoria operativa, flexibilidad cognitiva y organización mental aplicada al estudio diario.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: Zap,
+        title: "Autorregulación y control inhibitorio",
+        description:
+            "Estrategias prácticas para frenar la impulsividad, esperar turnos y pensar antes de actuar.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: Target,
+        title: "Atención sostenida y selectiva",
+        description:
+            "Control de estímulos y técnicas de foco para prolongar los tiempos de concentración sin saturación ni fatiga.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Gestión emocional y frustración",
+        description:
+            "Herramientas para identificar disparadores, anticipar desbordes emocionales y resolver imprevistos con calma.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: FileCheck,
+        title: "Adaptaciones escolares en el aula",
+        description:
+            "Pautas para profesores: ubicación en el aula, parcelación de exámenes, descansos activos y supervisión positiva.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: ListChecks,
+        title: "Organización de tareas y agenda",
+        description:
+            "Sistemas visuales y rutinas estructuradas para preparar la mochila, llevar la agenda al día y evitar olvidos.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: ArrowUpRight,
+        title: "Estrategias ante exámenes",
+        description:
+            "Protocolos de doble lectura, control de tiempo y pautas de repaso para evitar errores por descuido o prisas.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: Users,
+        title: "Asesoramiento familiar en casa",
+        description:
+            "Límites consistentes, comunicación sin gritos y refuerzo positivo para recuperar la paz y armonía familiar.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Evaluación y diagnóstico",
+        description: "Estudio clínico y pruebas baremadas de atención",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Técnicas de estudio, planificación y método",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Informes psicopedagógicos",
+        description: "Dictamen oficial para adaptaciones y becas NEAE",
+        href: "/servicios/informes-psicopedagogicos",
+    },
+    {
+        title: "Tratamiento y evaluación de dislexia",
+        description: "Intervención en lectoescritura y comprensión",
+        href: "/servicios/dislexia",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿Cómo diferenciar si es TDAH o simplemente inmadurez o falta de atención temporal?",
+        answer: "La clave reside en la frecuencia, intensidad y la interferencia continuada en varios ámbitos (hogar, colegio y entorno social). Una evaluación diagnóstica con pruebas baremadas (escalas de atención d2, EDAH, WISC-V y entrevistas estructuradas) permite diferenciar con certeza un déficit de atención clínico de una etapa evolutiva transitoria o un bloqueo emocional.",
+    },
+    {
+        question: "¿Es imprescindible medicar a un niño con diagnóstico de TDAH?",
+        answer: "No en todos los casos. La decisión farmacológica corresponde siempre al ámbito médico (neuropediatría o psiquiatría infantil) según la gravedad de los síntomas. La intervención psicopedagógica y cognitivo-conductual es siempre imprescindible para entrenar las funciones ejecutivas, los hábitos de trabajo y la autorregulación, con independencia de si requiere o no medicación.",
+    },
+    {
+        question: "¿Qué adaptaciones metodológicas debe realizar el colegio?",
+        answer: "La normativa educativa contempla medidas de acceso fundamentales: sentarle en primeras filas lejos de ventanas y puertas, fragmentar tareas y exámenes en bloques cortos, conceder tiempo extra, asegurarse de que anota los deberes y permitirle pequeñas pausas activas para regular su nivel de activación motora.",
+    },
+    {
+        question: "¿Puede tener TDAH aunque sus notas sean altas o sea muy inteligente?",
+        answer: "Sí, es muy habitual. Los alumnos con buena capacidad cognitiva suelen compensar el déficit atencional en los primeros cursos de Primaria. Sin embargo, al llegar a cursos superiores (5º-6º de Primaria o la ESO) el volumen de exigencia supera sus recursos de memoria de trabajo y aparecen bajadas repentinas de rendimiento, desorganización extrema y bloqueo.",
+    },
+    {
+        question: "¿Cómo ayudáis a las familias en casa con las batallas de los deberes?",
+        answer: "Diseñamos un plan personalizado con pautas muy concretas: estructurar el espacio de estudio sin distractores, establecer rutinas visuales paso a paso, aplicar refuerzo positivo y enseñar a los padres a gestionar la frustración sin entrar en confrontaciones que desgasten el vínculo afectivo.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="TDAH"
+        eyebrow="EVALUACIÓN Y TRATAMIENTO DE TDAH"
+        title="¿Pasa horas frente al libro pero su esfuerzo no se refleja en los resultados?"
+        description="A menudo el TDAH se confunde erróneamente con falta de voluntad o desinterés. Evalúo la raíz de su distracción y le proporciono las herramientas de autorregulación y funciones ejecutivas necesarias para que aprenda a concentrarse, organizarse y recuperar la calma en casa sin castigos."
+        image={adhdService.image}
+        imageAlt={adhdService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Sientes que su esfuerzo nunca llega a verse reflejado?"
+        description="Su cerebro tiene dificultades para jerarquizar estímulos: todo le parece igual de importante al mismo tiempo. Esa saturación mental genera un agotamiento invisible que acaba minando su autoestima y la armonía en casa. Revisa si te resultan familiares estas señales:"
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="La atención es como un músculo: si no se entrena correctamente, se debilita"
+        description="No todos los casos de 'se distrae' son iguales. Descartamos otras causas mediante pruebas clínicas específicas y diseñamos un entrenamiento en Funciones Ejecutivas para su día a día, coordinándonos con la familia y el centro escolar."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="El TDAH no se cura con castigos."
+        secondaryHighlight="castigos"
+        mainPhrase="Se entrena como una habilidad ejecutiva."
+        mainHighlight="habilidad ejecutiva"
+        explanation="No es un niño 'malo' ni 'vago', sino alguien cuya función ejecutiva y control de la conducta funcionan de forma diferente. El objetivo no es que obedezca sin más, sino que aprenda a comprenderse, autorregularse y desarrollar todo su potencial con seguridad."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué trabajamos en la intervención de TDAH?"
+        areas={areas}
+        description="Un plan integral de funciones ejecutivas, autorregulación emocional y pautas escolares para que recupere la motivación y el éxito académico."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Servicios complementarios para su progreso escolar"
+        description="El TDAH frecuentemente se complementa con la evaluación diagnóstica formal, las técnicas de estudio avanzadas o la detección de dificultades específicas del aprendizaje."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ title="Preguntas frecuentes sobre TDAH" faqs={faqs} />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="¿Sientes que el día a día se ha convertido en una batalla? Hablemos."
+        titleUnderline="Hablemos"
+        description="Cuéntame vuestra situación. Si ves que le cuesta arrancar con los deberes, se olvida de las tareas o su impulsividad está afectando a su autoestima, estoy aquí para ayudaros. Escríbeme sin compromiso y tracemos un plan juntos."
+        primaryCtaText="Solicitar valoración"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

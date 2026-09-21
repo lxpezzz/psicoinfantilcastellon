@@ -1,0 +1,270 @@
+---
+import {
+    ArrowUpRight,
+    Brain,
+    CircleAlert,
+    HeartHandshake,
+    Home,
+    ListChecks,
+    MessageSquare,
+    Scale,
+    ShieldCheck,
+    Smile,
+    Sparkles,
+    Users,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const parentService = services.find(
+    (service) => service.id === "asesoramiento-padres",
+);
+
+if (!parentService) {
+    throw new Error(
+        "No se ha encontrado el servicio de asesoramiento a padres.",
+    );
+}
+
+const situations = [
+    {
+        icon: CircleAlert,
+        text: "Dificultades en normas y límites: desobediencia recurrente o problemas para sostener rutinas.",
+    },
+    {
+        icon: MessageSquare,
+        text: "Discusiones continuas, gritos y pérdida de paciencia que acaban generando culpa y malestar.",
+    },
+    {
+        icon: Scale,
+        text: "Desacuerdos entre progenitores: criterios educativos opuestos que confunden al menor.",
+    },
+    {
+        icon: Users,
+        text: "Rivalidad, celos o peleas constantes entre hermanos que desgastan la convivencia familiar.",
+    },
+    {
+        icon: HeartHandshake,
+        text: "Afrontamiento de cambios vitales: procesos de separación, duelos o transiciones de etapa.",
+    },
+    {
+        icon: Brain,
+        text: "Dudas sobre cómo gestionar en casa un diagnóstico de TDAH, altas capacidades o fracaso escolar.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Users,
+        title: "Evaluación de la dinámica familiar",
+        text: "Analizamos el estilo educativo, la comunicación y las necesidades de cada miembro en un espacio seguro y sin juicios.",
+    },
+    {
+        number: "02",
+        icon: ShieldCheck,
+        title: "Pautas de disciplina positiva",
+        text: "Os entrego técnicas concretas y adaptadas a la edad de vuestro hijo para establecer límites firmes desde el respeto y el afecto.",
+    },
+    {
+        number: "03",
+        icon: HeartHandshake,
+        title: "Comunicación y calma parental",
+        text: "Entrenamos la escucha activa y la gestión del propio estrés de los adultos para liderar con serenidad y fortalecer el vínculo.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: ShieldCheck,
+        title: "Gestión eficaz de normas y límites",
+        description:
+            "Estrategias de disciplina positiva para asentar rutinas claras sin recurrir a castigos ineficaces ni amenazas.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: Scale,
+        title: "Unificación de criterios parentales",
+        description:
+            "Alineación del equipo educativo para transmitir mensajes coherentes y remar en la misma dirección.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: MessageSquare,
+        title: "Comunicación asertiva en el hogar",
+        description:
+            "Pautas de diálogo y escucha empática para que los hijos se sientan comprendidos y colaboren de forma natural.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: Sparkles,
+        title: "Desescalada de rabietas y conflictos",
+        description:
+            "Protocolos prácticos de contención y calma ante momentos de frustración extrema o desbordes emocionales.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: Home,
+        title: "Acompañamiento en separaciones y duelos",
+        description:
+            "Orientación especializada para proteger la seguridad emocional de los menores en procesos de cambio vital.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: Users,
+        title: "Gestión de rivalidad entre hermanos",
+        description:
+            "Herramientas para repartir la atención con equidad, mediar en disputas y fomentar la cooperación fraternal.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: Brain,
+        title: "Manejo doméstico de TDAH y AACC",
+        description:
+            "Adaptación del entorno y las demandas cotidianas a las necesidades neurocognitivas específicas del hijo.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: Smile,
+        title: "Autocuidado y reducción del estrés",
+        description:
+            "Recursos para rebajar la sobrecarga mental, recuperar la confianza en la crianza y disfrutar de la vida familiar.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Evaluación y diagnóstico",
+        description: "Comprender qué puede estar detrás",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Pautas de estudio y gestión de deberes",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Tratamiento y evaluación de TDAH",
+        description: "Atención, impulsividad y pautas en casa",
+        href: "/servicios/tdah",
+    },
+    {
+        title: "Psicología juvenil",
+        description: "Acompañamiento en cambios en la adolescencia",
+        href: "/servicios/psicologia-juvenil",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿Es necesario que asistan los hijos a las sesiones de asesoramiento?",
+        answer: "No en las primeras sesiones. El asesoramiento a padres es un espacio exclusivo y confidencial para los adultos, donde podéis hablar con total libertad sobre las dificultades y dudas de crianza sin que los hijos se sientan observados ni juzgados. Si más adelante conviene una sesión conjunta o de observación, se programa de mutuo acuerdo.",
+    },
+    {
+        question:
+            "¿Qué ocurre si los padres tenemos estilos educativos opuestos o estamos separados?",
+        answer: "Es uno de los motivos de consulta más habituales. Trabajamos para encontrar puntos de consenso y pautas comunes que aporten predictibilidad, coherencia y seguridad emocional al menor, independientemente de si convivís bajo el mismo techo o en hogares separados.",
+    },
+    {
+        question:
+            "¿En cuántas sesiones se empiezan a notar cambios en la convivencia?",
+        answer: "La mayoría de las familias experimentan una reducción significativa de la tensión y mayor sensación de control desde las primeras 2 o 3 sesiones, al aplicar estrategias concretas y personalizadas para los momentos críticos del día (mañanas, deberes, pantallas o irse a la cama).",
+    },
+    {
+        question:
+            "¿En qué se diferencia la disciplina positiva del permisivismo?",
+        answer: "La disciplina positiva no es permisiva: combina firmeza y afecto simultáneamente. Se establecen límites claros e innegociables para proteger la convivencia y la seguridad, pero se aplican sin recurrir a la humillación, los gritos ni los castigos desmedidos, enseñando al menor responsabilidad y autorregulación.",
+    },
+    {
+        question:
+            "¿Cómo ayuda el asesoramiento si nuestro hijo tiene TDAH o dificultades de aprendizaje?",
+        answer: "Un diagnóstico escolar o clínico necesita traducirse a la dinámica del hogar. Os enseño cómo procesa la información y los estímulos vuestro hijo para adaptar las rutinas, las órdenes y los tiempos en casa, sustituyendo la frustración y las batallas por una convivencia estructurada y comprensiva.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Asesoramiento a padres"
+        eyebrow="ASESORAMIENTO A PADRES"
+        title="Pautas claras y apoyo cercano para recuperar la calma y la armonía en casa"
+        description="La crianza es una de las tareas más gratificantes, pero también de las más complejas. Cuando los gritos y los castigos no funcionan y sientes que la convivencia se desgasta, necesitas herramientas específicas para vuestra realidad. Con casi 20 años de experiencia orientando a familias en Castellón, os ayudo a recuperar el liderazgo afectivo y disfrutar de nuevo de vuestros hijos."
+        image={parentService.image}
+        imageAlt={parentService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Sientes que la crianza se ha convertido en un laberinto de dudas y conflictos?"
+        description="A menudo llegáis con la sensación de haberlo intentado todo: castigos que no funcionan, gritos que generan culpa y un sentimiento de desconexión que os hace sufrir. El problema no es vuestra capacidad como padres, sino la falta de herramientas específicas para vuestra dinámica:"
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="Un espacio seguro, empático y sin juicios para construir soluciones familiares"
+        description="Mi objetivo no es simplemente 'corregir' la conducta del menor, sino comprender la raíz del conflicto para fortalecer el vínculo afectivo y dotar a los adultos de herramientas eficaces para liderar con serenidad."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="No existen manuales universales para educar."
+        secondaryHighlight="manuales universales"
+        mainPhrase="Existe la llave adecuada para vuestro hogar."
+        mainHighlight="llave adecuada"
+        explanation="Educar no consiste en ganar batallas diarias mediante el desgaste. Se trata de conectar antes de corregir, unificar criterios entre progenitores y crear un entorno seguro donde vuestro hijo aprenda a autorregularse con confianza."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué áreas abordamos en el asesoramiento familiar?"
+        areas={areas}
+        description="Pautas prácticas de disciplina positiva, comunicación y resolución de conflictos para transformar las tensiones cotidianas en calma y seguridad."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Servicios complementarios para el bienestar familiar"
+        description="El asesoramiento a padres se coordina con frecuencia con la evaluación diagnóstica, la gestión de los deberes y el apoyo en la etapa adolescente."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ
+        title="Preguntas frecuentes sobre asesoramiento a padres"
+        faqs={faqs}
+    />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="¿Sientes que el día a día es una batalla constante? Hablemos."
+        titleUnderline="Hablemos"
+        description="Tras 20 años ayudando a familias en Castellón, sé que cada hogar tiene su propia llave. Con una evaluación precisa y las pautas adecuadas, dejaremos atrás la frustración para que podáis disfrutar de nuevo de vuestros hijos. Escríbeme sin compromiso y tracemos un plan juntos."
+        primaryCtaText="Solicitar sesión de orientación"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>

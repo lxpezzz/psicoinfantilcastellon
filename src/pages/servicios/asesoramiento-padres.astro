@@ -1,0 +1,21 @@
+---
+import ParentCounselingService from "../../components/services/ParentCounselingService.astro";
+import BottomNav from "../../components/layout/BottomNav.astro";
+import Footer from "../../components/layout/Footer.astro";
+import Header from "../../components/layout/Header.astro";
+import MobileMenu from "../../components/layout/MobileMenu.astro";
+import Layout from "../../layouts/Layout.astro";
+import Contact from "../../components/home/Contact.astro";
+---
+
+<Layout
+    title="Asesoramiento a Padres en Castellón | PsicoInfantil"
+    description="Orientación cercana y pautas para padres en Castellón. Disciplina positiva, gestión de normas y límites, resolución de conflictos y calma familiar."
+>
+    <Header />
+    <MobileMenu />
+    <ParentCounselingService />
+    <Contact />
+    <Footer />
+    <BottomNav />
+</Layout>

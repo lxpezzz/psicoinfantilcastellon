@@ -1,5 +1,6 @@
 ---
-import { Phone } from "lucide-astro";
+import { ChevronDown, Phone } from "lucide-astro";
+import { services } from "../../data/services";
 ---
 
 <header class="header">
@@ -14,14 +15,53 @@ import { Phone } from "lucide-astro";
         </a>
 
         <nav class="header__nav" aria-label="Navegación principal">
-            <a href="/">Inicio</a>
-            <a href="#servicios">Servicios</a>
-            <a href="#como-trabajo">Cómo trabajo</a>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#contacto">Contacto</a>
+            <a href="/" class="header__nav-link">Inicio</a>
+
+            <div class="header__nav-item header__nav-item--dropdown">
+                <a
+                    href="/#servicios"
+                    class="header__nav-link header__nav-trigger"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                >
+                    Servicios
+                    <ChevronDown size={14} class="header__chevron" aria-hidden="true" />
+                </a>
+
+                <div class="header__dropdown" role="menu" aria-label="Menú de servicios">
+                    <div class="header__dropdown-grid">
+                        {
+                            services.map((service) => (
+                                <a
+                                    href={service.href}
+                                    class="header__dropdown-item"
+                                    role="menuitem"
+                                >
+                                    <span class="header__dropdown-item-title">
+                                        {service.title}
+                                    </span>
+                                    <span class="header__dropdown-item-desc">
+                                        {service.description}
+                                    </span>
+                                </a>
+                            ))
+                        }
+                    </div>
+                    <div class="header__dropdown-footer">
+                        <a href="/#servicios" class="header__dropdown-all">
+                            Ver todos los servicios
+                            <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <a href="/#como-trabajo" class="header__nav-link">Cómo trabajo</a>
+            <a href="/#sobre-mi" class="header__nav-link">Sobre mí</a>
+            <a href="/#contacto" class="header__nav-link">Contacto</a>
         </nav>
 
-        <a href="#contacto" class="header__cta">
+        <a href="/#contacto" class="header__cta">
             Pedir cita
             <span aria-hidden="true">↗</span>
         </a>
@@ -96,7 +136,7 @@ import { Phone } from "lucide-astro";
         gap: clamp(1.6rem, 2.5vw, 2.8rem);
     }
 
-    .header__nav a {
+    .header__nav-link {
         position: relative;
 
         color: var(--color-text);
@@ -111,7 +151,7 @@ import { Phone } from "lucide-astro";
             opacity 0.2s ease;
     }
 
-    .header__nav a::after {
+    .header__nav-link::after {
         content: "";
 
         position: absolute;
@@ -130,13 +170,183 @@ import { Phone } from "lucide-astro";
         transition: transform 0.25s ease;
     }
 
-    .header__nav a:hover {
+    .header__nav-link:hover {
         color: var(--color-primary-dark);
     }
 
-    .header__nav a:hover::after {
+    .header__nav-link:hover::after {
         transform: scaleX(1);
         transform-origin: left;
+    }
+
+    /* Dropdown de Servicios (solo Desktop) */
+    .header__nav-item--dropdown {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .header__nav-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+    }
+
+    .header__chevron {
+        transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        color: var(--color-text-soft);
+    }
+
+    .header__nav-item--dropdown:hover .header__chevron,
+    .header__nav-item--dropdown:focus-within .header__chevron {
+        transform: rotate(180deg);
+        color: var(--color-primary);
+    }
+
+    .header__nav-item--dropdown:hover .header__nav-trigger {
+        color: var(--color-primary-dark);
+    }
+
+    .header__nav-item--dropdown:hover .header__nav-trigger::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+
+    .header__dropdown {
+        position: absolute;
+        top: calc(100% + 14px);
+        left: 50%;
+        transform: translateX(-50%) translateY(8px);
+
+        width: min(640px, calc(100vw - 2rem));
+        padding: 1.15rem 1.15rem 0.85rem;
+
+        background: rgba(254, 253, 250, 0.98);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+
+        border: 1px solid rgba(23, 54, 97, 0.08);
+        border-radius: 1.25rem;
+
+        box-shadow:
+            0 16px 36px -6px rgba(23, 54, 97, 0.12),
+            0 4px 12px rgba(23, 54, 97, 0.04);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition:
+            opacity 0.22s ease,
+            transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+            visibility 0.22s;
+
+        z-index: 100;
+    }
+
+    /* Puente invisible para mantener el hover continuo del ratón */
+    .header__dropdown::before {
+        content: "";
+        position: absolute;
+        top: -18px;
+        left: 0;
+        right: 0;
+        height: 18px;
+    }
+
+    .header__nav-item--dropdown:hover .header__dropdown,
+    .header__nav-item--dropdown:focus-within .header__dropdown {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(-50%) translateY(0);
+    }
+
+    .header__dropdown-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.35rem 0.6rem;
+    }
+
+    .header__dropdown-item {
+        display: flex;
+        flex-direction: column;
+        gap: 0.18rem;
+
+        padding: 0.65rem 0.85rem;
+        border-radius: 0.75rem;
+
+        text-decoration: none;
+
+        transition:
+            background-color 0.18s ease,
+            transform 0.18s ease;
+    }
+
+    .header__dropdown-item::after {
+        content: none !important;
+    }
+
+    .header__dropdown-item:hover,
+    .header__dropdown-item:focus-visible {
+        background-color: rgba(23, 54, 97, 0.045);
+        transform: translateX(2px);
+    }
+
+    .header__dropdown-item-title {
+        font-size: 0.92rem;
+        font-weight: 700;
+        color: var(--color-primary-dark);
+        line-height: 1.25;
+
+        transition: color 0.18s ease;
+    }
+
+    .header__dropdown-item:hover .header__dropdown-item-title {
+        color: var(--color-primary);
+    }
+
+    .header__dropdown-item-desc {
+        font-size: 0.77rem;
+        line-height: 1.35;
+        color: var(--color-text-soft);
+
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .header__dropdown-footer {
+        margin-top: 0.65rem;
+        padding-top: 0.65rem;
+        border-top: 1px solid rgba(23, 54, 97, 0.06);
+        text-align: right;
+    }
+
+    .header__dropdown-all {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--color-primary);
+
+        text-decoration: none;
+
+        transition:
+            gap 0.2s ease,
+            color 0.2s ease;
+    }
+
+    .header__dropdown-all::after {
+        content: none !important;
+    }
+
+    .header__dropdown-all:hover {
+        color: var(--color-primary-dark);
+        gap: 0.55rem;
     }
 
     .header__cta {

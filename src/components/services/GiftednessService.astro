@@ -1,0 +1,270 @@
+---
+import {
+    ArrowUpRight,
+    Award,
+    Brain,
+    CircleAlert,
+    FileCheck,
+    HeartHandshake,
+    Lightbulb,
+    ListChecks,
+    Scale,
+    Sparkles,
+    Target,
+    Users,
+} from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, {
+    type RelatedServiceItem,
+} from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const giftedService = services.find(
+    (service) => service.id === "altas-capacidades",
+);
+
+if (!giftedService) {
+    throw new Error(
+        "No se ha encontrado el servicio de tratamiento y evaluación de altas capacidades.",
+    );
+}
+
+const situations = [
+    {
+        icon: Sparkles,
+        text: "Aprende a un ritmo inusualmente rápido y se aburre soberanamente en el aula.",
+    },
+    {
+        icon: Brain,
+        text: "Muestra una curiosidad insaciable y plantea preguntas muy profundas para su edad.",
+    },
+    {
+        icon: HeartHandshake,
+        text: "Presenta una sensibilidad emocional extrema: perfeccionismo, frustración intensa o dolor ante injusticias.",
+    },
+    {
+        icon: CircleAlert,
+        text: "Cuestiona normas y explicaciones superficiales, lo que a menudo se confunde con desafío o desinterés.",
+    },
+    {
+        icon: FileCheck,
+        text: "Sus notas no reflejan en absoluto su capacidad real y empieza a desconectar de los estudios.",
+    },
+    {
+        icon: Scale,
+        text: "Ha sido valorado antes por sospecha de TDAH o conducta sin explorar la hipótesis de altas capacidades.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: Target,
+        title: "Evaluación cognitiva y multidimensional",
+        text: "Medición estandarizada no solo de su CI general, sino de sus aptitudes diferenciales, memoria de trabajo, creatividad y estilo de razonamiento.",
+    },
+    {
+        number: "02",
+        icon: Scale,
+        title: "Detección de Doble Excepcionalidad",
+        text: "Identificamos con precisión si las altas capacidades coexisten con TDAH o dislexia, evitando diagnósticos erróneos de 'solo déficit'.",
+    },
+    {
+        number: "03",
+        icon: Award,
+        title: "Informe y adaptaciones curriculares",
+        text: "Con casi 20 años dirigiendo orientación escolar en Castellón, redacto los dictámenes oficiales para solicitar enriquecimiento o flexibilización en su colegio.",
+    },
+];
+
+const areas: AreaItem[] = [
+    {
+        icon: Brain,
+        title: "Evaluación de sobredotación y talento",
+        description:
+            "Estudio psicométrico riguroso con pruebas baremadas oficiales (escalas WISC, creatividad y perfiles de talento).",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: Scale,
+        title: "Doble Excepcionalidad (AACC + TDAH/DEA)",
+        description:
+            "Diagnóstico diferencial para desenmascarar el talento cuando convive con dificultades de aprendizaje o atencionales.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: Lightbulb,
+        title: "Adaptaciones de enriquecimiento curricular",
+        description:
+            "Diseño de propuestas pedagógicas de ampliación e investigación para que el colegio mantenga activa su motivación.",
+        span: "md:col-span-4",
+        bgVariant: "white",
+    },
+    {
+        icon: HeartHandshake,
+        title: "Acompañamiento a la alta sensibilidad",
+        description:
+            "Herramientas para canalizar la intensidad emocional, el sentido de la justicia y la autoexigencia perfeccionista.",
+        span: "md:col-span-4",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: FileCheck,
+        title: "Informes oficiales para flexibilización",
+        description:
+            "Fundamentación técnica requerida por la administración educativa para valorar el salto o aceleración de curso.",
+        span: "md:col-span-4",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: ListChecks,
+        title: "Gestión de la frustración y el error",
+        description:
+            "Estrategias para normalizar el fallo, aprender a tolerar errores y evitar bloqueos por miedo a no ser perfecto.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: ArrowUpRight,
+        title: "Habilidades sociales y pertenencia",
+        description:
+            "Apoyo para superar la sensación de aislamiento o de 'ser diferente' y favorecer el vínculo con compañeros de su edad.",
+        span: "md:col-span-3",
+        bgVariant: "blue-soft",
+    },
+    {
+        icon: Users,
+        title: "Orientación a padres y madres",
+        description:
+            "Pautas concretas para atender sus inquietudes intelectuales en el hogar sin sobrecargar ni generar presión innecesaria.",
+        span: "md:col-span-4",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        title: "Evaluación y diagnóstico",
+        description: "Estudio clínico y pruebas psicométricas",
+        href: "/servicios/evaluacion-diagnostico",
+    },
+    {
+        title: "Informes psicopedagógicos",
+        description: "Dictamen oficial para adaptaciones curriculares",
+        href: "/servicios/informes-psicopedagogicos",
+    },
+    {
+        title: "Mejora del rendimiento escolar",
+        description: "Técnicas de estudio, organización y método",
+        href: "/servicios/rendimiento-escolar",
+    },
+    {
+        title: "Tratamiento y evaluación de TDAH",
+        description: "Detección diferencial de déficit atencional",
+        href: "/servicios/tdah",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question:
+            "¿A partir de qué edad se pueden evaluar las altas capacidades de forma fiable?",
+        answer: "Aunque en la etapa de Educación Infantil se detectan indicios claros (vocabulario avanzado, memoria prodigiosa o curiosidad excepcional), la evaluación diagnóstica estandarizada adquiere mayor fiabilidad y estabilidad psicométrica a partir de los 6 años (1º de Primaria), momento en que los instrumentos como el WISC-V permiten delimitar con precisión su perfil intelectual.",
+    },
+    {
+        question:
+            "¿Por qué un niño con altas capacidades puede tener bajo rendimiento o suspender?",
+        answer: "Es un fenómeno muy frecuente conocido como bajo rendimiento paradójico. Al no encontrar retos a su altura, el alumno se desmotiva, desconecta de las explicaciones, no adquiere hábitos de estudio en los primeros cursos y rechaza las tareas mecánicas o repetitivas, llegando al bloqueo al alcanzar cursos con mayor exigencia formal.",
+    },
+    {
+        question:
+            "¿Qué es la doble excepcionalidad y cómo se aborda?",
+        answer: "Se da cuando un alumno de altas capacidades presenta de forma simultánea una dificultad de aprendizaje (como dislexia) o del neurodesarrollo (como TDAH). Su elevada inteligencia suele disimular la dificultad, y a su vez el trastorno camufla el talento. Una valoración experta desentraña ambas realidades para que reciba enriquecimiento a la vez que soporte en sus dificultades.",
+    },
+    {
+        question:
+            "¿Qué medidas de adaptación puede activar el colegio con el informe?",
+        answer: "La normativa educativa de la Comunidad Valenciana contempla medidas ordinarias de enriquecimiento curricular, proyectos de profundización, adaptaciones de ampliación de contenidos y, en casos justificados, medidas extraordinarias como la flexibilización (aceleración de curso escolar).",
+    },
+    {
+        question:
+            "¿Cómo influyen las altas capacidades en las emociones del menor?",
+        answer: "La llamada disincronía evolutiva hace que su nivel intelectual avance mucho más rápido que su madurez socioemocional o motriz. Esto genera a menudo hipersensibilidad, un sentido de justicia muy rígido, frustración ante el error y sensación de incomprensión. La intervención psicológica ayuda a integrar armónicamente sus emociones y su talento.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <!-- 1. ServiceIntro -->
+    <ServiceIntro
+        breadcrumbLabel="Altas capacidades"
+        eyebrow="EVALUACIÓN Y TRATAMIENTO DE ALTAS CAPACIDADES"
+        title="¿Y si su falta de atención no es TDAH, sino puro aburrimiento?"
+        description="Cuando la inteligencia se esconde detrás de la desmotivación. Si el sistema estándar se le queda pequeño y su cerebro va a otra velocidad, necesita retos diferentes. Evalúo su perfil intelectual y emocional y diseño las adaptaciones curriculares necesarias para que recupere la motivación y el éxito escolar."
+        image={giftedService.image}
+        imageAlt={giftedService.alt}
+    />
+
+    <!-- 2. ServiceSignals -->
+    <ServiceSignals
+        title="¿Sientes que el aula se le queda pequeña y su talento se apaga?"
+        description="Es frustrante ver cómo tu hijo es brillante, curioso y agudo en casa, pero en el colegio parece desconectado, desmotivado o incomprendido. Muchas veces el sistema estándar etiqueta rápidamente a estos niños porque su mente va a otro ritmo. Revisa si te resultan familiares estas señales:"
+        signals={situations}
+    />
+
+    <!-- 3. ServiceAssessment -->
+    <ServiceAssessment
+        id="como-trabajamos"
+        title="Del diagnóstico certero a la adaptación curricular en el aula"
+        description="Confirmar las altas capacidades es solo el primer paso. Realizamos una evaluación integral que mide no solo su CI, sino su gestión emocional, su creatividad y las posibles asincronías del desarrollo, coordinándonos con el centro escolar."
+        perspectives={perspectives}
+    />
+
+    <!-- 4. ServiceManifesto -->
+    <ServiceManifesto
+        secondaryPhrase="Tener altas capacidades no garantiza el éxito."
+        secondaryHighlight="éxito"
+        mainPhrase="Es una necesidad educativa que requiere respuesta."
+        mainHighlight="necesidad educativa"
+        explanation="Un cerebro que procesa a otra velocidad sin estímulos adecuados se apaga o se frustra. Identificar su perfil permite devolverle la motivación, proteger su autoestima y brindarle el entorno enriquecedor que necesita para crecer feliz."
+    />
+
+    <!-- 5. ServiceAreas -->
+    <ServiceAreas
+        title="¿Qué trabajamos en la atención a las altas capacidades?"
+        areas={areas}
+        description="Evaluaciones rigurosas y programas de enriquecimiento personalizados para potenciar su talento, acompañar su sensibilidad y asegurar apoyos escolares reales."
+    />
+
+    <!-- 6. RelatedServices -->
+    <RelatedServices
+        title="Servicios complementarios para su bienestar y desarrollo"
+        description="Las altas capacidades requieren a menudo coordinación con el estudio diagnóstico formal, el método de rendimiento escolar o la valoración de doble excepcionalidad."
+        services={relatedServicesList}
+    />
+
+    <!-- 7. ServiceFAQ -->
+    <ServiceFAQ
+        title="Preguntas frecuentes sobre altas capacidades"
+        faqs={faqs}
+    />
+
+    <!-- 8. ServiceCTA -->
+    <ServiceCTA
+        title="¿Sospechas que su ritmo es diferente? Hablemos."
+        titleUnderline="Hablemos"
+        description="Cuéntame vuestra situación. Si ves que se aburre en clase, hace preguntas inusualmente profundas o sientes que su talento se apaga por falta de retos, estoy aquí para escucharos. Escríbeme sin compromiso y busquemos el mejor camino."
+        primaryCtaText="Solicitar valoración"
+        primaryCtaHref="/#contacto"
+        phoneText="También puedes llamar al 614 99 21 48"
+        phoneHref="tel:+34614992148"
+    />
+</main>
