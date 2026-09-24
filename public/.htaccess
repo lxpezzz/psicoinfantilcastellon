@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirect the temporary Astro service URLs to the existing public URLs.
+RewriteRule ^servicios/rendimiento-escolar/?$ https://psicoinfantilcastellon.es/mejora-del-rendimiento-escolar/ [R=301,L,NE]
+RewriteRule ^servicios/evaluacion-diagnostico/?$ https://psicoinfantilcastellon.es/evaluacion-y-diagnostico/ [R=301,L,NE]
+RewriteRule ^servicios/tdah/?$ https://psicoinfantilcastellon.es/tratamiento-tdah/ [R=301,L,NE]
+RewriteRule ^servicios/dislexia/?$ https://psicoinfantilcastellon.es/tratamiento-dislexia/ [R=301,L,NE]
+RewriteRule ^servicios/altas-capacidades/?$ https://psicoinfantilcastellon.es/tratamiento-altas-capacidades/ [R=301,L,NE]
+RewriteRule ^servicios/asesoramiento-padres/?$ https://psicoinfantilcastellon.es/asesoramiento-a-padres/ [R=301,L,NE]
+RewriteRule ^servicios/orientacion-adolescentes/?$ https://psicoinfantilcastellon.es/orientacion-adolescentes/ [R=301,L,NE]
+RewriteRule ^servicios/psicologia-juvenil/?$ https://psicoinfantilcastellon.es/orientacion-adolescentes/ [R=301,L,NE]
+RewriteRule ^servicios/informes-psicopedagogicos/?$ https://psicoinfantilcastellon.es/informes-psicopedagogicos/ [R=301,L,NE]
+
+# Keep the path and query string while moving www traffic to the canonical host.
+RewriteCond %{HTTP_HOST} ^www\.psicoinfantilcastellon\.es$ [NC]
+RewriteRule ^ https://psicoinfantilcastellon.es%{REQUEST_URI} [R=301,L,NE]

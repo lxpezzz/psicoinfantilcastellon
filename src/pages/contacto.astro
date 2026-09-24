@@ -1,0 +1,25 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import ContactHero from "../components/contact/ContactHero.astro";
+import Contact from "../components/home/Contact.astro";
+import ContactMap from "../components/contact/ContactMap.astro";
+import Footer from "../components/layout/Footer.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
+---
+
+<Layout
+    title="Contacto y Ubicación de la Consulta | PsicoInfantil Castellón"
+    description="Contacta con Ana Díaz en PsicoInfantil Castellón. Formulario de consulta, teléfono 614 99 21 48, cita previa y ubicación exacta en Google Maps en C/ Río Támesis 1."
+>
+    <Header />
+    <MobileMenu />
+    <main class="site-main">
+        <ContactHero />
+        <Contact />
+        <ContactMap />
+    </main>
+    <Footer />
+    <BottomNav />
+</Layout>

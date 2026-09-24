@@ -1,0 +1,103 @@
+---
+import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink, Clock } from "lucide-astro";
+---
+
+<section class="py-[clamp(4rem,7vw,6rem)] bg-[var(--color-bg)] border-t border-[rgba(23,54,97,0.08)]" aria-labelledby="map-heading">
+    <div class="section-container">
+        <!-- 1. Cabecera de la Sección de Ubicación -->
+        <div class="max-w-[760px] mx-auto text-center max-sm:text-left mb-10 sm:mb-14">
+            <h2 id="map-heading" class="text-[clamp(1.85rem,3.2vw,2.5rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-3 [text-wrap:balance]">
+                ¿Dónde está nuestra consulta?
+            </h2>
+            <p class="text-[1.02rem] leading-[1.68] text-[var(--color-text-soft)] m-0 [text-wrap:pretty]">
+                Ubicada en una zona tranquila y accesible de Castellón de la Plana, pensada para que las familias y los menores acudan con total comodidad, discreción y sin agobios.
+            </p>
+        </div>
+
+        <!-- 2. Tarjeta Double-Bezel del Mapa de Google Maps -->
+        <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[2rem] sm:rounded-[2.25rem] p-3 sm:p-4 shadow-[0_16px_40px_rgba(23,54,97,0.05)] mb-10 sm:mb-12">
+            <!-- Marco Interno con el iframe interactivo -->
+            <div class="rounded-[calc(2rem-0.75rem)] sm:rounded-[calc(2.25rem-0.875rem)] overflow-hidden relative w-full h-[380px] sm:h-[460px] md:h-[500px] bg-[#eaf0f6]">
+                <iframe
+                    src="https://maps.google.com/maps?q=Psico%20Infantil%20Castell%C3%B3n,%20Calle%20R%C3%ADo%20T%C3%A1mesis,%201,%2012005%20Castell%C3%B3n%20de%20la%20Plana&hl=es&z=16&output=embed"
+                    class="w-full h-full border-0 absolute inset-0"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Ubicación exacta de PsicoInfantil Castellón en Google Maps"
+                ></iframe>
+            </div>
+
+            <!-- Barra Inferior de Acción y Dirección Verificada -->
+            <div class="pt-4 sm:pt-5 px-3 sm:px-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] shrink-0">
+                        <MapPin size={20} />
+                    </div>
+                    <div>
+                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)] block">
+                            C/ Río Támesis, 1, Esc. 1, 4ºA
+                        </strong>
+                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">
+                            12005 Castellón de la Plana (Castellón)
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Botón Abrir en Google Maps / Cómo llegar -->
+                <a
+                    href="https://maps.google.com/?cid=4225123225601099366"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="group inline-flex items-center justify-center gap-2.5 py-3 px-5 sm:px-6 rounded-full text-[0.9rem] font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] shadow-[0_6px_18px_rgba(36,79,158,0.2)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.25)] transition-all no-underline w-full sm:w-auto shrink-0"
+                >
+                    <Navigation size={16} />
+                    <span>Cómo llegar en Google Maps</span>
+                    <ExternalLink size={14} class="opacity-70 group-hover:opacity-100 transition-opacity" />
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. Bento de Información Práctica de Acceso a la Consulta -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+            <!-- Aparcamiento -->
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
+                    <Car size={20} />
+                </div>
+                <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">
+                    Aparcamiento en la zona
+                </strong>
+                <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                    Facilidad para estacionar en las calles adyacentes y avenidas próximas (zona de aparcamiento público sin parquímetros complicados).
+                </p>
+            </div>
+
+            <!-- Transporte Público -->
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
+                    <Bus size={20} />
+                </div>
+                <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">
+                    Transporte y accesos
+                </strong>
+                <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                    Líneas de autobús urbano de Castellón con parada a pocos minutos a pie, y conexión rápida en coche desde las rondas de circunvalación.
+                </p>
+            </div>
+
+            <!-- Privacidad y Puntualidad -->
+            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col gap-2.5">
+                <div class="w-10 h-10 rounded-xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47] mb-1">
+                    <ShieldCheck size={20} />
+                </div>
+                <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">
+                    Atención privada y sin esperas
+                </strong>
+                <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                    Cada sesión se programa con el tiempo necesario para garantizar puntualidad, intimidad y que las familias nunca coincidan en la sala de espera.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
