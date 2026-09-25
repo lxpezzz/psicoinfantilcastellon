@@ -44,82 +44,90 @@ const defaultAccents = [
                     {title}
                 </h2>
                 <p
-                    class="mb-0 mt-0 max-w-[60ch] pt-[clamp(2rem,3vw,3rem)] text-[1.05rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]"
+                    class="mb-0 mt-0 max-w-[60ch] pt-[clamp(0.5rem,1vw,1rem)] text-[1.05rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]"
                 >
                     {description}
                 </p>
             </header>
 
             <!-- Diagrama de las tres perspectivas de evaluación -->
-            <div class="relative hidden h-[280px] w-[320px] justify-self-end lg:block">
+            <div
+                class="relative hidden h-[280px] w-[320px] justify-self-end lg:block"
+            >
                 <div class="absolute right-0 top-0 origin-top-right">
                     <div class="relative h-[280px] w-[320px]">
-                <svg
-                    class="pointer-events-none absolute inset-0 h-full w-full"
-                    viewBox="0 0 320 280"
-                    fill="none"
-                    aria-hidden="true"
-                >
-                    <path
-                        d="M 160 20 L 60 210 L 260 210 Z"
-                        stroke="rgb(36 79 158 / 0.2)"
-                        stroke-width="1"></path>
-                </svg>
+                        <svg
+                            class="pointer-events-none absolute inset-0 h-full w-full"
+                            viewBox="0 0 320 280"
+                            fill="none"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M 160 20 L 60 210 L 260 210 Z"
+                                stroke="rgb(36 79 158 / 0.2)"
+                                stroke-width="1"></path>
+                        </svg>
 
-                <!-- Punto superior: centro 160, 20 -->
-                <div
-                    class="absolute left-1/2 top-[12px] -translate-x-1/2 text-center"
-                >
-                    <p
-                        class="absolute bottom-full left-1/2 m-0 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
-                    >
-                        Cómo aprende
-                    </p>
-                    <div class="mx-auto h-4 w-4 rounded-full bg-[#244f9e]">
-                    </div>
-                </div>
+                        <!-- Punto superior: centro 160, 20 -->
+                        <div
+                            class="absolute left-1/2 top-[12px] -translate-x-1/2 text-center"
+                        >
+                            <p
+                                class="absolute bottom-full left-1/2 m-0 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
+                            >
+                                Cómo aprende
+                            </p>
+                            <div
+                                class="mx-auto h-4 w-4 rounded-full bg-[#244f9e]"
+                            >
+                            </div>
+                        </div>
 
-                <!-- Punto inferior izquierdo: centro 60, 210 -->
-                <div
-                    class="absolute left-[60px] top-[202px] -translate-x-1/2 text-center"
-                >
-                    <div class="mx-auto h-4 w-4 rounded-full bg-[#8dc7a8]">
-                    </div>
-                    <p
-                        class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
-                    >
-                        Cómo se organiza
-                    </p>
-                </div>
+                        <!-- Punto inferior izquierdo: centro 60, 210 -->
+                        <div
+                            class="absolute left-[60px] top-[202px] -translate-x-1/2 text-center"
+                        >
+                            <div
+                                class="mx-auto h-4 w-4 rounded-full bg-[#8dc7a8]"
+                            >
+                            </div>
+                            <p
+                                class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
+                            >
+                                Cómo se organiza
+                            </p>
+                        </div>
 
-                <!-- Punto inferior derecho: centro 260, 210 -->
-                <div
-                    class="absolute left-[260px] top-[202px] -translate-x-1/2 text-center"
-                >
-                    <div class="mx-auto h-4 w-4 rounded-full bg-[#DFA2AA]">
-                    </div>
-                    <p
-                        class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
-                    >
-                        Cómo lo está viviendo
-                    </p>
-                </div>
+                        <!-- Punto inferior derecho: centro 260, 210 -->
+                        <div
+                            class="absolute left-[260px] top-[202px] -translate-x-1/2 text-center"
+                        >
+                            <div
+                                class="mx-auto h-4 w-4 rounded-full bg-[#DFA2AA]"
+                            >
+                            </div>
+                            <p
+                                class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
+                            >
+                                Cómo lo está viviendo
+                            </p>
+                        </div>
 
-                <!-- Centro geométrico del triángulo -->
-                <div
-                    class="absolute left-1/2 top-[147px] -translate-x-1/2 -translate-y-1/2 text-center"
-                >
-                    <span
-                        class="block text-[3.25rem] font-bold leading-none text-[var(--color-primary-dark)]/10 lg:text-[2.6rem]"
-                    >
-                        360º
-                    </span>
-                    <span
-                        class="mt-1 hidden text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] lg:block"
-                    >
-                        Visión global
-                    </span>
-                </div>
+                        <!-- Centro geométrico del triángulo -->
+                        <div
+                            class="absolute left-1/2 top-[147px] -translate-x-1/2 -translate-y-1/2 text-center"
+                        >
+                            <span
+                                class="block text-[3.25rem] font-bold leading-none text-[var(--color-primary-dark)]/10 lg:text-[2.6rem]"
+                            >
+                                360º
+                            </span>
+                            <span
+                                class="mt-1 hidden text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-[var(--color-primary)] lg:block"
+                            >
+                                Visión global
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,7 +180,7 @@ const defaultAccents = [
                                     {title}
                                 </h3>
 
-                                <p class="col-span-full row-start-2 mb-0 mt-3 max-w-[34ch] text-[0.96rem] leading-[1.65] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                                <p class="col-start-2 col-span-2 pt-2 row-start-2 mb-0 mt-3 max-w-[34ch] text-[0.96rem] leading-[1.65] text-[var(--color-text-soft)] [text-wrap:pretty]">
                                     {text}
                                 </p>
                             </article>

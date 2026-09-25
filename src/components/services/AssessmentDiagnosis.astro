@@ -38,27 +38,27 @@ if (!evalService) {
 const situations = [
     {
         icon: CircleAlert,
-        text: "Sospechas de TDAH, dislexia, dificultades de aprendizaje o altas capacidades sin confirmar.",
+        text: "Sospecháis TDAH, dislexia, dificultades de aprendizaje o altas capacidades",
     },
     {
         icon: School,
-        text: "El colegio sugiere que 'le cuesta seguir el ritmo' o 'se distrae', pero no concreta el problema.",
+        text: "El colegio os dice que le cuesta seguir el ritmo o mantener la atención",
     },
     {
         icon: Brain,
-        text: "Sus notas no reflejan en absoluto las horas y el esfuerzo que dedica al estudio en casa.",
+        text: "Su esfuerzo no se refleja en los resultados",
     },
     {
         icon: HeartHandshake,
-        text: "Presenta bloqueos continuos, rechazo al colegio o episodios de ansiedad ante los exámenes.",
+        text: "Aparecen bloqueos, rechazo al colegio o mucha ansiedad ante determinadas situaciones",
     },
     {
         icon: FileText,
-        text: "Necesitáis un diagnóstico técnico formal para solicitar medidas de apoyo o adaptaciones.",
+        text: "Necesitáis una evaluación para orientar los siguientes pasos",
     },
     {
         icon: ListChecks,
-        text: "El entorno dice 'ya madurará', pero el tiempo pasa y la frustración aumenta cada día.",
+        text: "Habéis escuchado “ya madurará”, pero las dificultades siguen ahí",
     },
 ];
 
@@ -66,20 +66,20 @@ const perspectives = [
     {
         number: "01",
         icon: Scale,
-        title: "Pruebas estandarizadas y rigor forense",
-        text: "Baterías clínicas baremadas oficialmente (escalas WISC, test de atención y neuropsicológicos) que sustituyen conjeturas por certezas científicas.",
+        title: "Evaluación rigurosa y adaptada",
+        text: "Utilizamos pruebas y herramientas de evaluación adecuadas a su edad y a las dificultades que queremos comprender.",
     },
     {
         number: "02",
         icon: GraduationCap,
-        title: "20 años en departamentos de orientación",
-        text: "Conozco al detalle el sistema educativo en Castellón y traduzco los resultados en pautas pedagógicas viables que los profesores aplican en el aula.",
+        title: "Experiencia en el entorno educativo",
+        text: "Más de 20 años trabajando con niños, adolescentes, familias y centros educativos permiten interpretar los resultados teniendo en cuenta también lo que ocurre en su día a día.",
     },
     {
         number: "03",
         icon: HeartHandshake,
-        title: "Devolución cercana y plan de acción",
-        text: "Eliminamos la culpa para toda la familia, explicamos cómo procesa la información y entregamos un plan concreto desde el primer día.",
+        title: "Explicación clara y siguientes pasos",
+        text: "Os explicamos qué hemos encontrado, resolvemos vuestras dudas y concretamos qué pautas, apoyos o adaptaciones pueden ayudar a partir de ese momento.",
     },
 ];
 
@@ -180,11 +180,13 @@ const faqs: FAQItem[] = [
         answer: "Cuando se observan discrepancias evidentes entre el esfuerzo que dedica y sus resultados, cuando el colegio traslada dificultades de atención o aprendizaje, o cuando aparecen bloqueos y desmotivación. Esperar pensando que 'ya madurará' suele cronificar el sufrimiento del menor.",
     },
     {
-        question: "¿Qué validez tienen las pruebas y el diagnóstico ante el colegio?",
+        question:
+            "¿Qué validez tienen las pruebas y el diagnóstico ante el colegio?",
         answer: "Cuentan con la máxima validez. Aplico baterías estandarizadas oficiales y baremadas. Además, tras casi 20 años dirigiendo departamentos de orientación en Castellón y con formación de Máster en Psicología Forense, los resultados se presentan con la rigurosidad técnica que la inspección educativa y los orientadores escolares necesitan para activar medidas de apoyo.",
     },
     {
-        question: "¿Cuántas sesiones son necesarias para completar el diagnóstico?",
+        question:
+            "¿Cuántas sesiones son necesarias para completar el diagnóstico?",
         answer: "El proceso se desarrolla habitualmente en 3 a 5 sesiones: una primera entrevista en profundidad con los padres (anamnesis), sesiones individuales de evaluación con el menor mediante pruebas psicométricas y lúdicas adaptadas, y una sesión final de devolución con la entrega detallada del informe y las pautas de intervención.",
     },
     {
@@ -203,16 +205,16 @@ const faqs: FAQItem[] = [
     <ServiceIntro
         breadcrumbLabel="Evaluación y diagnóstico"
         eyebrow="EVALUACIÓN Y DIAGNÓSTICO PSICOPEDAGÓGICO"
-        title="Sal de dudas y descubre con certeza qué frena el aprendizaje de tu hijo"
-        description="Identifico la barrera exacta en el aprendizaje de tu hijo mediante pruebas estandarizadas y rigor clínico para dejar de dar palos de ciego. Con casi 20 años de experiencia en orientación escolar en Castellón, transformo las dudas en un diagnóstico claro y un plan de acción eficaz."
+        title="Entender qué está pasando es el primer paso para saber cómo ayudarle"
+        description="Cuando hay dificultades de aprendizaje, atención, organización o rendimiento, una evaluación permite mirar más allá de las notas y comprender qué puede estar interfiriendo."
         image={evalService.heroImage}
         imageAlt={evalService.alt}
     />
 
     <!-- 2. ServiceSignals -->
     <ServiceSignals
-        title="¿Sientes que algo no encaja pero no sabes exactamente qué es?"
-        description="Ver a tu hijo esforzarse sin resultados o notar señales de alerta sin saber qué ocurre genera una gran impotencia. Una evaluación a tiempo elimina las suposiciones y aporta el respaldo técnico para actuar con garantías."
+        title="¿Sientes que algo no encaja, pero no sabes exactamente qué está pasando?"
+        description="Cuando aparecen dificultades que no terminamos de entender, es fácil empezar a hacer suposiciones. Una evaluación permite ordenar la información, identificar qué puede estar interfiriendo y tomar decisiones con más claridad."
         signals={situations}
     />
 
@@ -220,15 +222,17 @@ const faqs: FAQItem[] = [
     <ServiceAssessment
         id="como-trabajamos"
         title="Un diagnóstico debe ser un mapa claro para avanzar, no un laberinto de dudas"
-        description="Mis evaluaciones se realizan con el máximo rigor científico y visión real de aula. Sustituimos las conjeturas por datos clínicos objetivos y recomendaciones que los docentes entienden y aplican de inmediato."
+        description="Una buena evaluación no consiste solo en obtener resultados. Se trata de comprender cómo aprende, dónde aparecen las dificultades y qué necesita para poder avanzar."
         perspectives={perspectives}
     />
 
     <!-- 4. ServiceManifesto -->
     <ServiceManifesto
-        secondaryPhrase="Un diagnóstico no es un punto final."
-        secondaryHighlight="punto final"
-        mainPhrase="Es el mapa claro para empezar a avanzar."
+        secondaryPhrase="Un diagnóstico
+        no cambia al niño."
+        secondaryHighlight="niño"
+        mainPhrase="Cambia la forma de
+entenderle y acompañarle."
         mainHighlight="mapa claro"
         explanation="Ponerle nombre y comprender el origen de la dificultad elimina la culpa, protege la autoestima del menor y permite enfocar toda la energía familiar y escolar en lo que realmente funciona."
     />
