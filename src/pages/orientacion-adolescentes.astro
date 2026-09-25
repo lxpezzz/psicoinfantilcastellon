@@ -1,0 +1,21 @@
+---
+import YouthPsychologyService from "../components/services/YouthPsychologyService.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import Layout from "../layouts/Layout.astro";
+import Contact from "../components/home/Contact.astro";
+---
+
+<Layout
+    title="Psicología Juvenil y Adolescentes en Castellón | PsicoInfantil"
+    description="Psicóloga para adolescentes en Castellón. Gestión de la ansiedad, orientación vocacional, autoestima, identidad y comunicación familiar. 20 años de experiencia."
+>
+    <Header />
+    <MobileMenu />
+    <YouthPsychologyService />
+    <Contact />
+    <Footer />
+    <BottomNav />
+</Layout>

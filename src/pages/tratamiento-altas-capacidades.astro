@@ -1,0 +1,21 @@
+---
+import GiftednessService from "../components/services/GiftednessService.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
+import Footer from "../components/layout/Footer.astro";
+import Header from "../components/layout/Header.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import Layout from "../layouts/Layout.astro";
+import Contact from "../components/home/Contact.astro";
+---
+
+<Layout
+    title="Evaluación y Tratamiento de Altas Capacidades en Castellón | PsicoInfantil"
+    description="Especialista en altas capacidades y superdotación en Castellón. Identificación temprana, enriquecimiento curricular, doble excepcionalidad y apoyo emocional."
+>
+    <Header />
+    <MobileMenu />
+    <GiftednessService />
+    <Contact />
+    <Footer />
+    <BottomNav />
+</Layout>

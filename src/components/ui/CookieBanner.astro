@@ -31,7 +31,7 @@ import { Cookie, X } from "lucide-astro";
 
     <!-- Texto explicativo -->
     <p id="cookie-banner-desc" class="text-[0.84rem] leading-[1.6] text-[var(--color-text-soft)] m-0 mb-4">
-        Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y cookies analíticas para saber qué contenidos ayudan más a las familias. Puedes aceptar todas, rechazar las analíticas o consultar nuestra <a href="/politica-de-cookies" class="text-[var(--color-primary)] font-semibold underline underline-offset-2 hover:text-[var(--color-primary-dark)]">política de cookies</a>.
+        Utilizamos cookies técnicas necesarias para el funcionamiento del sitio y cookies analíticas para saber qué contenidos ayudan más a las familias. Puedes aceptar todas, rechazar las analíticas o consultar nuestra <a href="/politica-de-cookies/" class="text-[var(--color-primary)] font-semibold underline underline-offset-2 hover:text-[var(--color-primary-dark)]">política de cookies</a>.
     </p>
 
     <!-- Botones de acción -->
@@ -65,15 +65,15 @@ import { Cookie, X } from "lucide-astro";
 
         const CONSENT_KEY = "psico_cookie_consent";
 
-        function showBanner() {
+        const showBanner = () => {
             banner.classList.remove("opacity-0", "translate-y-6", "pointer-events-none");
             banner.classList.add("opacity-100", "translate-y-0", "pointer-events-auto");
-        }
+        };
 
-        function hideBanner() {
+        const hideBanner = () => {
             banner.classList.remove("opacity-100", "translate-y-0", "pointer-events-auto");
             banner.classList.add("opacity-0", "translate-y-6", "pointer-events-none");
-        }
+        };
 
         // Comprobar si ya existe consentimiento previo en este navegador
         const consent = localStorage.getItem(CONSENT_KEY);

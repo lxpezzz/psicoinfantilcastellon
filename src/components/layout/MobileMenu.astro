@@ -72,7 +72,7 @@ import { services } from "../../data/services";
                         Cómo trabajo
                     </a>
                     <a
-                        href="/sobre-mi"
+                        href="/sobre-mi/"
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
                     >
                         Sobre mí
@@ -84,13 +84,13 @@ import { services } from "../../data/services";
                         Preguntas frecuentes
                     </a>
                     <a
-                        href="/contacto"
+                        href="/contacto/"
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
                     >
                         Contacto
                     </a>
                     <a
-                        href="/contacto"
+                        href="/contacto/"
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary)] no-underline transition-colors hover:text-[var(--color-primary-dark)]"
                     >
                         Pedir cita ↗
@@ -191,15 +191,15 @@ import { services } from "../../data/services";
         if (!toggleBtn || !menu || menu.dataset.initialized) return;
         menu.dataset.initialized = "true";
 
-        function openMenu() {
+        const openMenu = () => {
             menu.classList.add("is-open");
             menu.setAttribute("aria-hidden", "false");
             toggleBtn.setAttribute("aria-expanded", "true");
             document.body.classList.add("mobile-menu-open");
             document.body.style.overflow = "hidden";
-        }
+        };
 
-        function closeMenu() {
+        const closeMenu = () => {
             menu.classList.remove("is-open");
             menu.setAttribute("aria-hidden", "true");
             toggleBtn.setAttribute("aria-expanded", "false");
@@ -210,7 +210,7 @@ import { services } from "../../data/services";
             setTimeout(() => {
                 showMainPanel(false);
             }, 350);
-        }
+        };
 
         function showServicesPanel() {
             if (!panelMain || !panelServices) return;

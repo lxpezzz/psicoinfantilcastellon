@@ -16,42 +16,42 @@ const situations = [
         number: "01",
         title: "Le cuesta concentrarse",
         description:
-            "Se dispersa con cualquier estímulo cotidiano, le cuesta mantener el foco y las tareas que deberían llevar minutos se alargan durante horas sin avanzar.",
+            "Se distrae con facilidad, pierde el hilo de lo que está haciendo o necesita mucho más tiempo del esperado para terminar tareas sencillas.",
         icon: Compass,
     },
     {
         number: "02",
         title: "Leer o escribir se ha convertido en una lucha",
         description:
-            "Lee con lentitud o esfuerzo excesivo, confunde letras, evita las tareas de lectoescritura o cada tarde de deberes acaba sistemáticamente en tensión.",
+            "La lectura requiere demasiado esfuerzo, confunde letras o palabras, evita leer o las tareas escritas terminan generando frustración.",
         icon: BookOpen,
     },
     {
         number: "03",
-        title: "Sus notas han bajado sin una razón clara",
+        title: "Sus resultados no reflejan su esfuerzo",
         description:
-            "A pesar de estudiar y dedicar horas en casa, los resultados no reflejan su capacidad real ni su esfuerzo, generando desánimo e impotencia.",
+            "Estudia, dedica tiempo y lo intenta, pero las notas no acompañan. Poco a poco puede empezar a pensar que, haga lo que haga, no es suficiente.",
         icon: TrendingDown,
     },
     {
         number: "04",
         title: "Se frustra o se bloquea con facilidad",
         description:
-            "Reacciona con enfado, abatimiento o ansiedad ante las dificultades. Empieza a dudar de su capacidad y prefiere rendirse antes de intentar.",
+            "Ante una dificultad se enfada, se viene abajo o prefiere dejarlo. A veces el miedo a equivocarse termina pesando más que la propia tarea.",
         icon: CircleAlert,
     },
     {
         number: "05",
-        title: "Sospecháis TDAH, dislexia o altas capacidades",
+        title: "Pensáis que puede haber TDAH, dislexia o altas capacidades",
         description:
-            "Observáis señales diferentes y necesitáis una evaluación diagnóstica rigurosa y especializada para salir de dudas con certezas, sin etiquetas precipitadas.",
+            "Hay señales que os hacen pensar que puede estar ocurriendo algo más y necesitáis entenderlo con claridad antes de sacar conclusiones.",
         icon: Sparkles,
     },
     {
         number: "06",
-        title: "Ya tenéis un diagnóstico, pero no sabéis qué hacer ahora",
+        title: "Ya tenéis un diagnóstico, pero no sabéis qué hacer después",
         description:
-            "Tenéis un informe clínico lleno de tecnicismos, pero os falta una hoja de ruta práctica para casa y la coordinación necesaria con su colegio.",
+            "Tenéis respuestas sobre lo que ocurre, pero ahora necesitáis convertirlas en pautas concretas para casa, el colegio y su día a día.",
         icon: CircleHelp,
     },
 ];
@@ -66,7 +66,7 @@ const rightSituations = situations.slice(3, 6);
         <header class="problems__header">
             <p class="problems__eyebrow">Señales que vemos a menudo</p>
             <h2 class="problems__title">
-                ¿Te suena alguna de estas situaciones?
+                ¿Te suena alguna de estas <em>situaciones</em>?
             </h2>
         </header>
 
@@ -158,8 +158,8 @@ const rightSituations = situations.slice(3, 6);
         <!-- Clean, Understated CTA below entire composition -->
         <div class="problems__cta">
             <p class="problems__cta-text">
-                Si te reconoces en alguna de estas situaciones, el siguiente paso
-                es entender qué está ocurriendo.
+                Si te reconoces en alguna de estas situaciones, el siguiente
+                paso es entender qué está ocurriendo.
             </p>
 
             <a href="#como-trabajo" class="btn btn-primary problems__cta-btn">
@@ -181,8 +181,16 @@ const rightSituations = situations.slice(3, 6);
         overflow: hidden;
         background-color: #f7f6f2;
         background-image:
-            linear-gradient(to right, rgba(23, 54, 97, 0.018) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(23, 54, 97, 0.018) 1px, transparent 1px);
+            linear-gradient(
+                to right,
+                rgba(23, 54, 97, 0.018) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                to bottom,
+                rgba(23, 54, 97, 0.018) 1px,
+                transparent 1px
+            );
         background-size: 36px 36px;
         padding-block: clamp(5rem, 8vw, 7.5rem);
         border-top: 1px solid rgba(23, 54, 97, 0.08);
@@ -360,7 +368,7 @@ const rightSituations = situations.slice(3, 6);
        ========================================================================== */
     .problems__cta {
         margin-top: clamp(3rem, 5vw, 4.25rem);
-        max-width: 760px;
+        max-width: 1080px;
         margin-inline: auto;
         display: flex;
         align-items: center;
@@ -457,8 +465,16 @@ const rightSituations = situations.slice(3, 6);
         .problems {
             padding-block: 4rem 3.5rem;
             background-image:
-                linear-gradient(to right, rgba(23, 54, 97, 0.012) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(23, 54, 97, 0.012) 1px, transparent 1px);
+                linear-gradient(
+                    to right,
+                    rgba(23, 54, 97, 0.012) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(23, 54, 97, 0.012) 1px,
+                    transparent 1px
+                );
         }
 
         .problems__container {

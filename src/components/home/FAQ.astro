@@ -19,10 +19,19 @@ import { faqs } from "../../data/faq";
                     <details class="group/faq bg-white border border-[rgba(23,54,97,0.09)] rounded-[1.15rem] overflow-hidden transition-[border-color,box-shadow] duration-200 ease-[ease] [&[open]]:border-[rgba(36,79,158,0.2)] [&[open]]:shadow-[0_8px_24px_rgba(23,54,97,0.05)]" open={index === 0}>
                         <summary class="py-[1.35rem] px-[1.6rem] text-[1.08rem] font-bold text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center select-none list-none [&::-webkit-details-marker]:hidden">
                             <span>{faq.question}</span>
-                            <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-250 ease-[ease] shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
+                            <ChevronDown size={18} class="transition-transform duration-250 ease-[ease] shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
                         </summary>
-                        <div class="pt-0 px-[1.6rem] pb-[1.4rem] text-[var(--color-text-soft)] text-[0.98rem] leading-[1.65]">
-                            <p class="m-0">{faq.answer}</p>
+                        <div class="pt-0 px-[1.6rem] pb-[1.4rem] text-text-soft text-[0.98rem] leading-[1.65]">
+                            <p class="m-0">
+                                {faq.highlight
+                                    ? faq.answer.split(faq.highlight).map((part, index) => (
+                                        <Fragment>
+                                            {index > 0 && <strong>{faq.highlight}</strong>}
+                                            {part}
+                                        </Fragment>
+                                    ))
+                                    : faq.answer}
+                            </p>
                         </div>
                     </details>
                 ))
@@ -30,4 +39,3 @@ import { faqs } from "../../data/faq";
         </div>
     </div>
 </section>
-

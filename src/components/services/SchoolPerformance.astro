@@ -57,7 +57,7 @@ const perspectives = [
         number: "01",
         icon: Brain,
         title: "Cómo aprende",
-        text: "Atención, comprensión, memoria y forma de enfrentarse a las tareas.",
+        text: "Atención, comprensión, memoria y forma de afrontar las tareas.",
     },
     {
         number: "02",
@@ -69,7 +69,7 @@ const perspectives = [
         number: "03",
         icon: HeartHandshake,
         title: "Cómo lo está viviendo",
-        text: "Motivación, frustración, confianza y respuesta ante la presión académica.",
+        text: "Motivación, frustración, confianza y respuesta ante las dificultades.",
     },
 ];
 
@@ -77,56 +77,64 @@ const areas: AreaItem[] = [
     {
         icon: CalendarDays,
         title: "Organización y planificación",
-        description: "Priorizar tareas, crear rutinas y anticipar el trabajo.",
+        description:
+            "Aprender a priorizar, crear rutinas y anticipar tareas y exámenes.",
         span: "md:col-span-7",
         bgVariant: "primary",
     },
     {
         icon: BookOpenCheck,
         title: "Técnicas de estudio",
-        description: "Encontrar estrategias que encajen con su forma de aprender.",
+        description:
+            "Encontrar estrategias que encajen con su forma de aprender y le ayuden a estudiar con más sentido.",
         span: "md:col-span-5",
         bgVariant: "sage",
     },
     {
         icon: FileText,
         title: "Comprensión y síntesis",
-        description: "Entender, seleccionar y organizar la información importante.",
+        description:
+            "Entender la información, seleccionar lo importante y expresarlo con sus propias palabras.",
         span: "md:col-span-4",
         bgVariant: "white",
     },
     {
         icon: ClipboardCheck,
         title: "Preparación de exámenes",
-        description: "Planificar el estudio y llegar con mayor seguridad.",
+        description:
+            "Planificar el estudio, repartir el esfuerzo y afrontar los exámenes con mayor seguridad.",
         span: "md:col-span-4",
         bgVariant: "dusty-rose",
     },
     {
         icon: Brain,
         title: "Atención y concentración",
-        description: "Reducir distracciones y sostener mejor el foco.",
+        description:
+            "Reducir distracciones, mantener el foco y aprender a volver a la tarea cuando se pierde.",
         span: "md:col-span-4",
         bgVariant: "primary-dark",
     },
     {
         icon: Timer,
         title: "Gestión del tiempo",
-        description: "Distribuir tareas y evitar dejarlo todo para el final.",
+        description:
+            "Organizar el trabajo para evitar prisas, acumulaciones y tareas de última hora.",
         span: "md:col-span-5",
         bgVariant: "white",
     },
     {
         icon: ArrowUpRight,
         title: "Autonomía",
-        description: "Aprender a trabajar con cada vez menos supervisión.",
+        description:
+            "Aprender a organizarse y estudiar necesitando cada vez menos supervisión.",
         span: "md:col-span-3",
         bgVariant: "blue-soft",
     },
     {
         icon: HeartHandshake,
         title: "Confianza académica",
-        description: "Reconocer avances y afrontar los retos con más seguridad.",
+        description:
+            "Reconocer sus avances y afrontar las dificultades sin sentir que todo depende de una nota.",
         span: "md:col-span-4",
         bgVariant: "sage-light",
     },
@@ -136,22 +144,22 @@ const relatedServicesList: RelatedServiceItem[] = [
     {
         title: "Evaluación y diagnóstico",
         description: "Entender qué puede estar detrás",
-        href: "/services/evaluacion-y-diagnostico",
+        href: "/evaluacion-y-diagnostico/",
     },
     {
         title: "TDAH",
         description: "Atención, impulsividad y organización",
-        href: "/services/tratamiento-tdah",
+        href: "/tratamiento-tdah/",
     },
     {
         title: "Dislexia",
         description: "Lectura, escritura y comprensión",
-        href: "/services/tratamiento-dislexia",
+        href: "/tratamiento-dislexia/",
     },
     {
         title: "Altas capacidades",
         description: "Identificar necesidades específicas",
-        href: "/services/tratamiento-altas-capacidades",
+        href: "/tratamiento-altas-capacidades/",
     },
 ];
 
@@ -187,15 +195,15 @@ const faqs: FAQItem[] = [
         breadcrumbLabel="Rendimiento escolar"
         eyebrow="RENDIMIENTO ESCOLAR"
         title="Cuando estudiar cuesta más de lo que debería"
-        description="Hay niños y adolescentes que se esfuerzan, pasan horas delante de los apuntes y aun así no consiguen los resultados que esperan. Antes de exigirles más, conviene entender qué está dificultando su aprendizaje."
-        image={schoolService.image}
+        description="Hay niños y adolescentes que se esfuerzan, dedican muchas horas al estudio y aun así sienten que los resultados no reflejan todo ese esfuerzo. Antes de pedirles más, conviene entender qué está dificultando su aprendizaje."
+        image={schoolService.heroImage}
         imageAlt={schoolService.alt}
     />
 
     <!-- 2. ServiceSignals -->
     <ServiceSignals
-        title="¿Es falta de capacidad o falta de método?"
-        description="Un rendimiento bajo no siempre significa falta de esfuerzo. A veces el problema está en cómo se organiza, cómo comprende la información o cómo afronta el estudio."
+        title="¿Es falta de capacidad o necesita otra forma de aprender?"
+        description="Cuando el esfuerzo no se refleja en los resultados, conviene mirar más allá de las notas. A veces la dificultad está en cómo se organiza, cómo comprende la información, cómo gestiona el tiempo o cómo afronta el estudio."
         signals={situations}
     />
 
@@ -203,7 +211,7 @@ const faqs: FAQItem[] = [
     <ServiceAssessment
         id="como-trabajamos"
         title="Antes de intervenir, necesitamos entender qué está pasando"
-        description="No se trata solo de reunir técnicas de estudio. El punto de partida es observar qué puede estar interfiriendo y cómo encaja cada pieza."
+        description="No se trata de aplicar técnicas sin más. Primero necesitamos entender cómo aprende, cómo se organiza y cómo está viviendo todo lo que ocurre a su alrededor."
         perspectives={perspectives}
     />
 
@@ -220,8 +228,7 @@ const faqs: FAQItem[] = [
     <ServiceAreas
         title="¿Qué podemos trabajar?"
         areas={areas}
-        description="Estrategias prácticas para que pueda organizarse mejor,
-    estudiar con más autonomía y afrontar el aprendizaje con seguridad."
+        description="Trabajamos estrategias concretas para que pueda organizarse mejor, estudiar con más autonomía y afrontar las tareas con mayor seguridad."
     />
 
     <!-- 6. RelatedServices -->

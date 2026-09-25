@@ -11,36 +11,36 @@ const steps = [
     {
         number: "01",
         label: "DETECTAR",
-        title: "Evaluación a medida",
+        title: "Entender qué está pasando",
         description:
-            "Analizo qué está ocurriendo con una evaluación adaptada a cada niño o adolescente.",
+            "Valoramos sus dificultades, fortalezas y forma de aprender para identificar qué puede estar interfiriendo.",
         icon: ClipboardCheck,
         variant: "ice",
     },
     {
         number: "02",
-        label: "ENTENDER",
-        title: "Informe claro",
+        label: "EXPLICAR",
+        title: "Explicarlo con claridad",
         description:
-            "Te explico los resultados sin tecnicismos y con una hoja de ruta concreta.",
+            "Os explico los resultados de forma sencilla, sin tecnicismos innecesarios y resolviendo las dudas que hayan surgido.",
         icon: FileText,
         variant: "sand",
     },
     {
         number: "03",
         label: "APLICAR",
-        title: "Pautas para casa",
+        title: "Pasar de las respuestas a la acción",
         description:
-            "Transformamos el diagnóstico en acciones prácticas para el día a día.",
+            "Convertimos lo que hemos descubierto en pautas y estrategias concretas que podáis aplicar en el día a día.",
         icon: Home,
         variant: "rose",
     },
     {
         number: "04",
         label: "COORDINAR",
-        title: "Coordinación escolar",
+        title: "Familia y colegio en la misma dirección",
         description:
-            "Cuando es necesario, trabajamos también con el colegio para avanzar en la misma dirección.",
+            "Cuando es necesario, coordinamos las pautas con el centro educativo para que el acompañamiento tenga continuidad.",
         icon: GraduationCap,
         variant: "sage",
     },
@@ -53,9 +53,9 @@ const steps = [
             <p class="process__eyebrow">Cómo trabajo</p>
             <h2 class="process__title">De la duda a un plan claro</h2>
             <p class="process__intro">
-                Un proceso pensado para entender qué está ocurriendo, explicarlo
-                con claridad y convertirlo en pasos concretos para casa y
-                colegio.
+                Primero entendemos qué está ocurriendo. Después lo traducimos en
+                pasos concretos para que sepáis qué hacer en casa, en el colegio
+                y en su día a día.
             </p>
         </header>
 
@@ -64,7 +64,9 @@ const steps = [
                 steps.map((step) => {
                     const IconComponent = step.icon;
                     return (
-                        <article class={`process-step process-step--${step.variant}`}>
+                        <article
+                            class={`process-step process-step--${step.variant}`}
+                        >
                             <div class="process-step__axis" aria-hidden="true">
                                 <span class="process-step__dot" />
                                 <span class="process-step__line" />
@@ -72,7 +74,9 @@ const steps = [
 
                             <div class="process-step__card">
                                 <span class="process-step__label">
-                                    <span class="process-step__label-num">{step.number}</span>
+                                    <span class="process-step__label-num">
+                                        {step.number}
+                                    </span>
                                     {step.label}
                                 </span>
 
@@ -90,8 +94,12 @@ const steps = [
                                     </div>
                                 </div>
 
-                                <h3 class="process-step__title">{step.title}</h3>
-                                <p class="process-step__text">{step.description}</p>
+                                <h3 class="process-step__title">
+                                    {step.title}
+                                </h3>
+                                <p class="process-step__text">
+                                    {step.description}
+                                </p>
                             </div>
                         </article>
                     );
@@ -101,13 +109,19 @@ const steps = [
 
         <footer class="process__footer">
             <div class="process__footer-inner">
-                <p class="process__footer-lead">
-                    Sin tecnicismos. Sin etiquetas precipitadas. Con pasos
-                    concretos.
+                <p>
+                    Entender primero. Actuar después.<br />
+                    <span class="font-bold text-[var(--color-text-black)]">
+                        Con claridad y sin etiquetas precipitadas.
+                    </span>
                 </p>
                 <a href="#contacto" class="btn btn-primary process__cta-btn">
                     <span>Conoce mi forma de trabajar</span>
-                    <ArrowRight size={16} stroke-width={1.8} aria-hidden="true" />
+                    <ArrowRight
+                        size={16}
+                        stroke-width={1.8}
+                        aria-hidden="true"
+                    />
                 </a>
             </div>
         </footer>
@@ -125,7 +139,12 @@ const steps = [
         position: relative;
         isolation: isolate;
         overflow: hidden;
-        background: linear-gradient(118deg, #fbf8f1 0%, #f6f7f5 48%, #edf2f6 100%);
+        background: linear-gradient(
+            118deg,
+            #fbf8f1 0%,
+            #f6f7f5 48%,
+            #edf2f6 100%
+        );
         padding-block: clamp(5rem, 8vw, 7.5rem);
         border-top: 1px solid rgba(23, 54, 97, 0.08);
     }
@@ -291,7 +310,9 @@ const steps = [
         line-height: 1;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        transition: border-color 0.25s ease, color 0.25s ease;
+        transition:
+            border-color 0.25s ease,
+            color 0.25s ease;
     }
 
     .process-step__label-num {
@@ -324,7 +345,9 @@ const steps = [
         pointer-events: none;
         z-index: 0;
         opacity: 0.85;
-        transition: opacity 0.28s ease, transform 0.28s ease;
+        transition:
+            opacity 0.28s ease,
+            transform 0.28s ease;
     }
 
     /* Numbers: strictly in primary blue */

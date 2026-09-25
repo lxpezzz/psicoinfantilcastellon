@@ -10,8 +10,9 @@ import { services } from "../../data/services";
         <header class="services__header">
             <h2 class="services__title">Cómo puedo ayudaros</h2>
             <p class="services__intro">
-                Soluciones concretas para entender qué está pasando y acompañar
-                a cada niño, adolescente y familia.
+                Evaluación y acompañamiento para entender qué está ocurriendo y
+                encontrar la forma más adecuada de ayudar a cada niño,
+                adolescente y familia.
             </p>
         </header>
 
@@ -29,19 +30,30 @@ import { services } from "../../data/services";
                                 src={service.image}
                                 alt={service.alt}
                                 class="service-card__img"
+                                style={`object-position: ${service.imagePosition ?? "50% 50%"};`}
                                 width={service.isPrincipal ? 720 : 540}
-                                height={service.isPrincipal ? 480 : 360}
                                 quality={85}
                                 format="webp"
-                                widths={service.isPrincipal ? [270, 360, 540, 720] : [270, 360, 540]}
-                                sizes={service.isPrincipal
-                                    ? "(max-width: 680px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) * 0.53), (max-width: 1260px) calc((100vw - 64px) * 0.31), 390px"
-                                    : service.bentoClass.includes("service-card--span-5")
-                                      ? "(max-width: 680px) calc(100vw - 36px), (max-width: 1040px) calc((100vw - 64px) / 2), (max-width: 1260px) calc((100vw - 80px) * 0.416667), 493px"
-                                      : "(max-width: 680px) calc(100vw - 36px), (max-width: 1040px) calc((100vw - 64px) / 2), (max-width: 1260px) calc((100vw - 104px) / 4), 285px"}
+                                widths={
+                                    service.isPrincipal
+                                        ? [270, 360, 540, 720]
+                                        : [270, 360, 540]
+                                }
+                                sizes={
+                                    service.isPrincipal
+                                        ? "(max-width: 680px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) * 0.53), (max-width: 1260px) calc((100vw - 64px) * 0.31), 390px"
+                                        : service.bentoClass.includes(
+                                                "service-card--span-5",
+                                            )
+                                          ? "(max-width: 680px) calc(100vw - 36px), (max-width: 1040px) calc((100vw - 64px) / 2), (max-width: 1260px) calc((100vw - 80px) * 0.416667), 493px"
+                                          : "(max-width: 680px) calc(100vw - 36px), (max-width: 1040px) calc((100vw - 64px) / 2), (max-width: 1260px) calc((100vw - 104px) / 4), 285px"
+                                }
                                 loading="lazy"
                             />
-                            <div class="service-card__overlay" aria-hidden="true" />
+                            <div
+                                class="service-card__overlay"
+                                aria-hidden="true"
+                            />
                         </div>
 
                         <div class="service-card__body">
@@ -55,7 +67,7 @@ import { services } from "../../data/services";
                             </div>
 
                             <span class="service-card__link">
-                                <span>Descubrir</span>
+                                <span>Ver servicio</span>
                                 <ArrowRight
                                     size={16}
                                     stroke-width={2}
@@ -82,16 +94,25 @@ import { services } from "../../data/services";
         overflow: hidden;
         background-color: #f7f6f2;
         background-image:
-            linear-gradient(to right, rgba(23, 54, 97, 0.018) 1px, transparent 1px),
-            linear-gradient(to bottom, rgba(23, 54, 97, 0.018) 1px, transparent 1px);
+            linear-gradient(
+                to right,
+                rgba(23, 54, 97, 0.018) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                to bottom,
+                rgba(23, 54, 97, 0.018) 1px,
+                transparent 1px
+            );
         background-size: 36px 36px;
         padding-block: clamp(5rem, 8vw, 7.5rem);
         border-top: 1px solid rgba(23, 54, 97, 0.08);
     }
 
-    /* Left-Aligned Header (Strict: No eyebrow) */
+    /* Aligned Header (Strict: No eyebrow) */
     .services__header {
-        text-align: left;
+        margin: auto;
+        text-align: center;
         max-width: 760px;
         margin-bottom: clamp(2.5rem, 4.5vw, 3.75rem);
     }
@@ -391,8 +412,16 @@ import { services } from "../../data/services";
         .services {
             padding-block: 4.25rem 3.75rem;
             background-image:
-                linear-gradient(to right, rgba(23, 54, 97, 0.012) 1px, transparent 1px),
-                linear-gradient(to bottom, rgba(23, 54, 97, 0.012) 1px, transparent 1px);
+                linear-gradient(
+                    to right,
+                    rgba(23, 54, 97, 0.012) 1px,
+                    transparent 1px
+                ),
+                linear-gradient(
+                    to bottom,
+                    rgba(23, 54, 97, 0.012) 1px,
+                    transparent 1px
+                );
         }
 
         .services__container {

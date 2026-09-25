@@ -45,15 +45,15 @@ import GoogleRating from "../ui/GoogleRating.astro";
             <!-- Lower Zone in normal flow: starts clearly below H1 + portrait -->
             <div class="hero__lower">
                 <p class="hero__description">
-                    Evaluamos qué está ocurriendo y te damos una hoja de ruta
-                    clara para ayudarle en casa, en el colegio y en su día a
-                    día.
+                    Evaluamos qué está ocurriendo para entender sus dificultades
+                    y darte una hoja de ruta clara para acompañarle en casa, en
+                    el colegio y en su día a día.
                 </p>
 
                 <div class="hero__actions">
                     <a href="#contacto" class="btn btn-primary">
-                        Hablemos de tu caso
-                    </a>   
+                        Hablemos de vuestro caso
+                    </a>
 
                     <a href="#como-trabajo" class="hero__link">
                         Conoce cómo trabajo
@@ -68,11 +68,17 @@ import GoogleRating from "../ui/GoogleRating.astro";
                 <GoogleRating class="hero__reviews-badge" />
 
                 <p class="hero__trust">
-                    +20 años de experiencia
-                    <span>·</span>
-                    Castellón
-                    <span>·</span>
-                    Coordinación con familia y colegio
+                    <span class="hero__trust-row">
+                        +20 años de experiencia
+                        <span>·</span>
+                        Niños y adolescentes
+                    </span>
+                    <span class="hero__trust-divider" aria-hidden="true">·</span>
+                    <span class="hero__trust-row">
+                        Coordinación con familia y colegio
+                        <span>·</span>
+                        Castellón de la Plana
+                    </span>
                 </p>
             </div>
         </div>
@@ -243,7 +249,7 @@ import GoogleRating from "../ui/GoogleRating.astro";
     }
 
     .hero__trust {
-        max-width: 600px;
+        max-width: 800px;
         margin: 0;
         padding-top: 1.2rem;
         border-top: 1px solid rgba(23, 54, 97, 0.12);
@@ -252,7 +258,8 @@ import GoogleRating from "../ui/GoogleRating.astro";
         line-height: 1.6;
     }
 
-    .hero__trust span {
+    .hero__trust-row > span,
+    .hero__trust-divider {
         margin-inline: 0.45rem;
         color: rgba(23, 54, 97, 0.3);
     }
@@ -570,18 +577,26 @@ import GoogleRating from "../ui/GoogleRating.astro";
         .hero__trust {
             width: 100%;
             max-width: 100%;
-            margin: 0;
             padding-top: 1.25rem;
             border-top: 1px solid rgba(23, 54, 97, 0.1);
             color: var(--color-text-soft);
-            font-size: 0.84rem;
+            font-size: 0.7rem;
             line-height: 1.55;
             text-align: center;
             box-sizing: border-box;
             overflow-wrap: anywhere;
         }
 
-        .hero__trust span {
+        .hero__trust-row {
+            display: block;
+            white-space: nowrap;
+        }
+
+        .hero__trust-divider {
+            display: none;
+        }
+
+        .hero__trust-row > span {
             margin-inline: 0.4rem;
             color: rgba(23, 54, 97, 0.35);
         }

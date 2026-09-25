@@ -41,9 +41,7 @@ const inputClass =
             </div>
 
             <!-- Columna Derecha en Desktop / Posiciones 1-4 en Móvil: Encabezado, Formulario y Contacto -->
-            <div
-                class="flex flex-col w-full order-1 min-[821px]:order-2"
-            >
+            <div class="flex flex-col w-full order-1 min-[821px]:order-2">
                 <!-- 1 y 2: Titular H2 y Texto -->
                 <header class="mb-6 min-[821px]:mb-7 text-left">
                     <h2
@@ -51,7 +49,8 @@ const inputClass =
                         id="contact-heading"
                     >
                         ¿Te preocupa algo de tu hijo?<br />
-                        <span class="block text-[var(--color-primary)] font-bold"
+                        <span
+                            class="block text-[var(--color-primary)] font-bold"
                             >Empecemos por entender qué está pasando.</span
                         >
                     </h2>
@@ -83,7 +82,8 @@ const inputClass =
                             <Check size={18} />
                         </div>
                         <div class="text-[0.88rem] leading-[1.45]">
-                            <strong class="block mb-[0.2rem] text-[var(--color-primary-dark)]"
+                            <strong
+                                class="block mb-[0.2rem] text-[var(--color-primary-dark)]"
                                 >¡Mensaje recibido con éxito!</strong
                             >
                             <p class="m-0">
@@ -101,10 +101,7 @@ const inputClass =
                     >
                         <!-- Nombre y apellidos -->
                         <div class="flex flex-col gap-[0.42rem]">
-                            <label
-                                for="contact-name"
-                                class={labelClass}
-                            >
+                            <label for="contact-name" class={labelClass}>
                                 Nombre y apellidos
                             </label>
                             <input
@@ -123,10 +120,7 @@ const inputClass =
                             class="grid grid-cols-1 min-[821px]:grid-cols-2 gap-[1.15rem] min-[821px]:gap-4"
                         >
                             <div class="flex flex-col gap-[0.42rem]">
-                                <label
-                                    for="contact-phone"
-                                    class={labelClass}
-                                >
+                                <label for="contact-phone" class={labelClass}>
                                     Teléfono
                                 </label>
                                 <input
@@ -142,10 +136,7 @@ const inputClass =
                             </div>
 
                             <div class="flex flex-col gap-[0.42rem]">
-                                <label
-                                    for="contact-email"
-                                    class={labelClass}
-                                >
+                                <label for="contact-email" class={labelClass}>
                                     Email
                                 </label>
                                 <input
@@ -159,36 +150,9 @@ const inputClass =
                                 />
                             </div>
                         </div>
-
-                        <!-- Edad del niño/a (opcional) -->
-                        <div class="flex flex-col gap-[0.42rem]">
-                            <div class="flex items-center justify-between">
-                                <label
-                                    for="contact-child-age"
-                                    class={labelClass}
-                                >
-                                    Edad del niño/a
-                                </label>
-                                <span
-                                    class="text-[0.76rem] text-[#7b8b9f] bg-[rgba(23,54,97,0.05)] px-2 py-[0.15rem] rounded-[6px] font-medium"
-                                    >opcional</span
-                                >
-                            </div>
-                            <input
-                                type="text"
-                                id="contact-child-age"
-                                name="child_age"
-                                placeholder="Ej: 7 años, 14 años..."
-                                class={inputClass}
-                            />
-                        </div>
-
                         <!-- ¿Qué os preocupa? (textarea) -->
                         <div class="flex flex-col gap-[0.42rem]">
-                            <label
-                                for="contact-concern"
-                                class={labelClass}
-                            >
+                            <label for="contact-concern" class={labelClass}>
                                 ¿Qué os preocupa?
                             </label>
                             <textarea
@@ -197,7 +161,7 @@ const inputClass =
                                 rows="3"
                                 required
                                 maxlength="1000"
-                                placeholder="Cuéntame brevemente qué dificultades estáis detectando en casa o en el colegio..."
+                                placeholder="Cuéntame brevemente qué dificultades estáis observando en casa, en el colegio o en su día a día..."
                                 class={`${inputClass} min-h-[105px] leading-[1.5] resize-y`}
                             ></textarea>
                         </div>
@@ -228,7 +192,7 @@ const inputClass =
                                     class="text-[0.85rem] text-[#506176] leading-[1.45]"
                                 >
                                     He leído y acepto la <a
-                                        href="/privacidad"
+                                        href="/privacidad/"
                                         class="text-[var(--color-primary)] font-semibold underline underline-offset-[3px] transition-colors duration-200 hover:text-[var(--color-primary-dark)]"
                                         >política de privacidad</a
                                     >.
@@ -269,7 +233,7 @@ const inputClass =
                         class="m-0 mt-[0.85rem] text-center text-[#7b8b9f] text-[0.78rem] min-[401px]:text-[0.82rem] tracking-[0.01em] leading-[1.45]"
                     >
                         Respuesta personal · Sin compromiso · Consulta en
-                        Castellón
+                        Castellón de la Plana
                     </p>
                 </div>
             </div>
@@ -327,14 +291,19 @@ const inputClass =
         place-items: center;
         flex-shrink: 0;
         margin-top: 2px;
-        transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+        transition:
+            background-color 0.2s ease,
+            border-color 0.2s ease,
+            box-shadow 0.2s ease;
     }
 
     .contact__check-icon {
         color: #ffffff;
         opacity: 0;
         transform: scale(0.6);
-        transition: transform 0.2s ease, opacity 0.2s ease;
+        transition:
+            transform 0.2s ease,
+            opacity 0.2s ease;
     }
 
     .contact__checkbox-native:checked + .contact__checkbox-custom {
@@ -342,7 +311,9 @@ const inputClass =
         border-color: var(--color-primary);
     }
 
-    .contact__checkbox-native:checked + .contact__checkbox-custom .contact__check-icon {
+    .contact__checkbox-native:checked
+        + .contact__checkbox-custom
+        .contact__check-icon {
         opacity: 1;
         transform: scale(1);
     }
@@ -373,7 +344,7 @@ const inputClass =
 <script>
     function initHomeContactForm() {
         const form = document.getElementById(
-            "home-contact-form"
+            "home-contact-form",
         ) as HTMLFormElement | null;
         const feedback = document.getElementById("contact-feedback");
 
