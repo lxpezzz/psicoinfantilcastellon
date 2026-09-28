@@ -1,0 +1,76 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/layout/Header.astro";
+import MobileMenu from "../components/layout/MobileMenu.astro";
+import Footer from "../components/layout/Footer.astro";
+import BottomNav from "../components/layout/BottomNav.astro";
+import { ArrowLeft, Check, Phone } from "lucide-astro";
+---
+
+<Layout
+    title="Mensaje enviado | PsicoInfantil Castellón"
+    description="Gracias por ponerte en contacto con PsicoInfantil Castellón. He recibido tu mensaje y me pondré en contacto contigo lo antes posible."
+    robots="noindex, follow"
+>
+    <Header />
+    <MobileMenu />
+
+    <main class="site-main">
+        <section class="relative overflow-x-clip bg-[#faf9f5] border-t border-[rgba(23,54,97,0.08)] py-[clamp(4.5rem,10vw,7.5rem)]">
+            <div class="w-[min(100%-2rem,100%)] max-[400px]:px-1 px-2 min-[821px]:w-[min(100%-2.5rem,760px)] min-[821px]:px-0 mx-auto box-border">
+                <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.5rem] shadow-[0_12px_36px_-16px_rgba(23,54,97,0.06)] p-[2.25rem_1.25rem] min-[480px]:p-[3rem_2.5rem] text-center flex flex-col items-center">
+                    
+                    <!-- Icono de confirmación amable -->
+                    <div class="w-14 h-14 rounded-full bg-[rgba(141,199,168,0.2)] border border-[rgba(141,199,168,0.5)] text-[#204a34] grid place-items-center mb-6">
+                        <Check size={28} stroke-width={2.5} aria-hidden="true" />
+                    </div>
+
+                    <!-- Eyebrow -->
+                    <span class="text-[0.8rem] min-[401px]:text-[0.85rem] font-bold text-[var(--color-primary)] tracking-[0.1em] uppercase mb-2">
+                        CONTACTO
+                    </span>
+
+                    <!-- H1 -->
+                    <h1 class="m-0 mb-4 text-[var(--color-primary-dark)] font-[750] leading-[1.18] tracking-[-0.035em] [text-wrap:balance] text-[1.95rem] min-[401px]:text-[clamp(2.1rem,5vw,2.65rem)]">
+                        Mensaje enviado
+                    </h1>
+
+                    <!-- Texto explicativo -->
+                    <p class="m-0 text-[#506176] text-[1.02rem] min-[401px]:text-[1.1rem] leading-[1.65] max-w-[520px] [text-wrap:pretty]">
+                        Gracias por contactar.
+                    </p>
+                    <p class="m-0 mt-2 text-[#506176] text-[0.98rem] min-[401px]:text-[1.05rem] leading-[1.65] max-w-[520px] [text-wrap:pretty]">
+                        He recibido vuestro mensaje y me pondré en contacto con vosotros lo antes posible para valorar vuestro caso de forma personalizada.
+                    </p>
+
+                    <!-- CTA Principal: Volver al inicio -->
+                    <div class="mt-8 flex flex-col min-[480px]:flex-row items-center gap-3 w-full justify-center">
+                        <a
+                            href="/"
+                            class="inline-flex items-center justify-center gap-2 w-full min-[480px]:w-auto min-h-[50px] px-7 py-3 bg-[var(--color-primary)] text-white font-bold text-[0.98rem] rounded-[0.85rem] border-0 cursor-pointer shadow-[0_10px_24px_-8px_rgba(36,79,158,0.4)] transition-all duration-200 hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5"
+                        >
+                            <ArrowLeft size={18} aria-hidden="true" />
+                            <span>Volver al inicio</span>
+                        </a>
+                    </div>
+
+                    <!-- Opción secundaria: Teléfono directo -->
+                    <div class="mt-7 pt-6 border-t border-[rgba(23,54,97,0.08)] w-full flex flex-col min-[480px]:flex-row items-center justify-center gap-1.5 text-[0.92rem] text-[#506176]">
+                        <span>¿Necesitas una respuesta urgente? Puedes llamarme al</span>
+                        <a
+                            href="tel:+34614992148"
+                            class="inline-flex items-center gap-1.5 text-[var(--color-primary)] font-bold hover:text-[var(--color-primary-dark)] hover:underline underline-offset-[3px] transition-colors"
+                        >
+                            <Phone size={15} aria-hidden="true" />
+                            <span>614 99 21 48</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+    <BottomNav />
+</Layout>

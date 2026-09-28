@@ -9,6 +9,7 @@ interface Props {
 	canonical?: string;
 	image?: string | { src: string };
 	type?: "website" | "article";
+	robots?: string;
 	articleMeta?: {
 		publishDate?: Date;
 		updatedDate?: Date;
@@ -23,6 +24,7 @@ const {
 	canonical = new URL(Astro.url.pathname, Astro.site).href,
 	image = "/og/psicoinfantil_og.webp",
 	type = "website",
+	robots = "noindex, nofollow",
 	articleMeta,
 	jsonLd,
 } = Astro.props;
@@ -37,7 +39,7 @@ const imageURL = new URL(rawImagePath, Astro.site);
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="robots" content="noindex, nofollow" />
+		<meta name="robots" content={robots} />
 
 		<title>{title}</title>
 		<meta name="description" content={description} />
