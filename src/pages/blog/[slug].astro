@@ -1,0 +1,325 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Image, getImage } from "astro:assets";
+import { getPublishedPosts } from "../../data/blog";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/layout/Header.astro";
+import MobileMenu from "../../components/layout/MobileMenu.astro";
+import Footer from "../../components/layout/Footer.astro";
+import BottomNav from "../../components/layout/BottomNav.astro";
+import BlogCTA from "../../components/blog/BlogCTA.astro";
+import { ArrowLeft, Calendar, ChevronRight, User } from "lucide-astro";
+
+export async function getStaticPaths() {
+    const posts = await getPublishedPosts();
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+interface Props {
+    post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const articleUrl = new URL(`/blog/${post.id}/`, Astro.site).href;
+const blogUrl = new URL("/blog/", Astro.site).href;
+const articleImage = await getImage({ src: post.data.image, width: 1200, format: "webp", quality: 85 });
+const imageUrl = new URL(articleImage.src, Astro.site).href;
+
+const formattedDate = post.data.publishDate.toLocaleDateString("es-ES", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+});
+
+const isoDate = post.data.publishDate.toISOString();
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "BlogPosting",
+            headline: post.data.title,
+            description: post.data.description,
+            datePublished: isoDate,
+            ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
+            author: { "@type": "Person", name: post.data.author },
+            image: imageUrl,
+            url: articleUrl,
+            mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
+        },
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Inicio", item: new URL("/", Astro.site).href },
+                { "@type": "ListItem", position: 2, name: "Blog", item: blogUrl },
+                { "@type": "ListItem", position: 3, name: post.data.title, item: articleUrl },
+            ],
+        },
+    ],
+};
+---
+
+<Layout
+    title={`${post.data.title} | PsicoInfantil Castellón`}
+    description={post.data.description}
+    image={imageUrl}
+    canonical={articleUrl}
+    type="article"
+    articleMeta={{
+        publishDate: post.data.publishDate,
+        updatedDate: post.data.updatedDate,
+        category: post.data.category,
+    }}
+    jsonLd={jsonLd}
+>
+    <Header />
+    <MobileMenu />
+
+    <main class="site-main bg-[#faf9f5]">
+        <article class="py-[clamp(2rem,4vw,3.5rem)]">
+            <div class="mx-auto w-[min(100%-2.5rem,880px)]">
+                <!-- Breadcrumbs accesibles -->
+                <nav aria-label="Breadcrumb" class="mb-6 flex flex-wrap items-center gap-1.5 text-[0.84rem] text-[var(--color-text-soft)]">
+                    <a href="/" class="transition-colors hover:text-[var(--color-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">Inicio</a>
+                    <ChevronRight size={14} class="opacity-50" aria-hidden="true" />
+                    <a href="/blog/" class="transition-colors hover:text-[var(--color-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">Blog</a>
+                    <ChevronRight size={14} class="opacity-50" aria-hidden="true" />
+                    <span class="font-semibold text-[var(--color-primary-dark)] line-clamp-1 max-w-[280px] sm:max-w-none" aria-current="page">
+                        {post.data.title}
+                    </span>
+                </nav>
+
+                <!-- Cabecera del artículo -->
+                <header class="mb-8">
+                    <!-- Categoría -->
+                    <span class="inline-flex items-center rounded-full bg-[rgba(36,79,158,0.08)] px-3 py-0.5 text-[0.78rem] font-bold tracking-wide uppercase text-[var(--color-primary)] mb-4">
+                        {post.data.category}
+                    </span>
+
+                    <!-- H1 único -->
+                    <h1 class="m-0 text-[clamp(2.15rem,4.2vw,3.4rem)] font-[750] leading-[1.12] tracking-[-0.035em] text-[var(--color-primary-dark)] [text-wrap:balance]">
+                        {post.data.title}
+                    </h1>
+
+                    <!-- Entradilla / Subtítulo descriptivo -->
+                    <p class="mb-0 mt-5 text-[clamp(1.08rem,1.4vw,1.22rem)] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                        {post.data.description}
+                    </p>
+
+                    <!-- Meta datos: Autor y Fecha -->
+                    <div class="mt-6 flex flex-wrap items-center gap-4 pt-5 border-t border-[rgba(23,54,97,0.08)] text-[0.88rem] text-[var(--color-text-soft)]">
+                        <div class="flex items-center gap-1.5 font-medium text-[var(--color-primary-dark)]">
+                            <User size={16} stroke-width={2} class="text-[var(--color-primary)]" aria-hidden="true" />
+                            <span>{post.data.author}</span>
+                        </div>
+                        <span class="text-[var(--color-text-soft)]/40 select-none" aria-hidden="true">·</span>
+                        <div class="flex items-center gap-1.5">
+                            <Calendar size={15} stroke-width={2} class="text-[var(--color-primary)]" aria-hidden="true" />
+                            <time datetime={isoDate} class="font-medium">
+                                {formattedDate}
+                            </time>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Imagen principal -->
+                <div class="mb-10 overflow-hidden rounded-[1.4rem] border border-[rgba(23,54,97,0.08)] bg-[#eef1ed] shadow-[0_16px_36px_-16px_rgba(23,54,97,0.08)]">
+                    <Image
+                        src={post.data.image}
+                        alt={post.data.imageAlt}
+                        widths={[480, 768, 1024, 1280]}
+                        sizes="(max-width: 880px) 100vw, 880px"
+                        quality={88}
+                        loading="eager"
+                        fetchpriority="high"
+                        class="aspect-[16/9] w-full object-cover sm:aspect-[21/10]"
+                    />
+                </div>
+
+                <!-- Contenido del artículo Markdown -->
+                <div class="blog-content mx-auto max-w-[760px] text-[1.05rem] leading-[1.8] text-[var(--color-text)]">
+                    <Content />
+                </div>
+
+                <!-- CTA al final del artículo -->
+                <div class="mx-auto max-w-[760px]">
+                    <BlogCTA />
+                </div>
+
+                <!-- Enlace de regreso al blog -->
+                <div class="mx-auto max-w-[760px] pt-4">
+                    <a
+                        href="/blog/"
+                        class="group inline-flex items-center gap-2 text-[0.94rem] font-bold text-[var(--color-primary-dark)] transition-colors hover:text-[var(--color-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                    >
+                        <ArrowLeft size={16} stroke-width={2.2} class="transition-transform duration-200 group-hover:-translate-x-1" aria-hidden="true" />
+                        <span>Volver a todos los artículos</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <Footer />
+    <BottomNav />
+</Layout>
+
+<style is:global>
+    /* Estilos tipográficos editoriales para el contenido Markdown del artículo */
+    .blog-content > * + * {
+        margin-top: 1.5rem;
+    }
+
+    .blog-content h2 {
+        margin-top: 2.75rem;
+        margin-bottom: 1rem;
+        font-size: clamp(1.6rem, 3vw, 2.1rem);
+        font-weight: 750;
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+        color: var(--color-primary-dark);
+        text-wrap: balance;
+    }
+
+    .blog-content h3 {
+        margin-top: 2.25rem;
+        margin-bottom: 0.75rem;
+        font-size: clamp(1.25rem, 2.2vw, 1.5rem);
+        font-weight: 700;
+        line-height: 1.3;
+        letter-spacing: -0.02em;
+        color: var(--color-primary-dark);
+        text-wrap: balance;
+    }
+
+    .blog-content p {
+        margin-bottom: 1.4rem;
+        text-wrap: pretty;
+    }
+
+    .blog-content ul,
+    .blog-content ol {
+        margin-top: 1.2rem;
+        margin-bottom: 1.6rem;
+        padding-left: 1.5rem;
+    }
+
+    .blog-content ul {
+        list-style-type: disc;
+    }
+
+    .blog-content ol {
+        list-style-type: decimal;
+    }
+
+    .blog-content li {
+        margin-bottom: 0.6rem;
+        padding-left: 0.35rem;
+        line-height: 1.7;
+    }
+
+    .blog-content li::marker {
+        color: var(--color-primary);
+    }
+
+    .blog-content blockquote {
+        margin: 2rem 0;
+        padding: 1.25rem 1.6rem;
+        border-left: 3px solid rgba(223, 162, 170, 0.9);
+        background: #fbf9f5;
+        border-radius: 0 0.85rem 0.85rem 0;
+        font-style: italic;
+        color: var(--color-primary-dark);
+        font-size: 1.08rem;
+        line-height: 1.7;
+    }
+
+    .blog-content blockquote p {
+        margin: 0;
+    }
+
+    .blog-content strong {
+        font-weight: 700;
+        color: var(--color-primary-dark);
+    }
+
+    .blog-content a {
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: color 0.2s ease;
+    }
+
+    .blog-content a:hover {
+        color: var(--color-primary-dark);
+    }
+
+    .blog-content a:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+
+    .blog-content em {
+        font-style: italic;
+    }
+
+    .blog-content hr {
+        margin: 2.75rem 0;
+        border: 0;
+        border-top: 1px solid rgba(23, 54, 97, 0.08);
+    }
+
+    .blog-content img {
+        margin: 2rem 0;
+        border-radius: 1rem;
+        width: 100%;
+        height: auto;
+    }
+
+    .blog-content figure {
+        margin: 2rem 0;
+    }
+
+    .blog-content figure img {
+        margin: 0;
+    }
+
+    .blog-content figcaption {
+        margin-top: 0.5rem;
+        color: var(--color-text-soft);
+        font-size: 0.88rem;
+    }
+
+    .blog-content table,
+    .blog-content pre {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .blog-content table {
+        border-collapse: collapse;
+    }
+
+    .blog-content th,
+    .blog-content td {
+        padding: 0.6rem 0.8rem;
+        border-bottom: 1px solid rgba(23, 54, 97, 0.12);
+        text-align: left;
+    }
+
+    .blog-content code {
+        overflow-wrap: anywhere;
+    }
+
+    .blog-content pre code {
+        overflow-wrap: normal;
+    }
+</style>

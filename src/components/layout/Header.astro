@@ -25,10 +25,18 @@ import { services } from "../../data/services";
                     aria-expanded="false"
                 >
                     Servicios
-                    <ChevronDown size={14} class="header__chevron" aria-hidden="true" />
+                    <ChevronDown
+                        size={14}
+                        class="header__chevron"
+                        aria-hidden="true"
+                    />
                 </a>
 
-                <div class="header__dropdown" role="menu" aria-label="Menú de servicios">
+                <div
+                    class="header__dropdown"
+                    role="menu"
+                    aria-label="Menú de servicios"
+                >
                     <div class="header__dropdown-grid">
                         {
                             services.map((service) => (
@@ -58,6 +66,7 @@ import { services } from "../../data/services";
 
             <a href="/#como-trabajo" class="header__nav-link">Cómo trabajo</a>
             <a href="/sobre-mi/" class="header__nav-link">Sobre mí</a>
+            <a href="/blog/" class="header__nav-link">Blog</a>
             <a href="/contacto/" class="header__nav-link">Contacto</a>
         </nav>
 

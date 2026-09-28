@@ -1,0 +1,58 @@
+---
+import { ArrowRight, Phone } from "lucide-astro";
+
+interface Props {
+    title?: string;
+    description?: string;
+    ctaText?: string;
+    ctaHref?: string;
+    phoneText?: string;
+    phoneHref?: string;
+}
+
+const {
+    title = "¿Te preocupa algo de tu hijo?",
+    description = "Si algo de lo que has leído te resulta familiar, podemos valorar vuestro caso y ver cuál puede ser el siguiente paso.",
+    ctaText = "Cuéntame vuestro caso",
+    ctaHref = "/#contacto",
+    phoneText = "O llámame al 614 99 21 48",
+    phoneHref = "tel:+34614992148",
+} = Astro.props;
+---
+
+<aside class="relative overflow-hidden rounded-[1.4rem] border border-[rgba(23,54,97,0.1)] bg-[#fbfaf7] p-7 md:p-10 shadow-[0_16px_36px_-16px_rgba(23,54,97,0.06)] my-12">
+    <!-- Acento decorativo sutil en la esquina superior -->
+    <div class="absolute -top-12 -right-12 h-32 w-32 rounded-full bg-[rgba(223,162,170,0.2)] blur-2xl pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-[1] max-w-[620px]">
+        <span class="inline-block text-[0.76rem] font-bold tracking-[0.12em] uppercase text-[var(--color-primary)] mb-2">
+            Orientación profesional
+        </span>
+
+        <h2 class="m-0 text-[clamp(1.4rem,2.8vw,1.95rem)] font-[750] leading-[1.18] tracking-[-0.03em] text-[var(--color-primary-dark)] [text-wrap:balance]">
+            {title}
+        </h2>
+
+        <p class="mb-0 mt-3.5 text-[0.98rem] leading-[1.65] text-[var(--color-text-soft)] [text-wrap:pretty]">
+            {description}
+        </p>
+
+        <div class="mt-7 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+            <a
+                href={ctaHref}
+                class="group inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-[0.85rem] bg-[var(--color-primary)] px-6 py-2.5 text-center text-[0.95rem] font-bold text-white shadow-[0_8px_20px_-6px_rgba(36,79,158,0.4)] transition-[background-color,transform,box-shadow] duration-200 hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+            >
+                <span>{ctaText}</span>
+                <ArrowRight size={17} stroke-width={2} class="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+
+            <a
+                href={phoneHref}
+                class="inline-flex min-h-[46px] items-center justify-center gap-2 px-3 py-2 text-[0.92rem] font-[650] text-[var(--color-primary-dark)] transition-colors duration-200 hover:text-[var(--color-primary)] hover:underline hover:underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+            >
+                <Phone size={15} stroke-width={2} aria-hidden="true" />
+                <span>{phoneText}</span>
+            </a>
+        </div>
+    </div>
+</aside>

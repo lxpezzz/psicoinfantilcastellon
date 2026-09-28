@@ -1,0 +1,72 @@
+---
+import { getPublishedPosts } from "../../data/blog";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/layout/Header.astro";
+import MobileMenu from "../../components/layout/MobileMenu.astro";
+import Footer from "../../components/layout/Footer.astro";
+import BottomNav from "../../components/layout/BottomNav.astro";
+import BlogCard from "../../components/blog/BlogCard.astro";
+import { ChevronRight } from "lucide-astro";
+
+const sortedPosts = await getPublishedPosts();
+---
+
+<Layout
+    title="Blog | Recursos sobre Psicología Infantil y Aprendizaje en Castellón"
+    description="Artículos sobre aprendizaje, desarrollo, dificultades escolares y acompañamiento a niños, adolescentes y familias."
+    type="website"
+>
+    <Header />
+    <MobileMenu />
+
+    <main class="site-main bg-[#faf9f5] min-h-[70vh]">
+        <!-- Cabecera de la sección Blog -->
+        <header class="border-b border-[rgba(23,54,97,0.08)] bg-white py-[clamp(2.75rem,5vw,4.25rem)]">
+            <div class="mx-auto w-[min(100%-2.5rem,1220px)]">
+                <!-- Breadcrumbs accesible -->
+                <nav aria-label="Breadcrumb" class="mb-5 flex items-center gap-1.5 text-[0.84rem] text-[var(--color-text-soft)]">
+                    <a href="/" class="transition-colors hover:text-[var(--color-primary)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">Inicio</a>
+                    <ChevronRight size={14} class="opacity-50" aria-hidden="true" />
+                    <span class="font-semibold text-[var(--color-primary-dark)]" aria-current="page">Blog</span>
+                </nav>
+
+                <div class="max-w-[760px]">
+                    <p class="mb-2.5 text-[0.78rem] font-bold tracking-[0.14em] uppercase text-[var(--color-primary)]">
+                        BLOG
+                    </p>
+
+                    <h1 class="m-0 text-[clamp(2.35rem,4.5vw,3.75rem)] font-[750] leading-[1.08] tracking-[-0.035em] text-[var(--color-primary-dark)] [text-wrap:balance]">
+                        Recursos para entender y acompañar mejor
+                    </h1>
+
+                    <p class="mb-0 mt-4 text-[clamp(1.02rem,1.25vw,1.15rem)] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                        Artículos sobre aprendizaje, desarrollo, dificultades escolares y acompañamiento a niños, adolescentes y familias.
+                    </p>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- Listado de Artículos -->
+        <section class="py-[clamp(3.5rem,6vw,5.5rem)]" aria-label="Listado de publicaciones">
+            <div class="mx-auto w-[min(100%-2.5rem,1220px)]">
+                {sortedPosts.length > 0 ? (
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
+                        {sortedPosts.map((post, idx) => (
+                            <BlogCard post={post} featured={idx === 0} headingLevel={2} />
+                        ))}
+                    </div>
+                ) : (
+                    <div class="py-16 text-center">
+                        <p class="text-[1.1rem] text-[var(--color-text-soft)]">
+                            Próximamente publicaremos nuevos recursos y artículos.
+                        </p>
+                    </div>
+                )}
+            </div>
+        </section>
+    </main>
+
+    <Footer />
+    <BottomNav />
+</Layout>

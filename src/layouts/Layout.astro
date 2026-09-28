@@ -3,15 +3,33 @@ import "../styles/global.css";
 import CookieBanner from "../components/ui/CookieBanner.astro";
 
 
+interface Props {
+	title?: string;
+	description?: string;
+	canonical?: string;
+	image?: string | { src: string };
+	type?: "website" | "article";
+	articleMeta?: {
+		publishDate?: Date;
+		updatedDate?: Date;
+		category?: string;
+	};
+	jsonLd?: Record<string, unknown>;
+}
+
 const {
 	title = "PsicoInfantil Castellón",
 	description = "Psicología infantil y adolescente en Castellón",
 	canonical = new URL(Astro.url.pathname, Astro.site).href,
 	image = "/og/psicoinfantil_og.webp",
+	type = "website",
+	articleMeta,
+	jsonLd,
 } = Astro.props;
 
 const canonicalURL = new URL(canonical, Astro.site);
-const imageURL = new URL(image, Astro.site);
+const rawImagePath = typeof image === "string" ? image : (image?.src ?? "/og/psicoinfantil_og.webp");
+const imageURL = new URL(rawImagePath, Astro.site);
 ---
 
 <!doctype html>
@@ -28,7 +46,7 @@ const imageURL = new URL(image, Astro.site);
 		<link rel="canonical" href={canonicalURL} />
 
 		<!-- Open Graph -->
-		<meta property="og:type" content="website" />
+		<meta property="og:type" content={type} />
 		<meta property="og:locale" content="es_ES" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
@@ -36,11 +54,26 @@ const imageURL = new URL(image, Astro.site);
 		<meta property="og:image" content={imageURL} />
 		<meta property="og:site_name" content="Psicoinfantil Castellón" />
 
+		{type === "article" && articleMeta?.publishDate && (
+			<meta property="article:published_time" content={articleMeta.publishDate.toISOString()} />
+		)}
+		{type === "article" && articleMeta?.updatedDate && (
+			<meta property="article:modified_time" content={articleMeta.updatedDate.toISOString()} />
+		)}
+		{type === "article" && articleMeta?.category && (
+			<meta property="article:section" content={articleMeta.category} />
+		)}
+
 		<!-- Twitter / X -->
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={description} />
 		<meta name="twitter:image" content={imageURL} />
+
+		<!-- Structured Data (JSON-LD) -->
+		{jsonLd && (
+			<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
+		)}
 
 		<!-- Favicons -->
 		<link rel="icon" href="/favicon.ico" sizes="any" />

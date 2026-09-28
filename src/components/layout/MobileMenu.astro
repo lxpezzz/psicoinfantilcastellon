@@ -12,15 +12,20 @@ import { services } from "../../data/services";
     <div
         class="absolute inset-0 bg-[rgba(23,54,97,0.38)] backdrop-blur-[6px] opacity-0 transition-opacity duration-300 ease-[ease] group-[.is-open]/mobile-menu:opacity-100"
         id="mobile-menu-backdrop"
-    ></div>
+    >
+    </div>
 
     <!-- Cajón lateral deslizante (Drawer) -->
     <div
         class="absolute top-0 right-0 bottom-0 w-[min(90vw,380px)] bg-[#fdfcf9] shadow-[-12px_0_36px_rgba(23,54,97,0.15)] [transform:translateX(100%)] transition-transform duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] box-border group-[.is-open]/mobile-menu:[transform:translateX(0)] flex flex-col overflow-hidden"
     >
         <!-- Barra superior del menú con botón cerrar -->
-        <div class="flex items-center justify-between px-6 pt-5 pb-4 border-b border-[rgba(23,54,97,0.06)] shrink-0">
-            <span class="text-[0.78rem] font-bold tracking-widest uppercase text-[var(--color-text-soft)]">
+        <div
+            class="flex items-center justify-between px-6 pt-5 pb-4 border-b border-[rgba(23,54,97,0.06)] shrink-0"
+        >
+            <span
+                class="text-[0.78rem] font-bold tracking-widest uppercase text-[var(--color-text-soft)]"
+            >
                 Menú de navegación
             </span>
             <button
@@ -35,13 +40,15 @@ import { services } from "../../data/services";
 
         <!-- Contenedor Drill-Down deslizante estilo Apple -->
         <div class="relative flex-1 overflow-hidden" id="mobile-slider">
-            
             <!-- PANEL 1: Menú Principal -->
             <div
                 class="absolute inset-0 flex flex-col justify-between px-6 py-5 overflow-y-auto transition-all duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] opacity-100 translate-x-0"
                 id="panel-main"
             >
-                <nav class="flex flex-col divide-y divide-[rgba(23,54,97,0.06)]" aria-label="Navegación móvil principal">
+                <nav
+                    class="flex flex-col divide-y divide-[rgba(23,54,97,0.06)]"
+                    aria-label="Navegación móvil principal"
+                >
                     <a
                         href="/"
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
@@ -57,11 +64,18 @@ import { services } from "../../data/services";
                         aria-haspopup="true"
                     >
                         <span>Servicios</span>
-                        <div class="flex items-center gap-1.5 text-[var(--color-primary)] font-bold">
-                            <span class="text-[0.75rem] font-bold bg-[rgba(23,54,97,0.06)] px-2 py-0.5 rounded-full text-[var(--color-primary)]">
+                        <div
+                            class="flex items-center gap-1.5 text-[var(--color-primary)] font-bold"
+                        >
+                            <span
+                                class="text-[0.75rem] font-bold bg-[rgba(23,54,97,0.06)] px-2 py-0.5 rounded-full text-[var(--color-primary)]"
+                            >
                                 8
                             </span>
-                            <ChevronRight size={18} class="text-[rgba(23,54,97,0.4)]" />
+                            <ChevronRight
+                                size={18}
+                                class="text-[rgba(23,54,97,0.4)]"
+                            />
                         </div>
                     </button>
 
@@ -76,6 +90,12 @@ import { services } from "../../data/services";
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
                     >
                         Sobre mí
+                    </a>
+                    <a
+                        href="/blog/"
+                        class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
+                    >
+                        Blog
                     </a>
                     <a
                         href="/#faq"
@@ -103,12 +123,20 @@ import { services } from "../../data/services";
                         href="tel:+34614992148"
                         class="flex items-center gap-3 p-3.5 rounded-xl bg-[rgba(23,54,97,0.04)] text-[var(--color-primary-dark)] no-underline transition-colors hover:bg-[rgba(23,54,97,0.08)]"
                     >
-                        <div class="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center shrink-0">
+                        <div
+                            class="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white flex items-center justify-center shrink-0"
+                        >
                             <Phone size={18} />
                         </div>
                         <div class="flex flex-col">
-                            <span class="text-[0.76rem] font-medium text-[var(--color-text-soft)]">Consulta telefónica</span>
-                            <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">614 99 21 48</strong>
+                            <span
+                                class="text-[0.76rem] font-medium text-[var(--color-text-soft)]"
+                                >Consulta telefónica</span
+                            >
+                            <strong
+                                class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]"
+                                >614 99 21 48</strong
+                            >
                         </div>
                     </a>
                 </div>
@@ -130,12 +158,16 @@ import { services } from "../../data/services";
                         <span>Menú principal</span>
                     </button>
 
-                    <h3 class="text-[1.35rem] font-extrabold text-[var(--color-primary-dark)] m-0 pb-3 border-b border-[rgba(23,54,97,0.06)]">
+                    <h3
+                        class="text-[1.35rem] font-extrabold text-[var(--color-primary-dark)] m-0 pb-3 border-b border-[rgba(23,54,97,0.06)]"
+                    >
                         Nuestros Servicios
                     </h3>
 
                     <!-- Lista con los 8 servicios -->
-                    <div class="flex flex-col divide-y divide-[rgba(23,54,97,0.05)] mt-1">
+                    <div
+                        class="flex flex-col divide-y divide-[rgba(23,54,97,0.05)] mt-1"
+                    >
                         {
                             services.map((service) => (
                                 <a
@@ -170,7 +202,6 @@ import { services } from "../../data/services";
                     </a>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -216,10 +247,18 @@ import { services } from "../../data/services";
             if (!panelMain || !panelServices) return;
             // Panel principal se desliza a la izquierda
             panelMain.classList.remove("translate-x-0", "opacity-100");
-            panelMain.classList.add("-translate-x-1/4", "opacity-0", "pointer-events-none");
+            panelMain.classList.add(
+                "-translate-x-1/4",
+                "opacity-0",
+                "pointer-events-none",
+            );
 
             // Panel de servicios entra desde la derecha
-            panelServices.classList.remove("translate-x-full", "opacity-0", "pointer-events-none");
+            panelServices.classList.remove(
+                "translate-x-full",
+                "opacity-0",
+                "pointer-events-none",
+            );
             panelServices.classList.add("translate-x-0", "opacity-100");
         }
 
@@ -227,10 +266,18 @@ import { services } from "../../data/services";
             if (!panelMain || !panelServices) return;
             // Panel de servicios sale hacia la derecha
             panelServices.classList.remove("translate-x-0", "opacity-100");
-            panelServices.classList.add("translate-x-full", "opacity-0", "pointer-events-none");
+            panelServices.classList.add(
+                "translate-x-full",
+                "opacity-0",
+                "pointer-events-none",
+            );
 
             // Panel principal regresa al centro
-            panelMain.classList.remove("-translate-x-1/4", "opacity-0", "pointer-events-none");
+            panelMain.classList.remove(
+                "-translate-x-1/4",
+                "opacity-0",
+                "pointer-events-none",
+            );
             panelMain.classList.add("translate-x-0", "opacity-100");
         }
 

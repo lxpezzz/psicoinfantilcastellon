@@ -1,0 +1,62 @@
+---
+import { ArrowRight } from "lucide-astro";
+import BlogCard from "./BlogCard.astro";
+import { getPublishedPosts } from "../../data/blog";
+
+const recentPosts = (await getPublishedPosts()).slice(0, 3);
+---
+
+{recentPosts.length > 0 && (
+    <section class="border-t border-[rgba(23,54,97,0.08)] bg-[#faf9f5] py-[clamp(4.25rem,8vw,6.5rem)]" id="blog" aria-labelledby="blog-heading">
+        <div class="mx-auto w-[min(100%-2.5rem,1220px)]">
+            <!-- Encabezado de la sección -->
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                <div class="max-w-[620px]">
+                    <p class="mb-3 text-[0.78rem] font-bold tracking-[0.14em] uppercase text-[var(--color-primary)]">
+                        RECURSOS PARA FAMILIAS
+                    </p>
+
+                    <h2
+                        id="blog-heading"
+                        class="m-0 text-[clamp(2.1rem,4vw,3.3rem)] font-[750] leading-[1.08] tracking-[-0.035em] text-[var(--color-primary-dark)] [text-wrap:balance]"
+                    >
+                        Entender también ayuda
+                    </h2>
+
+                    <p class="mb-0 mt-4 text-[1.05rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                        Ideas y recursos para comprender mejor el aprendizaje, el desarrollo y las dificultades que pueden aparecer durante la infancia y la adolescencia.
+                    </p>
+                </div>
+
+                <!-- CTA General Desktop -->
+                <div class="hidden md:block shrink-0">
+                    <a
+                        href="/blog/"
+                        class="group inline-flex min-h-[48px] items-center gap-2 rounded-[0.9rem] border border-[rgba(23,54,97,0.18)] bg-white px-5 py-2.5 text-[0.95rem] font-bold text-[var(--color-primary-dark)] shadow-sm transition-[background-color,border-color,transform] duration-200 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                    >
+                        <span>Ver todos los artículos</span>
+                        <ArrowRight size={17} stroke-width={2} class="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+
+            <!-- Grid de artículos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 md:gap-8">
+                {recentPosts.map((post) => (
+                    <BlogCard post={post} />
+                ))}
+            </div>
+
+            <!-- CTA General Móvil -->
+            <div class="mt-9 text-center md:hidden">
+                <a
+                    href="/blog/"
+                    class="group inline-flex min-h-[48px] w-full sm:w-auto items-center justify-center gap-2 rounded-[0.9rem] border border-[rgba(23,54,97,0.18)] bg-white px-6 py-3 text-[0.95rem] font-bold text-[var(--color-primary-dark)] shadow-sm transition-[background-color,border-color,transform] duration-200 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                >
+                    <span>Ver todos los artículos</span>
+                    <ArrowRight size={17} stroke-width={2} class="transition-transform duration-200 group-hover:translate-x-1" aria-hidden="true" />
+                </a>
+            </div>
+        </div>
+    </section>
+)}
