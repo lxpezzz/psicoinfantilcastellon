@@ -2,7 +2,7 @@
 import { Phone, Mail, MapPin, Clock, ShieldCheck } from "lucide-astro";
 ---
 
-<header class="pt-[clamp(2rem,4vw,3.5rem)] pb-8 bg-[var(--color-bg)] text-[var(--color-text)]">
+<header class="contact-page-hero [--color-text-soft:#506176] border-t border-[rgba(23,54,97,0.08)] pt-[clamp(1.5rem,3vw,2.5rem)] pb-[clamp(2.5rem,4vw,3.5rem)] bg-[#f7f5f0] text-[var(--color-text)]">
     <div class="section-container">
         <!-- 1. Breadcrumbs de Navegación (sin eyebrow) -->
         <nav class="inline-flex items-center gap-2 text-[0.85rem] text-[var(--color-text-soft)] mb-6 sm:mb-8" aria-label="Miga de pan">
@@ -16,88 +16,88 @@ import { Phone, Mail, MapPin, Clock, ShieldCheck } from "lucide-astro";
         </nav>
 
         <!-- 2. Titular Principal y Mensaje de Bienvenida -->
-        <div class="max-w-[860px] mx-auto text-center max-sm:text-left mb-10 sm:mb-14">
-            <h1 class="text-[clamp(2.35rem,4.2vw,3.45rem)] font-extrabold leading-[1.12] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-4 [text-wrap:balance]">
+        <div class="max-w-[760px] mb-8 sm:mb-10 text-left">
+            <h1 class="text-[clamp(2.15rem,3.8vw,3rem)] font-[750] leading-[1.12] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-5 [text-wrap:balance]">
                 Contacto y Cita Previa
             </h1>
-            <p class="text-[clamp(1.05rem,1.25vw,1.18rem)] leading-[1.7] text-[var(--color-text-soft)] m-0 max-w-[720px] mx-auto [text-wrap:pretty]">
+            <p class="text-[1.05rem] sm:text-[1.1rem] leading-[1.75] text-[var(--color-text-soft)] m-0 max-w-[64ch] [text-wrap:pretty]">
                 Sabemos que dar el primer paso genera dudas. Te ofrecemos un espacio de escucha atenta, cálido y confidencial para entender qué le ocurre a tu hijo y valorar juntos la mejor forma de acompañaros.
             </p>
         </div>
 
-        <!-- 3. Bento de 3 Vías de Contacto Directo -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        <!-- Vías de contacto integradas en la página, sin tarjetas superpuestas -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-x-10 gap-y-7 border-t border-[rgba(23,54,97,0.12)] pt-7">
             <!-- Teléfono Directo -->
-            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-1">
+            <div class="min-w-0 flex flex-col justify-between">
                 <div>
-                    <div class="w-11 h-11 rounded-2xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-4">
-                        <Phone size={22} />
+                    <div class="text-[var(--color-primary)] mb-3">
+                        <Phone size={20} aria-hidden="true" />
                     </div>
-                    <span class="text-[0.78rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)] block mb-1">
+                    <span class="text-[0.9rem] font-[500] text-[var(--color-text-soft)] block">
                         Atención telefónica
                     </span>
                     <a
                         href="tel:+34614992148"
-                        class="text-[1.35rem] font-extrabold text-[var(--color-primary-dark)] hover:text-[var(--color-primary)] transition-colors block mb-2 no-underline"
+                        class="inline-flex items-center min-h-[44px] text-[1.4rem] font-[650] tracking-[-0.02em] text-[var(--color-primary-dark)] hover:text-[var(--color-primary)] transition-colors mb-2 no-underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
                     >
                         614 99 21 48
                     </a>
-                    <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                    <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
                         Llámanos directamente o déjanos un mensaje para coordinar la primera valoración sin compromiso.
                     </p>
                 </div>
-                <div class="pt-4 mt-4 border-t border-[rgba(23,54,97,0.06)] flex items-center gap-2 text-[0.82rem] text-[#1e6e4a] font-medium">
+                <div class="mt-4 flex items-center gap-2 text-[0.82rem] text-[#1e6e4a] font-medium">
                     <span class="w-2 h-2 rounded-full bg-[#1e6e4a] shrink-0"></span>
                     <span>Respuesta en menos de 24h</span>
                 </div>
             </div>
 
             <!-- Email Directo -->
-            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-1">
+            <div class="min-w-0 flex flex-col justify-between">
                 <div>
-                    <div class="w-11 h-11 rounded-2xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-4">
-                        <Mail size={22} />
+                    <div class="text-[var(--color-primary)] mb-3">
+                        <Mail size={20} aria-hidden="true" />
                     </div>
-                    <span class="text-[0.78rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)] block mb-1">
+                    <span class="text-[0.9rem] font-[500] text-[var(--color-text-soft)] block">
                         Correo electrónico
                     </span>
                     <a
                         href="mailto:info@psicoinfantilcastellon.es"
-                        class="text-[1.05rem] font-extrabold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors block mb-2 underline underline-offset-2 break-all"
+                        class="flex items-center min-h-[44px] text-[1.02rem] font-[650] text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] transition-colors mb-2 underline underline-offset-4 [overflow-wrap:anywhere] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
                     >
                         info@psicoinfantilcastellon.es
                     </a>
-                    <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                    <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
                         Escríbenos detallando vuestra inquietud y Ana Díaz valorará vuestra consulta de forma personalizada.
                     </p>
                 </div>
-                <div class="pt-4 mt-4 border-t border-[rgba(23,54,97,0.06)] flex items-center gap-2 text-[0.82rem] text-[var(--color-text-soft)] font-medium">
-                    <ShieldCheck size={15} class="text-[var(--color-primary)] shrink-0" />
+                <div class="mt-4 flex items-center gap-2 text-[0.82rem] text-[var(--color-text-soft)] font-medium">
+                    <ShieldCheck size={15} class="text-[var(--color-primary)] shrink-0" aria-hidden="true" />
                     <span>Confidencialidad médica garantizada</span>
                 </div>
             </div>
 
             <!-- Consulta Presencial -->
-            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col justify-between transition-all duration-300 hover:shadow-[0_12px_32px_rgba(23,54,97,0.07)] hover:-translate-y-1">
+            <div class="min-w-0 flex flex-col justify-between">
                 <div>
-                    <div class="w-11 h-11 rounded-2xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47] mb-4">
-                        <MapPin size={22} />
+                    <div class="text-[var(--color-primary)] mb-3">
+                        <MapPin size={20} aria-hidden="true" />
                     </div>
-                    <span class="text-[0.78rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)] block mb-1">
+                    <span class="text-[0.9rem] font-[500] text-[var(--color-text-soft)] block mb-3">
                         Consulta en Castellón
                     </span>
-                    <strong class="text-[1.05rem] font-extrabold text-[var(--color-primary-dark)] block mb-1">
+                    <strong class="text-[1.02rem] font-[650] text-[var(--color-primary-dark)] block mb-1">
                         C/ Río Támesis, 1, Esc. 1, 4ºA
                     </strong>
                     <span class="text-[0.85rem] text-[var(--color-text-soft)] block mb-2">
                         12005 Castellón de la Plana
                     </span>
-                    <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
+                    <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
                         Ubicación tranquila y accesible, pensada para la comodidad e intimidad de niños y familias.
                     </p>
                 </div>
-                <div class="pt-4 mt-4 border-t border-[rgba(23,54,97,0.06)] flex items-center gap-2 text-[0.82rem] text-[var(--color-text-soft)] font-medium">
-                    <Clock size={15} class="text-[var(--color-primary)] shrink-0" />
+                <div class="mt-4 flex items-center gap-2 text-[0.82rem] text-[var(--color-text-soft)] font-medium">
+                    <Clock size={15} class="text-[var(--color-primary)] shrink-0" aria-hidden="true" />
                     <span>Lunes a Viernes · Con cita previa</span>
                 </div>
             </div>

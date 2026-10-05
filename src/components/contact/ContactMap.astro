@@ -1,12 +1,13 @@
 ---
-import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink, Clock } from "lucide-astro";
+import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink } from "lucide-astro";
+import Button from "../ui/Button.astro";
 ---
 
-<section class="py-[clamp(4rem,7vw,6rem)] bg-[var(--color-bg)] border-t border-[rgba(23,54,97,0.08)]" aria-labelledby="map-heading">
+<section class="contact-page-map [--color-text-soft:#506176] py-[clamp(3.5rem,6vw,5rem)] bg-[#eef3f0] border-t border-[rgba(23,54,97,0.08)]" aria-labelledby="map-heading">
     <div class="section-container">
         <!-- 1. Cabecera de la Sección de Ubicación -->
-        <div class="max-w-[760px] mx-auto text-center max-sm:text-left mb-10 sm:mb-14">
-            <h2 id="map-heading" class="text-[clamp(1.85rem,3.2vw,2.5rem)] font-extrabold text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-3 [text-wrap:balance]">
+        <div class="max-w-[760px] text-left mb-8 sm:mb-10">
+            <h2 id="map-heading" class="text-[clamp(1.85rem,3.2vw,2.5rem)] font-[750] text-[var(--color-primary-dark)] tracking-[-0.03em] m-0 mb-4 [text-wrap:balance]">
                 ¿Dónde está nuestra consulta?
             </h2>
             <p class="text-[1.02rem] leading-[1.68] text-[var(--color-text-soft)] m-0 [text-wrap:pretty]">
@@ -14,10 +15,11 @@ import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink, Clock } from "
             </p>
         </div>
 
-        <!-- 2. Tarjeta Double-Bezel del Mapa de Google Maps -->
-        <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[2rem] sm:rounded-[2.25rem] p-3 sm:p-4 shadow-[0_16px_40px_rgba(23,54,97,0.05)] mb-10 sm:mb-12">
+        <div class="grid grid-cols-1 lg:grid-cols-[minmax(0,1.5fr)_minmax(260px,0.85fr)] gap-8 lg:gap-12 items-start">
+        <!-- Mapa con un único marco y la información práctica a su lado -->
+        <div class="min-w-0">
             <!-- Marco Interno con el iframe interactivo -->
-            <div class="rounded-[calc(2rem-0.75rem)] sm:rounded-[calc(2.25rem-0.875rem)] overflow-hidden relative w-full h-[380px] sm:h-[460px] md:h-[500px] bg-[#eaf0f6]">
+            <div class="rounded-[1rem] overflow-hidden relative w-full h-[320px] sm:h-[400px] bg-[#eaf0f6]">
                 <iframe
                     src="https://maps.google.com/maps?q=Psico%20Infantil%20Castell%C3%B3n,%20Calle%20R%C3%ADo%20T%C3%A1mesis,%201,%2012005%20Castell%C3%B3n%20de%20la%20Plana&hl=es&z=16&output=embed"
                     class="w-full h-full border-0 absolute inset-0"
@@ -29,10 +31,10 @@ import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink, Clock } from "
             </div>
 
             <!-- Barra Inferior de Acción y Dirección Verificada -->
-            <div class="pt-4 sm:pt-5 px-3 sm:px-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div class="pt-5 flex flex-col xl:flex-row items-start xl:items-center justify-between gap-5">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] shrink-0">
-                        <MapPin size={20} />
+                    <div class="text-[var(--color-primary)] shrink-0">
+                        <MapPin size={20} aria-hidden="true" />
                     </div>
                     <div>
                         <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)] block">
@@ -45,59 +47,61 @@ import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink, Clock } from "
                 </div>
 
                 <!-- Botón Abrir en Google Maps / Cómo llegar -->
-                <a
+                <Button
                     href="https://maps.google.com/?cid=4225123225601099366"
                     target="_blank"
                     rel="noopener noreferrer"
-                    class="group inline-flex items-center justify-center gap-2.5 py-3 px-5 sm:px-6 rounded-full text-[0.9rem] font-bold text-white bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] shadow-[0_6px_18px_rgba(36,79,158,0.2)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.25)] transition-all no-underline w-full sm:w-auto shrink-0"
+                    size="md"
+                    class="group w-full sm:w-auto shrink-0 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
                 >
-                    <Navigation size={16} />
+                    <Navigation size={16} aria-hidden="true" />
                     <span>Cómo llegar en Google Maps</span>
-                    <ExternalLink size={14} class="opacity-70 group-hover:opacity-100 transition-opacity" />
-                </a>
+                    <ExternalLink size={14} class="opacity-70 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+                </Button>
             </div>
         </div>
 
-        <!-- 3. Bento de Información Práctica de Acceso a la Consulta -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
+        <!-- Información práctica sin tarjetas decorativas -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-7">
             <!-- Aparcamiento -->
-            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-[rgba(36,79,158,0.08)] flex items-center justify-center text-[var(--color-primary)] mb-1">
-                    <Car size={20} />
+            <div class="border-t border-[rgba(23,54,97,0.16)] pt-5 flex flex-col gap-2.5">
+                <div class="text-[var(--color-primary)] mb-1">
+                    <Car size={21} aria-hidden="true" />
                 </div>
                 <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">
                     Aparcamiento en la zona
                 </strong>
-                <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
                     Facilidad para estacionar en las calles adyacentes y avenidas próximas (zona de aparcamiento público sin parquímetros complicados).
                 </p>
             </div>
 
             <!-- Transporte Público -->
-            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-[rgba(141,199,168,0.2)] flex items-center justify-center text-[#1e6e4a] mb-1">
-                    <Bus size={20} />
+            <div class="border-t border-[rgba(23,54,97,0.16)] pt-5 flex flex-col gap-2.5">
+                <div class="text-[var(--color-primary)] mb-1">
+                    <Bus size={21} aria-hidden="true" />
                 </div>
                 <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">
                     Transporte y accesos
                 </strong>
-                <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
                     Líneas de autobús urbano de Castellón con parada a pocos minutos a pie, y conexión rápida en coche desde las rondas de circunvalación.
                 </p>
             </div>
 
             <!-- Privacidad y Puntualidad -->
-            <div class="bg-white border border-[rgba(23,54,97,0.08)] rounded-[1.75rem] p-6 sm:p-7 shadow-[0_8px_24px_rgba(23,54,97,0.03)] flex flex-col gap-2.5">
-                <div class="w-10 h-10 rounded-xl bg-[rgba(223,162,170,0.25)] flex items-center justify-center text-[#8c3b47] mb-1">
-                    <ShieldCheck size={20} />
+            <div class="border-t border-[rgba(23,54,97,0.16)] pt-5 flex flex-col gap-2.5">
+                <div class="text-[var(--color-primary)] mb-1">
+                    <ShieldCheck size={21} aria-hidden="true" />
                 </div>
                 <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">
                     Atención privada y sin esperas
                 </strong>
-                <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                <p class="text-[0.95rem] leading-[1.7] text-[var(--color-text-soft)] m-0">
                     Cada sesión se programa con el tiempo necesario para garantizar puntualidad, intimidad y que las familias nunca coincidan en la sala de espera.
                 </p>
             </div>
+        </div>
         </div>
     </div>
 </section>
