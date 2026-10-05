@@ -30,6 +30,9 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(canonical, Astro.site);
+canonicalURL.pathname = `${canonicalURL.pathname.replace(/\/+$/, "")}/`;
+canonicalURL.search = "";
+canonicalURL.hash = "";
 const rawImagePath = typeof image === "string" ? image : (image?.src ?? "/og/psicoinfantil_og.webp");
 const imageURL = new URL(rawImagePath, Astro.site);
 ---
