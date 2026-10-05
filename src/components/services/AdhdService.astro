@@ -151,17 +151,14 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Evaluación y diagnóstico",
         description: "Estudio clínico y pruebas baremadas de atención",
         href: "/evaluacion-y-diagnostico/",
     },
     {
-        title: "Mejora del rendimiento escolar",
         description: "Técnicas de estudio, planificación y método",
         href: "/mejora-del-rendimiento-escolar/",
     },
     {
-        title: "Asesoramiento a padres",
         description: "Rutinas y pautas para acompañar el TDAH en casa",
         href: "/asesoramiento-a-padres/",
     },
@@ -195,8 +192,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="TDAH"
-        eyebrow="EVALUACIÓN Y TRATAMIENTO DE TDAH"
+        breadcrumbLabel={adhdService.shortTitle}
+        eyebrow={adhdService.title}
         title="Le cuesta mantener la atención, aunque quiera hacerlo bien"
         description="A menudo el TDAH se confunde erróneamente con falta de voluntad o desinterés. Evalúo la raíz de su distracción y le proporciono las herramientas de autorregulación y funciones ejecutivas necesarias para que aprenda a concentrarse, organizarse y recuperar la calma en casa sin castigos."
         image={adhdService.heroImage}
@@ -250,7 +247,7 @@ const faqs: FAQItem[] = [
         titleUnderline="Hablemos"
         description="Cuéntame vuestra situación. Si ves que le cuesta arrancar con los deberes, se olvida de las tareas o su impulsividad está afectando a su autoestima, estoy aquí para ayudaros. Escríbeme sin compromiso y tracemos un plan juntos."
         primaryCtaText="Solicitar valoración"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />

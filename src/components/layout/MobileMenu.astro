@@ -1,6 +1,9 @@
 ---
 import { ChevronLeft, ChevronRight, Phone } from "lucide-astro";
 import { services } from "../../data/services";
+import { hasPublishedPosts } from "../../data/blog";
+
+const showBlog = await hasPublishedPosts();
 ---
 
 <div
@@ -84,12 +87,12 @@ import { services } from "../../data/services";
                     >
                         Sobre mí
                     </a>
-                    <a
+                    {showBlog && <a
                         href="/blog/"
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"
                     >
                         Blog
-                    </a>
+                    </a>}
                     <a
                         href="/#faq"
                         class="mobile-menu__link py-3.5 text-[1.18rem] font-bold text-[var(--color-primary-dark)] no-underline transition-colors hover:text-[var(--color-primary)]"

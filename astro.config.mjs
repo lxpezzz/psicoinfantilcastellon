@@ -3,13 +3,25 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
+let hasPublishedBlogPosts = false;
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://psicoinfantilcastellon.es',
   trailingSlash: 'always',
   integrations: [
+    // Se ejecuta antes del sitemap; las rutas de artículos proceden de getPublishedPosts().
+    {
+      name: 'blog-sitemap-visibility',
+      hooks: {
+        'astro:build:done': ({ pages }) => {
+          hasPublishedBlogPosts = pages.some(({ pathname }) => /^\/?blog\/[^/]/.test(pathname));
+        },
+      },
+    },
     sitemap({
-      filter: (page) => !page.includes('/gracias/'),
+      filter: (page) => !page.includes('/gracias/') &&
+        (new URL(page).pathname !== '/blog/' || hasPublishedBlogPosts),
     }),
   ],
   redirects: {

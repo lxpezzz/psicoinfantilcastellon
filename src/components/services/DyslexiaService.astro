@@ -150,17 +150,14 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Evaluación y diagnóstico",
         description: "Estudio clínico exhaustivo del aprendizaje",
         href: "/evaluacion-y-diagnostico/",
     },
     {
-        title: "Mejora del rendimiento escolar",
         description: "Técnicas de estudio, organización y método",
         href: "/mejora-del-rendimiento-escolar/",
     },
     {
-        title: "Informes psicopedagógicos",
         description: "Dictámenes oficiales para el colegio",
         href: "/informes-psicopedagogicos/",
     },
@@ -194,8 +191,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="Dislexia"
-        eyebrow="EVALUACIÓN Y TRATAMIENTO DE DISLEXIA"
+        breadcrumbLabel={dyslexiaService.shortTitle}
+        eyebrow={dyslexiaService.title}
         title="Cuando leer y escribir cuesta el triple de lo que debería"
         description="La dislexia no es falta de capacidad ni pereza; es una forma diferente de procesar la información escrita que genera un agotamiento invisible. Identifico las dificultades específicas de tu hijo y diseño el plan de reeducación necesario para que recupere la fluidez, la comprensión y la seguridad escolar."
         image={dyslexiaService.heroImage}
@@ -249,7 +246,7 @@ const faqs: FAQItem[] = [
         titleUnderline="Hablemos"
         description="Cuéntame vuestra situación. Si ves que la lectura se ha convertido en una tortura o evita escribir por miedo a equivocarse, estoy aquí para ayudaros a que la dislexia deje de ser un muro y vuelva a disfrutar aprendiendo."
         primaryCtaText="Solicitar valoración"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />

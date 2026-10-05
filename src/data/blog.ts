@@ -7,3 +7,7 @@ export async function getPublishedPosts() {
         (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
     );
 }
+
+export async function hasPublishedPosts() {
+    return (await getPublishedPosts()).length > 0;
+}

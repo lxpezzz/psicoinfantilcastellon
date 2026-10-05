@@ -152,17 +152,14 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Evaluación y acompañamiento en TDAH",
         description: "Atención, impulsividad y pautas en casa",
         href: "/tratamiento-tdah/",
     },
     {
-        title: "Altas capacidades",
         description: "Comprender su perfil y adaptar el acompañamiento familiar",
         href: "/tratamiento-altas-capacidades/",
     },
     {
-        title: "Psicología juvenil",
         description: "Acompañamiento en cambios en la adolescencia",
         href: "/orientacion-adolescentes/",
     },
@@ -200,8 +197,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="Asesoramiento a padres"
-        eyebrow="ASESORAMIENTO A PADRES"
+        breadcrumbLabel={parentService.shortTitle}
+        eyebrow={parentService.title}
         title="Pautas claras y apoyo cercano para recuperar la calma y la armonía en casa"
         description="La crianza es una de las tareas más gratificantes, pero también de las más complejas. Cuando los gritos y los castigos no funcionan y sientes que la convivencia se desgasta, necesitas herramientas específicas para vuestra realidad. Con casi 20 años de experiencia orientando a familias en Castellón, os ayudo a recuperar el liderazgo afectivo y disfrutar de nuevo de vuestros hijos."
         image={parentService.heroImage}
@@ -258,7 +255,7 @@ const faqs: FAQItem[] = [
         titleUnderline="Hablemos"
         description="Tras 20 años ayudando a familias en Castellón, sé que cada hogar tiene su propia llave. Con una evaluación precisa y las pautas adecuadas, dejaremos atrás la frustración para que podáis disfrutar de nuevo de vuestros hijos. Escríbeme sin compromiso y tracemos un plan juntos."
         primaryCtaText="Solicitar sesión de orientación"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />

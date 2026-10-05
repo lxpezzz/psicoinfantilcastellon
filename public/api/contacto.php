@@ -46,6 +46,27 @@ $email    = trim($_POST['email'] ?? '');
 $edad     = trim($_POST['edad'] ?? '');
 $mensaje  = trim($_POST['mensaje'] ?? '');
 
+// El servicio es opcional. Descartar tipos inesperados y valores largos antes de normalizar.
+$servicio_entrada = $_POST['servicio'] ?? '';
+$servicio = is_string($servicio_entrada) && strlen($servicio_entrada) <= 150
+    ? trim($servicio_entrada)
+    : '';
+
+$servicios_permitidos = [
+    'Evaluación y diagnóstico psicopedagógico',
+    'Mejora del rendimiento escolar',
+    'TDAH',
+    'Dislexia',
+    'Altas capacidades',
+    'Asesoramiento a padres',
+    'Psicología juvenil',
+    'Informes psicopedagógicos',
+];
+
+if (!in_array($servicio, $servicios_permitidos, true)) {
+    $servicio = '';
+}
+
 // 6. Validación de datos en servidor
 // Validación de longitudes máximas y campos requeridos
 if (
@@ -80,8 +101,10 @@ if (
 $destinatario = 'info@psicoinfantilcastellon.es';
 $asunto       = 'Nueva consulta desde PsicoInfantil Castellón';
 $edad_texto   = $edad !== '' ? $edad : 'No especificada';
+$servicio_texto = $servicio !== '' ? $servicio : 'Consulta general';
 
 $cuerpo  = "Nueva consulta recibida desde la web\n\n";
+$cuerpo .= "Servicio: " . $servicio_texto . "\n";
 $cuerpo .= "Nombre: " . $nombre . "\n";
 $cuerpo .= "Teléfono: " . $telefono . "\n";
 $cuerpo .= "Email: " . $email . "\n";

@@ -3,6 +3,16 @@ import { Image } from "astro:assets";
 import { ArrowRight, Check, Phone } from "lucide-astro";
 import cuadroContacto from "../../images/contact/cuadro_contacto.webp";
 
+interface Props {
+    servicio?: string;
+    heading?: string;
+}
+
+const {
+    servicio = "",
+    heading = "¿Te preocupa algo de tu hijo?",
+} = Astro.props;
+
 const labelClass = "text-[0.88rem] font-[650] text-[var(--color-primary-dark)]";
 
 const inputClass =
@@ -48,7 +58,7 @@ const inputClass =
                         class="m-0 mb-[0.85rem] text-[var(--color-primary-dark)] font-[750] leading-[1.16] tracking-[-0.035em] [text-wrap:balance] text-[1.7rem] min-[401px]:text-[clamp(1.75rem,6.5vw,2.25rem)] min-[821px]:text-[clamp(1.95rem,3.2vw,2.65rem)]"
                         id="contact-heading"
                     >
-                        ¿Te preocupa algo de tu hijo?<br />
+                        {heading}<br />
                         <span
                             class="block text-[var(--color-primary)] font-bold"
                             >Empecemos por entender qué está pasando.</span
@@ -102,6 +112,10 @@ const inputClass =
                         action="/api/contacto.php"
                         method="POST"
                     >
+                        {servicio && (
+                            <input type="hidden" name="servicio" value={servicio} />
+                        )}
+
                         <!-- Campo Honeypot antispam invisible para usuarios humanos -->
                         <div class="contact__honeypot" aria-hidden="true">
                             <label for="contact-empresa">Empresa</label>

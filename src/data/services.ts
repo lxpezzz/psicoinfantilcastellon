@@ -20,6 +20,7 @@ import informesHeroImg from "../images/servicios-pagina/informes-psicopedagogico
 export interface ServiceItem {
     id: string;
     title: string;
+    shortTitle: string;
     description: string;
     href: string;
     image: ImageMetadata;
@@ -35,6 +36,7 @@ export const services: ServiceItem[] = [
     {
         id: "rendimiento-escolar",
         title: "Mejora del rendimiento escolar",
+        shortTitle: "Rendimiento escolar",
         description:
             "Cuando el esfuerzo no se refleja en los resultados, trabajamos organización, método de estudio y estrategias para ganar autonomía y seguridad.",
         href: "/mejora-del-rendimiento-escolar/",
@@ -48,6 +50,7 @@ export const services: ServiceItem[] = [
     {
         id: "evaluacion-diagnostico",
         title: "Evaluación y diagnóstico psicopedagógico",
+        shortTitle: "Evaluación y diagnóstico",
         description:
             "Una evaluación completa para comprender cómo aprende, detectar sus necesidades y saber qué pasos dar a partir de ahí.",
         href: "/evaluacion-y-diagnostico/",
@@ -60,6 +63,7 @@ export const services: ServiceItem[] = [
     {
         id: "tdah",
         title: "Evaluación y acompañamiento en TDAH",
+        shortTitle: "TDAH",
         description:
             "Valoramos las dificultades de atención, impulsividad y organización para definir estrategias concretas para su día a día.",
         href: "/tratamiento-tdah/",
@@ -72,6 +76,7 @@ export const services: ServiceItem[] = [
     {
         id: "dislexia",
         title: "Evaluación y acompañamiento en dislexia",
+        shortTitle: "Dislexia",
         description:
             "Identificamos qué está dificultando la lectura y la escritura y trabajamos estrategias adaptadas a su forma de aprender.",
         href: "/tratamiento-dislexia/",
@@ -84,6 +89,7 @@ export const services: ServiceItem[] = [
     {
         id: "altas-capacidades",
         title: "Evaluación y acompañamiento en altas capacidades",
+        shortTitle: "Altas capacidades",
         description:
             "Identificamos sus capacidades y necesidades para favorecer un aprendizaje que le estimule y responda a su forma de pensar.",
         href: "/tratamiento-altas-capacidades/",
@@ -97,6 +103,7 @@ export const services: ServiceItem[] = [
     {
         id: "asesoramiento-padres",
         title: "Asesoramiento a padres",
+        shortTitle: "Asesoramiento a padres",
         description:
             "Un espacio para entender mejor lo que está ocurriendo, resolver dudas y encontrar pautas concretas para el día a día en familia.",
         href: "/asesoramiento-a-padres/",
@@ -109,6 +116,7 @@ export const services: ServiceItem[] = [
     {
         id: "psicologia-juvenil",
         title: "Psicología juvenil",
+        shortTitle: "Psicología juvenil",
         description:
             "Acompañamiento a adolescentes ante dificultades emocionales, familiares, sociales o académicas en una etapa llena de cambios.  ",
         href: "/orientacion-adolescentes/",
@@ -121,6 +129,7 @@ export const services: ServiceItem[] = [
     {
         id: "informes-psicopedagogicos",
         title: "Informes psicopedagógicos",
+        shortTitle: "Informes psicopedagógicos",
         description:
             "Informes claros y rigurosos que recogen la evaluación realizada y facilitan la coordinación con la familia y el centro educativo.",
         href: "/informes-psicopedagogicos/",

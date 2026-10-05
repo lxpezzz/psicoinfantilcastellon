@@ -152,17 +152,14 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Evaluación y diagnóstico",
         description: "Estudio clínico y pruebas psicométricas",
         href: "/evaluacion-y-diagnostico/",
     },
     {
-        title: "Informes psicopedagógicos",
         description: "Dictamen oficial para adaptaciones curriculares",
         href: "/informes-psicopedagogicos/",
     },
     {
-        title: "Asesoramiento a padres",
         description: "Pautas para acompañar sus necesidades en el hogar",
         href: "/asesoramiento-a-padres/",
     },
@@ -200,8 +197,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="Altas capacidades"
-        eyebrow="EVALUACIÓN Y TRATAMIENTO DE ALTAS CAPACIDADES"
+        breadcrumbLabel={giftedService.shortTitle}
+        eyebrow={giftedService.title}
         title="Cuando aprende a otro ritmo, necesita una respuesta diferente"
         description="Cuando la inteligencia se esconde detrás de la desmotivación. Si el sistema estándar se le queda pequeño y su cerebro va a otra velocidad, necesita retos diferentes. Evalúo su perfil intelectual y emocional y diseño las adaptaciones curriculares necesarias para que recupere la motivación y el éxito escolar."
         image={giftedService.heroImage}
@@ -258,7 +255,7 @@ const faqs: FAQItem[] = [
         titleUnderline="Hablemos"
         description="Cuéntame vuestra situación. Si ves que se aburre en clase, hace preguntas inusualmente profundas o sientes que su talento se apaga por falta de retos, estoy aquí para escucharos. Escríbeme sin compromiso y busquemos el mejor camino."
         primaryCtaText="Solicitar valoración"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />

@@ -1,8 +1,8 @@
 ---
 import { ArrowUpRight } from "lucide-astro";
+import { services as serviceCatalog } from "../../data/services";
 
 export interface RelatedServiceItem {
-    title: string;
     description: string;
     href: string;
 }
@@ -14,6 +14,15 @@ interface Props {
 }
 
 const { title, description, services } = Astro.props;
+const relatedServices = services.map((service) => {
+    const definition = serviceCatalog.find((item) => item.href === service.href);
+
+    if (!definition) {
+        throw new Error(`No se ha encontrado el servicio relacionado: ${service.href}`);
+    }
+
+    return { ...service, title: definition.title };
+});
 ---
 
 <section class="border-y border-[rgba(23,54,97,0.08)] bg-white py-[clamp(3.75rem,7vw,5.75rem)]">
@@ -29,7 +38,7 @@ const { title, description, services } = Astro.props;
             </header>
 
             <nav class="flex flex-col divide-y divide-[rgba(23,54,97,0.1)] border-t border-[rgba(23,54,97,0.1)] lg:border-t-0" aria-label="Servicios relacionados">
-                {services.map((service) => (
+                {relatedServices.map((service) => (
                     <a
                         href={service.href}
                         class="group flex min-h-[76px] items-center justify-between gap-4 py-4.5 px-2.5 -mx-2.5 rounded-[0.75rem] transition-[background-color,color] duration-200 hover:bg-[#f7f8f6] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"

@@ -154,22 +154,18 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Evaluación y diagnóstico psicopedagógico",
         description: "Estudio clínico y pruebas estandarizadas",
         href: "/evaluacion-y-diagnostico/",
     },
     {
-        title: "Tratamiento y evaluación de TDAH",
         description: "Atención, impulsividad y autorregulación",
         href: "/tratamiento-tdah/",
     },
     {
-        title: "Tratamiento y evaluación de dislexia",
         description: "Intervención en lectura, escritura y comprensión",
         href: "/tratamiento-dislexia/",
     },
     {
-        title: "Altas capacidades",
         description: "Valoración del perfil y de sus necesidades educativas",
         href: "/tratamiento-altas-capacidades/",
     },
@@ -205,8 +201,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="Informes psicopedagógicos"
-        eyebrow="INFORMES PSICOPEDAGÓGICOS"
+        breadcrumbLabel={reportService.shortTitle}
+        eyebrow={reportService.title}
         title="¿Necesitas un documento riguroso para garantizar las adaptaciones que tu hijo necesita?"
         description="Un informe no es solo un trámite; es la herramienta legal y educativa que asegura que el colegio reconozca y atienda las necesidades reales de tu hijo. Con casi 20 años de trayectoria en orientación escolar en Castellón y especialización en Psicología Forense, mis informes ofrecen el rigor clínico y la claridad pedagógica que los centros educativos requieren."
         image={reportService.heroImage}
@@ -260,7 +256,7 @@ const faqs: FAQItem[] = [
         titleUnderline="Hablemos"
         description="Tras 20 años dirigiendo departamentos de orientación en Castellón, sé que un informe riguroso es la llave para que el colegio entienda y atienda las necesidades de vuestro hijo. Escríbeme sin compromiso y tracemos la mejor solución."
         primaryCtaText="Solicitar informe oficial"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />

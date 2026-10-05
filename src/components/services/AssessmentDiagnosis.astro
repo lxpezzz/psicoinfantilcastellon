@@ -152,22 +152,18 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Informes psicopedagógicos",
         description: "Resultados y orientaciones para la familia y el colegio",
         href: "/informes-psicopedagogicos/",
     },
     {
-        title: "Tratamiento y evaluación de TDAH",
         description: "Atención, autorregulación y apoyo educativo",
         href: "/tratamiento-tdah/",
     },
     {
-        title: "Tratamiento y evaluación de dislexia",
         description: "Reeducación en lectura, escritura y comprensión",
         href: "/tratamiento-dislexia/",
     },
     {
-        title: "Altas capacidades",
         description: "Estimulación cognitiva y bienestar emocional",
         href: "/tratamiento-altas-capacidades/",
     },
@@ -203,8 +199,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="Evaluación y diagnóstico"
-        eyebrow="EVALUACIÓN Y DIAGNÓSTICO PSICOPEDAGÓGICO"
+        breadcrumbLabel={evalService.shortTitle}
+        eyebrow={evalService.title}
         title="Una evaluación para poner claridad a lo que os preocupa"
         description="Cuando hay dificultades de aprendizaje, atención, organización o rendimiento, una evaluación permite mirar más allá de las notas y comprender qué puede estar interfiriendo."
         image={evalService.heroImage}
@@ -260,7 +256,7 @@ entenderle y acompañarle."
         titleUnderline="hablemos"
         description="Cuéntame qué has observado en tu hijo y tracemos el plan de evaluación más adecuado para entender sus necesidades y proteger su futuro escolar."
         primaryCtaText="Solicitar evaluación"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />

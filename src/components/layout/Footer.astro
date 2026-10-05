@@ -1,13 +1,15 @@
 ---
 // Footer.astro - Global Site Footer
 import { Phone, Mail, MapPin } from "lucide-astro";
+import { hasPublishedPosts } from "../../data/blog";
 
 const currentYear = 2026;
+const showBlog = await hasPublishedPosts();
 ---
 
 <footer class="footer" id="pie-pagina" aria-label="Pie de página">
     <div class="section-container footer__container">
-        <!-- Zona Superior: Marca a la izquierda / Contacto a la derecha -->
+        <!-- Zona Superior: Marca, navegación y contacto -->
         <div class="footer__top">
             <!-- Izquierda: Logo y descripción -->
             <div class="footer__brand">
@@ -24,7 +26,18 @@ const currentYear = 2026;
                 </p>
             </div>
 
-            <!-- Derecha: Solo teléfono, email y ubicación -->
+            <nav class="footer__nav" aria-label="Navegación del pie de página">
+                <p class="footer__nav-title">Navegación</p>
+                <ul class="footer__nav-list">
+                    <li><a href="/">Inicio</a></li>
+                    <li><a href="/#servicios">Servicios</a></li>
+                    <li><a href="/sobre-mi/">Sobre mí</a></li>
+                    {showBlog && <li><a href="/blog/">Blog</a></li>}
+                    <li><a href="/contacto/">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <!-- Teléfono, email y ubicación -->
             <div class="footer__contact">
                 <div class="footer__contact-list">
                     <!-- Teléfono clicable -->
@@ -77,22 +90,12 @@ const currentYear = 2026;
                 &copy; {currentYear} PsicoInfantil Castellón
             </p>
 
-            <nav class="footer__legal" aria-label="Enlaces legales">
+            <nav class="footer__legal" aria-label="Información legal">
                 <a href="/aviso-legal/">Aviso legal</a>
                 <span class="footer__dot" aria-hidden="true">·</span>
-                <a href="/privacidad/">
-                    <span class="footer__legal-desktop"
-                        >Política de privacidad</span
-                    >
-                    <span class="footer__legal-mobile">Privacidad</span>
-                </a>
+                <a href="/privacidad/">Política de privacidad</a>
                 <span class="footer__dot" aria-hidden="true">·</span>
-                <a href="/politica-de-cookies/">
-                    <span class="footer__legal-desktop"
-                        >Política de cookies</span
-                    >
-                    <span class="footer__legal-mobile">Cookies</span>
-                </a>
+                <a href="/politica-de-cookies/">Política de cookies</a>
             </nav>
         </div>
     </div>
@@ -115,15 +118,17 @@ const currentYear = 2026;
        Acercado hacia el centro para reducir la sensación de vacío central
        -------------------------------------------------------------------------- */
     .footer__top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(160px, 0.65fr) minmax(0, 1.25fr);
+        align-items: start;
+        gap: clamp(1.5rem, 3vw, 3rem);
     }
 
     /* Izquierda: Logo y Subtítulo */
     .footer__brand {
         display: flex;
         flex-direction: column;
+        min-width: 0;
     }
 
     .footer__logo {
@@ -164,10 +169,55 @@ const currentYear = 2026;
         max-width: 36ch;
     }
 
+    .footer__nav {
+        min-width: 0;
+    }
+
+    .footer__nav-title {
+        margin: 0 0 0.35rem;
+        color: #ffffff;
+        font-size: 0.93rem;
+        font-weight: 650;
+        line-height: 1.5;
+    }
+
+    .footer__nav-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0 0.5rem;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .footer__nav-list a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        color: rgba(248, 250, 252, 0.82);
+        font-size: 0.93rem;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .footer__nav-list a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .footer a:focus-visible {
+        outline: 2px solid #9ccbf5;
+        outline-offset: 4px;
+        border-radius: 4px;
+    }
+
     /* Derecha: Contacto (teléfono, email, ubicación) */
     .footer__contact {
         display: flex;
         align-items: flex-start;
+        justify-content: flex-end;
+        min-width: 0;
         text-align: right;
     }
 
@@ -187,6 +237,15 @@ const currentYear = 2026;
         color: rgba(248, 250, 252, 0.82);
         text-decoration: none;
         transition: color 0.2s ease;
+    }
+
+    a.footer__contact-item {
+        min-height: 44px;
+    }
+
+    .footer__contact-item span {
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
 
     .footer__item-icon {
@@ -239,6 +298,8 @@ const currentYear = 2026;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem 1.5rem;
     }
 
     .footer__copyright {
@@ -247,11 +308,15 @@ const currentYear = 2026;
 
     .footer__legal {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         gap: 0.75rem;
     }
 
     .footer__legal a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
         color: rgba(248, 250, 252, 0.68);
         text-decoration: none;
         transition: color 0.2s ease;
@@ -268,21 +333,13 @@ const currentYear = 2026;
         user-select: none;
     }
 
-    .footer__legal-mobile {
-        display: none;
-    }
-
-    .footer__legal-desktop {
-        display: inline;
-    }
-
     /* --------------------------------------------------------------------------
        MÓVIL (< 768px):
        -------------------------------------------------------------------------- */
     @media (max-width: 768px) {
         .footer {
             padding-top: 1.8rem;
-            padding-bottom: 1.8rem;
+            padding-bottom: calc(1.8rem + 76px + env(safe-area-inset-bottom, 0px));
         }
 
         .footer__container {
@@ -338,6 +395,19 @@ const currentYear = 2026;
             color: rgba(248, 250, 252, 0.85);
         }
 
+        .footer__nav {
+            width: 100%;
+        }
+
+        .footer__nav-list {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .footer__nav-list a {
+            justify-content: center;
+            font-size: 0.88rem;
+        }
+
         /* =========================
        CONTACTO
        ========================= */
@@ -391,7 +461,7 @@ const currentYear = 2026;
         .footer__contact-item--email {
             order: 2;
 
-            min-height: 40px;
+            min-height: 44px;
 
             font-size: 0.92rem;
         }
@@ -455,12 +525,8 @@ const currentYear = 2026;
             text-align: center;
         }
 
-        .footer__legal-desktop {
+        .footer__dot {
             display: none;
-        }
-
-        .footer__legal-mobile {
-            display: inline;
         }
 
         /* Copyright */
@@ -484,7 +550,7 @@ const currentYear = 2026;
     @media (max-width: 400px) {
         .footer {
             padding-top: 2.25rem;
-            padding-bottom: 2.25rem;
+            padding-bottom: calc(2.25rem + 76px + env(safe-area-inset-bottom, 0px));
         }
 
         .footer__container {

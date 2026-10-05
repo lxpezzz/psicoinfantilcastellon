@@ -16,6 +16,7 @@ const sortedPosts = await getPublishedPosts();
     title="Blog | Recursos sobre Psicología Infantil y Aprendizaje en Castellón"
     description="Artículos sobre aprendizaje, desarrollo, dificultades escolares y acompañamiento a niños, adolescentes y familias."
     type="website"
+    robots={sortedPosts.length > 0 ? "index, follow" : "noindex, follow"}
 >
     <Header />
     <MobileMenu />

@@ -142,22 +142,18 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        title: "Evaluación y diagnóstico",
         description: "Entender qué puede estar detrás",
         href: "/evaluacion-y-diagnostico/",
     },
     {
-        title: "TDAH",
         description: "Atención, impulsividad y organización",
         href: "/tratamiento-tdah/",
     },
     {
-        title: "Dislexia",
         description: "Lectura, escritura y comprensión",
         href: "/tratamiento-dislexia/",
     },
     {
-        title: "Psicología juvenil",
         description: "Apoyo emocional y orientación durante la adolescencia",
         href: "/orientacion-adolescentes/",
     },
@@ -192,8 +188,8 @@ const faqs: FAQItem[] = [
 <main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
-        breadcrumbLabel="Rendimiento escolar"
-        eyebrow="RENDIMIENTO ESCOLAR"
+        breadcrumbLabel={schoolService.shortTitle}
+        eyebrow={schoolService.title}
         title="Cuando estudiar cuesta más de lo que debería"
         description="Hay niños y adolescentes que se esfuerzan, dedican muchas horas al estudio y aun así sienten que los resultados no reflejan todo ese esfuerzo. Antes de pedirles más, conviene entender qué está dificultando su aprendizaje."
         image={schoolService.heroImage}
@@ -247,7 +243,7 @@ const faqs: FAQItem[] = [
         titleUnderline="por qué"
         description="Cuéntame qué está ocurriendo y valoramos juntos cuál puede ser el siguiente paso."
         primaryCtaText="Cuéntame vuestro caso"
-        primaryCtaHref="/#contacto"
+        primaryCtaHref="#contacto"
         phoneText="También puedes llamar al 614 99 21 48"
         phoneHref="tel:+34614992148"
     />
