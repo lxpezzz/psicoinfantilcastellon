@@ -1,5 +1,6 @@
 ---
 title: "¿Cuándo conviene hacer una evaluación psicopedagógica?"
+seoTitle: "Evaluación psicopedagógica: cuándo hacerla | PsicoInfantil"
 description: "Detectar a tiempo las causas detrás de las dificultades de aprendizaje ayuda a intervenir con certezas, evitando la frustración acumulada en casa y en el colegio."
 publishDate: 2026-09-20
 author: "Ana Díaz Berbel"

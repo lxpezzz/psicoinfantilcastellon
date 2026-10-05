@@ -73,7 +73,7 @@ const inputClass =
                         class="contact__error flex items-start gap-[0.85rem] p-4 min-[821px]:p-[1rem_1.25rem] rounded-[0.85rem] bg-[rgba(239,68,68,0.08)] border border-[rgba(239,68,68,0.25)] text-[#991b1b] mb-5"
                         hidden
                         role="alert"
-                        aria-live="assertive"
+                        aria-live="polite"
                     >
                         <div
                             class="w-7 h-7 rounded-full bg-[#dc2626] text-white grid place-items-center shrink-0 mt-0.5 text-xs font-bold"
@@ -85,11 +85,8 @@ const inputClass =
                             <strong
                                 class="block mb-[0.2rem] text-[#7f1d1d]"
                                 id="contact-error-title"
-                                >No se ha podido enviar el mensaje</strong
-                            >
-                            <p class="m-0" id="contact-error-desc">
-                                Por favor, revisa los campos requeridos e inténtalo de nuevo.
-                            </p>
+                            ></strong>
+                            <p class="m-0" id="contact-error-desc"></p>
                         </div>
                     </div>
 
@@ -394,26 +391,9 @@ const inputClass =
     }
 </style>
 
+<script is:inline type="module" src="/scripts/contact-status.js"></script>
+
 <script>
-    function checkContactUrlStatus() {
-        const errorBanner = document.getElementById("contact-error");
-        const errorDesc = document.getElementById("contact-error-desc");
-        if (!errorBanner || !errorDesc) return;
-
-        const params = new URLSearchParams(window.location.search);
-        const errorType = params.get("error");
-
-        if (errorType === "1") {
-            errorDesc.textContent =
-                "Por favor, revisa que todos los campos requeridos estén completos y acepta la política de privacidad.";
-            errorBanner.hidden = false;
-        } else if (errorType === "envio") {
-            errorDesc.textContent =
-                "No ha sido posible enviar el mensaje en este momento debido a un problema temporal en el servidor. Por favor, llámanos directamente al 614 99 21 48.";
-            errorBanner.hidden = false;
-        }
-    }
-
     // Comportamiento en desarrollo local: Astro dev no ejecuta scripts PHP.
     // Esta lógica solo está activa en 'npm run dev' para facilitar el testing visual y desaparece en el build de producción.
     if (import.meta.env.DEV) {
@@ -438,6 +418,4 @@ const inputClass =
         document.addEventListener("astro:page-load", setupDevFormNotice);
     }
 
-    document.addEventListener("DOMContentLoaded", checkContactUrlStatus);
-    document.addEventListener("astro:page-load", checkContactUrlStatus);
 </script>

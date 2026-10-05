@@ -9,7 +9,7 @@ export default defineConfig({
   trailingSlash: 'always',
   integrations: [
     sitemap({
-      filter: (page) => !page.includes('/gracias'),
+      filter: (page) => !page.includes('/gracias/'),
     }),
   ],
   redirects: {

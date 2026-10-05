@@ -66,9 +66,11 @@ const jsonLd = {
 ---
 
 <Layout
+    seoTitle={post.data.seoTitle ?? post.data.title}
     title={`${post.data.title} | PsicoInfantil Castellón`}
     description={post.data.description}
     image={imageUrl}
+    imageAlt={post.data.imageAlt}
     canonical={articleUrl}
     type="article"
     articleMeta={{

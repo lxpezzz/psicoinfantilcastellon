@@ -1,5 +1,6 @@
 ---
 title: "Mi hijo estudia mucho pero sus notas no mejoran: ¿qué puede estar pasando?"
+seoTitle: "Mi hijo estudia mucho pero sus notas no mejoran | PsicoInfantil"
 description: "Cuando el esfuerzo no se traduce en resultados, la causa no suele ser falta de capacidad ni desgana, sino un método ineficaz o interferencias en la comprensión."
 publishDate: 2026-09-24
 author: "Ana Díaz Berbel"

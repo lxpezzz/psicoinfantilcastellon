@@ -1,5 +1,6 @@
 ---
 title: "TDAH, dislexia o falta de método: por qué no conviene sacar conclusiones demasiado pronto"
+seoTitle: "TDAH, dislexia o falta de método: cómo diferenciarlos"
 description: "Confundir despistes con falta de atención o lentitud con problemas de lectura es común. Un diagnóstico diferencial riguroso evita etiquetas precipitadas."
 publishDate: 2026-09-28
 author: "Ana Díaz Berbel"
