@@ -1,6 +1,7 @@
 ---
 import { MapPin, Navigation, Car, Bus, ShieldCheck, ExternalLink } from "lucide-astro";
 import Button from "../ui/Button.astro";
+import { location } from "../../data/location";
 ---
 
 <section class="contact-page-map [--color-text-soft:#506176] py-[clamp(3.5rem,6vw,5rem)] bg-[#eef3f0] border-t border-[rgba(23,54,97,0.08)]" aria-labelledby="map-heading">
@@ -21,7 +22,7 @@ import Button from "../ui/Button.astro";
             <!-- Marco Interno con el iframe interactivo -->
             <div class="rounded-[1rem] overflow-hidden relative w-full h-[320px] sm:h-[400px] bg-[#eaf0f6]">
                 <iframe
-                    src="https://maps.google.com/maps?q=Psico%20Infantil%20Castell%C3%B3n,%20Calle%20R%C3%ADo%20T%C3%A1mesis,%201,%2012005%20Castell%C3%B3n%20de%20la%20Plana&hl=es&z=16&output=embed"
+                    src={location.googleMapsEmbedUrl}
                     class="w-full h-full border-0 absolute inset-0"
                     allowfullscreen=""
                     loading="lazy"
@@ -36,19 +37,19 @@ import Button from "../ui/Button.astro";
                     <div class="text-[var(--color-primary)] shrink-0">
                         <MapPin size={20} aria-hidden="true" />
                     </div>
-                    <div>
+                    <a href={location.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">
                         <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)] block">
-                            C/ Río Támesis, 1, Esc. 1, 4ºA
+                            {location.streetAddress},
                         </strong>
                         <span class="text-[0.84rem] text-[var(--color-text-soft)]">
-                            12005 Castellón de la Plana (Castellón)
+                            {location.locality}
                         </span>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Botón Abrir en Google Maps / Cómo llegar -->
                 <Button
-                    href="https://maps.google.com/?cid=4225123225601099366"
+                    href={location.googleMapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     size="md"

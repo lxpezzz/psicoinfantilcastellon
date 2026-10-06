@@ -2,6 +2,7 @@
 // Footer.astro - Global Site Footer
 import { Phone, Mail, MapPin } from "lucide-astro";
 import { hasPublishedPosts } from "../../data/blog";
+import { location } from "../../data/location";
 
 const currentYear = 2026;
 const showBlog = await hasPublishedPosts();
@@ -55,7 +56,7 @@ const showBlog = await hasPublishedPosts();
 
                     <!-- Email clicable -->
                     <a
-                        href="mailto:info@psicoinfantilcastellon.es"
+                        href="/contacto/#formulario"
                         class="footer__contact-item footer__contact-item--email"
                     >
                         <Mail
@@ -63,11 +64,14 @@ const showBlog = await hasPublishedPosts();
                             class="footer__item-icon"
                             aria-hidden="true"
                         />
-                        <span>info@psicoinfantilcastellon.es</span>
+                        <span>Formulario de contacto</span>
                     </a>
 
                     <!-- Ubicación / Dirección -->
-                    <div
+                    <a
+                        href={location.googleMapsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         class="footer__contact-item footer__contact-item--address"
                     >
                         <MapPin
@@ -75,8 +79,8 @@ const showBlog = await hasPublishedPosts();
                             class="footer__item-icon"
                             aria-hidden="true"
                         />
-                        <span>Calle Río Támesis, 1, 12005, Castellón de la Plana, Castellón</span>
-                    </div>
+                        <span>{location.address}</span>
+                    </a>
                 </div>
             </div>
         </div>

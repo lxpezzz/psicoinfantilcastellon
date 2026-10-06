@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Button from "../ui/Button.astro";
+import { location } from "../../data/location";
 import {
     Award,
     GraduationCap,
@@ -40,11 +41,11 @@ import anaImg from "../../images/about/ana-diaz.webp";
                 <!-- Columna de Texto: 7 cols en Desktop -->
                 <div class="lg:col-span-7 flex flex-col items-start">
                     <h1 class="text-[clamp(2rem,3.4vw,3rem)] font-[750] leading-[1.12] tracking-[-0.035em] text-[var(--color-primary-dark)] m-0 mb-6 [text-wrap:balance]">
-                        Detrás de cada dificultad escolar hay un niño que solo necesita que entendamos cómo funciona su mente.
+                        Detrás de cada dificultad escolar hay un niño que necesita que entendamos cómo funciona su mente.
                     </h1>
 
                     <p class="max-w-[60ch] text-[1.02rem] sm:text-[1.08rem] leading-[1.75] text-[var(--color-text-soft)] m-0 mb-7 [text-wrap:pretty]">
-                        Soy <strong>Ana Díaz Berbel</strong>, psicóloga sanitaria infantil y juvenil en Castellón con <strong>Nº de Colegiada CV-8027</strong>. Acompaño a familias y colegios a transformar la frustración del aprendizaje y las dudas en serenidad, herramientas prácticas y avances reales en el aula y en casa.
+                        Soy <strong>Ana Díaz Berbel</strong>, psicóloga sanitaria infantil y juvenil en Castellón con <strong>Nº de Colegiada CV-8027</strong>. Acompaño a familias y colegios para comprender las dificultades de aprendizaje, encontrar pautas prácticas y apoyar el bienestar del niño en el aula y en casa.
                     </p>
 
                     <!-- Acciones con el mismo componente de las páginas de servicio -->
@@ -103,7 +104,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
 
         <blockquote class="m-0 max-w-[900px] border-t border-[rgba(23,54,97,0.12)] pt-7 mb-[clamp(2.5rem,5vw,4rem)]">
             <p class="m-0 text-[clamp(1.15rem,2vw,1.5rem)] font-[500] leading-[1.6] tracking-[-0.015em] text-[var(--color-primary-dark)] [text-wrap:pretty]">
-                “Mi trabajo no concluye cuando entrego un informe en la mano; empieza de verdad cuando conseguimos que la familia y el colegio sepan exactamente qué hacer cada día.”
+                “Mi trabajo no concluye cuando entrego un informe; continúa acompañando a la familia y al colegio para comprender los resultados y orientar los siguientes pasos.”
             </p>
         </blockquote>
 
@@ -125,7 +126,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                             Años dirigiendo orientación escolar
                         </h2>
                         <p class="text-[0.9rem] leading-[1.62] text-[var(--color-text-soft)] m-0">
-                            Lideré durante casi dos décadas el Departamento Psicopedagógico de <strong>Ágora Lledó International School</strong> en Castellón, coordinando diversidad y adaptaciones curriculares al más alto nivel.
+                            Lideré durante casi dos décadas el Departamento Psicopedagógico de <strong>Ágora Lledó International School</strong> en Castellón, coordinando la atención a la diversidad y las adaptaciones curriculares.
                         </p>
                     </div>
                 </div>
@@ -162,10 +163,10 @@ import anaImg from "../../images/about/ana-diaz.webp";
                     </div>
                     <div>
                         <h2 class="text-[1.15rem] font-bold text-[var(--color-primary-dark)] m-0 mb-2">
-                            Familias guiadas con éxito
+                            Familias acompañadas
                         </h2>
                         <p class="text-[0.9rem] leading-[1.62] text-[var(--color-text-soft)] m-0">
-                            Padres y madres que han recuperado la tranquilidad, comprendiendo cómo aprende su hijo y viendo avances tangibles sin castigos ni agotamiento diario.
+                            Padres y madres acompañados para comprender mejor cómo aprende su hijo, encontrar pautas para el día a día y afrontar las dificultades con más recursos.
                         </p>
                     </div>
                 </div>
@@ -180,10 +181,10 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         <span>El verdadero valor diferencial</span>
                     </div>
                     <h2 class="text-[clamp(1.75rem,3vw,2.5rem)] font-[650] leading-[1.16] tracking-[-0.03em] text-white m-0 mb-5 [text-wrap:balance]">
-                        El puente que casi siempre falta entre el despacho del psicólogo y la realidad del aula escolar
+                        El puente entre la consulta de psicología y la realidad del aula escolar
                     </h2>
                     <p class="text-[1.02rem] leading-[1.68] text-[#d1dced] m-0 [text-wrap:pretty]">
-                        Muchos gabinetes entregan informes psicopedagógicos densos que acaban archivados en un cajón porque los profesores no saben cómo aterrizarlos con 25 alumnos en clase. Haber estado casi 20 años dentro de un colegio me permite ofrecer una visión 360º: <strong>hablo el mismo idioma que los docentes</strong> para que las adaptaciones se apliquen de verdad.
+                        Los informes psicopedagógicos resultan más útiles cuando sus conclusiones se traducen en orientaciones que encajan con el día a día del aula. Haber estado casi 20 años dentro de un colegio me permite ofrecer una visión 360º: <strong>hablo el mismo idioma que los docentes</strong> y puedo proponer apoyos adaptados al contexto de cada centro.
                     </p>
                 </div>
 
@@ -195,7 +196,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         </div>
                         <strong class="text-[1.1rem] font-bold text-white">1. En la consulta</strong>
                         <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
-                            Evaluación clínica y psicométrica exhaustiva pero cercana, sin etiquetas estigmatizantes. Descubrimos el perfil cognitivo y las fortalezas del menor.
+                            Evaluación clínica y psicométrica rigurosa y cercana, sin etiquetas estigmatizantes. Exploramos el perfil cognitivo y las fortalezas del menor.
                         </p>
                     </div>
 
@@ -217,7 +218,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         </div>
                         <strong class="text-[1.1rem] font-bold text-white">3. En el hogar</strong>
                         <p class="text-[0.9rem] leading-[1.65] text-[#cbd7e6] m-0">
-                            Pautas prácticas para las tardes de deberes. Desactivamos la frustración y dotamos a los padres de tranquilidad y estrategias que funcionan en el día a día.
+                            Pautas prácticas para las tardes de deberes. Buscamos reducir la frustración y ofrecer a los padres recursos y estrategias adaptadas a su día a día.
                         </p>
                     </div>
                 </div>
@@ -248,7 +249,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                             Tras coordinar durante casi dos décadas equipos psicopedagógicos en un colegio de referencia internacional, sentí la necesidad de crear un espacio donde atender a las familias con el tiempo, la serenidad y la dedicación artesanal que cada niño merece.
                         </p>
                         <p class="text-[0.92rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
-                            En mi consulta en la <strong>Calle Río Támesis de Castellón</strong>, no trabajamos con protocolos impersonales ni prisas. Cada caso es único, cada evaluación es exhaustiva y cada familia encuentra un acompañamiento cálido y continuo desde la primera sesión.
+                            En mi consulta en <a href={location.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-inherit underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"><strong>{location.address}</strong></a>, cuidamos el tiempo de escucha y adaptamos la atención a cada familia. Cada caso se valora de forma individual, con una evaluación ajustada a sus necesidades y un acompañamiento cercano desde la primera sesión.
                         </p>
                     </div>
                 </div>
@@ -263,7 +264,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         Formación académica continua y solvencia pericial
                     </h2>
                     <p class="text-[0.95rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                        La empatía y la calidez son esenciales, pero sin un rigor metodológico intachable no hay resultados clínicos. Mi trayectoria está respaldada por titulaciones oficiales y actualización permanente:
+                        La empatía y la calidez van de la mano de una metodología rigurosa y una valoración cuidadosa de cada caso. Mi trayectoria está respaldada por titulaciones oficiales y formación continuada:
                     </p>
                 </div>
 
@@ -288,7 +289,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Colegiada Oficial CV-8027</strong>
                         <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[#1e6e4a]">COP Comunitat Valenciana</span>
                         <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
-                            Garantía de ejercicio sanitario legal, cumplimiento deontológico estricto y seguro de responsabilidad civil médica.
+                            Colegiación profesional, compromiso deontológico y seguro de responsabilidad civil profesional.
                         </p>
                     </div>
 
@@ -300,7 +301,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         <strong class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]">Máster en Psicología Forense</strong>
                         <span class="text-[0.82rem] font-bold uppercase tracking-wider text-[#8c3b47]">UNIR</span>
                         <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
-                            Aporta un estándar probatorio y pericial indispensable: informes con solidez técnica ante tribunales, centros y administraciones.
+                            Esta formación aporta herramientas para la evaluación psicológica y la elaboración de informes profesionales dentro del ámbito de competencia de la psicología.
                         </p>
                     </div>
 
@@ -353,7 +354,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                             </h3>
                         </div>
                         <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                            Un diagnóstico no sirve para encasillar a un niño ni para limitar su futuro. Es únicamente una brújula científica que nos indica cómo funciona su mente y qué apoyos concretos necesita para desplegar todo su potencial.
+                            Un diagnóstico no debe encasillar a un niño ni limitar su futuro. Puede ayudar a comprender sus dificultades y fortalezas y a orientar los apoyos que podrían favorecer su aprendizaje y bienestar.
                         </p>
                     </div>
 
@@ -366,7 +367,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                             </h3>
                         </div>
                         <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                            No trabajamos con suposiciones ni valoraciones improvisadas. Empleamos baterías de referencia internacional (WISC-V, PROLEC-SE-R, SENA, etc.) con baremos actualizados para garantizar diagnósticos diferenciales exactos.
+                            Empleamos pruebas de referencia internacional (WISC-V, PROLEC-SE-R, SENA, etc.), con baremos actualizados y seleccionadas según las necesidades de cada caso, para favorecer una evaluación diferencial rigurosa.
                         </p>
                     </div>
 
@@ -420,7 +421,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         </summary>
                         <div class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.75] text-[var(--color-text-soft)]">
                             <p class="m-0">
-                                Si notas que el esfuerzo que dedica al estudio no se traduce en sus notas, si tarda horas interminables en hacer las tareas escolares, si se frustra con frecuencia o si el colegio os traslada dificultades reiteradas de atención o conducta, una valoración psicopedagógica es el camino más rápido para salir de dudas y evitar que la situación mine su autoestima.
+                                Si notas que el esfuerzo que dedica al estudio no se traduce en sus notas, si tarda mucho tiempo en hacer las tareas escolares, si se frustra con frecuencia o si el colegio os traslada dificultades reiteradas de atención o conducta, una valoración psicopedagógica puede ayudar a comprender qué está ocurriendo y orientar los apoyos que necesita.
                             </p>
                         </div>
                     </details>
@@ -428,12 +429,12 @@ import anaImg from "../../images/about/ana-diaz.webp";
                     <!-- Pregunta 2 -->
                     <details class="group/faq border-b border-[rgba(23,54,97,0.16)]">
                         <summary class="min-h-[68px] py-5 text-[1.05rem] leading-[1.5] font-[650] text-[var(--color-primary-dark)] cursor-pointer flex justify-between items-center gap-5 select-none list-none [&::-webkit-details-marker]:hidden focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">
-                            <span>¿Qué validez legal y académica tienen tus informes psicopedagógicos?</span>
+                            <span>¿Cómo pueden ayudar tus informes psicopedagógicos en el colegio?</span>
                             <ChevronDown size={18} class="text-[var(--color-primary)] transition-transform duration-200 shrink-0 group-open/faq:[transform:rotate(180deg)]" aria-hidden="true" />
                         </summary>
                         <div class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.75] text-[var(--color-text-soft)]">
                             <p class="m-0">
-                                Plena validez oficial. Como psicóloga colegiada sanitaria (Nº CV-8027) y con formación de Máster Oficial en Psicología Forense, todos los informes que emito cumplen con los estándares metodológicos exigidos por la Conselleria d'Educació y el Ministerio de Educación. Son válidos para solicitar adaptaciones curriculares en centros públicos, concertados y privados, así como para la tramitación de becas NEAE de apoyo educativo.
+                                Como psicóloga sanitaria colegiada (Nº CV-8027) y con formación de Máster Oficial en Psicología Forense, elaboro informes profesionales dentro del ámbito de competencia de la psicología. Estos informes pueden apoyar la coordinación con colegios y otros profesionales, y acompañar solicitudes de adaptaciones o ayudas como las becas NEAE. Su valoración depende de los requisitos del trámite y de los criterios del centro u organismo correspondiente.
                             </p>
                         </div>
                     </details>
@@ -446,7 +447,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         </summary>
                         <div class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.75] text-[var(--color-text-soft)]">
                             <p class="m-0">
-                                Mi factor diferencial decisivo es haber dirigido durante 19 años el departamento psicopedagógico de un colegio en Castellón. Conozco el sistema escolar por dentro: sé qué se le puede pedir a un profesor, cómo se redactan las adaptaciones viables y cómo lograr que el centro colabore sin fricciones en lugar de presentar resistencias.
+                                Una parte importante de mi trayectoria es haber dirigido durante 19 años el departamento psicopedagógico de un colegio en Castellón. Esa experiencia me ayuda a comprender el contexto escolar, proponer orientaciones realistas y facilitar el diálogo entre la familia y el centro educativo.
                             </p>
                         </div>
                     </details>
@@ -459,7 +460,7 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         </summary>
                         <div class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.75] text-[var(--color-text-soft)]">
                             <p class="m-0">
-                                Siempre recomendamos explicárselo con total naturalidad: «Vamos a conocer a Ana, una especialista en aprendizaje que ayuda a los chicos a descubrir cómo funciona su cabeza para que estudiar sea más fácil y no se cansen tanto». En la consulta los niños se sienten cómodos, escuchados y sin presiones desde los primeros minutos.
+                                Podéis explicárselo con naturalidad y adaptando el mensaje a su edad: «Vamos a conocer a Ana, una especialista en aprendizaje que puede ayudarnos a entender cómo aprendes y buscar formas de que estudiar te resulte más llevadero». En consulta procuramos crear un ambiente cercano, respetando el ritmo de cada niño y dándole espacio para expresar sus dudas.
                             </p>
                         </div>
                     </details>
@@ -488,17 +489,17 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         ¿Damos el primer paso para ayudar a vuestro hijo?
                     </h3>
                     <p class="text-[1.02rem] leading-[1.7] text-[var(--color-primary-dark)] m-0 mb-7 max-w-[620px]">
-                        No tenéis por qué afrontar esta incertidumbre en soledad. Pongo a vuestra disposición más de 20 años de experiencia clínica y escolar para entender qué ocurre y encontrar juntos el mejor camino.
+                        No tenéis por qué afrontar esta incertidumbre en soledad. Pongo a vuestra disposición más de 20 años de experiencia clínica y escolar para valorar lo que está ocurriendo y explorar juntos los siguientes pasos.
                     </p>
 
                     <div class="flex flex-wrap items-center gap-4">
                         <Button
-                            href="mailto:info@psicoinfantilcastellon.es"
+                            href="/contacto/#formulario"
                             size="md"
                             class="w-full sm:w-auto focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
                         >
                             <Mail size={17} aria-hidden="true" />
-                            <span>info@psicoinfantilcastellon.es</span>
+                            <span>Formulario de contacto</span>
                         </Button>
 
                         <Button
@@ -519,8 +520,10 @@ import anaImg from "../../images/about/ana-diaz.webp";
                         <span>Consulta en Castellón</span>
                     </div>
                     <p class="m-0 leading-[1.6]">
-                        C/ Río Támesis, 1, Esc. 1, 4ºA<br />
-                        12005 Castellón de la Plana (Castellón)
+                        <a href={location.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-inherit no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">
+                            {location.streetAddress},<br />
+                            {location.locality}
+                        </a>
                     </p>
                     <div class="pt-2 border-t border-[rgba(23,54,97,0.15)] flex items-center gap-2 text-[0.82rem]">
                         <CheckCircle2 size={15} class="text-[var(--color-primary)] shrink-0" aria-hidden="true" />

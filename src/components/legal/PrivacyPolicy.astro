@@ -1,4 +1,5 @@
 ---
+import { location } from "../../data/location";
 import {
     ShieldCheck,
     Building2,
@@ -99,8 +100,10 @@ import {
                             <MapPin size={18} />
                             <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Domicilio profesional</span>
                         </div>
-                        <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">C/ Río Támesis, 1, Esc. 1, 4ºA</strong>
-                        <span class="text-[0.84rem] text-[var(--color-text-soft)]">12005 Castellón de la Plana (Castellón)</span>
+                        <a href={location.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="flex flex-col gap-1.5 no-underline hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">
+                            <strong class="text-[0.98rem] font-bold text-[var(--color-primary-dark)]">{location.streetAddress},</strong>
+                            <span class="text-[0.84rem] text-[var(--color-text-soft)]">{location.locality}</span>
+                        </a>
                     </div>
 
                     <!-- Email Privacidad -->
@@ -109,8 +112,8 @@ import {
                             <Mail size={18} />
                             <span class="text-[0.76rem] font-bold uppercase tracking-wider text-[var(--color-text-soft)]">Canal de privacidad</span>
                         </div>
-                        <a href="mailto:info@psicoinfantilcastellon.es" class="text-[0.98rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] underline transition-colors break-all">
-                            info@psicoinfantilcastellon.es
+                        <a href="/contacto/#formulario" class="text-[0.98rem] font-bold text-[var(--color-primary)] hover:text-[var(--color-primary-dark)] underline transition-colors break-all">
+                            Formulario de contacto
                         </a>
                         <span class="text-[0.84rem] text-[var(--color-text-soft)]">Ejercicio de derechos y consultas</span>
                     </div>
@@ -162,7 +165,7 @@ import {
                             Datos identificativos y de contacto
                         </h3>
                         <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                            Nombre y apellidos de los progenitores o tutores legales, teléfono de contacto, dirección de correo electrónico y localidad de residencia. Se recaban cuando completas el formulario de contacto de la web o nos escribes un correo electrónico.
+                            Nombre y apellidos de los progenitores o tutores legales, teléfono de contacto, dirección de correo electrónico y localidad de residencia. Se recaban cuando completas el formulario de contacto de la web al solicitar información.
                         </p>
                     </div>
 
@@ -220,7 +223,7 @@ import {
                             </h3>
                         </div>
                         <p class="text-[0.9rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                            Atender, orientar y resolver las preguntas, mensajes o solicitudes de información recibidas a través del formulario de contacto de la web, correo electrónico o llamadas telefónicas.
+                            Atender, orientar y resolver las preguntas, mensajes o solicitudes de información recibidas a través del formulario de contacto de la web o llamadas telefónicas.
                         </p>
                     </div>
 
@@ -535,10 +538,10 @@ import {
                             ¿Cómo puedes ejercer cualquiera de estos derechos?
                         </strong>
                         <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
-                            Basta con enviar un correo electrónico a <a href="mailto:info@psicoinfantilcastellon.es" class="text-[var(--color-primary)] underline font-medium">info@psicoinfantilcastellon.es</a> o una comunicación escrita a nuestra sede en C/ Río Támesis, 1, Esc. 1, 4ºA, 12005 Castellón, indicando la referencia "Protección de Datos" y acompañando copia de un documento acreditativo de tu identidad.
+                            Basta con enviar una solicitud a través del <a href="/contacto/#formulario" class="text-[var(--color-primary)] underline font-medium">formulario de contacto</a> o una comunicación escrita a nuestra sede en <a href={location.googleMapsUrl} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] underline font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">{location.address}</a>, indicando la referencia "Protección de Datos" y acompañando copia de un documento acreditativo de tu identidad.
                         </p>
                     </div>
-                    <a href="mailto:info@psicoinfantilcastellon.es?subject=Ejercicio%20de%20Derechos%20Protecci%C3%B3n%20de%20Datos" class="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full text-[0.88rem] font-bold bg-[var(--color-primary)] text-white shadow-sm hover:bg-[var(--color-primary-dark)] transition-all no-underline shrink-0 max-sm:w-full">
+                    <a href="/contacto/#formulario" class="inline-flex items-center justify-center gap-2 py-3 px-5 rounded-full text-[0.88rem] font-bold bg-[var(--color-primary)] text-white shadow-sm hover:bg-[var(--color-primary-dark)] transition-all no-underline shrink-0 max-sm:w-full">
                         <Mail size={16} />
                         <span>Solicitar ejercicio de derechos</span>
                     </a>
@@ -600,9 +603,9 @@ import {
                 En PsicoInfantil Castellón estamos a tu entera disposición para resolver cualquier pregunta sobre cómo custodiamos la información de tu familia o sobre el ejercicio de tus derechos:
             </p>
             <div class="flex flex-wrap gap-4 max-sm:flex-col">
-                <a href="mailto:info@psicoinfantilcastellon.es" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-[var(--color-primary)] text-white shadow-[0_6px_18px_rgba(36,79,158,0.16)] hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.22)] transition-all no-underline max-sm:w-full">
+                <a href="/contacto/#formulario" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-[var(--color-primary)] text-white shadow-[0_6px_18px_rgba(36,79,158,0.16)] hover:bg-[var(--color-primary-dark)] hover:-translate-y-0.5 hover:shadow-[0_10px_24px_rgba(23,54,97,0.22)] transition-all no-underline max-sm:w-full">
                     <Mail size={16} />
-                    <span>info@psicoinfantilcastellon.es</span>
+                    <span>Formulario de contacto</span>
                 </a>
                 <a href="tel:+34614992148" class="inline-flex items-center justify-center gap-2 py-3 px-5.5 rounded-full text-[0.9rem] font-bold bg-white text-[var(--color-primary-dark)] border border-[rgba(23,54,97,0.12)] hover:bg-white/90 hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] hover:-translate-y-0.5 transition-all no-underline max-sm:w-full">
                     <Phone size={16} />

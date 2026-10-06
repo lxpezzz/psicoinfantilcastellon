@@ -1,7 +1,7 @@
 <?php
 /**
  * Backend de procesamiento para el formulario de contacto
- * PsicoInfantil Castellón (https://psicoinfantilcastellon.es)
+ * PsicoInfantil Castellón
  * 
  * Hosting destino: LucusHost (Astro estático + PHP en Apache/cPanel)
  * Método: POST exclusivo
@@ -98,7 +98,7 @@ if (
 }
 
 // 7. Preparación del mensaje de correo
-$destinatario = 'info@psicoinfantilcastellon.es';
+$destinatario = 'anadiaz.psicoinfantil@gmail.com';
 $asunto       = 'Nueva consulta desde PsicoInfantil Castellón';
 $edad_texto   = $edad !== '' ? $edad : 'No especificada';
 $servicio_texto = $servicio !== '' ? $servicio : 'Consulta general';
