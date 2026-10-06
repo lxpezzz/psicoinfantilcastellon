@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, rm } from 'node:fs/promises';
 import { siteUrl } from './src/data/site.mjs';
 
 let hasPublishedBlogPosts = false;
@@ -23,6 +23,9 @@ export default defineConfig({
             .replaceAll('{{CANONICAL_HOST_PATTERN}}', hostPattern);
 
           await writeFile(new URL('.htaccess', dir), serverConfig, 'utf8');
+
+          // El formulario activo usa Web3Forms; no publicar el PHP heredado con datos privados.
+          await rm(new URL('api/contacto.php', dir), { force: true });
         },
       },
     },

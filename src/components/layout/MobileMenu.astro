@@ -10,6 +10,10 @@ const showBlog = await hasPublishedPosts();
     class="mobile-menu group/mobile-menu fixed inset-0 z-[1050] pointer-events-none invisible transition-[visibility] duration-300 ease-[ease] [&.is-open]:pointer-events-auto [&.is-open]:visible min-[981px]:hidden"
     id="mobile-menu"
     aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Menú de navegación"
+    inert
 >
     <!-- Fondo oscuro con desenfoque -->
     <div
@@ -142,6 +146,7 @@ const showBlog = await hasPublishedPosts();
             <div
                 class="absolute inset-0 flex flex-col justify-between px-6 py-5 overflow-y-auto transition-all duration-350 ease-[cubic-bezier(0.32,0.72,0,1)] opacity-0 translate-x-full pointer-events-none"
                 id="panel-services"
+                inert
             >
                 <div>
                     <!-- Botón de regreso con flecha izquierda estilo iOS -->
@@ -219,28 +224,39 @@ const showBlog = await hasPublishedPosts();
         menu.dataset.initialized = "true";
 
         const openMenu = () => {
+            menu.inert = false;
             menu.classList.add("is-open");
             menu.setAttribute("aria-hidden", "false");
             toggleBtn.setAttribute("aria-expanded", "true");
             document.body.classList.add("mobile-menu-open");
             document.body.style.overflow = "hidden";
+            setTimeout(() => {
+                if (menu.classList.contains("is-open")) {
+                    closeBtn?.focus({ preventScroll: true });
+                }
+            }, 350);
         };
 
         const closeMenu = () => {
             menu.classList.remove("is-open");
             menu.setAttribute("aria-hidden", "true");
+            menu.inert = true;
             toggleBtn.setAttribute("aria-expanded", "false");
             document.body.classList.remove("mobile-menu-open");
             document.body.style.overflow = "";
-
             // Volver al panel principal tras cerrarse
             setTimeout(() => {
-                showMainPanel(false);
+                if (!menu.classList.contains("is-open")) {
+                    showMainPanel(false);
+                    toggleBtn.focus({ preventScroll: true });
+                }
             }, 350);
         };
 
         function showServicesPanel() {
             if (!panelMain || !panelServices) return;
+            panelMain.inert = true;
+            panelServices.inert = false;
             // Panel principal se desliza a la izquierda
             panelMain.classList.remove("translate-x-0", "opacity-100");
             panelMain.classList.add(
@@ -256,10 +272,13 @@ const showBlog = await hasPublishedPosts();
                 "pointer-events-none",
             );
             panelServices.classList.add("translate-x-0", "opacity-100");
+            backToMainBtn?.focus();
         }
 
-        function showMainPanel(withAnimation = true) {
+        function showMainPanel(restoreFocus = true) {
             if (!panelMain || !panelServices) return;
+            panelMain.inert = false;
+            panelServices.inert = true;
             // Panel de servicios sale hacia la derecha
             panelServices.classList.remove("translate-x-0", "opacity-100");
             panelServices.classList.add(
@@ -275,6 +294,9 @@ const showBlog = await hasPublishedPosts();
                 "pointer-events-none",
             );
             panelMain.classList.add("translate-x-0", "opacity-100");
+            if (restoreFocus && menu?.classList.contains("is-open")) {
+                openServicesBtn?.focus();
+            }
         }
 
         window.addEventListener("mobile-menu:close", closeMenu);
@@ -296,8 +318,28 @@ const showBlog = await hasPublishedPosts();
         });
 
         window.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && menu.classList.contains("is-open")) {
+            if (!menu.classList.contains("is-open")) return;
+
+            if (e.key === "Escape") {
                 closeMenu();
+                return;
+            }
+
+            if (e.key === "Tab") {
+                const focusable = Array.from(
+                    menu.querySelectorAll<HTMLElement>("a[href], button:not([disabled]), [tabindex='0']"),
+                ).filter((element) => !element.closest("[inert]") && element.getClientRects().length > 0);
+                const first = focusable[0];
+                const last = focusable[focusable.length - 1];
+                if (!first || !last) return;
+
+                if (e.shiftKey && (document.activeElement === first || !menu.contains(document.activeElement))) {
+                    e.preventDefault();
+                    last.focus();
+                } else if (!e.shiftKey && (document.activeElement === last || !menu.contains(document.activeElement))) {
+                    e.preventDefault();
+                    first.focus();
+                }
             }
         });
     }
