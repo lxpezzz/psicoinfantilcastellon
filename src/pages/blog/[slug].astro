@@ -3,6 +3,7 @@ import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import { getPublishedPosts } from "../../data/blog";
+import { professional } from "../../data/home-schema";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/layout/Header.astro";
 import MobileMenu from "../../components/layout/MobileMenu.astro";
@@ -48,7 +49,9 @@ const jsonLd = {
             description: post.data.description,
             datePublished: isoDate,
             ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
-            author: { "@type": "Person", name: post.data.author },
+            author: post.data.author === professional.name
+                ? { "@id": professional["@id"] }
+                : { "@type": "Person", name: post.data.author },
             image: imageUrl,
             url: articleUrl,
             mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },

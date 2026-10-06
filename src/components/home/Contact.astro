@@ -8,10 +8,8 @@ interface Props {
     heading?: string;
 }
 
-const {
-    servicio = "",
-    heading = "¿Te preocupa algo de tu hijo?",
-} = Astro.props;
+const { servicio = "", heading = "¿Te preocupa algo de tu hijo?" } =
+    Astro.props;
 
 const labelClass = "text-[0.88rem] font-[650] text-[var(--color-primary-dark)]";
 
@@ -95,15 +93,17 @@ const inputClass =
                         <div class="text-[0.88rem] leading-[1.45]">
                             <strong
                                 class="block mb-[0.2rem] text-[#7f1d1d]"
-                                id="contact-error-title"
-                            ></strong>
+                                id="contact-error-title"></strong>
                             <p class="m-0" id="contact-error-desc"></p>
                         </div>
                     </div>
 
                     <noscript>
-                        <p class="mb-5 text-[0.88rem] leading-[1.45] text-[#991b1b]">
-                            Para enviar el formulario, activa JavaScript en tu navegador. También puedes llamar al 614 99 21 48.
+                        <p
+                            class="mb-5 text-[0.88rem] leading-[1.45] text-[#991b1b]"
+                        >
+                            Para enviar el formulario, activa JavaScript en tu
+                            navegador. También puedes llamar al 614 99 21 48.
                         </p>
                     </noscript>
 
@@ -113,12 +113,33 @@ const inputClass =
                         action="https://api.web3forms.com/submit"
                         method="POST"
                     >
-                        <input type="hidden" name="access_key" value="fb9a9aa4-01af-451e-abba-a5a4b6d7ddaf" />
-                        <input type="hidden" name="subject" value="Nueva consulta desde Psico Infantil Castellón" />
-                        <input type="checkbox" name="botcheck" hidden tabindex="-1" aria-hidden="true" autocomplete="off" />
-                        {servicio && (
-                            <input type="hidden" name="servicio" value={servicio} />
-                        )}
+                        <input
+                            type="hidden"
+                            name="access_key"
+                            value="270e9cd7-a05c-4d2c-874d-33a8d92cbb0c"
+                        />
+                        <input
+                            type="hidden"
+                            name="subject"
+                            value="Nueva consulta desde Psico Infantil Castellón"
+                        />
+                        <input
+                            type="checkbox"
+                            name="botcheck"
+                            hidden
+                            tabindex="-1"
+                            aria-hidden="true"
+                            autocomplete="off"
+                        />
+                        {
+                            servicio && (
+                                <input
+                                    type="hidden"
+                                    name="servicio"
+                                    value={servicio}
+                                />
+                            )
+                        }
 
                         <!-- Campo Honeypot antispam invisible para usuarios humanos -->
                         <div class="contact__honeypot" aria-hidden="true">
@@ -190,7 +211,10 @@ const inputClass =
                         <!-- Edad del niño/a (opcional) -->
                         <div class="flex flex-col gap-[0.42rem]">
                             <label for="contact-age" class={labelClass}>
-                                Edad del niño/a <span class="font-normal text-[var(--color-text-soft)] text-[0.82rem]">(opcional)</span>
+                                Edad del niño/a <span
+                                    class="font-normal text-[var(--color-text-soft)] text-[0.82rem]"
+                                    >(opcional)</span
+                                >
                             </label>
                             <input
                                 type="text"
@@ -218,7 +242,9 @@ const inputClass =
                                 class={`${inputClass} min-h-[105px] leading-[1.5] resize-y`}
                             ></textarea>
                             <p id="contact-concern-help" class={labelClass}>
-                                Cuéntanos brevemente el motivo de contacto. No incluyas información médica o sensible en este formulario.
+                                Cuéntanos brevemente el motivo de contacto. No
+                                incluyas información médica o sensible en este
+                                formulario.
                             </p>
                         </div>
 
@@ -270,7 +296,15 @@ const inputClass =
                             />
                         </button>
                     </form>
-                    <p id="contact-status" class={labelClass} role="status" aria-live="polite" aria-atomic="true" hidden></p>
+                    <p
+                        id="contact-status"
+                        class={labelClass}
+                        role="status"
+                        aria-live="polite"
+                        aria-atomic="true"
+                        hidden
+                    >
+                    </p>
 
                     <!-- 4: Teléfono alternativo y Microgarantías -->
                     <div
