@@ -21,7 +21,7 @@ const cleanPhone = phone.replace(/\s+/g, "");
 <a
     href={`tel:+34${cleanPhone}`}
     class:list={["phone-cta flex items-center gap-[0.85rem] py-[0.85rem] px-[1.1rem] rounded-2xl bg-white/84 backdrop-blur-[12px] border border-[rgba(23,54,97,0.08)] shadow-[0_10px_28px_rgba(23,54,97,0.07)] no-underline cursor-pointer box-border transition-[transform,background-color,box-shadow,border-color] duration-200 ease-[ease] [&:hover]:[transform:translateY(-2px)] [&:hover]:bg-white/94 [&:hover]:border-[rgba(36,79,158,0.2)] [&:hover]:shadow-[0_14px_34px_rgba(23,54,97,0.11)]", className]}
-    aria-label={`Llamar para hablar de tu caso: ${phone}`}
+    aria-label={`${question} ${tagline} Llamar al ${phone}`}
 >
     <div class="w-10 h-10 rounded-full bg-[var(--color-primary)] text-white grid place-items-center shrink-0" aria-hidden="true">
         <HeartHandshake size={20} stroke-width={1.8} />
@@ -32,4 +32,3 @@ const cleanPhone = phone.replace(/\s+/g, "");
         <span class="text-[1.05rem] text-[var(--color-primary)] font-[750] leading-[1.2] mt-1 tracking-[0.02em]">{phone}</span>
     </div>
 </a>
-

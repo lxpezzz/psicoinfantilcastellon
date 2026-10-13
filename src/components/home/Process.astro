@@ -116,7 +116,7 @@ const steps = [
                     </span>
                 </p>
                 <a href="#contacto" class="btn btn-primary process__cta-btn">
-                    <span>Conoce mi forma de trabajar</span>
+                    <span>Hablemos de vuestro caso</span>
                     <ArrowRight
                         size={16}
                         stroke-width={1.8}
@@ -594,10 +594,13 @@ const steps = [
     /* Primary Blue CTA Button */
     .process__cta-btn {
         flex-shrink: 0;
+        /* Conserva el ancho del botón anterior con el nuevo texto de contacto. */
+        min-width: 17.025rem;
         min-height: 44px;
         padding: 0.7rem 1.5rem;
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 0.55rem;
         font-weight: 650;
         font-size: 0.92rem;
@@ -802,6 +805,7 @@ const steps = [
 
         .process__cta-btn {
             width: 100%;
+            min-width: 0;
             justify-content: center;
             min-height: 44px;
         }

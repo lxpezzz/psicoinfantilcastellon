@@ -117,11 +117,12 @@ const googleData: GoogleBusinessProfileData = {
                 target="_blank"
                 rel="noopener noreferrer"
                 class="reviews__google-badge"
-                aria-label="Ver perfil de Google Business Profile"
+                aria-labelledby="google-badge-brand google-badge-score google-badge-count"
             >
                 <div class="reviews__brand">
                     <!-- Logotipo oficial vectorial completo de GOOGLE con sus letras grandes -->
                     <svg
+                        id="google-badge-brand"
                         class="reviews__google-wordmark"
                         viewBox="0 0 272 92"
                         width="122"
@@ -134,7 +135,7 @@ const googleData: GoogleBusinessProfileData = {
                 </div>
 
                 <div class="reviews__stars-wrap">
-                    <div class="reviews__stars" aria-label="5 de 5 estrellas">
+                    <div class="reviews__stars" aria-hidden="true">
                         {
                             Array.from({ length: 5 }).map(() => (
                                 <Star
@@ -148,9 +149,9 @@ const googleData: GoogleBusinessProfileData = {
                     </div>
 
                     <span class="reviews__rating-text">
-                        <strong id="google-rating">5</strong>/5
+                        <span id="google-badge-score"><strong id="google-rating">5</strong>/5</span>
                         <span class="reviews__dot">.</span>
-                        <span id="google-review-count">46</span> reseñas
+                        <span id="google-badge-count"><span id="google-review-count">46</span> reseñas</span>
                     </span>
                 </div>
             </a>

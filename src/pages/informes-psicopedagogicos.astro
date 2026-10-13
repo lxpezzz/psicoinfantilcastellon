@@ -6,9 +6,11 @@ import Header from "../components/layout/Header.astro";
 import MobileMenu from "../components/layout/MobileMenu.astro";
 import Layout from "../layouts/Layout.astro";
 import Contact from "../components/home/Contact.astro";
+import { getServiceSchema } from "../data/service-schema";
 ---
 
 <Layout
+    jsonLd={getServiceSchema(Astro.url.pathname)}
     seoTitle="Informes psicopedagógicos en Castellón | PsicoInfantil"
     image="/og/informes_psicopedagogicos.jpg"
     imageAlt="Informes psicopedagógicos en PsicoInfantil Castellón"

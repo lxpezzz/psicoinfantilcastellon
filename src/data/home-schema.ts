@@ -26,7 +26,24 @@ export const professional = {
     subjectOf: { "@id": websiteId },
 };
 
-const serviceEntities = services.map((service) => {
+export const businessEntity = {
+    "@type": "MedicalBusiness",
+    "@id": businessId,
+    name: brandName,
+    url: homeUrl,
+    address: {
+        "@type": "PostalAddress",
+        streetAddress: location.streetAddress,
+        addressLocality: "Castelló de la Plana",
+        postalCode: "12005",
+        addressRegion: "Castelló",
+        addressCountry: "ES",
+    },
+    // Teléfono publicado en Header.astro.
+    telephone: "+34614992148",
+};
+
+export const serviceEntities = services.map((service) => {
     const url = new URL(service.href, siteUrl).href;
 
     return {
@@ -48,20 +65,8 @@ export const homeSchema = {
             name: brandName,
         },
         {
-            "@type": "MedicalBusiness",
-            "@id": businessId,
-            name: brandName,
-            url: homeUrl,
-            address: {
-                "@type": "PostalAddress",
-                streetAddress: location.streetAddress,
-                addressLocality: "Castelló de la Plana",
-                postalCode: "12005",
-                addressRegion: "Castelló",
-                addressCountry: "ES",
-            },
-            // Teléfono y logo publicados en Header.astro.
-            telephone: "+34614992148",
+            ...businessEntity,
+            // Logo publicado en Header.astro.
             logo: new URL("/logo_psicoinfantil.svg", siteUrl).href,
             subjectOf: { "@id": websiteId },
             makesOffer: serviceEntities.map((service) => ({

@@ -6,9 +6,11 @@ import Header from "../components/layout/Header.astro";
 import MobileMenu from "../components/layout/MobileMenu.astro";
 import Layout from "../layouts/Layout.astro";
 import Contact from "../components/home/Contact.astro";
+import { getServiceSchema } from "../data/service-schema";
 ---
 
 <Layout
+    jsonLd={getServiceSchema(Astro.url.pathname)}
     seoTitle="Rendimiento escolar en Castellón | PsicoInfantil"
     image="/og/rendimiento_escolar.jpg"
     imageAlt="Mejora del rendimiento escolar en PsicoInfantil Castellón"
