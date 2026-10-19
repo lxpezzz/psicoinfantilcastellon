@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import CookieBanner from "../components/ui/CookieBanner.astro";
+import WhatsAppFloating from "../components/ui/WhatsAppFloating.astro";
 
 
 interface Props {
@@ -97,5 +98,6 @@ const imageURL = new URL(rawImagePath, Astro.site);
 	<body>
 		<slot />
 		<CookieBanner />
+		<WhatsAppFloating />
 	</body>
 </html>

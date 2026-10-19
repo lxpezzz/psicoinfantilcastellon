@@ -731,8 +731,13 @@ import anaImg from "../../images/about/ana-diaz.webp";
                                 puede ser conveniente consultar con un
                                 profesional. Una primera valoración permite
                                 comprender mejor la situación y orientar a la
-                                familia sobre si es recomendable realizar una
-                                evaluación psicopedagógica.
+                                familia sobre si es recomendable realizar una  
+                                <a> </a>
+                                <a
+                                    href="/evaluacion-y-diagnostico/"
+                                    class="about-faq__link"
+                                    >evaluación psicopedagógica</a
+                                >.
                             </p>
                         </div>
                     </details>
@@ -758,7 +763,11 @@ import anaImg from "../../images/about/ana-diaz.webp";
                             class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.75] text-[var(--color-text-soft)]"
                         >
                             <p class="m-0">
-                                Los informes psicopedagógicos ayudan a
+                                Los <a
+                                    href="/informes-psicopedagogicos/"
+                                    class="about-faq__link"
+                                    >informes psicopedagógicos</a
+                                > ayudan a
                                 comprender las fortalezas y dificultades de cada
                                 niño o adolescente y pueden ofrecer
                                 orientaciones útiles para su aprendizaje.
@@ -793,17 +802,14 @@ import anaImg from "../../images/about/ana-diaz.webp";
                             class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.75] text-[var(--color-text-soft)]"
                         >
                             <p class="m-0">
-                                Durante 19 años he dirigido el departamento de
-                                orientación psicopedagógica de un centro
-                                educativo en Castellón. Esta experiencia me ha
-                                permitido conocer de cerca las dificultades que
-                                pueden surgir en el aprendizaje y la importancia
-                                de la colaboración entre familias y profesores.
-                                Hoy combino esa perspectiva educativa con la
-                                atención individualizada en consulta, buscando
-                                comprender las necesidades de cada niño o
-                                adolescente y ofrecer orientaciones adaptadas a
-                                su situación.
+                                La experiencia en orientación escolar me permite
+                                tener en cuenta tanto las necesidades del alumno
+                                como la realidad del aula. En consulta, esa
+                                perspectiva ayuda a comprender las dificultades
+                                de aprendizaje en su contexto y a proponer
+                                orientaciones que la familia y los profesores
+                                puedan valorar juntos, adaptándolas a la
+                                situación de cada niño o adolescente.
                             </p>
                         </div>
                     </details>
@@ -960,3 +966,20 @@ import anaImg from "../../images/about/ana-diaz.webp";
         </section>
     </div>
 </article>
+
+<style>
+    .about-faq__link {
+        color: var(--color-primary);
+        text-decoration-line: underline;
+        text-underline-offset: 4px;
+    }
+
+    .about-faq__link:hover {
+        color: var(--color-primary-dark);
+    }
+
+    .about-faq__link:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 4px;
+    }
+</style>

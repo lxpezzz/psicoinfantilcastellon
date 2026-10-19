@@ -3,6 +3,7 @@ import { getPublishedPosts } from "../../data/blog";
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/layout/Header.astro";
 import MobileMenu from "../../components/layout/MobileMenu.astro";
+import Contact from "../../components/home/Contact.astro";
 import Footer from "../../components/layout/Footer.astro";
 import BottomNav from "../../components/layout/BottomNav.astro";
 import BlogCard from "../../components/blog/BlogCard.astro";
@@ -71,4 +72,5 @@ const sortedPosts = await getPublishedPosts();
 
     <Footer />
     <BottomNav />
+    <Contact />
 </Layout>

@@ -1,0 +1,77 @@
+<a
+    class="whatsapp-floating"
+    href="https://wa.me/34614992148"
+    target="_blank"
+    rel="noopener noreferrer"
+>
+    <span class="visually-hidden">Contactar con PsicoInfantil Castellón por WhatsApp</span>
+    <svg
+        width="28"
+        height="28"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+        aria-hidden="true"
+        focusable="false"
+    >
+        <use href="/icons/sprite.svg#icon-whatsapp"></use>
+    </svg>
+</a>
+
+<style>
+    .whatsapp-floating {
+        display: none;
+        position: fixed;
+        right: calc(24px + env(safe-area-inset-right, 0px));
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+        z-index: 980;
+        width: 56px;
+        height: 56px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #15803d;
+        border-radius: 50%;
+        background-color: #25d366;
+        color: #ffffff;
+        box-shadow: 0 6px 18px rgba(23, 54, 97, 0.16);
+        text-decoration: none;
+        transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .whatsapp-floating:focus-visible {
+        outline: 3px solid var(--color-primary);
+        outline-offset: 4px;
+    }
+
+    /* Complementa exactamente la navegación móvil, visible hasta 680px. */
+    @media (width > 680px) {
+        .whatsapp-floating {
+            display: flex;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        .whatsapp-floating:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(23, 54, 97, 0.2);
+        }
+    }
+
+    /* No compite con avisos, menús ni la edición de un formulario. */
+    :global(body:has(#cookie-banner[aria-hidden="false"])) .whatsapp-floating,
+    :global(body.mobile-menu-open) .whatsapp-floating,
+    :global(body:has(.mobile-menu.is-open)) .whatsapp-floating,
+    :global(body:has(form:focus-within)) .whatsapp-floating {
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        .whatsapp-floating {
+            transition: none;
+        }
+
+        .whatsapp-floating:hover {
+            transform: none;
+        }
+    }
+</style>

@@ -5,11 +5,11 @@ import { Image, getImage } from "astro:assets";
 import { getPublishedPosts } from "../../data/blog";
 import { professional } from "../../data/home-schema";
 import Layout from "../../layouts/Layout.astro";
+import Contact from "../../components/home/Contact.astro";
 import Header from "../../components/layout/Header.astro";
 import MobileMenu from "../../components/layout/MobileMenu.astro";
 import Footer from "../../components/layout/Footer.astro";
 import BottomNav from "../../components/layout/BottomNav.astro";
-import BlogCTA from "../../components/blog/BlogCTA.astro";
 import { ArrowLeft, Calendar, ChevronRight, User } from "lucide-astro";
 
 export async function getStaticPaths() {
@@ -113,7 +113,7 @@ const jsonLd = {
                     </h1>
 
                     <!-- Entradilla / Subtítulo descriptivo -->
-                    <p class="mb-0 mt-5 text-[clamp(1.08rem,1.4vw,1.22rem)] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
+                    <p class="mb-0 mt-5 pt-4 text-[clamp(1.08rem,1.4vw,1.22rem)] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
                         {post.data.description}
                     </p>
 
@@ -140,21 +140,16 @@ const jsonLd = {
                         alt={post.data.imageAlt}
                         widths={[480, 768, 1024, 1280]}
                         sizes="(max-width: 880px) 100vw, 880px"
-                        quality={88}
+                        quality={100}
                         loading="eager"
                         fetchpriority="high"
-                        class="aspect-[16/9] w-full object-cover sm:aspect-[21/10]"
+                        class="aspect-[4/3] w-full object-cover sm:aspect-[21/10]"
                     />
                 </div>
 
                 <!-- Contenido del artículo Markdown -->
                 <div class="blog-content mx-auto max-w-[760px] text-[1.05rem] leading-[1.8] text-[var(--color-text)]">
                     <Content />
-                </div>
-
-                <!-- CTA al final del artículo -->
-                <div class="mx-auto max-w-[760px]">
-                    <BlogCTA />
                 </div>
 
                 <!-- Enlace de regreso al blog -->
@@ -170,9 +165,10 @@ const jsonLd = {
             </div>
         </article>
     </main>
-
+    <Contact />
     <Footer />
     <BottomNav />
+
 </Layout>
 
 <style is:global>

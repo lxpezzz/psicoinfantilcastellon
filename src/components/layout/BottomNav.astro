@@ -1,5 +1,12 @@
 ---
-import { Home, PanelsTopLeft, Mail } from "lucide-astro";
+import { Home, PanelsTopLeft, BookOpen, Mail } from "lucide-astro";
+import { hasPublishedPosts } from "../../data/blog";
+import { services } from "../../data/services";
+
+const showBlog = await hasPublishedPosts();
+const pathname = Astro.url.pathname;
+const isBlog = pathname === "/blog" || pathname.startsWith("/blog/");
+const isService = services.some((service) => service.href === pathname);
 ---
 
 <!-- Navegación inferior fija estilo app/Instagram, visible solo en móvil (<= 680px) -->
@@ -10,6 +17,7 @@ import { Home, PanelsTopLeft, Mail } from "lucide-astro";
             href="/"
             class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#173661]!"
             aria-label="Inicio"
+            aria-current={pathname === "/" ? "page" : undefined}
             id="bottom-nav-home"
         >
             <Home
@@ -18,29 +26,45 @@ import { Home, PanelsTopLeft, Mail } from "lucide-astro";
                 class="block transition-transform duration-200 ease-[ease]"
                 aria-hidden="true"
             />
+            <span>Inicio</span>
         </a>
 
         <!-- 2. Servicios -->
-        <a href="/#servicios" class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#173661]!" aria-label="Servicios">
+        <a href="/#servicios" class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#173661]!" aria-label="Servicios" aria-current={isService ? "page" : undefined}>
             <PanelsTopLeft
                 size={23}
                 stroke-width={1.8}
                 class="block transition-transform duration-200 ease-[ease]"
                 aria-hidden="true"
             />
+            <span>Servicios</span>
         </a>
 
-        <!-- 3. Contacto -->
-        <a href="/contacto/" class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#173661]!" aria-label="Contacto">
+        <!-- 3. Blog -->
+        {showBlog && (
+            <a href="/blog/" class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#173661]!" aria-label="Blog" aria-current={isBlog ? "page" : undefined}>
+                <BookOpen
+                    size={23}
+                    stroke-width={1.8}
+                    class="block transition-transform duration-200 ease-[ease]"
+                    aria-hidden="true"
+                />
+                <span>Blog</span>
+            </a>
+        )}
+
+        <!-- 4. Contacto -->
+        <a href="/contacto/" class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#173661]!" aria-label="Contacto" aria-current={pathname === "/contacto/" ? "page" : undefined}>
             <Mail
                 size={23}
                 stroke-width={1.8}
                 class="block transition-transform duration-200 ease-[ease]"
                 aria-hidden="true"
             />
+            <span>Contacto</span>
         </a>
 
-        <!-- 4. WhatsApp -->
+        <!-- 5. WhatsApp -->
         <a
             href="https://wa.me/34614992148"
             class="bottom-nav__item flex-1 h-full flex items-center justify-center no-underline relative rounded-[14px] [transition:color_0.2s_ease,transform_0.15s_ease,background-color_0.2s_ease] [-webkit-tap-highlight-color:transparent] [&:active]:[transform:scale(0.88)] [&:active]:bg-[rgba(23,54,97,0.05)] [&:focus-visible]:[outline:2px_solid_#244f9e] [&:focus-visible]:outline-offset-[-2px] [&:hover_svg]:text-[#244f9e] text-[#1f7a4a]! [&:hover]:text-[#16653c]!"
@@ -58,11 +82,27 @@ import { Home, PanelsTopLeft, Mail } from "lucide-astro";
             >
                 <use href="/icons/sprite.svg#icon-whatsapp"></use>
             </svg>
+            <span>WhatsApp</span>
         </a>
     </div>
 </nav>
 
 <style>
+    .bottom-nav__item {
+        min-width: 0;
+        flex-direction: column;
+        gap: 3px;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1;
+        white-space: nowrap;
+    }
+
+    .bottom-nav__item[aria-current="page"] {
+        background-color: rgba(23, 54, 97, 0.05);
+        font-weight: 600;
+    }
+
     @media (max-width: 680px) {
         /* Reserve room for the fixed bar, including the device safe area. */
         :global(body) {
