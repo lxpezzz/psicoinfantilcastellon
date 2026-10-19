@@ -26,7 +26,11 @@ const isoDate = post.data.publishDate.toISOString();
 <article
     class="@container/blog-card group relative h-full min-w-0 overflow-hidden rounded-[1.35rem] border border-[rgba(23,54,97,0.08)] bg-white transition-[transform,box-shadow,border-color] duration-300 ease-[cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:border-[rgba(23,54,97,0.18)] hover:shadow-[0_18px_40px_-16px_rgba(23,54,97,0.12)] focus-within:ring-2 focus-within:ring-inset focus-within:ring-[var(--color-primary)] motion-reduce:transition-none motion-reduce:hover:translate-y-0"
 >
-    <div class="grid h-full grid-cols-1 grid-rows-[auto_1fr] @min-[40rem]/blog-card:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] @min-[40rem]/blog-card:grid-rows-1">
+    <a
+        href={postUrl}
+        aria-label={`Leer artículo: ${cardTitle}`}
+        class="grid h-full cursor-pointer grid-cols-1 grid-rows-[auto_1fr] rounded-[inherit] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[var(--color-primary)] @min-[40rem]/blog-card:grid-cols-[minmax(0,0.42fr)_minmax(0,0.58fr)] @min-[40rem]/blog-card:grid-rows-1"
+    >
         <!-- Imagen del artículo -->
         <div class="relative aspect-video min-w-0 overflow-hidden bg-[#eef1ed] @min-[40rem]/blog-card:aspect-auto @min-[40rem]/blog-card:min-h-[17rem]">
             <Image
@@ -60,9 +64,7 @@ const isoDate = post.data.publishDate.toISOString();
 
                 <!-- Título -->
                 <Heading class="m-0 text-[1.3125rem] font-[750] leading-[1.28] tracking-[-0.025em] text-[var(--color-primary-dark)] transition-colors duration-200 group-hover:text-[var(--color-primary)] [text-wrap:balance]">
-                    <a href={postUrl} class="block rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">
-                        <span class="line-clamp-3">{cardTitle}</span>
-                    </a>
+                    <span class="line-clamp-3">{cardTitle}</span>
                 </Heading>
 
                 <!-- Extracto -->
@@ -73,7 +75,7 @@ const isoDate = post.data.publishDate.toISOString();
 
             <!-- Enlace CTA de card -->
             <div class="mt-3 text-[0.9rem] font-medium text-[var(--color-primary)]">
-                <a href={postUrl} aria-label={`Leer artículo: ${cardTitle}`} class="inline-flex min-h-11 items-center gap-1.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]">
+                <span class="inline-flex min-h-11 items-center gap-1.5 rounded-sm">
                     <span>Leer artículo</span>
                     <ArrowRight
                         size={16}
@@ -81,8 +83,8 @@ const isoDate = post.data.publishDate.toISOString();
                         class="transition-transform duration-200 ease-[cubic-bezier(0.23,1,0.32,1)] group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
                         aria-hidden="true"
                     />
-                </a>
+                </span>
             </div>
         </div>
-    </div>
+    </a>
 </article>
