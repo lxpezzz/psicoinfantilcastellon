@@ -46,7 +46,7 @@ const situations = [
     },
     {
         icon: Scale,
-        text: "Desacuerdos entre progenitores: criterios educativos opuestos que confunden al menor.",
+        text: "Desacuerdos entre progenitores sobre las normas, los límites o la forma de acompañar a los hijos.",
     },
     {
         icon: Users,
@@ -58,7 +58,7 @@ const situations = [
     },
     {
         icon: Brain,
-        text: "Dudas sobre cómo gestionar en casa un diagnóstico de TDAH, altas capacidades o fracaso escolar.",
+        text: "Dudas sobre cómo acompañar en casa el TDAH, las altas capacidades o las dificultades escolares.",
     },
 ];
 
@@ -88,7 +88,7 @@ const areas: AreaItem[] = [
         icon: ShieldCheck,
         title: "Gestión eficaz de normas y límites",
         description:
-            "Estrategias de disciplina positiva para asentar rutinas claras sin recurrir a castigos ineficaces ni amenazas.",
+            "Orientación para acordar normas comprensibles, sostener límites respetuosos y revisar cómo se aplican en las rutinas familiares.",
         span: "md:col-span-7",
         bgVariant: "primary",
     },
@@ -104,7 +104,7 @@ const areas: AreaItem[] = [
         icon: MessageSquare,
         title: "Comunicación asertiva en el hogar",
         description:
-            "Pautas de diálogo y escucha empática para que los hijos se sientan comprendidos y colaboren de forma natural.",
+            "Pautas de diálogo y escucha para expresar las necesidades de forma clara y comprender mejor las respuestas de los hijos.",
         span: "md:col-span-4",
         bgVariant: "white",
     },
@@ -112,7 +112,7 @@ const areas: AreaItem[] = [
         icon: Sparkles,
         title: "Desescalada de rabietas y conflictos",
         description:
-            "Protocolos prácticos de contención y calma ante momentos de frustración extrema o desbordes emocionales.",
+            "Orientación para acompañar rabietas y desacuerdos, cuidar la seguridad y buscar respuestas ajustadas a la edad y a la situación.",
         span: "md:col-span-4",
         bgVariant: "dusty-rose",
     },
@@ -169,7 +169,7 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿Es necesario que asistan los hijos a las sesiones de asesoramiento?",
-        answer: "No en las primeras sesiones. El asesoramiento a padres es un espacio exclusivo y confidencial para los adultos, donde podéis hablar con total libertad sobre las dificultades y dudas de crianza sin que los hijos se sientan observados ni juzgados. Si más adelante conviene una sesión conjunta o de observación, se programa de mutuo acuerdo.",
+        answer: "El asesoramiento se dirige principalmente a madres, padres y cuidadores. La necesidad de que participe el menor se valora según el motivo de consulta y se acuerda antes de organizar las sesiones.",
     },
     {
         question:
@@ -179,7 +179,7 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿En cuántas sesiones se empiezan a notar cambios en la convivencia?",
-        answer: "La mayoría de las familias experimentan una reducción significativa de la tensión y mayor sensación de control desde las primeras 2 o 3 sesiones, al aplicar estrategias concretas y personalizadas para los momentos críticos del día (mañanas, deberes, pantallas o irse a la cama).",
+        answer: "No hay un número de sesiones que garantice cambios en la convivencia. Depende de las dificultades, los objetivos y la posibilidad de poner en práctica las pautas. El proceso permite revisar qué resulta útil y qué necesita ajustarse.",
     },
     {
         question:
@@ -189,7 +189,7 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿Cómo ayuda el asesoramiento si nuestro hijo tiene TDAH o dificultades de aprendizaje?",
-        answer: "Un diagnóstico escolar o clínico necesita traducirse a la dinámica del hogar. Os enseño cómo procesa la información y los estímulos vuestro hijo para adaptar las rutinas, las órdenes y los tiempos en casa, sustituyendo la frustración y las batallas por una convivencia estructurada y comprensiva.",
+        answer: "El asesoramiento ayuda a comprender cómo se manifiestan las dificultades en las rutinas familiares. A partir de esa información, se orientan ajustes en las indicaciones, los tiempos y las expectativas, teniendo en cuenta las necesidades del menor y los recursos de la familia.",
     },
 ];
 ---
@@ -200,7 +200,7 @@ const faqs: FAQItem[] = [
         breadcrumbLabel={parentService.shortTitle}
         eyebrow={parentService.title}
         title="Pautas claras y apoyo cercano para recuperar la calma y la armonía en casa"
-        description="La crianza es una de las tareas más gratificantes, pero también de las más complejas. Cuando los gritos y los castigos no funcionan y sientes que la convivencia se desgasta, necesitas herramientas específicas para vuestra realidad. Con casi 20 años de experiencia orientando a familias en Castellón, os ayudo a recuperar el liderazgo afectivo y disfrutar de nuevo de vuestros hijos."
+        description="La crianza puede generar dudas, cansancio y desacuerdos. El asesoramiento a padres en Castellón ofrece un espacio para comprender las dificultades cotidianas y valorar pautas de acompañamiento ajustadas a la edad de vuestro hijo y a la realidad familiar."
         image={parentService.heroImage}
         imageAlt={parentService.alt}
     />
@@ -208,7 +208,7 @@ const faqs: FAQItem[] = [
     <!-- 2. ServiceSignals -->
     <ServiceSignals
         title="¿Sientes que la crianza se ha convertido en un laberinto de dudas y conflictos?"
-        description="A menudo llegáis con la sensación de haberlo intentado todo: castigos que no funcionan, gritos que generan culpa y un sentimiento de desconexión que os hace sufrir. El problema no es vuestra capacidad como padres, sino la falta de herramientas específicas para vuestra dinámica:"
+        description="Cuando se repiten las discusiones o resulta difícil sostener las rutinas, es comprensible sentirse desbordados. La orientación permite revisar qué está ocurriendo, qué habéis intentado y qué cambios pueden ser viables en vuestra situación."
         signals={situations}
     />
 
@@ -233,7 +233,7 @@ const faqs: FAQItem[] = [
     <ServiceAreas
         title="¿Qué áreas abordamos en el asesoramiento familiar?"
         areas={areas}
-        description="Pautas prácticas de disciplina positiva, comunicación y resolución de conflictos para transformar las tensiones cotidianas en calma y seguridad."
+        description="El asesoramiento aborda las dudas sobre límites, comunicación y convivencia, con pautas que se valoran según las necesidades y posibilidades de cada familia."
     />
 
     <!-- 6. RelatedServices -->

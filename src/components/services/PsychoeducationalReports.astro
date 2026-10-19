@@ -44,15 +44,15 @@ const situations = [
     },
     {
         icon: FileCheck,
-        text: "Necesitáis un dictamen formal para tramitar adaptaciones curriculares o de acceso.",
+        text: "Necesitáis recoger por escrito las necesidades detectadas y las recomendaciones para valorar apoyos escolares.",
     },
     {
         icon: CircleAlert,
-        text: "Deseáis confirmar o descartar TDAH, dislexia, dificultades de aprendizaje o altas capacidades.",
+        text: "Queréis disponer de las conclusiones de una evaluación sobre atención, aprendizaje o altas capacidades.",
     },
     {
         icon: FileSpreadsheet,
-        text: "Requerís acreditación técnica para la solicitud de becas NEAE del Ministerio de Educación.",
+        text: "Queréis conocer si la información del informe puede aportarse a una solicitud de beca NEAE, según los requisitos de la convocatoria.",
     },
     {
         icon: ListChecks,
@@ -60,7 +60,7 @@ const situations = [
     },
     {
         icon: Compass,
-        text: "Buscáis una orientación vocacional y académica sólida basada en su potencial real.",
+        text: "Necesitáis recoger orientaciones académicas teniendo en cuenta sus intereses, capacidades y situación educativa.",
     },
 ];
 
@@ -69,13 +69,13 @@ const perspectives = [
         number: "01",
         icon: Scale,
         title: "Validez y especialización forense",
-        text: "Máster en Psicología Forense: aporto un nivel de detalle, objetividad y solidez técnica que garantiza la validez del informe en cualquier ámbito oficial.",
+        text: "La formación en Psicología Forense aporta herramientas para una elaboración cuidadosa de informes dentro del ámbito profesional de la psicología. Su utilización en un procedimiento concreto depende de la finalidad y de los requisitos exigidos.",
     },
     {
         number: "02",
         icon: GraduationCap,
         title: "Conocimiento del sistema escolar",
-        text: "20 años dirigiendo departamentos de orientación en Castellón: sé exactamente qué información necesitan los orientadores para aplicar las medidas de inmediato.",
+        text: "La experiencia en departamentos de orientación ayuda a presentar la información en un formato útil para comprender las necesidades del alumno y valorar posibles medidas educativas.",
     },
     {
         number: "03",
@@ -90,7 +90,7 @@ const areas: AreaItem[] = [
         icon: FileCheck,
         title: "Adaptaciones curriculares oficiales",
         description:
-            "Proporciona la base legal para que el centro escolar implemente medidas de acceso, cambios metodológicos o flexibilización de tiempos.",
+            "Aporta información y recomendaciones que el centro puede considerar al valorar ajustes en la metodología, las tareas o la evaluación.",
         span: "md:col-span-7",
         bgVariant: "primary",
     },
@@ -98,7 +98,7 @@ const areas: AreaItem[] = [
         icon: Brain,
         title: "Diagnóstico diferencial clínico",
         description:
-            "Claridad técnica absoluta sobre si se trata de TDAH, dislexia, altas capacidades o dificultades específicas del aprendizaje.",
+            "Recoge los resultados y las conclusiones de la evaluación sobre atención, aprendizaje o altas capacidades, señalando los límites y las cuestiones que puedan requerir más valoración.",
         span: "md:col-span-5",
         bgVariant: "sage",
     },
@@ -106,7 +106,7 @@ const areas: AreaItem[] = [
         icon: FileSpreadsheet,
         title: "Tramitación de Becas NEAE",
         description:
-            "Documentación psicopedagógica y diagnóstica requerida por el Ministerio de Educación para ayudas a alumnos con necesidad de apoyo.",
+            "Información que puede resultar pertinente para una solicitud de ayudas NEAE. La documentación exigida debe comprobarse en la convocatoria; el informe no sustituye otros certificados o valoraciones que puedan requerirse.",
         span: "md:col-span-4",
         bgVariant: "white",
     },
@@ -114,7 +114,7 @@ const areas: AreaItem[] = [
         icon: Award,
         title: "Identificación de Altas Capacidades",
         description:
-            "Dictamen formal de sobredotación y talento académico para la puesta en marcha de programas de enriquecimiento curricular.",
+            "Conclusiones sobre el perfil de capacidades y sus necesidades educativas, con recomendaciones que el centro pueda valorar para el enriquecimiento curricular.",
         span: "md:col-span-4",
         bgVariant: "dusty-rose",
     },
@@ -146,7 +146,7 @@ const areas: AreaItem[] = [
         icon: HeartHandshake,
         title: "Coordinación con el centro",
         description:
-            "Enlace profesional con el equipo directivo y de orientación para asegurar que las recomendaciones se lleven a la práctica.",
+            "Intercambio de información con el equipo educativo, cuando se acuerde y con el consentimiento correspondiente, para facilitar la comprensión de las recomendaciones y valorar su encaje en el aula.",
         span: "md:col-span-4",
         bgVariant: "sage-light",
     },
@@ -154,7 +154,7 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        description: "Estudio clínico y pruebas estandarizadas",
+        description: "Evaluación que fundamenta las conclusiones del informe",
         href: "/evaluacion-y-diagnostico/",
     },
     {
@@ -175,7 +175,7 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿Tiene validez oficial este informe ante los colegios e institutos?",
-        answer: "Sí. Los informes se elaboran con pruebas baremadas oficiales y bajo la normativa educativa vigente en la Comunidad Valenciana. Mi trayectoria de 20 años en departamentos de orientación y mi titulación de Máster en Psicología Forense garantizan que el documento ofrezca la solidez técnica y jurídica que exigen los centros educativos y la inspección.",
+        answer: "Un informe externo puede aportar información profesional a colegios e institutos. Su reconocimiento para un trámite o una medida concreta depende de los requisitos aplicables y de quién deba emitir la documentación. No debe confundirse con un dictamen oficial del sistema educativo ni se puede garantizar su aceptación en cualquier procedimiento.",
     },
     {
         question:
@@ -185,11 +185,11 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿Sirve este informe para solicitar adaptaciones en la PAU (Selectividad)?",
-        answer: "Sí. Aporta la fundamentación técnica y diagnóstica oficial requerida para solicitar medidas de acceso, exenciones o tiempo adicional en exámenes oficiales de Secundaria, Bachillerato y pruebas de acceso a la universidad.",
+        answer: "Puede aportar información sobre las dificultades y necesidades del alumno, pero no garantiza adaptaciones en la PAU. Deben comprobarse los requisitos, los plazos y la documentación exigida por los organismos responsables, junto con el equipo de orientación del centro.",
     },
     {
         question: "¿Cuánto tiempo se tarda en entregar el informe definitivo?",
-        answer: "Una vez concluidas las sesiones de valoración psicométrica, la redacción del informe técnico detallado se completa habitualmente en un plazo de 10 a 15 días laborables. Se entrega en mano durante una sesión de devolución explicativa con la familia.",
+        answer: "El plazo depende del alcance de la evaluación y de la información necesaria para completar el documento. La previsión de entrega y la forma de explicar las conclusiones se concretan con la familia antes de iniciar el proceso.",
     },
     {
         question: "¿Incluye el servicio coordinación directa con el colegio?",
@@ -204,7 +204,7 @@ const faqs: FAQItem[] = [
         breadcrumbLabel={reportService.shortTitle}
         eyebrow={reportService.title}
         title="¿Necesitas un documento riguroso para garantizar las adaptaciones que tu hijo necesita?"
-        description="Un informe no es solo un trámite; es la herramienta legal y educativa que asegura que el colegio reconozca y atienda las necesidades reales de tu hijo. Con casi 20 años de trayectoria en orientación escolar en Castellón y especialización en Psicología Forense, mis informes ofrecen el rigor clínico y la claridad pedagógica que los centros educativos requieren."
+        description="Un informe psicopedagógico recoge la evaluación realizada, sus conclusiones y las recomendaciones pertinentes. En PsicoInfantil Castellón buscamos que esta información sea comprensible para la familia y útil para el diálogo con el centro educativo, sin sustituir los procedimientos que correspondan a cada institución."
         image={reportService.heroImage}
         imageAlt={reportService.alt}
     />
@@ -212,7 +212,7 @@ const faqs: FAQItem[] = [
     <!-- 2. ServiceSignals -->
     <ServiceSignals
         title="¿Cuándo es imprescindible contar con una valoración formal?"
-        description="Un informe psicopedagógico detallado elimina la subjetividad y proporciona una hoja de ruta clara tanto para los docentes como para la familia. Es el documento que garantiza que su derecho a una educación adaptada se cumpla con todas las garantías."
+        description="Puede ser útil disponer de información escrita sobre las dificultades, fortalezas y necesidades educativas. El informe permite compartir las conclusiones y recomendaciones, aunque su uso en trámites concretos depende de los requisitos establecidos."
         signals={situations}
     />
 
@@ -220,7 +220,7 @@ const faqs: FAQItem[] = [
     <ServiceAssessment
         id="como-trabajamos"
         title="Un informe debe ser un puente hacia soluciones, no un obstáculo burocrático"
-        description="Mis documentos hablan el idioma de los colegios porque he dirigido sus departamentos de orientación durante 20 años. Unimos el rigor forense con el conocimiento real de la dinámica del aula."
+        description="La experiencia en orientación escolar en Castellón aporta una visión del contexto educativo. El informe organiza la información relevante, explica las conclusiones y formula recomendaciones relacionadas con el motivo de la evaluación."
         perspectives={perspectives}
     />
 
@@ -230,14 +230,14 @@ const faqs: FAQItem[] = [
         secondaryHighlight="trámite"
         mainPhrase="Es la llave legal y educativa para su bienestar."
         mainHighlight="llave legal"
-        explanation="Dota a tu hijo de la seguridad educativa que merece. Elimina la incertidumbre, proporciona respaldo técnico ante el colegio y define exactamente las adaptaciones que necesita para avanzar."
+        explanation="El informe ayuda a ordenar la información disponible y a comunicar las necesidades detectadas. Sus recomendaciones sirven como referencia para conversar con el colegio y valorar los apoyos, sin garantizar una medida concreta."
     />
 
     <!-- 5. ServiceAreas -->
     <ServiceAreas
         title="Beneficios y alcance del informe psicopedagógico"
         areas={areas}
-        description="Dictámenes periciales y clínicos exhaustivos, elaborados para asegurar apoyos reales en el aula y reducir la frustración familiar."
+        description="Informes psicopedagógicos que explican la evaluación, sus conclusiones y las recomendaciones educativas, con un alcance ajustado al motivo de consulta."
     />
 
     <!-- 6. RelatedServices -->

@@ -67,19 +67,19 @@ const perspectives = [
         number: "01",
         icon: Target,
         title: "Evaluación cognitiva y multidimensional",
-        text: "Medición estandarizada no solo de su CI general, sino de sus aptitudes diferenciales, memoria de trabajo, creatividad y estilo de razonamiento.",
+        text: "Exploramos sus capacidades, intereses y forma de aprender para comprender qué necesidades conviene atender.",
     },
     {
         number: "02",
         icon: Scale,
         title: "Detección de Doble Excepcionalidad",
-        text: "Identificamos con precisión si las altas capacidades coexisten con TDAH o dislexia, evitando diagnósticos erróneos de 'solo déficit'.",
+        text: "Valoramos si las posibles altas capacidades conviven con dificultades de atención o aprendizaje y cómo puede influir esa combinación en sus necesidades de apoyo.",
     },
     {
         number: "03",
         icon: Award,
         title: "Informe y adaptaciones curriculares",
-        text: "Con casi 20 años dirigiendo orientación escolar en Castellón, redacto los dictámenes oficiales para solicitar enriquecimiento o flexibilización en su colegio.",
+        text: "La experiencia en orientación escolar en Castellón aporta una visión educativa a los informes y recomendaciones. Estos pueden ayudar al centro a valorar propuestas de enriquecimiento u otras medidas, según el procedimiento aplicable.",
     },
 ];
 
@@ -88,7 +88,7 @@ const areas: AreaItem[] = [
         icon: Brain,
         title: "Evaluación de sobredotación y talento",
         description:
-            "Estudio psicométrico riguroso con pruebas baremadas oficiales (escalas WISC, creatividad y perfiles de talento).",
+            "Valoración individualizada de las capacidades y del perfil de aprendizaje para explorar posibles altas capacidades y necesidades educativas.",
         span: "md:col-span-7",
         bgVariant: "primary",
     },
@@ -96,7 +96,7 @@ const areas: AreaItem[] = [
         icon: Scale,
         title: "Doble Excepcionalidad (AACC + TDAH/DEA)",
         description:
-            "Diagnóstico diferencial para desenmascarar el talento cuando convive con dificultades de aprendizaje o atencionales.",
+            "Exploración de fortalezas y dificultades cuando las altas capacidades pueden coexistir con TDAH u otras dificultades de aprendizaje.",
         span: "md:col-span-5",
         bgVariant: "sage",
     },
@@ -104,7 +104,7 @@ const areas: AreaItem[] = [
         icon: Lightbulb,
         title: "Adaptaciones de enriquecimiento curricular",
         description:
-            "Diseño de propuestas pedagógicas de ampliación e investigación para que el colegio mantenga activa su motivación.",
+            "Orientaciones sobre retos y propuestas de aprendizaje ajustados a sus intereses y necesidades, para valorar con el centro educativo.",
         span: "md:col-span-4",
         bgVariant: "white",
     },
@@ -120,7 +120,7 @@ const areas: AreaItem[] = [
         icon: FileCheck,
         title: "Informes oficiales para flexibilización",
         description:
-            "Fundamentación técnica requerida por la administración educativa para valorar el salto o aceleración de curso.",
+            "Información sobre el perfil y las necesidades educativas que puede aportarse al centro para valorar posibles medidas de flexibilización, sujetas a los requisitos y decisiones correspondientes.",
         span: "md:col-span-4",
         bgVariant: "primary-dark",
     },
@@ -152,11 +152,11 @@ const areas: AreaItem[] = [
 
 const relatedServicesList: RelatedServiceItem[] = [
     {
-        description: "Estudio clínico y pruebas psicométricas",
+        description: "Comprender sus capacidades y necesidades de aprendizaje",
         href: "/evaluacion-y-diagnostico/",
     },
     {
-        description: "Dictamen oficial para adaptaciones curriculares",
+        description: "Conclusiones y recomendaciones para el entorno escolar",
         href: "/informes-psicopedagogicos/",
     },
     {
@@ -169,12 +169,12 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿A partir de qué edad se pueden evaluar las altas capacidades de forma fiable?",
-        answer: "Aunque en la etapa de Educación Infantil se detectan indicios claros (vocabulario avanzado, memoria prodigiosa o curiosidad excepcional), la evaluación diagnóstica estandarizada adquiere mayor fiabilidad y estabilidad psicométrica a partir de los 6 años (1º de Primaria), momento en que los instrumentos como el WISC-V permiten delimitar con precisión su perfil intelectual.",
+        answer: "La valoración se adapta a la edad y al motivo de consulta. En Infantil pueden observarse características que aconsejen orientación o seguimiento, pero las conclusiones deben interpretarse teniendo en cuenta el desarrollo. No hay una edad única que resuelva todos los casos.",
     },
     {
         question:
             "¿Por qué un niño con altas capacidades puede tener bajo rendimiento o suspender?",
-        answer: "Es un fenómeno muy frecuente conocido como bajo rendimiento paradójico. Al no encontrar retos a su altura, el alumno se desmotiva, desconecta de las explicaciones, no adquiere hábitos de estudio en los primeros cursos y rechaza las tareas mecánicas o repetitivas, llegando al bloqueo al alcanzar cursos con mayor exigencia formal.",
+        answer: "Las altas capacidades no garantizan buenas notas. El rendimiento también puede estar relacionado con los hábitos, la motivación, el bienestar emocional, las demandas escolares o dificultades que coexistan. Conviene explorar cada situación sin atribuirla automáticamente al aburrimiento.",
     },
     {
         question:
@@ -189,7 +189,7 @@ const faqs: FAQItem[] = [
     {
         question:
             "¿Cómo influyen las altas capacidades en las emociones del menor?",
-        answer: "La llamada disincronía evolutiva hace que su nivel intelectual avance mucho más rápido que su madurez socioemocional o motriz. Esto genera a menudo hipersensibilidad, un sentido de justicia muy rígido, frustración ante el error y sensación de incomprensión. La intervención psicológica ayuda a integrar armónicamente sus emociones y su talento.",
+        answer: "No todos los niños con altas capacidades presentan las mismas características emocionales. Algunos pueden necesitar apoyo ante la autoexigencia, la frustración o la sensación de no encajar; otros no muestran estas dificultades. El acompañamiento se orienta por lo que vive cada menor, no por un perfil supuesto.",
     },
 ];
 ---
@@ -200,7 +200,7 @@ const faqs: FAQItem[] = [
         breadcrumbLabel={giftedService.shortTitle}
         eyebrow={giftedService.title}
         title="Cuando aprende a otro ritmo, necesita una respuesta diferente"
-        description="Cuando la inteligencia se esconde detrás de la desmotivación. Si el sistema estándar se le queda pequeño y su cerebro va a otra velocidad, necesita retos diferentes. Evalúo su perfil intelectual y emocional y diseño las adaptaciones curriculares necesarias para que recupere la motivación y el éxito escolar."
+        description="Las altas capacidades pueden implicar necesidades educativas que no siempre se reflejan en las notas. En PsicoInfantil Castellón valoramos su perfil de aprendizaje y sus necesidades para orientar a la familia y proponer recomendaciones que el centro educativo pueda considerar."
         image={giftedService.heroImage}
         imageAlt={giftedService.alt}
     />
@@ -216,7 +216,7 @@ const faqs: FAQItem[] = [
     <ServiceAssessment
         id="como-trabajamos"
         title="Del diagnóstico certero a la adaptación curricular en el aula"
-        description="Confirmar las altas capacidades es solo el primer paso. Realizamos una evaluación integral que mide no solo su CI, sino su gestión emocional, su creatividad y las posibles asincronías del desarrollo, coordinándonos con el centro escolar."
+        description="La valoración busca comprender su perfil, sus fortalezas y sus necesidades educativas. No se limita a una puntuación: considera la información relevante sobre su aprendizaje y su contexto para orientar los siguientes pasos."
         perspectives={perspectives}
     />
 
@@ -226,14 +226,14 @@ const faqs: FAQItem[] = [
         secondaryHighlight="éxito"
         mainPhrase="Es una necesidad educativa que requiere respuesta."
         mainHighlight="necesidad educativa"
-        explanation="Un cerebro que procesa a otra velocidad sin estímulos adecuados se apaga o se frustra. Identificar su perfil permite devolverle la motivación, proteger su autoestima y brindarle el entorno enriquecedor que necesita para crecer feliz."
+        explanation="Las altas capacidades no implican que todas las necesidades educativas estén cubiertas. Conocer su perfil ayuda a valorar retos ajustados, escuchar cómo vive el aprendizaje y orientar a quienes le acompañan."
     />
 
     <!-- 5. ServiceAreas -->
     <ServiceAreas
         title="¿Qué trabajamos en la atención a las altas capacidades?"
         areas={areas}
-        description="Evaluaciones rigurosas y programas de enriquecimiento personalizados para potenciar su talento, acompañar su sensibilidad y asegurar apoyos escolares reales."
+        description="La atención combina la valoración de sus necesidades con orientación educativa y familiar, teniendo en cuenta sus intereses y las dificultades que puedan aparecer."
     />
 
     <!-- 6. RelatedServices -->
