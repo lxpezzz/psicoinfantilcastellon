@@ -3,7 +3,6 @@ import "../styles/global.css";
 import CookieBanner from "../components/ui/CookieBanner.astro";
 import WhatsAppFloating from "../components/ui/WhatsAppFloating.astro";
 
-
 interface Props {
 	title?: string;
 	seoTitle?: string;
@@ -22,9 +21,9 @@ interface Props {
 }
 
 const {
-	title = "PsicoInfantil Castellón",
+	title = "Psicóloga infantil y juvenil en Castellón | Ana Díaz Berbel",
 	seoTitle,
-	description = "Psicóloga infantil y adolescente en Castellón | PsicoInfantil",
+	description = "Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón con más de 20 años de experiencia. Evaluación y orientación para niños, adolescentes y familias.",
 	canonical = new URL(Astro.url.pathname, Astro.site).href,
 	image = "/og/home.jpg",
 	imageAlt = "PsicoInfantil Castellón: psicología infantil y adolescente en Castellón",
@@ -38,7 +37,8 @@ const canonicalURL = new URL(canonical, Astro.site);
 canonicalURL.pathname = `${canonicalURL.pathname.replace(/\/+$/, "")}/`;
 canonicalURL.search = "";
 canonicalURL.hash = "";
-const rawImagePath = typeof image === "string" ? image : (image?.src ?? "/og/home.jpg");
+const rawImagePath =
+	typeof image === "string" ? image : (image?.src ?? "/og/home.jpg");
 const imageURL = new URL(rawImagePath, Astro.site);
 ---
 
@@ -49,7 +49,7 @@ const imageURL = new URL(rawImagePath, Astro.site);
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="robots" content={robots} />
 
-		<title>{seoTitle ?? title}</title>
+		<title>{seoTitle || title}</title>
 		<meta name="description" content={description} />
 
 		<!-- Canonical -->
@@ -67,15 +67,30 @@ const imageURL = new URL(rawImagePath, Astro.site);
 		<meta property="og:image:alt" content={imageAlt} />
 		<meta property="og:site_name" content="Psicoinfantil Castellón" />
 
-		{type === "article" && articleMeta?.publishDate && (
-			<meta property="article:published_time" content={articleMeta.publishDate.toISOString()} />
-		)}
-		{type === "article" && articleMeta?.updatedDate && (
-			<meta property="article:modified_time" content={articleMeta.updatedDate.toISOString()} />
-		)}
-		{type === "article" && articleMeta?.category && (
-			<meta property="article:section" content={articleMeta.category} />
-		)}
+		{
+			type === "article" && articleMeta?.publishDate && (
+				<meta
+					property="article:published_time"
+					content={articleMeta.publishDate.toISOString()}
+				/>
+			)
+		}
+		{
+			type === "article" && articleMeta?.updatedDate && (
+				<meta
+					property="article:modified_time"
+					content={articleMeta.updatedDate.toISOString()}
+				/>
+			)
+		}
+		{
+			type === "article" && articleMeta?.category && (
+				<meta
+					property="article:section"
+					content={articleMeta.category}
+				/>
+			)
+		}
 
 		<!-- Twitter / X -->
 		<meta name="twitter:card" content="summary_large_image" />
@@ -85,9 +100,15 @@ const imageURL = new URL(rawImagePath, Astro.site);
 		<meta name="twitter:image:alt" content={imageAlt} />
 
 		<!-- Structured Data (JSON-LD) -->
-		{jsonLd && (
-			<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")} />
-		)}
+		{
+			jsonLd && (
+				<script
+					is:inline
+					type="application/ld+json"
+					set:html={JSON.stringify(jsonLd).replace(/</g, "\\u003c")}
+				/>
+			)
+		}
 
 		<!-- Favicons -->
 		<link rel="icon" href="/favicon.ico" sizes="any" />
