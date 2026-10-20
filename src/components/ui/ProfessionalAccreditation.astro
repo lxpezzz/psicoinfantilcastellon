@@ -1,0 +1,41 @@
+---
+import accreditation from "../../images/about/CV08027.webp";
+
+interface Props {
+    size: "footer" | "about";
+}
+
+const { size } = Astro.props;
+---
+
+<img
+    src={accreditation.src}
+    alt="Acreditación del Col·legi Oficial de Psicologia de la Comunitat Valenciana de Ana Díaz Berbel, colegiada CV08027"
+    width={accreditation.width}
+    height={accreditation.height}
+    loading="lazy"
+    decoding="async"
+    class:list={["accreditation", `accreditation--${size}`]}
+/>
+
+<style>
+    .accreditation {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .accreditation--footer {
+        width: 112px;
+    }
+
+    .accreditation--about {
+        width: 160px;
+    }
+
+    @media (max-width: 1023px) {
+        .accreditation--about {
+            width: 144px;
+        }
+    }
+</style>

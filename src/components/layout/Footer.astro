@@ -3,6 +3,7 @@
 import { Phone, Mail, MapPin } from "lucide-astro";
 import { hasPublishedPosts } from "../../data/blog";
 import { location } from "../../data/location";
+import ProfessionalAccreditation from "../ui/ProfessionalAccreditation.astro";
 
 const currentYear = 2026;
 const showBlog = await hasPublishedPosts();
@@ -25,6 +26,10 @@ const showBlog = await hasPublishedPosts();
                 <p class="footer__tagline">
                     Psicología infantil y adolescente en Castellón
                 </p>
+            </div>
+
+            <div class="footer__accreditation">
+                <ProfessionalAccreditation size="footer" />
             </div>
 
             <nav class="footer__nav" aria-label="Navegación del pie de página">
@@ -123,7 +128,7 @@ const showBlog = await hasPublishedPosts();
        -------------------------------------------------------------------------- */
     .footer__top {
         display: grid;
-        grid-template-columns: minmax(0, 1fr) minmax(160px, 0.65fr) minmax(0, 1.25fr);
+        grid-template-columns: minmax(180px, 0.85fr) 112px minmax(160px, 0.65fr) minmax(0, 1.25fr);
         align-items: start;
         gap: clamp(1.5rem, 3vw, 3rem);
     }
@@ -175,6 +180,10 @@ const showBlog = await hasPublishedPosts();
 
     .footer__nav {
         min-width: 0;
+    }
+
+    .footer__accreditation {
+        align-self: start;
     }
 
     .footer__nav-title {
@@ -527,6 +536,10 @@ const showBlog = await hasPublishedPosts();
 
             font-size: 0.82rem;
             text-align: center;
+        }
+
+        .footer__accreditation {
+            align-self: center;
         }
 
         .footer__dot {

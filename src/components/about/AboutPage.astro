@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Button from "../ui/Button.astro";
+import ProfessionalAccreditation from "../ui/ProfessionalAccreditation.astro";
 import { location } from "../../data/location";
 import {
     Award,
@@ -454,25 +455,28 @@ import anaImg from "../../images/about/ana-diaz.webp";
 
                     <!-- Colegiatura Oficial -->
                     <div
-                        class="border-t border-[rgba(23,54,97,0.12)] pt-5 flex flex-col gap-2.5"
+                        class="border-t border-[rgba(23,54,97,0.12)] pt-5 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-5 lg:gap-6"
                     >
-                        <div class="text-[var(--color-primary)] mb-1">
-                            <ShieldCheck size={22} aria-hidden="true" />
+                        <div class="flex min-w-0 flex-col gap-2.5">
+                            <div class="text-[var(--color-primary)] mb-1">
+                                <ShieldCheck size={22} aria-hidden="true" />
+                            </div>
+                            <strong
+                                class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]"
+                                >Colegiada Oficial CV08027</strong
+                            >
+                            <span
+                                class="text-[0.82rem] font-bold uppercase tracking-wider text-[#1e6e4a]"
+                                >COP Comunitat Valenciana</span
+                            >
+                            <p
+                                class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0"
+                            >
+                                Colegiación profesional, compromiso deontológico y
+                                seguro de responsabilidad civil profesional.
+                            </p>
                         </div>
-                        <strong
-                            class="text-[1.05rem] font-bold text-[var(--color-primary-dark)]"
-                            >Colegiada Oficial CV08027</strong
-                        >
-                        <span
-                            class="text-[0.82rem] font-bold uppercase tracking-wider text-[#1e6e4a]"
-                            >COP Comunitat Valenciana</span
-                        >
-                        <p
-                            class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0"
-                        >
-                            Colegiación profesional, compromiso deontológico y
-                            seguro de responsabilidad civil profesional.
-                        </p>
+                        <ProfessionalAccreditation size="about" />
                     </div>
 
                     <!-- Máster Forense -->
