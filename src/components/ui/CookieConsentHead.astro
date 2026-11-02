@@ -1,0 +1,37 @@
+---
+import { CONSENT_KEY, CONSENT_DATE_KEY, CONSENT_LIFETIME, validateCookieConsent } from "../../scripts/cookie-consent-state.mjs";
+
+// Se inserta la función compartida al compilar: sin fetch, imports de navegador,
+// async, defer ni temporizadores antes del primer pintado.
+const bootstrap = `
+    (() => {
+        try {
+            const validate = ${validateCookieConsent.toString()};
+            if (validate(
+                localStorage.getItem(${JSON.stringify(CONSENT_KEY)}),
+                localStorage.getItem(${JSON.stringify(CONSENT_DATE_KEY)}),
+                Date.now(),
+                ${CONSENT_LIFETIME}
+            )) document.documentElement.setAttribute("data-cookie-consent-known", "");
+        } catch {
+            // Sin lectura válida, el HTML conserva el aviso visible.
+        }
+        // Respaldo si el head funciona pero falla la descarga del módulo.
+        document.addEventListener("click", event => {
+            if (!(event.target instanceof Element) || !event.target.closest("[data-cookie-settings]")) return;
+            const banner = document.getElementById("cookie-banner");
+            if (!banner || banner.dataset.initialized) return;
+            event.preventDefault();
+            document.documentElement.removeAttribute("data-cookie-consent-known");
+            banner.querySelector("a")?.focus();
+        });
+    })();
+`;
+---
+
+<script is:inline set:html={bootstrap} />
+<style is:inline>
+    html[data-cookie-consent-known] #cookie-banner:not([data-initialized]) {
+        display: none;
+    }
+</style>

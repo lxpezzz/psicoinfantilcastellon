@@ -4,8 +4,12 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 import { readFile, writeFile, rm } from 'node:fs/promises';
 import { siteUrl } from './src/data/site.mjs';
+import { auditBuiltOutbound } from './scripts/analytics-privacy.mjs';
+import { fileURLToPath } from 'node:url';
+import { loadEnv } from 'vite';
 
 let hasPublishedBlogPosts = false;
+const environment = loadEnv(process.env.NODE_ENV || 'production', process.cwd(), 'PUBLIC_GA_');
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,6 +20,10 @@ export default defineConfig({
       name: 'canonical-domain-server-config',
       hooks: {
         'astro:build:done': async ({ dir }) => {
+          if ((process.env.PUBLIC_GA_PRIVACY_REVIEWED || environment.PUBLIC_GA_PRIVACY_REVIEWED) === 'true') {
+            const issues = await auditBuiltOutbound(fileURLToPath(dir), siteUrl);
+            if (issues.length) throw new Error(`Privacidad de clics de salida: ${issues.join('\n')}`);
+          }
           const template = await readFile(new URL('./public/.htaccess', import.meta.url), 'utf8');
           const hostPattern = new URL(siteUrl).hostname.replaceAll('.', '\\.');
           const serverConfig = template
@@ -39,7 +47,7 @@ export default defineConfig({
       },
     },
     sitemap({
-      filter: (page) => !page.includes('/gracias/') &&
+      filter: (page) => !page.includes('/gracias/') && !page.includes('/ir-a-whatsapp/') &&
         (new URL(page).pathname !== '/blog/' || hasPublishedBlogPosts),
     }),
   ],

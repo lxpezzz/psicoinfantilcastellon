@@ -37,7 +37,7 @@ import {
             <div class="flex flex-wrap items-center justify-center max-sm:items-start max-sm:flex-col gap-3 sm:gap-6 py-3.5 px-6 bg-white/70 backdrop-blur-[8px] border border-[rgba(23,54,97,0.07)] rounded-full max-sm:rounded-2xl text-[0.82rem] text-[var(--color-text-soft)] w-fit mx-auto max-sm:w-full">
                 <span class="inline-flex items-center gap-2 font-medium">
                     <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-                    Última actualización: Septiembre de 2026
+                    Última actualización: Noviembre de 2026
                 </span>
                 <span class="inline-flex items-center gap-2 font-medium">
                     <Lock size={14} aria-hidden="true" />
@@ -62,7 +62,7 @@ import {
                         ¿Qué es una cookie?
                     </h2>
                     <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                        Es un pequeño fichero técnico que se almacena en tu navegador al visitar nuestra web. Su objetivo exclusivo es recordar aspectos funcionales prácticos (como tus preferencias de navegación o mantener una visita segura). No es un programa ejecutable ni accede a tus archivos personales.
+                        Es un pequeño fichero que se almacena en tu navegador al visitar una web. Puede recordar preferencias o, si lo autorizas, ayudar a elaborar estadísticas de uso. No es un programa ejecutable ni accede a tus archivos personales.
                     </p>
                 </div>
 
@@ -113,11 +113,11 @@ import {
                             Siempre activas
                         </span>
                         <h3 class="text-[1.3rem] font-[750] text-[var(--color-primary-dark)] m-0">
-                            1. Cookies técnicas y estrictamente necesarias
+                            1. Almacenamiento técnico de preferencias
                         </h3>
                     </div>
                     <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                        Son imprescindibles para el funcionamiento seguro de la web, la correcta distribución de contenidos y para recordar tu consentimiento. Al ser indispensables para prestar el servicio solicitado, están exentas de consentimiento previo conforme al artículo 22.2 de la LSSI-CE.
+                        Guardamos tu elección en el almacenamiento local de tu navegador (localStorage), no en una cookie. Esta preferencia permite recordar si autorizas la analítica y no se envía a Google. Si el navegador bloquea este almacenamiento, la elección solo se conserva en la página actual.
                     </p>
                 </div>
 
@@ -136,51 +136,17 @@ import {
                             <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
                                 <td class="py-4 px-4.5 align-top">
                                     <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
-                                        cookie_consent
+                                        psico_cookie_consent<br />psico_cookie_consent_updated_at
                                     </code>
                                 </td>
                                 <td class="py-4 px-4.5 align-top text-[var(--color-text)]">PsicoInfantil (Propia)</td>
                                 <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
-                                    Registra y recuerda si has aceptado o configurado la política de cookies para no solicitarlo repetidamente en cada página.
+                                    Recuerda la aceptación o el rechazo y la fecha de tu elección. Transcurridos 180 días desde la fecha guardada volvemos a solicitarla. Las elecciones del banner anterior sin fecha se conservan por compatibilidad; la fecha se guarda cuando cambias tu elección, no por visitar la web.
                                 </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">1 año</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">180 días</td>
                                 <td class="py-4 px-4.5 align-top">
                                     <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)] whitespace-nowrap">
                                         Técnica
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
-                                <td class="py-4 px-4.5 align-top">
-                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
-                                        astro_session
-                                    </code>
-                                </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">PsicoInfantil (Propia)</td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
-                                    Gestiona la sesión técnica durante la navegación para garantizar la estabilidad y navegación fluida.
-                                </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">Sesión</td>
-                                <td class="py-4 px-4.5 align-top">
-                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)] whitespace-nowrap">
-                                        Técnica
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-[rgba(36,79,158,0.02)] transition-colors">
-                                <td class="py-4 px-4.5 align-top">
-                                    <code class="font-mono text-[0.84rem] bg-[rgba(23,54,97,0.05)] text-[var(--color-primary-dark)] py-0.5 px-2 rounded-md font-semibold">
-                                        __cf_bm / sec_*
-                                    </code>
-                                </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)]">Seguridad CDN / Servidor</td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
-                                    Distingue el tráfico de personas reales frente a robots automatizados que intentan saturar el servidor (protección anti-spam y ciberseguridad).
-                                </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">30 min - 24 horas</td>
-                                <td class="py-4 px-4.5 align-top">
-                                    <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(23,54,97,0.06)] text-[var(--color-primary-dark)] whitespace-nowrap">
-                                        Seguridad
                                     </span>
                                 </td>
                             </tr>
@@ -194,14 +160,21 @@ import {
                 <div class="mb-7">
                     <div class="flex flex-wrap items-center gap-3 mb-2.5">
                         <span class="inline-block text-[0.72rem] font-[750] uppercase tracking-[0.05em] py-1 px-2.5 rounded-full bg-[rgba(141,199,168,0.2)] text-[#1e6e4a]">
-                            Métricas anónimas
+                            Solo con tu permiso
                         </span>
                         <h3 class="text-[1.3rem] font-[750] text-[var(--color-primary-dark)] m-0">
                             2. Cookies analíticas y de rendimiento
                         </h3>
                     </div>
                     <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                        Nos permiten comprender qué temas de orientación familiar (como dislexia, TDAH o dificultades escolares) generan mayor interés en las familias de Castellón, ayudándonos a mejorar las explicaciones y recursos del sitio web. Toda la información se recopila de forma estadística, agregada y con anonimización de direcciones IP.
+                        Google Analytics 4 (GA4) permite medir visitas, desplazamientos y clics en enlaces de salida revisados, además de clics de contacto por WhatsApp o teléfono y confirmaciones de envío del formulario. Utilizamos Consent Mode v2 básico: la etiqueta de Google no se descarga ni transmite datos de Analytics antes de aceptar las cookies analíticas. Al rechazar las opcionales no se activa GA4. La publicidad y la personalización publicitaria permanecen desactivadas.
+                    </p>
+                    <!-- Pendiente de validación legal por la responsable: proveedor, garantías y plazos de conservación. -->
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] mt-4 mb-0">
+                        Los eventos se limitan a páginas públicas y acciones genéricas. No enviamos campos del formulario, teléfonos, mensajes, datos sobre menores ni motivos de consulta. La URL de página se envía sin parámetros ni fragmentos y se suprime el enlace de procedencia. Los enlaces de salida medidos se limitan a destinos públicos revisados, incluidos sus parámetros fijos de idioma o identificación de la consulta; WhatsApp utiliza un salto local sin Analytics para no enviar su número. No se miden búsquedas, vídeos, descargas ni interacciones automáticas con formularios. Los identificadores de Analytics son seudónimos; esto no equivale a una anonimización completa. Google recibe datos técnicos de la conexión, incluida la dirección IP, aunque GA4 no registra ni almacena direcciones IP individuales, según su documentación.
+                    </p>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] mt-4 mb-0">
+                        El proveedor es Google Ireland Limited. Se obtiene información de ubicación aproximada y características del dispositivo y navegador, sin solicitar la ubicación precisa. Google Signals y la recopilación de datos proporcionados por usuarios están desactivados. La base del tratamiento es tu consentimiento (art. 6.1.a RGPD). Los plazos de las cookies indicados abajo no son los plazos de conservación en los servidores de Google. Puedes consultar la información sobre conservación, transferencias internacionales y ejercicio de derechos en nuestra <a href="/politica-de-privacidad/" class="text-[var(--color-primary)] underline font-medium">Política de Privacidad</a>.
                     </p>
                 </div>
 
@@ -225,9 +198,9 @@ import {
                                 </td>
                                 <td class="py-4 px-4.5 align-top text-[var(--color-text)]">Google Analytics (Google Ireland Ltd.)</td>
                                 <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
-                                    Genera un identificador aleatorio y anónimo para calcular el número de visitas únicas a la web sin identificar personalmente a ningún visitante.
+                                    Identificador seudónimo del navegador para distinguir visitas. Solo se instala tras aceptar la analítica.
                                 </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">2 años</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">Hasta 180 días</td>
                                 <td class="py-4 px-4.5 align-top">
                                     <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(141,199,168,0.2)] text-[#1e6e4a] whitespace-nowrap">
                                         Analítica
@@ -242,9 +215,9 @@ import {
                                 </td>
                                 <td class="py-4 px-4.5 align-top text-[var(--color-text)]">Google Analytics (Google Ireland Ltd.)</td>
                                 <td class="py-4 px-4.5 align-top text-[var(--color-text)] leading-relaxed">
-                                    Conserva el estado de la sesión para saber el tiempo medio de lectura o las secciones más consultadas de los servicios.
+                                    Conserva el estado de la sesión de GA4. No incluye el contenido de los formularios ni de las conversaciones de contacto.
                                 </td>
-                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">2 años</td>
+                                <td class="py-4 px-4.5 align-top text-[var(--color-text)] whitespace-nowrap">Hasta 180 días</td>
                                 <td class="py-4 px-4.5 align-top">
                                     <span class="inline-block text-[0.74rem] font-semibold py-0.5 px-2.5 rounded-md bg-[rgba(141,199,168,0.2)] text-[#1e6e4a] whitespace-nowrap">
                                         Analítica
@@ -281,7 +254,7 @@ import {
                             </span>
                         </div>
                         <p class="text-[0.88rem] leading-[1.6] text-[var(--color-text-soft)] m-0">
-                            Permite visualizar de manera interactiva la ubicación de la consulta física en el centro de Castellón. Si interactúas con el mapa, Google puede instalar cookies técnicas para recordar tus preferencias de visualización o zoom.
+                            El mapa no se conecta con Google hasta que pulsas «Autorizar y cargar Google Maps». Es un permiso independiente de la analítica, limitado a la página actual; aceptar las cookies estadísticas no carga el mapa. Al autorizarlo, Google recibe datos de conexión, incluida tu IP, y puede utilizar cookies según su <a href="https://policies.google.com/privacy?hl=es" class="text-[var(--color-primary)] underline font-medium">Política de privacidad</a>. Puedes retirar el permiso con «Desactivar mapa» o «Rechazar opcionales» desde «Configurar cookies». Se retira el iframe, pero no se borran datos ya enviados ni cookies de Google, que puedes gestionar en tu navegador. La dirección y el enlace externo «Cómo llegar» siguen disponibles sin cargar el mapa. Las cookies de terceros, sus finalidades y duración pueden variar según tu sesión de Google y tu navegador; su inventario efectivo requiere comprobación antes de publicar.
                         </p>
                     </div>
 
@@ -320,7 +293,7 @@ import {
                         <CheckCircle2 size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
                         <div>
                             <strong class="block text-[1.02rem] font-bold text-white mb-1.5">
-                                Sin venta ni cesión de datos personales
+                                Sin venta de datos personales
                             </strong>
                             <p class="text-[0.88rem] leading-[1.6] text-[#cbd7e6] m-0">
                                 No comercializamos tus identificadores de navegación con corredores de información (data brokers) ni plataformas publicitarias.
@@ -356,10 +329,10 @@ import {
                         <CheckCircle2 size={20} class="text-[var(--color-accent)] shrink-0 mt-0.5" />
                         <div>
                             <strong class="block text-[1.02rem] font-bold text-white mb-1.5">
-                                Anonimización activa de direcciones IP
+                                Analítica limitada y seudonimizada
                             </strong>
                             <p class="text-[0.88rem] leading-[1.6] text-[#cbd7e6] m-0">
-                                Las métricas analíticas impiden asociar cualquier dato de navegación a tu persona, identidad o domicilio.
+                                No incluimos datos identificativos en los eventos. La medición utiliza identificadores seudónimos y no se emplea para elaborar perfiles clínicos ni publicitarios.
                             </p>
                         </div>
                     </div>
@@ -374,7 +347,7 @@ import {
                     Cómo gestionar o eliminar las cookies en tu navegador
                 </h2>
                 <p class="text-[clamp(0.96rem,1.1vw,1.05rem)] leading-[1.65] text-[var(--color-text-soft)] m-0 [text-wrap:pretty]">
-                    Puedes permitir, bloquear o borrar las cookies ya instaladas en cualquier momento a través del menú de configuración de tu navegador web habitual:
+                    Puedes volver a abrir el banner desde «Configurar cookies», al pie de cualquier página, y pulsar «Rechazar opcionales» para retirar tu consentimiento. Se detiene la medición, se eliminan las cookies _ga accesibles de este dominio y se recarga la página para descargar la etiqueta. Esto no borra retroactivamente los datos ya recibidos por Google. También puedes gestionar el almacenamiento desde tu navegador:
                 </p>
             </div>
 

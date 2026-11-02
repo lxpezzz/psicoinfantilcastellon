@@ -41,15 +41,31 @@ import { location } from "../../data/location";
                 <!-- Marco Interno con el iframe interactivo -->
                 <div
                     class="rounded-[1rem] overflow-hidden relative w-full h-[320px] sm:h-[400px] bg-[#eaf0f6]"
+                    data-consent-map
                 >
-                    <iframe
-                        src={location.googleMapsEmbedUrl}
+                    <div class="contact-page-map__consent" data-map-notice>
+                        <p id="map-consent-description">
+                            Para mostrar el mapa, Google recibirá tu dirección IP y podrá utilizar cookies según su política de privacidad.
+                            Solo se cargará si lo autorizas aquí, independientemente de las cookies estadísticas.
+                        </p>
+                        <button type="button" class="contact-page-map__control" data-map-accept aria-describedby="map-consent-description" hidden>
+                            Autorizar y cargar Google Maps
+                        </button>
+                        <p class="contact-page-map__help">Puedes usar el enlace «Cómo llegar» sin cargar el mapa en esta web.</p>
+                    </div>
+                    <button type="button" class="contact-page-map__control contact-page-map__revoke" data-map-revoke hidden>
+                        Desactivar mapa
+                    </button>
+                    <template data-map-template>
+                        <iframe
+                        data-src={location.googleMapsEmbedUrl}
                         class="w-full h-full border-0 absolute inset-0"
                         allowfullscreen=""
                         loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
+                        referrerpolicy="no-referrer"
                         title="Ubicación exacta de PsicoInfantil Castellón en Google Maps"
-                    ></iframe>
+                        ></iframe>
+                    </template>
                 </div>
 
                 <!-- Barra Inferior de Acción y Dirección Verificada -->
@@ -165,3 +181,103 @@ import { location } from "../../data/location";
         </div>
     </div>
 </section>
+
+<style>
+    .contact-page-map__consent {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+        color: var(--color-primary-dark);
+    }
+
+    .contact-page-map__consent[hidden],
+    .contact-page-map__control[hidden] {
+        display: none;
+    }
+
+    .contact-page-map__consent p {
+        max-width: 58ch;
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .contact-page-map__consent .contact-page-map__help {
+        font-size: 0.875rem;
+    }
+
+    .contact-page-map__control {
+        padding: 0.7rem 1rem;
+        border: 1px solid var(--color-primary);
+        border-radius: 0.75rem;
+        background: white;
+        color: var(--color-primary-dark);
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .contact-page-map__control:hover {
+        background: var(--color-bg);
+    }
+
+    .contact-page-map__control:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+    }
+
+    .contact-page-map__revoke {
+        position: absolute;
+        z-index: 1;
+        top: 0.75rem;
+        right: 0.75rem;
+    }
+</style>
+
+<script>
+    import { CONSENT_KEY, CONSENT_DATE_KEY, readCookieConsent } from "../../scripts/cookie-consent";
+
+    const container = document.querySelector<HTMLElement>("[data-consent-map]");
+    const notice = container?.querySelector<HTMLElement>("[data-map-notice]");
+    const accept = container?.querySelector<HTMLButtonElement>("[data-map-accept]");
+    const revoke = container?.querySelector<HTMLButtonElement>("[data-map-revoke]");
+    const template = container?.querySelector<HTMLTemplateElement>("[data-map-template]");
+
+    if (container && notice && accept && revoke && template) {
+        accept.hidden = false;
+
+        function disableMap(restoreFocus = false) {
+            container?.querySelector("iframe")?.remove();
+            if (notice) notice.hidden = false;
+            if (revoke) revoke.hidden = true;
+            if (restoreFocus) accept?.focus({ preventScroll: true });
+        }
+
+        accept.addEventListener("click", () => {
+            if (container.querySelector("iframe")) return;
+            const frame = template.content.querySelector("iframe")?.cloneNode(true) as HTMLIFrameElement | undefined;
+            if (!frame?.dataset.src) return;
+            frame.src = frame.dataset.src;
+            frame.removeAttribute("data-src");
+            container.append(frame);
+            notice.hidden = true;
+            revoke.hidden = false;
+            revoke.focus({ preventScroll: true });
+        });
+        revoke.addEventListener("click", () => disableMap(true));
+        // El permiso es específico de este documento; no se guarda ni activa GA4.
+        window.addEventListener("pagehide", () => disableMap());
+        window.addEventListener("cookie-consent-updated", () => {
+            if (readCookieConsent() !== "all") disableMap(document.activeElement === revoke);
+        });
+        window.addEventListener("storage", event => {
+            if ((event.key === null || event.key === CONSENT_KEY || event.key === CONSENT_DATE_KEY) && readCookieConsent() !== "all") disableMap();
+        });
+    }
+</script>

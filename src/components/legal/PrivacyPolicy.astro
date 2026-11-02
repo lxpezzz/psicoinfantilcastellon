@@ -48,7 +48,7 @@ import {
             <div class="flex flex-wrap items-center justify-center max-sm:items-start max-sm:flex-col gap-3 sm:gap-6 py-3.5 px-6 bg-white/70 backdrop-blur-[8px] border border-[rgba(23,54,97,0.07)] rounded-full max-sm:rounded-2xl text-[0.82rem] text-[var(--color-text-soft)] w-fit mx-auto max-sm:w-full">
                 <span class="inline-flex items-center gap-2 font-medium">
                     <span class="w-2 h-2 rounded-full bg-[var(--color-accent)]" aria-hidden="true"></span>
-                    Última revisión: Octubre de 2026
+                    Última revisión: Noviembre de 2026
                 </span>
                 <span class="inline-flex items-center gap-2 font-medium">
                     <Building2 size={14} aria-hidden="true" />
@@ -194,7 +194,7 @@ import {
                             Datos de navegación técnica
                         </h3>
                         <p class="text-[0.88rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
-                            Dirección IP anonimizada, fecha y hora de acceso, y parámetros técnicos del navegador para garantizar la seguridad de la conexión. Para más información sobre el uso de cookies y su configuración, consulta nuestra <a href="/politica-de-cookies/" class="text-[var(--color-primary)] underline font-medium hover:text-[var(--color-primary-dark)]">Política de Cookies</a>.
+                            Datos técnicos de conexión, como dirección IP, fecha y hora de acceso y características del navegador, cuyo tratamiento para la seguridad depende del alojamiento web. La analítica opcional se describe a continuación. Para más información sobre el uso de cookies y su configuración, consulta nuestra <a href="/politica-de-cookies/" class="text-[var(--color-primary)] underline font-medium hover:text-[var(--color-primary-dark)]">Política de Cookies</a>.
                         </p>
                     </div>
                 </div>
@@ -211,6 +211,29 @@ import {
                     </p>
                     <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
                         Puedes consultar más información sobre el tratamiento de los datos por este proveedor en la <a href="https://web3forms.com/privacy" class="text-[var(--color-primary)] underline font-medium hover:text-[var(--color-primary-dark)]">Política de privacidad de Web3Forms</a>.
+                    </p>
+                </div>
+                <!-- Pendiente de validación legal: condiciones de Google, transferencias y conservación en la propiedad GA4. -->
+                <div class="max-w-[780px] mt-6">
+                    <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0 mb-2.5">
+                        Analítica opcional con Google Analytics 4
+                    </h3>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0 mb-2.5">
+                        Solo con tu consentimiento previo (art. 6.1.a RGPD) utilizamos GA4 para conocer las visitas a páginas públicas, los desplazamientos y las salidas hacia destinos revisados, además de contar clics de contacto por teléfono o WhatsApp y confirmaciones de envío del formulario. No enviamos a Analytics nombres, emails, teléfonos, campos del formulario, datos sobre menores ni motivos de consulta. La URL de página excluye parámetros y fragmentos y se suprime el enlace de procedencia. Los destinos de salida se revisan explícitamente para excluir datos personales; no se miden búsquedas, vídeos, descargas ni interacciones automáticas con formularios. Los datos de navegación se tratan con identificadores seudónimos, no como información completamente anónima.
+                    </p>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0 mb-2.5">
+                        El proveedor es Google Ireland Limited. Google recibe datos técnicos necesarios para la conexión; según su documentación, GA4 no registra ni almacena direcciones IP individuales. La configuración permite obtener información de ubicación aproximada y características del dispositivo y navegador; no solicitamos acceso a la ubicación precisa del dispositivo. La publicidad, Google Signals, la personalización publicitaria y la recopilación de datos proporcionados por usuarios permanecen desactivados. Rechazar o retirar este consentimiento no impide usar la web ni contactar con la consulta.
+                    </p>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        Puedes retirar el permiso desde «Configurar cookies», al pie de cualquier página, pulsando «Rechazar opcionales». Las cookies analíticas se configuran con una duración máxima de 180 días; la conservación en los servidores de Google depende de la propiedad de Analytics y debe revisarse por la responsable. Consulta la <a href="/politica-de-cookies/" class="text-[var(--color-primary)] underline font-medium">Política de Cookies</a> y la <a href="https://policies.google.com/privacy?hl=es" class="text-[var(--color-primary)] underline font-medium">Política de privacidad de Google</a>.
+                    </p>
+                </div>
+                <div class="max-w-[780px] mt-6">
+                    <h3 class="text-[1.05rem] font-bold text-[var(--color-primary-dark)] m-0 mb-2.5">
+                        Mapa opcional de Google Maps
+                    </h3>
+                    <p class="text-[0.94rem] leading-[1.65] text-[var(--color-text-soft)] m-0">
+                        El mapa no se conecta con Google hasta que pulsas «Autorizar y cargar Google Maps». Este permiso es independiente del consentimiento para Analytics y solo se mantiene en la página actual. Al cargarlo, Google recibe datos de conexión, incluida tu dirección IP, y puede utilizar cookies conforme a su <a href="https://policies.google.com/privacy?hl=es" class="text-[var(--color-primary)] underline font-medium">Política de privacidad</a>. Puedes retirar el permiso con «Desactivar mapa» o «Rechazar opcionales» desde «Configurar cookies». Se retira el iframe y se detienen sus nuevas conexiones; esto no elimina datos ya recibidos por Google ni cookies de sus dominios, que puedes gestionar en tu navegador. La dirección y el enlace externo «Cómo llegar» siguen disponibles sin cargar el mapa integrado.
                     </p>
                 </div>
             </div>
@@ -454,6 +477,7 @@ import {
                         <li><strong>Organismos públicos y Juzgados:</strong> cuando exista una obligación legal preceptiva o requerimiento judicial expreso.</li>
                         <li><strong>Encargados de tratamiento indispensables:</strong> proveedores de servicios tecnológicos necesarios (alojamiento web seguro / hosting y soporte técnico bajo contrato vinculante de confidencialidad conforme al art. 28 del RGPD).</li>
                         <li><strong>Web3Forms:</strong> proveedor encargado del procesamiento técnico y la entrega de los mensajes enviados a través de los formularios de contacto.</li>
+                        <li><strong>Google Ireland Limited:</strong> proveedor de la analítica GA4 y del mapa de Google Maps, únicamente al autorizar cada servicio opcional por separado.</li>
                     </ul>
                 </div>
 
@@ -470,6 +494,9 @@ import {
                     </p>
                     <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
                         Web3Forms indica que, cuando resulte aplicable, estas transferencias se amparan en garantías como las cláusulas contractuales tipo, recogidas en su <a href="https://web3forms.com/dpa" class="text-[var(--color-primary)] underline font-medium hover:text-[var(--color-primary-dark)]">Acuerdo de tratamiento de datos de Web3Forms</a>. Las transferencias deberán realizarse con las garantías previstas en la normativa de protección de datos.
+                    </p>
+                    <p class="text-[0.93rem] leading-[1.68] text-[var(--color-text-soft)] m-0">
+                        Si autorizas GA4 o Google Maps, Google también puede tratar datos fuera del EEE. Puedes consultar información sobre las condiciones del proveedor y las garantías de transferencia en la <a href="https://policies.google.com/privacy?hl=es" class="text-[var(--color-primary)] underline font-medium">Política de privacidad de Google</a> y, para Analytics, en las <a href="https://business.safety.google/adsprocessorterms/" class="text-[var(--color-primary)] underline font-medium">condiciones de tratamiento de datos de Google</a>.
                     </p>
                 </div>
             </div>

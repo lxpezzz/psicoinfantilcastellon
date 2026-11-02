@@ -1,0 +1,26 @@
+{
+    "enhancedMeasurement": {
+        "pageViews": true,
+        "historyChanges": false,
+        "scrolls": true,
+        "outboundClicks": true,
+        "siteSearch": false,
+        "videos": false,
+        "downloads": false,
+        "forms": false,
+        "userProvidedData": false
+    },
+    "reviewedOutboundUrls": [
+        "https://business.safety.google/adsprocessorterms/",
+        "https://maps.google.com/?cid=4225123225601099366",
+        "https://policies.google.com/privacy?hl=es",
+        "https://support.apple.com/es-es/105082",
+        "https://support.google.com/chrome/answer/95647?hl=es",
+        "https://support.microsoft.com/es-es/microsoft-edge/eliminar-las-cookies-en-microsoft-edge-63947406-40ac-c3b8-57b9-2a946a29ae09",
+        "https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias",
+        "https://web3forms.com/dpa",
+        "https://web3forms.com/privacy",
+        "https://www.aepd.es",
+        "https://www.google.com/maps/place//data=!4m2!3m1!1s0xd6001c8f1e3da0f:0x3aa2a7302234c666?sa=X&ved=1t:8290&ictx=111"
+    ]
+}

@@ -12,6 +12,7 @@ RewriteRule ^servicios/orientacion-adolescentes/?$ {{CANONICAL_ORIGIN}}/orientac
 RewriteRule ^servicios/psicologia-juvenil/?$ {{CANONICAL_ORIGIN}}/orientacion-adolescentes/ [R=301,L,NE]
 RewriteRule ^servicios/informes-psicopedagogicos/?$ {{CANONICAL_ORIGIN}}/informes-psicopedagogicos/ [R=301,L,NE]
 
-# Keep the path and query string while moving www traffic to the canonical host.
-RewriteCond %{HTTP_HOST} ^www\.{{CANONICAL_HOST_PATTERN}}$ [NC]
-RewriteRule ^ {{CANONICAL_ORIGIN}}%{REQUEST_URI} [R=301,L,NE]
+# Forzar HTTPS y eliminar www en una sola redireccion 301
+RewriteCond %{HTTP_HOST} ^www\.psicoinfantilcastellon\.com$ [NC,OR]
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://psicoinfantilcastellon.com%{REQUEST_URI} [R=301,L,NE]

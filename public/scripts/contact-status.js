@@ -52,6 +52,8 @@ function setupContactForm() {
                 throw new Error("Web3Forms no ha aceptado el mensaje");
             }
 
+            // Sin datos del formulario: solo se notifica la confirmación de Web3Forms.
+            form.dispatchEvent(new Event("contact-form-success", { bubbles: true }));
             form.reset();
             status.textContent = "Gracias. Hemos recibido tu mensaje y nos pondremos en contacto contigo lo antes posible.";
         } catch {
