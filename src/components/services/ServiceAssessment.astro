@@ -13,6 +13,7 @@ interface Props {
     title: string;
     description: string;
     perspectives: Perspective[];
+    diagramLabels?: [string, string, string];
 }
 
 const {
@@ -20,6 +21,7 @@ const {
     title,
     description,
     perspectives,
+    diagramLabels = ["Cómo aprende", "Cómo se organiza", "Cómo lo está viviendo"],
 } = Astro.props;
 
 const defaultAccents = [
@@ -75,7 +77,7 @@ const defaultAccents = [
                             <p
                                 class="absolute bottom-full left-1/2 m-0 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
                             >
-                                Cómo aprende
+                                {diagramLabels[0]}
                             </p>
                             <div
                                 class="mx-auto h-4 w-4 rounded-full bg-[#244f9e]"
@@ -94,7 +96,7 @@ const defaultAccents = [
                             <p
                                 class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
                             >
-                                Cómo se organiza
+                                {diagramLabels[1]}
                             </p>
                         </div>
 
@@ -109,7 +111,7 @@ const defaultAccents = [
                             <p
                                 class="absolute left-1/2 top-full m-0 mt-3 hidden -translate-x-1/2 whitespace-nowrap text-sm font-semibold text-[var(--color-primary-dark)] lg:block"
                             >
-                                Cómo lo está viviendo
+                                {diagramLabels[2]}
                             </p>
                         </div>
 

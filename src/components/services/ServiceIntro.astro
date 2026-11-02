@@ -11,7 +11,8 @@ export interface Props {
     parentBreadcrumbHref?: string;
     eyebrow: string;
     title: string;
-    description: string;
+    description: string | string[];
+    ctaText?: string;
     image: ImageMetadata;
     imageAlt: string;
 }
@@ -24,6 +25,7 @@ const {
     eyebrow,
     title,
     description,
+    ctaText = "Cuéntame tu caso",
     image,
     imageAlt,
 } = Astro.props;
@@ -100,11 +102,13 @@ const imageMaxWidth = Math.min(580, Math.round((image.width / image.height) * 46
                     {title}
                 </h1>
 
-                <p
-                    class="service-intro__description max-w-[54ch] text-[1.05rem] leading-[1.75] text-[var(--color-text-soft)] sm:text-[1.125rem] [text-wrap:pretty]"
-                >
-                    {description}
-                </p>
+                {
+                    (Array.isArray(description) ? description : [description]).map((paragraph) => (
+                        <p class="service-intro__description max-w-[54ch] text-[1.05rem] leading-[1.75] text-[var(--color-text-soft)] sm:text-[1.125rem] [text-wrap:pretty]">
+                            {paragraph}
+                        </p>
+                    ))
+                }
 
                 <div class="service-intro__actions">
                     <Button
@@ -113,7 +117,7 @@ const imageMaxWidth = Math.min(580, Math.round((image.width / image.height) * 46
                         size="lg"
                         class="service-intro__btn"
                     >
-                        <span>Cuéntame tu caso</span>
+                        <span>{ctaText}</span>
                         <ArrowRight
                             size={19}
                             stroke-width={2}

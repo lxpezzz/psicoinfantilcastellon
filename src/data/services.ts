@@ -16,6 +16,7 @@ import altasCapacidadesHeroImg from "../images/servicios-pagina/altas-capacidade
 import asesoramientoPadresHeroImg from "../images/servicios-pagina/asesoramiento-padres-hero.webp";
 import psicologiaJuvenilHeroImg from "../images/servicios-pagina/psicologia-juvenil-hero.webp";
 import informesHeroImg from "../images/servicios-pagina/informes-psicopedagogicos-hero.webp";
+import emocionesHabitosImg from "../images/servicios/psicologia-infantil.webp";
 
 export interface ServiceItem {
     id: string;
@@ -26,13 +27,21 @@ export interface ServiceItem {
     image: ImageMetadata;
     heroImage: ImageMetadata;
     alt: string;
-    isPrincipal: boolean;
-    principalVariant?: "media-first" | "content-first";
-    bentoClass: string;
     imagePosition?: string;
 }
 
 export const services: ServiceItem[] = [
+    {
+        id: "emociones-habitos-infantiles",
+        title: "Psicología infantil: emociones y hábitos",
+        shortTitle: "Psicología infantil",
+        description:
+            "Acompañamiento ante miedos, rabietas, dificultades de sueño y hábitos cotidianos, atendiendo a las necesidades del niño y de su familia.",
+        href: "/emociones-y-habitos-infantiles/",
+        image: emocionesHabitosImg,
+        heroImage: emocionesHabitosImg,
+        alt: "Una adulta abraza a dos niños en un sofá junto a una ventana",
+    },
     {
         id: "rendimiento-escolar",
         title: "Mejora del rendimiento escolar",
@@ -43,9 +52,6 @@ export const services: ServiceItem[] = [
         image: rendimientoEscolarImg,
         heroImage: rendimientoHeroImg,
         alt: "Niño concentrado y motivado estudiando en su mesa",
-        isPrincipal: true,
-        principalVariant: "media-first",
-        bentoClass: "service-card--principal service-card--span-7",
     },
     {
         id: "evaluacion-diagnostico",
@@ -57,8 +63,6 @@ export const services: ServiceItem[] = [
         image: evaluacionImg,
         heroImage: evaluacionHeroImg,
         alt: "Materiales y pruebas especializadas de evaluación diagnóstica",
-        isPrincipal: false,
-        bentoClass: "service-card--span-5",
     },
     {
         id: "tdah",
@@ -70,8 +74,6 @@ export const services: ServiceItem[] = [
         image: tdahImg,
         heroImage: tdahHeroImg,
         alt: "Niño con problemas de concentración",
-        isPrincipal: false,
-        bentoClass: "service-card--span-3",
     },
     {
         id: "dislexia",
@@ -83,8 +85,6 @@ export const services: ServiceItem[] = [
         image: dislexiaImg,
         heroImage: dislexiaHeroImg,
         alt: "Niña confundida en la escritura",
-        isPrincipal: false,
-        bentoClass: "service-card--span-3",
     },
     {
         id: "altas-capacidades",
@@ -96,8 +96,6 @@ export const services: ServiceItem[] = [
         image: altasCapacidadesImg,
         heroImage: altasCapacidadesHeroImg,
         alt: "Niño leyendo un libro",
-        isPrincipal: false,
-        bentoClass: "service-card--span-3",
         imagePosition: "50% 75%",
     },
     {
@@ -110,8 +108,6 @@ export const services: ServiceItem[] = [
         image: asesoramientoPadresImg,
         heroImage: asesoramientoPadresHeroImg,
         alt: "Sesión de orientación y diálogo con padres y madres",
-        isPrincipal: false,
-        bentoClass: "service-card--span-3",
     },
     {
         id: "psicologia-juvenil",
@@ -123,8 +119,6 @@ export const services: ServiceItem[] = [
         image: psicologiaJuvenilImg,
         heroImage: psicologiaJuvenilHeroImg,
         alt: "Adolescente en sesión de apoyo y bienestar emocional",
-        isPrincipal: false,
-        bentoClass: "service-card--span-5",
     },
     {
         id: "informes-psicopedagogicos",
@@ -136,8 +130,5 @@ export const services: ServiceItem[] = [
         image: informesImg,
         heroImage: informesHeroImg,
         alt: "Informe diagnóstico y plan de acción psicopedagógico",
-        isPrincipal: true,
-        principalVariant: "content-first",
-        bentoClass: "service-card--principal service-card--span-7",
     },
 ];

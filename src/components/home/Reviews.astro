@@ -1,34 +1,7 @@
 ---
 import { Star, ChevronLeft, ChevronRight, ArrowRight } from "lucide-astro";
 
-/**
- * ============================================================================
- * GOOGLE BUSINESS PROFILE INTEGRATION POINT
- * ============================================================================
- * Esta sección está preparada para conectarse a Google Business Profile API
- * o Google Places API (New) sin modificar la UI ni el maquetado.
- *
- * Estructura requerida:
- * {
- *   rating: number | null,
- *   totalReviews: number | null,
- *   reviews: Array<{
- *     authorName: string,
- *     authorPhoto?: string,
- *     rating: number,
- *     text: string,
- *     relativeTime: string,
- *     reviewUrl?: string
- *   }>
- * }
- *
- * Instrucciones de conexión:
- * 1. Definir GOOGLE_PLACES_API_KEY y GOOGLE_PLACE_ID en variables de entorno privadas.
- * 2. En build time (o SSR endpoint), llamar a:
- *    https://places.googleapis.com/v1/places/{placeId}?fields=reviews,rating,userRatingCount&key=${key}&languageCode=es
- * 3. Mapear la respuesta a `googleData` y poner `isGoogleConnected = true`.
- * ============================================================================
- */
+// Reseñas y cifras gestionadas manualmente, sin consultas a APIs externas.
 
 export interface GoogleReview {
     authorName: string;
@@ -45,53 +18,101 @@ export interface GoogleBusinessProfileData {
     reviews: GoogleReview[];
 }
 
-// URL fallback del perfil en Google Maps / Business Profile
+// Enlace al perfil en Google Maps.
 const googleProfileUrl = "https://maps.google.com/?cid=4225123225601099366";
 
 const googleData: GoogleBusinessProfileData = {
     rating: 5,
-    totalReviews: 46,
+    totalReviews: 59,
     reviews: [
         {
-            authorName: "will_grao fdez",
+            authorName: "Sandra Marco Campos",
             rating: 5,
-            relativeTime: "hace 1 semana",
-            text: "Gran experiencia de la mano de Ana que nos ha guiado con nuestro hijo. La conocí buscando por google porque no tenia ni idea de donde acudir. Vi buenas reseñas y la experiencia que tenia en este area y no me lo pensé, aun asi, la atencion, la cercania y la forma de comunicar ha superado mis expectativas. GRACIAS",
+            relativeTime: "hace 4 días",
+            text: "Una gran profesional y, sobre todo, una maravillosa persona. Nos ha dado las herramientas que buscábamos. Recomendable 100%.",
             reviewUrl: googleProfileUrl,
         },
         {
-            authorName: "Elena Alegre Millan",
+            authorName: "Cristina Faubel Serra",
             rating: 5,
-            relativeTime: "hace 2 semanas",
-            text: "Solo podemos tener palabras de agradecimiento para Ana. Desde el primer momento nos hizo sentir muy tranquilos y, sobre todo, supo conectar con nuestro hijo de una manera muy especial. Es una persona cercana, cariñosa y muy profesional, y se nota que trabaja con mucha dedicación.Para nosotros es muy importante ver a nuestro hijo cómodo, escuchado y con confianza, y con Ana lo hemos conseguido. Estamos muy contentos con el proceso y con la evolución que estamos viendo. Sin duda, ha sido una muy buena decisión contar con ella. ❤️",
+            relativeTime: "hace 6 días",
+            text: "Un trato muy familiar, se nota q le gusta y eso se nota nada más entrar",
             reviewUrl: googleProfileUrl,
         },
         {
-            authorName: "cosmin r",
+            authorName: "Vane Saura",
             rating: 5,
-            relativeTime: "hace 2 semanas",
-            text: "Ana es una profesional,  todo muy bien en su trabajo y muy buenos consejos.",
+            relativeTime: "hace 6 días",
+            text: "Ana ha atendido a nuestro peque y la experiencia no ha podido ser mejor. Es una psicóloga cariñosa y cercana con los peques, algo que se nota desde el primer minuto. Sabe cómo ganarse su confianza, haciendo que se sientan seguros, escuchados y en un entorno de total confianza. Su empatía y dedicación marcan la diferencia. Agradecerle su gran labor. La recomendamos al 100%.",
             reviewUrl: googleProfileUrl,
         },
         {
-            authorName: "Mayte a.",
+            authorName: "Jessica Basilio",
             rating: 5,
-            relativeTime: "hace 3 semanas",
-            text: "Ana es una gran profesional, muy atenta y empática con los niñoos y los padres. Con abundantes herramientas de diagnóstico y tratamiento. Muy agradecidas por su trabajo y dedicación.",
+            relativeTime: "hace 6 días",
+            text: "Estábamos muy perdidos con el comportamiento de nuestro hijo y conocer a Ana ha sido un antes y un después en nuestra vida. Nos ha realizado un informe completo con un diagnóstico de nuestro hijo, nos ha dado herramientas para mejorar comportamientos y rutinas, incluso en el ámbito escolar está colaborando para mejorar su nivel académico y su bienestar emocional, ha sido muy profesional y muy cariñosa. Todavía nos queda camino que recorrer con nuestro hijo y nos acompañará mucho tiempo porque mi hijo es feliz con ella. Ana ha sabido conocerlo, analizarlo y comprendernos de una forma excelente.",
             reviewUrl: googleProfileUrl,
         },
         { 
-            authorName: "A SB",
+            authorName: "mariam menendez",
             rating: 5,
-            relativeTime: "hace 3 semanas",
-            text: "Me ha encantado conocer a Ana,nos ha ayudado mucho con nuestra hija,diagnosticada de tdah.Aún queda un largo camino,pero junto a ella,se hará más fácil.Muchas gracias por todo.",
+            relativeTime: "hace 1 semana",
+            text: "Conectamos enseguida, y lo más agradable de la experiencia es la felicidad con que mi niña acude a ella",
             reviewUrl: googleProfileUrl,
         },
         {
-            authorName: "Benedicte Nederlants",
+            authorName: "Patricia Castell Gonzalez",
             rating: 5,
-            relativeTime: "hace un mes",
-            text: "Acudimos a Ana porque estábamos perdidos y no sabíamos que hacer con nuestro hijo. Su respuesta fue inmediata y su trato muy cercano y profesional. Como ella se describe; nos ayudo a evaluar sus dificultades de aprendizaje, atención y conducta y a poner un nombre en su comportamiento. Así como darnos una hoja de ruta para casa y para el colegio. Recomiendo a Ana a padres que como nosotros no saben que hacer ni como empezar!! Gracias Ana.",
+            relativeTime: "hace 1 semana",
+            text: "Hemos ido por primera vez a ver Ana y me ha parecido que es una persona súper cercana y honesta. Tenemos un hijo de dos años qué es bastante movidito y teníamos nuestras dudas e inseguridades porque nunca habíamos ido a un psicólogo infantil y no sabíamos qué nos podían decir o cómo nos podían ayudar y ella nos lo ha explicado estupendamente, nos ha aconsejado y nos ha guiado como esperábamos.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "angel G.a",
+            rating: 5,
+            relativeTime: "hace 2 semanas",
+            text: "Recomiendo enormemente a la psicóloga infantil Ana. Su atención y profesionalidad han sido excepcionales desde el primer día. Gracias a su trato cercano y metodología, nos sentimos muy apoyados y obtuvimos una valoración muy positiva y útil para el bienestar de nuestro hijo. Es una gran profesional.La recomiendo 100 %.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Patricia",
+            rating: 5,
+            relativeTime: "hace 3 semanas",
+            text: "Una gran profesional, accesible, cercana y muy empática y cariñosa. 100% recomendable",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Ester Hernandez Sanchez",
+            rating: 5,
+            relativeTime: "hace 3 semanas",
+            text: "Hemos estado esta mañana con Ana y la verdad es que hemos salido muy contentas. Desde el primer momento nos transmitió mucha seguridad y tranquilidad, y nos dio herramientas muy útiles para entender mejor a nuestra hija y saber cómo acompañarla en esta etapa.Además, estuvo con nosotras más tiempo del que duraba la visita y en ningún momento nos hizo sentir que tuviéramos que irnos ni nos transmitió ningún tipo de presión. Todo lo contrario, nos hizo sentir muy cómodas, escuchadas y comprendidas.También nos ha gustado mucho su forma de trabajar, porque en ningún momento hemos sentido que quisiera que volviéramos por volver. Nos ha dado unas pautas para poner en práctica y nos ha dicho que, si queremos, podemos volver en diciembre para contarle cómo ha ido. Eso nos ha transmitido muchísima confianza. Sin duda, si volvemos a necesitar ayuda o nos surge cualquier duda, volveremos a contar con ella. Estamos muy agradecidas y la recomendamos totalmente.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Maica Pérez",
+            rating: 5,
+            relativeTime: "hace 1 mes",
+            text: "Gran profesional que conecta con los adolescentes.",
+            reviewUrl: googleProfileUrl,
+        },{
+            authorName: "Rosa",
+            rating: 5,
+            relativeTime: "hace 1 mes",
+            text: "Muy buena la experiencia con Ana, es muy profesional y nos ha ayudado mucho con nuestro hijo.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Carlos Dauden",
+            rating: 5,
+            relativeTime: "hace 1 semana",
+            text: "Una gran profesional que destaca por sus amplios conocimientos, su experiencia y su capacidad para transmitir información compleja de una forma clara, cercana y comprensible. Combina explicaciones técnicas y rigurosas con un lenguaje natural y ejemplos cotidianos que permiten entender fácilmente incluso los conceptos más complejo. Se percibe que cuenta con una sólida formación académica, una amplia experiencia profesional y, además, una valiosa experiencia vital que aporta profundidad y perspectiva a sus explicaciones.Destaca especialmente su capacidad para escuchar, comprender y adaptar su enfoque a medida que va conociendo al paciente. No se limita a aplicar conocimientos o pautas de forma genérica, sino que analiza cada caso con atención, ajusta sus valoraciones y busca identificar con precisión el origen de las dificultades para ofrecer la ayuda más adecuada.Transmite seguridad, conocimiento y confianza. Se nota que sabe de lo que habla y que tiene tanto la preparación como la sensibilidad necesarias para ejercer su profesión con rigor y humanidad. Una psicóloga altamente recomendable por su profesionalidad, claridad y capacidad para comprender a las personas.",
+            reviewUrl: googleProfileUrl,
+        },
+        {
+            authorName: "Araceli Gil López",
+            rating: 5,
+            relativeTime: "hace 1 mes",
+            text: "Estamos encantados y muy agradecidos con la atención y profesionalidad de Ana. Desde el primer momento ha sabido conectar con nuestra hija, ganándose su confianza y haciendo que se sienta cómoda, escuchada y comprendida. Para nosotros ha sido muy importante sentir que nuestra hija está en buenas manos y contar con alguien que la acompaña con tanto cariño y dedicación. Estamos muy contentos con su evolución y, sin duda, la recomendamos de corazón. ❤️🫂🥰",
             reviewUrl: googleProfileUrl,
         },
     ],
@@ -151,7 +172,7 @@ const googleData: GoogleBusinessProfileData = {
                     <span class="reviews__rating-text">
                         <span id="google-badge-score"><strong id="google-rating">5</strong>/5</span>
                         <span class="reviews__dot">.</span>
-                        <span id="google-badge-count"><span id="google-review-count">46</span> reseñas</span>
+                        <span id="google-badge-count"><span id="google-review-count">59</span> reseñas</span>
                     </span>
                 </div>
             </a>
@@ -864,47 +885,8 @@ const googleData: GoogleBusinessProfileData = {
         });
     }
 
-    async function loadGooglePlaceData() {
-        try {
-            const response = await fetch("/api/google-place");
-            if (!response.ok) {
-                throw new Error(`HTTP error ${response.status}`);
-            }
-            const data = await response.json();
-
-            if (data.rating !== undefined && data.rating !== null) {
-                const ratingEl = document.getElementById("google-rating");
-                if (ratingEl) {
-                    ratingEl.textContent = Number(data.rating).toFixed(1);
-                }
-            }
-
-            if (data.totalReviews !== undefined && data.totalReviews !== null) {
-                const countEl = document.getElementById("google-review-count");
-                if (countEl) {
-                    countEl.textContent = String(data.totalReviews);
-                }
-            }
-
-            if (data.googleMapsUrl) {
-                const profileLink = document.getElementById("google-profile-link") as HTMLAnchorElement | null;
-                if (profileLink) {
-                    profileLink.href = data.googleMapsUrl;
-                }
-
-                const reviewsLink = document.getElementById("google-reviews-link") as HTMLAnchorElement | null;
-                if (reviewsLink) {
-                    reviewsLink.href = data.googleMapsUrl;
-                }
-            }
-        } catch (error) {
-            console.error("Error al cargar datos dinámicos de Google Places:", error);
-        }
-    }
-
     function initReviews() {
         initReviewsCarousel();
-        loadGooglePlaceData();
     }
 
     document.addEventListener("DOMContentLoaded", initReviews);

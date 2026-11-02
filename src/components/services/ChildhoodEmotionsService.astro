@@ -1,0 +1,213 @@
+---
+import { HeartHandshake, Home, ListChecks, MessageSquare, Moon, ShieldCheck, Smile, Sprout, Users } from "lucide-astro";
+import { services } from "../../data/services";
+import ServiceIntro from "./ServiceIntro.astro";
+import ServiceSignals from "./ServiceSignals.astro";
+import ServiceAssessment from "./ServiceAssessment.astro";
+import ServiceManifesto from "./ServiceManifesto.astro";
+import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
+import RelatedServices, { type RelatedServiceItem } from "./RelatedServices.astro";
+import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
+import ServiceCTA from "./ServiceCTA.astro";
+
+const childhoodService = services.find(
+    (service) => service.id === "emociones-habitos-infantiles",
+);
+
+if (!childhoodService) {
+    throw new Error("No se ha encontrado el servicio de emociones y hábitos infantiles.");
+}
+
+const situations = [
+    {
+        icon: ShieldCheck,
+        text: "Miedos infantiles: miedo a dormir solo, a separarse de sus padres o a determinadas situaciones.",
+    },
+    {
+        icon: Moon,
+        text: "Dificultades para dormir: problemas para conciliar el sueño, despertares frecuentes o preocupaciones nocturnas.",
+    },
+    {
+        icon: Smile,
+        text: "Rabietas y frustración: enfados intensos y dificultades para expresar o regular sus emociones.",
+    },
+    {
+        icon: Sprout,
+        text: "Dificultades para ir al baño: miedos, resistencia o dificultades relacionadas con hábitos de autonomía y control de esfínteres.",
+    },
+    {
+        icon: Users,
+        text: "Inseguridad y separación: dificultad para quedarse en el colegio, estar con otras personas o afrontar situaciones nuevas.",
+    },
+    {
+        icon: Home,
+        text: "Cambios de comportamiento: celos, irritabilidad o cambios emocionales ante nuevas circunstancias familiares.",
+    },
+];
+
+const perspectives = [
+    {
+        number: "01",
+        icon: MessageSquare,
+        title: "Escuchar y comprender",
+        text: "Conocer qué está sucediendo, cuándo aparecen las dificultades y cómo las vive el niño.",
+    },
+    {
+        number: "02",
+        icon: HeartHandshake,
+        title: "Valorar sus necesidades",
+        text: "Tener en cuenta su edad, desarrollo, emociones, rutinas y entorno familiar.",
+    },
+    {
+        number: "03",
+        icon: ListChecks,
+        title: "Acompañar con pautas claras",
+        text: "Plantear orientaciones y apoyos ajustados a cada situación, revisando su evolución.",
+    },
+];
+
+// Pendiente de validación de Ana: alcance de la atención en estas seis áreas,
+// especialmente sueño, control de esfínteres y cambios familiares.
+const areas: AreaItem[] = [
+    {
+        icon: ShieldCheck,
+        title: "Miedos y preocupaciones infantiles",
+        description: "Comprender qué le asusta, cómo lo expresa y qué apoyo necesita para afrontar esas situaciones respetando su ritmo.",
+        span: "md:col-span-7",
+        bgVariant: "primary",
+    },
+    {
+        icon: Moon,
+        title: "Sueño y rutinas nocturnas",
+        description: "Revisar las rutinas y las preocupaciones al acostarse. Las dificultades de sueño pueden requerir valoración pediátrica; no siempre tienen un origen psicológico.",
+        span: "md:col-span-5",
+        bgVariant: "sage",
+    },
+    {
+        icon: Smile,
+        title: "Rabietas y regulación emocional",
+        description: "Explorar cuándo aparecen los enfados y ayudarle a expresar lo que siente, con apoyos adecuados a su edad y a cada situación.",
+        span: "md:col-span-5",
+        bgVariant: "white",
+    },
+    {
+        icon: Sprout,
+        title: "Hábitos de autonomía y control de esfínteres",
+        description: "Acompañar miedos o resistencias sin presiones. Ante dolor, estreñimiento, escapes u otras dudas sobre su salud, es necesaria una valoración pediátrica.",
+        span: "md:col-span-7",
+        bgVariant: "dusty-rose",
+    },
+    {
+        icon: Users,
+        title: "Separación y adaptación a nuevas situaciones",
+        description: "Entender qué dificulta las despedidas o los cambios de rutina y valorar formas de acompañarle que le aporten seguridad.",
+        span: "md:col-span-5",
+        bgVariant: "primary-dark",
+    },
+    {
+        icon: Home,
+        title: "Cambios familiares y seguridad emocional",
+        description: "Dar espacio a lo que siente ante la llegada de un hermano, una separación u otros cambios familiares, con referencias cotidianas que le ayuden a orientarse.",
+        span: "md:col-span-7",
+        bgVariant: "sage-light",
+    },
+];
+
+const relatedServicesList: RelatedServiceItem[] = [
+    {
+        description: "Orientación a cuidadores sobre crianza, límites, comunicación y convivencia.",
+        href: "/asesoramiento-a-padres/",
+    },
+    {
+        description: "Apoyo emocional cuando las dificultades aparecen en la adolescencia.",
+        href: "/orientacion-adolescentes/",
+    },
+];
+
+const faqs: FAQItem[] = [
+    {
+        question: "¿Cómo sé si es una fase de su desarrollo o necesita ayuda?",
+        answer: "La edad, la intensidad, la duración y cómo afecta a su día a día ayudan a valorar la situación. Si el malestar se mantiene o limita su descanso, sus relaciones o las rutinas familiares, podéis consultar. Una primera valoración permite orientaros sin dar por hecho un diagnóstico.",
+    },
+    {
+        question: "¿Mi hijo tiene que acudir a las sesiones?",
+        answer: "Depende de su edad y del motivo de consulta. En ocasiones conviene empezar hablando con los cuidadores; en otras, contar también con el niño. Su participación y la forma de organizar las sesiones se acuerdan con la familia tras conocer la situación.",
+    },
+    {
+        question: "¿Los problemas de sueño o de ir al baño son siempre psicológicos?",
+        answer: "No. Pueden intervenir aspectos madurativos, hábitos o causas físicas. Cuando corresponde, es necesaria una valoración pediátrica, especialmente si hay dolor, estreñimiento, dificultades respiratorias durante el sueño o cambios persistentes. El acompañamiento psicológico no sustituye la atención médica.",
+    },
+    {
+        question: "¿Se trabaja también con las familias?",
+        answer: "Sí. La familia aporta información sobre las rutinas y sobre cómo vive el niño las dificultades. Las orientaciones se acuerdan teniendo en cuenta sus necesidades y lo que podéis poner en práctica en casa, revisando cómo va evolucionando la situación.",
+    },
+];
+---
+
+<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+    <ServiceIntro
+        breadcrumbLabel={childhoodService.shortTitle}
+        eyebrow="PSICOLOGÍA INFANTIL · EMOCIONES Y HÁBITOS"
+        title="Cuando los miedos, las rabietas o el sueño empiezan a preocuparos"
+        description={[
+            "No todas las dificultades infantiles están relacionadas con el colegio o con un diagnóstico. Los miedos, las rabietas, los problemas de sueño o algunas dificultades en los hábitos cotidianos pueden generar preocupación en toda la familia.",
+            "Os acompaño para comprender qué está ocurriendo, valorar las necesidades de vuestro hijo y encontrar pautas adaptadas a su edad y a vuestra situación.",
+        ]}
+        ctaText="Cuéntame vuestro caso"
+        image={childhoodService.heroImage}
+        imageAlt={childhoodService.alt}
+    />
+
+    <ServiceSignals
+        title="¿Reconocéis alguna de estas situaciones?"
+        description="Estas situaciones pueden vivirse de formas muy distintas según la edad y el momento de cada niño. Consultar permite ponerlas en contexto, sin convertir una dificultad cotidiana en una etiqueta."
+        signals={situations}
+    />
+
+    <ServiceAssessment
+        title="Antes de buscar soluciones, necesitamos entender qué le ocurre"
+        description="Partimos de lo que observáis en casa y de cómo vive vuestro hijo las dificultades. Esa información nos ayuda a decidir qué apoyo puede necesitar."
+        perspectives={perspectives}
+        diagramLabels={["Qué siente", "Qué necesita", "Cómo acompañarle"]}
+    />
+
+    <ServiceManifesto
+        secondaryPhrase="No siempre se trata de corregir una conducta."
+        secondaryHighlight="corregir una conducta"
+        mainPhrase="A veces, primero necesitamos comprender qué está expresando."
+        mainHighlight="comprender"
+        explanation="Detrás de un miedo, una rabieta o una dificultad cotidiana pueden existir necesidades diferentes. Comprenderlas permite decidir cómo acompañar al niño sin recurrir a etiquetas precipitadas."
+    />
+
+    <ServiceAreas title="¿En qué situaciones puedo ayudaros?" areas={areas} />
+
+    <RelatedServices
+        title="Otros apoyos que pueden ayudaros"
+        description="Si lo que necesitáis es revisar vuestra forma de acompañarle como cuidadores, podéis consultar el asesoramiento a padres. Para dificultades propias de la adolescencia, el apoyo se adapta a esa etapa."
+        services={relatedServicesList}
+    />
+
+    <ServiceFAQ title="Preguntas frecuentes sobre emociones y hábitos infantiles" faqs={faqs} />
+
+    <ServiceCTA
+        title="¿Hay algo de su día a día que os preocupa?"
+        description="Cuéntame brevemente qué está ocurriendo y valoraremos cuál puede ser el siguiente paso para vuestra familia."
+        primaryCtaText="Cuéntame vuestro caso"
+        primaryCtaHref="#contacto"
+        phoneText="Llama al 614 99 21 48"
+    >
+        <p slot="description" class="childhood-service__cta-description">
+            Cuéntame brevemente qué está ocurriendo y valoraremos cuál puede ser el siguiente paso para vuestra familia.
+        </p>
+    </ServiceCTA>
+</main>
+
+<style>
+    .childhood-service__cta-description {
+        margin: 1.5rem 0 0;
+        color: var(--color-primary-dark);
+        font-size: 1.05rem;
+        line-height: 1.7;
+        text-wrap: pretty;
+    }
+</style>

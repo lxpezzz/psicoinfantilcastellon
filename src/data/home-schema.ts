@@ -12,7 +12,7 @@ export const professional = {
     "@type": "Person",
     "@id": `${homeUrl}#professional`,
     name: "Ana Díaz Berbel",
-    jobTitle: "psicóloga sanitaria infantil y juvenil",
+    jobTitle: "psicóloga infantil y juvenil",
     knowsAbout: [
         "Psicología infantil",
         "Psicología juvenil",

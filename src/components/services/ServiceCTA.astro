@@ -42,6 +42,7 @@ const hasTitleUnderline = titleParts?.length === 2;
                     </>
                 ) : title}
             </h2>
+            <slot name="description" />
         </div>
 
         <div class="flex flex-col gap-3.5 sm:flex-row sm:items-center md:w-[20rem] md:flex-col md:items-stretch shrink-0">

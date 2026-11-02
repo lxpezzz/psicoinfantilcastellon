@@ -5,7 +5,7 @@ seoTitle: "Qué hacer ante una rabieta infantil | PsicoInfantil"
 description: "Ana Díaz Berbel comparte su experiencia ante una rabieta infantil y reflexiona sobre cómo acompañar a los niños en momentos de desbordamiento emocional."
 publishDate: 2026-10-19
 author: "Ana Díaz Berbel"
-category: "Orientación familiar"
+category: "Psicología infantil"
 image: "../../images/blog/rabieta-infantil.webp"
 imageAlt: "Madre abrazando y consolando a su hijo pequeño durante un momento de frustración"
 draft: false
@@ -71,5 +71,7 @@ Y ya no me importó lo que pudiera pensar nadie. Solo estábamos él y yo, agota
 ---
 
 Las rabietas forman parte del desarrollo infantil, pero cuando son muy intensas, frecuentes o afectan de forma importante a la vida familiar, puede ser útil buscar orientación profesional.
+
+El acompañamiento en [emociones y hábitos infantiles](/emociones-y-habitos-infantiles/) permite comprender qué está viviendo el niño y valorar sus necesidades cuando las rabietas u otras dificultades cotidianas empiezan a preocuparos.
 
 Si tienes dudas sobre cómo acompañar a tu hijo, puedes conocer más sobre mi servicio de [asesoramiento a padres](/asesoramiento-a-padres/).

@@ -1,14 +1,4 @@
-/**
- * Reviews Data Source
- * 
- * ARCHITECTURE NOTE FOR GOOGLE BUSINESS PROFILE API:
- * When connecting to Google Business Profile API / Places API:
- * 1. Fetch reviews server-side (build time or SSR route / API endpoint).
- *    Endpoint: https://places.googleapis.com/v1/places/{placeId}?fields=reviews,rating,userRatingCount
- * 2. Keep GOOGLE_PLACES_API_KEY secure in private env vars (e.g. import.meta.env.GOOGLE_PLACES_API_KEY).
- * 3. Map Google's review objects to the `ReviewItem` interface below.
- * 4. Pass the resulting array and summary to `Reviews.astro`.
- */
+// Datos manuales de reseñas; sin integración con APIs externas.
 
 export interface ReviewItem {
     id: string;

@@ -16,13 +16,13 @@ import { services } from "../../data/services";
             </p>
         </header>
 
-        <!-- Bento Mosaic Grid -->
+        <!-- Cuadrícula de los nueve servicios -->
         <div class="services__bento">
             {
                 services.map((service) => (
                     <a
                         href={service.href}
-                        class={`service-card ${service.bentoClass} ${service.isPrincipal ? `service-card--${service.principalVariant}` : ""}`}
+                        class="service-card"
                         aria-label={`Ver servicio: ${service.title}`}
                     >
                         <div class="service-card__media">
@@ -31,23 +31,11 @@ import { services } from "../../data/services";
                                 alt={service.alt}
                                 class="service-card__img"
                                 style={`object-position: ${service.imagePosition ?? "50% 50%"};`}
-                                width={service.isPrincipal ? 720 : 540}
+                                width={540}
                                 quality={85}
                                 format="webp"
-                                widths={
-                                    service.isPrincipal
-                                        ? [270, 360, 540, 720]
-                                        : [270, 360, 540]
-                                }
-                                sizes={
-                                    service.isPrincipal
-                                        ? "(max-width: 680px) calc(100vw - 40px), (max-width: 1040px) calc((100vw - 64px) * 0.53), (max-width: 1260px) calc((100vw - 64px) * 0.31), 390px"
-                                        : service.bentoClass.includes(
-                                                "service-card--span-5",
-                                            )
-                                          ? "(max-width: 680px) calc(100vw - 36px), (max-width: 1040px) calc((100vw - 64px) / 2), (max-width: 1260px) calc((100vw - 80px) * 0.416667), 493px"
-                                          : "(max-width: 680px) calc(100vw - 36px), (max-width: 1040px) calc((100vw - 64px) / 2), (max-width: 1260px) calc((100vw - 104px) / 4), 285px"
-                                }
+                                widths={[270, 360, 540]}
+                                sizes="(max-width: 680px) calc(100vw - 36px), (max-width: 980px) calc((100vw - 62px) / 2), (max-width: 1260px) calc((100vw - 96px) / 3), 388px"
                                 loading="lazy"
                             />
                             <div
@@ -135,29 +123,12 @@ import { services } from "../../data/services";
         text-wrap: balance;
     }
 
-    /* ==========================================================================
-       Desktop Bento Mosaic Grid (12 Columns)
-       Row 1: [Principal 1: 7 cols] [Secundario 1: 5 cols]
-       Row 2: [Secundario 2: 3 cols] [Secundario 3: 3 cols] [Secundario 4: 3 cols] [Secundario 5: 3 cols]
-       Row 3: [Secundario 6: 5 cols] [Principal 2: 7 cols]
-       ========================================================================== */
+    /* Tres columnas y tres filas de tarjetas del mismo tamaño en escritorio. */
     .services__bento {
         display: grid;
-        grid-template-columns: repeat(12, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-auto-rows: 1fr;
         gap: clamp(1.25rem, 2vw, 1.75rem);
-    }
-
-    /* Column Spans */
-    .service-card--span-7 {
-        grid-column: span 7;
-    }
-
-    .service-card--span-5 {
-        grid-column: span 5;
-    }
-
-    .service-card--span-3 {
-        grid-column: span 3;
     }
 
     /* ==========================================================================
@@ -286,120 +257,10 @@ import { services } from "../../data/services";
         transform: translateX(4px);
     }
 
-    /* ==========================================================================
-       Principal Cards: Expansive 7-Column Bento Feature Layout
-       - Desktop: Horizontal split (one with media on the left, one on the right)
-       - Larger visual prominence and richer storytelling
-       ========================================================================== */
-    @media (min-width: 1041px) {
-        .service-card--principal {
-            display: grid;
-            grid-template-columns: 1.15fr 1fr;
-            min-height: 380px;
-        }
-
-        .service-card--content-first {
-            grid-template-columns: 1fr 1.15fr;
-        }
-
-        .service-card--content-first .service-card__media {
-            order: 2;
-        }
-
-        .service-card--content-first .service-card__body {
-            order: 1;
-        }
-
-        .service-card--principal .service-card__media {
-            aspect-ratio: auto;
-            height: 100%;
-            min-height: 380px;
-        }
-
-        .service-card--principal .service-card__body {
-            padding: clamp(1.8rem, 2.4vw, 2.5rem);
-            gap: 1.5rem;
-        }
-
-        .service-card--principal .service-card__title {
-            font-size: clamp(1.35rem, 1.7vw, 1.6rem);
-            line-height: 1.25;
-            letter-spacing: -0.025em;
-        }
-
-        .service-card--principal .service-card__text {
-            font-size: clamp(0.96rem, 1.05vw, 1.04rem);
-            line-height: 1.6;
-        }
-
-        .service-card--principal .service-card__link {
-            font-size: 0.98rem;
-        }
-
-        /* 3-column cards fine-tuning */
-        .service-card--span-3 .service-card__media {
-            aspect-ratio: 16 / 11;
-        }
-
-        .service-card--span-3 .service-card__title {
-            font-size: 1.05rem;
-        }
-
-        .service-card--span-3 .service-card__text {
-            font-size: 0.88rem;
-            line-height: 1.5;
-        }
-    }
-
-    /* ==========================================================================
-       Tablet Breakpoint (max-width: 1040px and > 680px): 2 Columns
-       Principals span across 2 columns as prominent anchors; secondaries pair up.
-       ========================================================================== */
-    @media (max-width: 1040px) and (min-width: 681px) {
+    @media (max-width: 980px) and (min-width: 681px) {
         .services__bento {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 1.35rem;
-        }
-
-        /* Reset all desktop spans */
-        .service-card--span-7,
-        .service-card--span-5,
-        .service-card--span-3 {
-            grid-column: span 1;
-        }
-
-        /* The 2 Principals span full 2 columns as horizontal hero cards */
-        .service-card--principal {
-            grid-column: 1 / -1;
-            display: grid;
-            grid-template-columns: 1.1fr 1fr;
-            min-height: 320px;
-        }
-
-        .service-card--principal .service-card__media {
-            aspect-ratio: auto;
-            height: 100%;
-            min-height: 320px;
-        }
-
-        .service-card--principal .service-card__body {
-            padding: 1.8rem;
-        }
-
-        .service-card--principal .service-card__title {
-            font-size: 1.35rem;
-        }
-
-        .service-card--content-first {
-            grid-template-columns: 1fr 1.1fr;
-        }
-
-        .service-card--content-first .service-card__media {
-            order: 2;
-        }
-
-        .service-card--content-first .service-card__body {
-            order: 1;
         }
     }
 
@@ -451,26 +312,8 @@ import { services } from "../../data/services";
             gap: 1.25rem;
         }
 
-        .service-card,
-        .service-card--span-7,
-        .service-card--span-5,
-        .service-card--span-3,
-        .service-card--principal {
-            grid-column: 1 / -1 !important;
-            display: flex !important;
-            flex-direction: column !important;
+        .service-card {
             border-radius: 1.15rem;
-        }
-
-        .service-card--content-first .service-card__media,
-        .service-card--content-first .service-card__body {
-            order: unset !important;
-        }
-
-        .service-card__media {
-            aspect-ratio: 16 / 10 !important;
-            height: auto !important;
-            min-height: unset !important;
         }
 
         .service-card__body {
@@ -494,14 +337,6 @@ import { services } from "../../data/services";
             padding-top: 0.25rem;
         }
 
-        /* Give Principals slightly more punch on mobile */
-        .service-card--principal .service-card__media {
-            aspect-ratio: 16 / 9.5 !important;
-        }
-
-        .service-card--principal .service-card__title {
-            font-size: 1.26rem;
-        }
     }
 
     /* Accessibility: Reduced Motion */
