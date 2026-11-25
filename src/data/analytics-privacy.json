@@ -11,6 +11,7 @@
         "userProvidedData": false
     },
     "reviewedOutboundUrls": [
+        "https://7dstudio.es/",
         "https://business.safety.google/adsprocessorterms/",
         "https://maps.google.com/?cid=4225123225601099366",
         "https://policies.google.com/privacy?hl=es",
@@ -22,5 +23,35 @@
         "https://web3forms.com/privacy",
         "https://www.aepd.es",
         "https://www.google.com/maps/place//data=!4m2!3m1!1s0xd6001c8f1e3da0f:0x3aa2a7302234c666?sa=X&ved=1t:8290&ictx=111"
-    ]
+    ],
+    "acquisitionAttribution": {
+        "allowedReferrerHosts": [
+            "www.google.com",
+            "www.google.es",
+            "google.com",
+            "google.es",
+            "www.bing.com",
+            "bing.com",
+            "duckduckgo.com",
+            "search.yahoo.com",
+            "es.search.yahoo.com",
+            "www.ecosia.org",
+            "search.brave.com",
+            "maps.google.com",
+            "maps.google.es",
+            "www.cop-cv.org",
+            "cop-cv.org"
+        ],
+        "allowedCampaigns": [
+            {
+                "source": "google",
+                "medium": "gbp",
+                "name": "ficha_google",
+                "allowedContent": [
+                    "web",
+                    "cita"
+                ]
+            }
+        ]
+    }
 }

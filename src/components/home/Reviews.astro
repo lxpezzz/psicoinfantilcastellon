@@ -8,7 +8,7 @@ export interface GoogleReview {
     authorPhoto?: string;
     rating: number;
     text: string;
-    relativeTime: string;
+    publishedDate?: string;
     reviewUrl?: string;
 }
 
@@ -21,6 +21,8 @@ export interface GoogleBusinessProfileData {
 // Enlace al perfil en Google Maps.
 const googleProfileUrl = "https://maps.google.com/?cid=4225123225601099366";
 
+// Las fechas relativas estáticas se han sustituido para evitar referencias desactualizadas;
+// publishedDate admite fecha real cuando se verifique en la ficha de Google.
 const googleData: GoogleBusinessProfileData = {
     rating: 5,
     totalReviews: 59,
@@ -28,90 +30,78 @@ const googleData: GoogleBusinessProfileData = {
         {
             authorName: "Sandra Marco Campos",
             rating: 5,
-            relativeTime: "hace 4 días",
             text: "Una gran profesional y, sobre todo, una maravillosa persona. Nos ha dado las herramientas que buscábamos. Recomendable 100%.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Cristina Faubel Serra",
             rating: 5,
-            relativeTime: "hace 6 días",
             text: "Un trato muy familiar, se nota q le gusta y eso se nota nada más entrar",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Vane Saura",
             rating: 5,
-            relativeTime: "hace 6 días",
             text: "Ana ha atendido a nuestro peque y la experiencia no ha podido ser mejor. Es una psicóloga cariñosa y cercana con los peques, algo que se nota desde el primer minuto. Sabe cómo ganarse su confianza, haciendo que se sientan seguros, escuchados y en un entorno de total confianza. Su empatía y dedicación marcan la diferencia. Agradecerle su gran labor. La recomendamos al 100%.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Jessica Basilio",
             rating: 5,
-            relativeTime: "hace 6 días",
             text: "Estábamos muy perdidos con el comportamiento de nuestro hijo y conocer a Ana ha sido un antes y un después en nuestra vida. Nos ha realizado un informe completo con un diagnóstico de nuestro hijo, nos ha dado herramientas para mejorar comportamientos y rutinas, incluso en el ámbito escolar está colaborando para mejorar su nivel académico y su bienestar emocional, ha sido muy profesional y muy cariñosa. Todavía nos queda camino que recorrer con nuestro hijo y nos acompañará mucho tiempo porque mi hijo es feliz con ella. Ana ha sabido conocerlo, analizarlo y comprendernos de una forma excelente.",
             reviewUrl: googleProfileUrl,
         },
-        { 
+        {
             authorName: "mariam menendez",
             rating: 5,
-            relativeTime: "hace 1 semana",
             text: "Conectamos enseguida, y lo más agradable de la experiencia es la felicidad con que mi niña acude a ella",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Patricia Castell Gonzalez",
             rating: 5,
-            relativeTime: "hace 1 semana",
             text: "Hemos ido por primera vez a ver Ana y me ha parecido que es una persona súper cercana y honesta. Tenemos un hijo de dos años qué es bastante movidito y teníamos nuestras dudas e inseguridades porque nunca habíamos ido a un psicólogo infantil y no sabíamos qué nos podían decir o cómo nos podían ayudar y ella nos lo ha explicado estupendamente, nos ha aconsejado y nos ha guiado como esperábamos.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "angel G.a",
             rating: 5,
-            relativeTime: "hace 2 semanas",
             text: "Recomiendo enormemente a la psicóloga infantil Ana. Su atención y profesionalidad han sido excepcionales desde el primer día. Gracias a su trato cercano y metodología, nos sentimos muy apoyados y obtuvimos una valoración muy positiva y útil para el bienestar de nuestro hijo. Es una gran profesional.La recomiendo 100 %.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Patricia",
             rating: 5,
-            relativeTime: "hace 3 semanas",
             text: "Una gran profesional, accesible, cercana y muy empática y cariñosa. 100% recomendable",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Ester Hernandez Sanchez",
             rating: 5,
-            relativeTime: "hace 3 semanas",
             text: "Hemos estado esta mañana con Ana y la verdad es que hemos salido muy contentas. Desde el primer momento nos transmitió mucha seguridad y tranquilidad, y nos dio herramientas muy útiles para entender mejor a nuestra hija y saber cómo acompañarla en esta etapa.Además, estuvo con nosotras más tiempo del que duraba la visita y en ningún momento nos hizo sentir que tuviéramos que irnos ni nos transmitió ningún tipo de presión. Todo lo contrario, nos hizo sentir muy cómodas, escuchadas y comprendidas.También nos ha gustado mucho su forma de trabajar, porque en ningún momento hemos sentido que quisiera que volviéramos por volver. Nos ha dado unas pautas para poner en práctica y nos ha dicho que, si queremos, podemos volver en diciembre para contarle cómo ha ido. Eso nos ha transmitido muchísima confianza. Sin duda, si volvemos a necesitar ayuda o nos surge cualquier duda, volveremos a contar con ella. Estamos muy agradecidas y la recomendamos totalmente.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Maica Pérez",
             rating: 5,
-            relativeTime: "hace 1 mes",
             text: "Gran profesional que conecta con los adolescentes.",
             reviewUrl: googleProfileUrl,
-        },{
+        },
+        {
             authorName: "Rosa",
             rating: 5,
-            relativeTime: "hace 1 mes",
             text: "Muy buena la experiencia con Ana, es muy profesional y nos ha ayudado mucho con nuestro hijo.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Carlos Dauden",
             rating: 5,
-            relativeTime: "hace 1 semana",
             text: "Una gran profesional que destaca por sus amplios conocimientos, su experiencia y su capacidad para transmitir información compleja de una forma clara, cercana y comprensible. Combina explicaciones técnicas y rigurosas con un lenguaje natural y ejemplos cotidianos que permiten entender fácilmente incluso los conceptos más complejo. Se percibe que cuenta con una sólida formación académica, una amplia experiencia profesional y, además, una valiosa experiencia vital que aporta profundidad y perspectiva a sus explicaciones.Destaca especialmente su capacidad para escuchar, comprender y adaptar su enfoque a medida que va conociendo al paciente. No se limita a aplicar conocimientos o pautas de forma genérica, sino que analiza cada caso con atención, ajusta sus valoraciones y busca identificar con precisión el origen de las dificultades para ofrecer la ayuda más adecuada.Transmite seguridad, conocimiento y confianza. Se nota que sabe de lo que habla y que tiene tanto la preparación como la sensibilidad necesarias para ejercer su profesión con rigor y humanidad. Una psicóloga altamente recomendable por su profesionalidad, claridad y capacidad para comprender a las personas.",
             reviewUrl: googleProfileUrl,
         },
         {
             authorName: "Araceli Gil López",
             rating: 5,
-            relativeTime: "hace 1 mes",
             text: "Estamos encantados y muy agradecidos con la atención y profesionalidad de Ana. Desde el primer momento ha sabido conectar con nuestra hija, ganándose su confianza y haciendo que se sienta cómoda, escuchada y comprendida. Para nosotros ha sido muy importante sentir que nuestra hija está en buenas manos y contar con alguien que la acompaña con tanto cariño y dedicación. Estamos muy contentos con su evolución y, sin duda, la recomendamos de corazón. ❤️🫂🥰",
             reviewUrl: googleProfileUrl,
         },
@@ -241,7 +231,7 @@ const googleData: GoogleBusinessProfileData = {
                                                 {review.authorName}
                                             </span>
                                             <span class="review-card__date">
-                                                {review.relativeTime}
+                                                {review.publishedDate ?? "Reseña en Google"}
                                             </span>
                                         </div>
                                     </div>

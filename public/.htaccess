@@ -1,7 +1,19 @@
 RewriteEngine On
 
 # Canonical host placeholders are resolved from src/data/site.mjs during astro build.
-# Redirect the temporary Astro service URLs to the existing public URLs.
+# Redirect legacy legal and temporary Astro service URLs to the canonical public URLs (HTTP 301).
+RewriteRule ^cookies/?$ {{CANONICAL_ORIGIN}}/politica-de-cookies/ [R=301,L,NE]
+RewriteRule ^politica-de-privacidad/?$ {{CANONICAL_ORIGIN}}/privacidad/ [R=301,L,NE]
+
+RewriteRule ^services/asesoramiento-a-padres/?$ {{CANONICAL_ORIGIN}}/asesoramiento-a-padres/ [R=301,L,NE]
+RewriteRule ^services/evaluacion-y-diagnostico/?$ {{CANONICAL_ORIGIN}}/evaluacion-y-diagnostico/ [R=301,L,NE]
+RewriteRule ^services/informes-psicopedagogicos/?$ {{CANONICAL_ORIGIN}}/informes-psicopedagogicos/ [R=301,L,NE]
+RewriteRule ^services/mejora-del-rendimiento-escolar/?$ {{CANONICAL_ORIGIN}}/mejora-del-rendimiento-escolar/ [R=301,L,NE]
+RewriteRule ^services/orientacion-adolescentes/?$ {{CANONICAL_ORIGIN}}/orientacion-adolescentes/ [R=301,L,NE]
+RewriteRule ^services/tratamiento-altas-capacidades/?$ {{CANONICAL_ORIGIN}}/tratamiento-altas-capacidades/ [R=301,L,NE]
+RewriteRule ^services/tratamiento-dislexia/?$ {{CANONICAL_ORIGIN}}/tratamiento-dislexia/ [R=301,L,NE]
+RewriteRule ^services/tratamiento-tdah/?$ {{CANONICAL_ORIGIN}}/tratamiento-tdah/ [R=301,L,NE]
+
 RewriteRule ^servicios/rendimiento-escolar/?$ {{CANONICAL_ORIGIN}}/mejora-del-rendimiento-escolar/ [R=301,L,NE]
 RewriteRule ^servicios/evaluacion-diagnostico/?$ {{CANONICAL_ORIGIN}}/evaluacion-y-diagnostico/ [R=301,L,NE]
 RewriteRule ^servicios/tdah/?$ {{CANONICAL_ORIGIN}}/tratamiento-tdah/ [R=301,L,NE]
@@ -16,3 +28,11 @@ RewriteRule ^servicios/informes-psicopedagogicos/?$ {{CANONICAL_ORIGIN}}/informe
 RewriteCond %{HTTP_HOST} ^www\.psicoinfantilcastellon\.com$ [NC,OR]
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://psicoinfantilcastellon.com%{REQUEST_URI} [R=301,L,NE]
+
+# Cache larga e inmutable exclusivamente para assets con hash generados por Astro (/_astro/)
+<IfModule mod_setenvif.c>
+    <IfModule mod_headers.c>
+        SetEnvIf Request_URI "^/_astro/" ASTRO_HASHED_ASSET=1
+        Header set Cache-Control "public, max-age=31536000, immutable" env=ASTRO_HASHED_ASSET
+    </IfModule>
+</IfModule>

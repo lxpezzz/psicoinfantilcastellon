@@ -51,18 +51,8 @@ export default defineConfig({
         (new URL(page).pathname !== '/blog/' || hasPublishedBlogPosts),
     }),
   ],
-  redirects: {
-    '/cookies': '/politica-de-cookies/',
-    '/politica-de-privacidad': '/privacidad/',
-    '/services/asesoramiento-a-padres': '/asesoramiento-a-padres/',
-    '/services/evaluacion-y-diagnostico': '/evaluacion-y-diagnostico/',
-    '/services/informes-psicopedagogicos': '/informes-psicopedagogicos/',
-    '/services/mejora-del-rendimiento-escolar': '/mejora-del-rendimiento-escolar/',
-    '/services/orientacion-adolescentes': '/orientacion-adolescentes/',
-    '/services/tratamiento-altas-capacidades': '/tratamiento-altas-capacidades/',
-    '/services/tratamiento-dislexia': '/tratamiento-dislexia/',
-    '/services/tratamiento-tdah': '/tratamiento-tdah/',
-  },
+  // Las redirecciones permanentes 301 se gestionan en public/.htaccess (emitido en dist/.htaccess)
+  // para evitar archivos HTML HTTP 200 con meta refresh en LucusHost/LiteSpeed.
   vite: {
     plugins: [tailwindcss()],
   },

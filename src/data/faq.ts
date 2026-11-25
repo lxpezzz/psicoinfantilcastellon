@@ -2,6 +2,10 @@ export interface FAQItem {
     question: string;
     answer: string;
     highlight?: string;
+    link?: {
+        text: string;
+        href: string;
+    };
 }
 
 export const faqs: FAQItem[] = [
@@ -13,6 +17,10 @@ export const faqs: FAQItem[] = [
         question: "¿Cuánto dura una evaluación psicopedagógica?",
         answer: "Suele realizarse en 3 o 4 sesiones de trabajo directo con el niño o adolescente, seguidas de la corrección, elaboración del informe clínico y la sesión de devolución detallada a la familia.",
         highlight: "3 o 4 sesiones",
+        link: {
+            text: "Ver cómo es la evaluación psicopedagógica",
+            href: "/evaluacion-y-diagnostico/",
+        },
     },
     {
         question: "¿Os coordináis con el colegio o instituto?",
@@ -23,5 +31,9 @@ export const faqs: FAQItem[] = [
         question: "¿Trabajas con adolescentes?",
         answer: "Sí. Ofrezco un espacio seguro y confidencial adaptado a su etapa evolutiva, abordando dificultades académicas, gestión emocional, ansiedad, autoestima y relaciones interpersonales.",
         highlight: "Sí",
+        link: {
+            text: "Conocer el acompañamiento para adolescentes",
+            href: "/orientacion-adolescentes/",
+        },
     },
 ];

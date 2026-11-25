@@ -7,24 +7,9 @@ import MobileMenu from "../components/layout/MobileMenu.astro";
 import Layout from "../layouts/Layout.astro";
 import Contact from "../components/home/Contact.astro";
 import { getServiceSchema } from "../data/service-schema";
-import { siteUrl } from "../data/site.mjs";
 
 const seoTitle = "Miedos, rabietas y sueño infantil en Castellón | PsicoInfantil";
-const serviceSchema = getServiceSchema(Astro.url.pathname);
-const jsonLd = {
-    ...serviceSchema,
-    "@graph": [
-        ...serviceSchema["@graph"],
-        {
-            "@type": "BreadcrumbList",
-            itemListElement: [
-                { "@type": "ListItem", position: 1, name: "Inicio", item: new URL("/", siteUrl).href },
-                { "@type": "ListItem", position: 2, name: "Servicios", item: new URL("/#servicios", siteUrl).href },
-                { "@type": "ListItem", position: 3, name: "Psicología infantil", item: new URL("/emociones-y-habitos-infantiles/", siteUrl).href },
-            ],
-        },
-    ],
-};
+const jsonLd = getServiceSchema(Astro.url.pathname);
 ---
 
 <Layout

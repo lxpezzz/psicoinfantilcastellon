@@ -16,6 +16,29 @@
     border: 0 !important;
 }
 
+/* Accessible skip link: hidden until focused via keyboard */
+.skip-link {
+    position: fixed;
+    top: -100%;
+    left: 1rem;
+    z-index: 2000;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.75rem;
+    background: var(--color-primary-dark);
+    color: #ffffff;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(23, 54, 97, 0.24);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: 1rem;
+    outline: 3px solid var(--color-primary);
+    outline-offset: 3px;
+}
+
 /* Shared section width; each component keeps its responsive overrides. */
 .section-container {
     width: min(100% - 2.5rem, 1220px);

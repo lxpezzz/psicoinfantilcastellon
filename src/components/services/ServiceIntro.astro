@@ -125,6 +125,10 @@ const imageMaxWidth = Math.min(580, Math.round((image.width / image.height) * 46
                         />
                     </Button>
                 </div>
+
+                <p class="service-intro__author">
+                    Atención por <a href="/sobre-mi/" class="service-intro__author-link">Ana Díaz Berbel</a> · Psicóloga infantil y juvenil en Castellón · Col. CV08027
+                </p>
             </div>
 
             <div class="lg:col-span-5 xl:col-span-5">
@@ -157,5 +161,28 @@ const imageMaxWidth = Math.min(580, Math.round((image.width / image.height) * 46
     }
     :global(.ui-btn.service-intro__btn) {
         border-radius: 50% 10% 50% 10% / 10% 50% 10% 50%;
+    }
+    .service-intro__author {
+        margin: 1.15rem 0 0;
+        color: var(--color-text-soft);
+        font-size: 0.86rem;
+        line-height: 1.55;
+    }
+    .service-intro__author-link {
+        color: var(--color-primary-dark);
+        font-weight: 700;
+        text-decoration: underline;
+        text-decoration-color: rgba(23, 54, 97, 0.28);
+        text-underline-offset: 3px;
+        transition: color 0.2s ease, text-decoration-color 0.2s ease;
+    }
+    .service-intro__author-link:hover {
+        color: var(--color-primary);
+        text-decoration-color: var(--color-primary);
+    }
+    .service-intro__author-link:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+        border-radius: 4px;
     }
 </style>

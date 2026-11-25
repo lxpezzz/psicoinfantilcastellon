@@ -2,6 +2,10 @@
 export interface FAQItem {
     question: string;
     answer: string;
+    link?: {
+        text: string;
+        href: string;
+    };
 }
 
 interface Props {
@@ -49,6 +53,16 @@ const { title = "Preguntas frecuentes", description, faqs } = Astro.props;
                         </summary>
                         <div class="max-w-[72ch] pb-6 text-[0.98rem] leading-[1.7] text-[var(--color-text-soft)] [text-wrap:pretty]">
                             <p class="m-0">{faq.answer}</p>
+                            {faq.link && (
+                                <p class="m-0 mt-2.5">
+                                    <a
+                                        href={faq.link.href}
+                                        class="text-[0.92rem] font-semibold text-[var(--color-primary)] underline decoration-[rgba(36,79,158,0.35)] underline-offset-4 transition-colors hover:text-[var(--color-primary-dark)] hover:decoration-[var(--color-primary-dark)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                                    >
+                                        {faq.link.text}
+                                    </a>
+                                </p>
+                            )}
                         </div>
                     </details>
                 ))

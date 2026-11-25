@@ -5,6 +5,32 @@ import MobileMenu from "../components/layout/MobileMenu.astro";
 import AboutPage from "../components/about/AboutPage.astro";
 import Footer from "../components/layout/Footer.astro";
 import BottomNav from "../components/layout/BottomNav.astro";
+import { businessEntity, homeUrl, professional } from "../data/home-schema";
+import { siteUrl } from "../data/site.mjs";
+
+const pageUrl = new URL("/sobre-mi/", siteUrl).href;
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ProfilePage",
+            "@id": `${pageUrl}#profile`,
+            url: pageUrl,
+            name: "Ana Díaz Berbel | Psicóloga infantil en Castellón",
+            mainEntity: { "@id": professional["@id"] },
+        },
+        professional,
+        businessEntity,
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Inicio", item: homeUrl },
+                { "@type": "ListItem", position: 2, name: "Sobre mí", item: pageUrl },
+            ],
+        },
+    ],
+};
 ---
 
 <Layout
@@ -13,10 +39,11 @@ import BottomNav from "../components/layout/BottomNav.astro";
     imageAlt="Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón"
     title="Sobre mí | Ana Díaz Berbel · Psicóloga Infantil y Juvenil en Castellón"
     description="Conoce a Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón. Más de 20 años de experiencia acompañando a niños, adolescentes y familias."
+    jsonLd={jsonLd}
 >
     <Header />
     <MobileMenu />
-    <main class="site-main">
+    <main id="contenido-principal" class="site-main">
         <AboutPage />
     </main>
     <Footer />

@@ -17,6 +17,8 @@ const situations = [
         title: "Le cuesta concentrarse",
         description:
             "Se distrae con facilidad, pierde el hilo de lo que está haciendo o necesita mucho más tiempo del esperado para terminar tareas sencillas.",
+        linkText: "Valoración de la atención y el TDAH",
+        href: "/tratamiento-tdah/",
         icon: Compass,
     },
     {
@@ -24,6 +26,8 @@ const situations = [
         title: "Leer o escribir se ha convertido en una lucha",
         description:
             "La lectura requiere demasiado esfuerzo, confunde letras o palabras, evita leer o las tareas escritas terminan generando frustración.",
+        linkText: "Apoyo en dislexia y lectoescritura",
+        href: "/tratamiento-dislexia/",
         icon: BookOpen,
     },
     {
@@ -31,6 +35,8 @@ const situations = [
         title: "Sus resultados no reflejan su esfuerzo",
         description:
             "Estudia, dedica tiempo y lo intenta, pero las notas no acompañan. Poco a poco puede empezar a pensar que, haga lo que haga, no es suficiente.",
+        linkText: "Mejora del rendimiento escolar",
+        href: "/mejora-del-rendimiento-escolar/",
         icon: TrendingDown,
     },
     {
@@ -38,6 +44,8 @@ const situations = [
         title: "Se frustra o se bloquea con facilidad",
         description:
             "Ante una dificultad se enfada, se viene abajo o prefiere dejarlo. A veces el miedo a equivocarse termina pesando más que la propia tarea.",
+        linkText: "Emociones y hábitos infantiles",
+        href: "/emociones-y-habitos-infantiles/",
         icon: CircleAlert,
     },
     {
@@ -45,6 +53,8 @@ const situations = [
         title: "Pensáis que puede haber TDAH, dislexia o altas capacidades",
         description:
             "Hay señales que os hacen pensar que puede estar ocurriendo algo más y necesitáis entenderlo con claridad antes de sacar conclusiones.",
+        linkText: "Evaluación y diagnóstico psicopedagógico",
+        href: "/evaluacion-y-diagnostico/",
         icon: Sparkles,
     },
     {
@@ -52,6 +62,8 @@ const situations = [
         title: "Ya tenéis un diagnóstico, pero no sabéis qué hacer después",
         description:
             "Tenéis respuestas sobre lo que ocurre, pero ahora necesitáis convertirlas en pautas concretas para casa, el colegio y su día a día.",
+        linkText: "Asesoramiento a padres y familias",
+        href: "/asesoramiento-a-padres/",
         icon: CircleHelp,
     },
 ];
@@ -98,6 +110,10 @@ const rightSituations = situations.slice(3, 6);
                                 <p class="problem-card__text">
                                     {item.description}
                                 </p>
+                                <a href={item.href} class="problem-card__link">
+                                    <span>{item.linkText}</span>
+                                    <span aria-hidden="true">→</span>
+                                </a>
                             </article>
                         );
                     })
@@ -148,6 +164,10 @@ const rightSituations = situations.slice(3, 6);
                                 <p class="problem-card__text">
                                     {item.description}
                                 </p>
+                                <a href={item.href} class="problem-card__link">
+                                    <span>{item.linkText}</span>
+                                    <span aria-hidden="true">→</span>
+                                </a>
                             </article>
                         );
                     })
@@ -312,6 +332,30 @@ const rightSituations = situations.slice(3, 6);
         font-size: clamp(0.88rem, 0.95vw, 0.94rem);
         line-height: 1.55;
         font-weight: 420;
+    }
+
+    .problem-card__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.65rem;
+        color: var(--color-primary);
+        font-size: 0.85rem;
+        font-weight: 650;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .problem-card__link:hover {
+        color: var(--color-primary-dark);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .problem-card__link:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 3px;
+        border-radius: 4px;
     }
 
     /* ==========================================================================

@@ -1,5 +1,6 @@
 import { CONSENT_KEY, CONSENT_DATE_KEY, readCookieConsent } from "./cookie-consent";
 import { whatsappContactHref } from "../data/contact-links";
+import { resolveSanitizedAttribution } from "./analytics-attribution.mjs";
 
 declare global {
     interface Window {
@@ -12,6 +13,9 @@ declare global {
 
 const measurementId = (import.meta.env.PUBLIC_GA_MEASUREMENT_ID || "").trim();
 const privacyReviewed = import.meta.env.PUBLIC_GA_PRIVACY_REVIEWED === "true";
+// Permanece desactivada hasta aprobar explícitamente la ampliación de atribución
+// (origen saneado del referrer permitido y UTM controlados de ficha de Google).
+const attributionReviewed = import.meta.env.PUBLIC_GA_ATTRIBUTION_REVIEWED === "true";
 const validId = /^G-[A-Z0-9]+$/.test(measurementId);
 const deniedConsent = {
     analytics_storage: "denied",
@@ -33,6 +37,14 @@ function initializeAnalytics() {
     window.gtag("consent", "default", deniedConsent);
     if (validId) window[`ga-disable-${measurementId}`] = true;
 
+    const sanitizedAttribution = attributionReviewed
+        ? resolveSanitizedAttribution(
+              document.referrer,
+              window.location.search,
+              window.location.origin,
+          )
+        : { page_referrer: "", campaign: null };
+
     function pageContext() {
         // Canonical generada por Astro: nunca location.href, búsquedas ni fragmentos.
         const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
@@ -41,7 +53,7 @@ function initializeAnalytics() {
         url.hash = "";
         return {
             page_location: url.href,
-            page_referrer: "",
+            page_referrer: sanitizedAttribution.page_referrer,
             page_title: document.title,
         };
     }
@@ -102,6 +114,32 @@ function initializeAnalytics() {
         // También los eventos automáticos heredan una URL pública sin query/hash.
         window.gtag?.("set", pageContext());
         window.gtag?.("js", new Date());
+        const attributionConfig: Record<string, unknown> = attributionReviewed
+            ? sanitizedAttribution.campaign
+                ? {
+                      campaign_source: sanitizedAttribution.campaign.source,
+                      campaign_medium: sanitizedAttribution.campaign.medium,
+                      campaign_name: sanitizedAttribution.campaign.name,
+                      ...(sanitizedAttribution.campaign.content
+                          ? { campaign_content: sanitizedAttribution.campaign.content }
+                          : {}),
+                      campaign_id: "(not set)",
+                      campaign_term: "(not set)",
+                  }
+                : {
+                      campaign_id: "(not set)",
+                      campaign_term: "(not set)",
+                  }
+            : {
+                  ignore_referrer: true,
+                  campaign_source: "(direct)",
+                  campaign_medium: "(none)",
+                  campaign_name: "(not set)",
+                  campaign_id: "(not set)",
+                  campaign_term: "(not set)",
+                  campaign_content: "(not set)",
+              };
+
         window.gtag?.("config", measurementId, {
             // Única fuente de visitas: config de GA4. Nunca enviamos page_view a mano.
             send_page_view: true,
@@ -109,17 +147,11 @@ function initializeAnalytics() {
             allow_ad_personalization_signals: false,
             allow_enhanced_conversions: false,
             first_party_collection: false,
-            ignore_referrer: true,
             cookie_domain: "none",
             cookie_expires: 180 * 24 * 60 * 60,
             cookie_update: false,
             cookie_flags: "SameSite=Lax;Secure",
-            campaign_source: "(direct)",
-            campaign_medium: "(none)",
-            campaign_name: "(not set)",
-            campaign_id: "(not set)",
-            campaign_term: "(not set)",
-            campaign_content: "(not set)",
+            ...attributionConfig,
             ...pageContext(),
         });
 

@@ -7,17 +7,42 @@ import Contact from "../components/home/Contact.astro";
 import ContactMap from "../components/contact/ContactMap.astro";
 import Footer from "../components/layout/Footer.astro";
 import BottomNav from "../components/layout/BottomNav.astro";
-import { location } from "../data/location";
+import { businessEntity, homeUrl } from "../data/home-schema";
+import { siteUrl } from "../data/site.mjs";
+
+const pageUrl = new URL("/contacto/", siteUrl).href;
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "ContactPage",
+            "@id": `${pageUrl}#contact`,
+            url: pageUrl,
+            name: "Contacto | PsicoInfantil Castellón",
+            mainEntity: { "@id": businessEntity["@id"] },
+        },
+        businessEntity,
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Inicio", item: homeUrl },
+                { "@type": "ListItem", position: 2, name: "Contacto", item: pageUrl },
+            ],
+        },
+    ],
+};
 ---
 
 <Layout
     seoTitle="Contacto | PsicoInfantil Castellón"
     title="Contacto y Ubicación | PsicoInfantil Castellón"
     description="Contacta con Ana Díaz Berbel, psicóloga infantil y juvenil en Castellón. Cuéntanos vuestro caso y solicita una primera valoración."
+    jsonLd={jsonLd}
 >
     <Header />
     <MobileMenu />
-    <main class="site-main">
+    <main id="contenido-principal" class="site-main">
         <ContactHero />
         <Contact />
         <ContactMap />

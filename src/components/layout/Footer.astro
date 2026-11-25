@@ -17,11 +17,12 @@ const showBlog = await hasPublishedPosts();
             <div class="footer__brand">
                 <img
                     src="/logo_psicoinfantil_white.svg"
-                    alt="Psico Infantil Castellón"
+                    alt="PsicoInfantil Castellón"
                     class="header__logo"
                     width="180"
                     height="70"
-                    loading="eager"
+                    loading="lazy"
+                    decoding="async"
                 />
                 <p class="footer__tagline">
                     Psicología infantil y adolescente en Castellón
@@ -97,6 +98,9 @@ const showBlog = await hasPublishedPosts();
         <div class="footer__bottom">
             <p class="footer__copyright">
                 &copy; {currentYear} PsicoInfantil Castellón
+                <span class="footer__credit">
+                    Diseñada por <a href="https://7dstudio.es/">7DStudio</a>
+                </span>
             </p>
 
             <nav class="footer__legal" aria-label="Información legal">
@@ -341,6 +345,22 @@ const showBlog = await hasPublishedPosts();
         color: #ffffff;
         text-decoration: underline;
         text-underline-offset: 3px;
+    }
+
+    .footer__credit {
+        display: inline-block;
+        margin-inline-start: 0.75rem;
+        color: rgba(248, 250, 252, 0.68);
+        font-size: 0.82rem;
+    }
+
+    .footer__credit a {
+        color: inherit;
+        text-underline-offset: 3px;
+    }
+
+    .footer__credit a:hover {
+        color: #ffffff;
     }
 
     .footer__dot {

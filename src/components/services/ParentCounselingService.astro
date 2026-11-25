@@ -20,6 +20,7 @@ import ServiceAssessment from "./ServiceAssessment.astro";
 import ServiceManifesto from "./ServiceManifesto.astro";
 import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
 import RelatedServices, {
+    type RelatedArticleItem,
     type RelatedServiceItem,
 } from "./RelatedServices.astro";
 import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
@@ -169,6 +170,19 @@ const relatedServicesList: RelatedServiceItem[] = [
     },
 ];
 
+const relatedArticlesList: RelatedArticleItem[] = [
+    {
+        title: "Cómo hablar con tus hijos: palabras y tono",
+        description: "Reflexión sobre cómo el lenguaje proactivo y la forma de hablar influyen en la comunicación familiar.",
+        href: "/blog/como-hablar-con-tus-hijos/",
+    },
+    {
+        title: "Qué hacer ante una rabieta infantil",
+        description: "Cómo acompañar los momentos de desbordamiento emocional con serenidad y límites.",
+        href: "/blog/que-hacer-ante-una-rabieta-infantil/",
+    },
+];
+
 const faqs: FAQItem[] = [
     {
         question:
@@ -198,7 +212,7 @@ const faqs: FAQItem[] = [
 ];
 ---
 
-<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+<main id="contenido-principal" class="overflow-x-clip bg-[#f7f8f6] pt-[88px]">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
         breadcrumbLabel={parentService.shortTitle}
@@ -222,6 +236,7 @@ const faqs: FAQItem[] = [
         title="Un espacio seguro, empático y sin juicios para construir soluciones familiares"
         description="Mi objetivo no es simplemente 'corregir' la conducta del menor, sino comprender la raíz del conflicto para fortalecer el vínculo afectivo y dotar a los adultos de herramientas eficaces para liderar con serenidad."
         perspectives={perspectives}
+        diagramLabels={["Dinámica familiar", "Límites y rutinas", "Comunicación"]}
     />
 
     <!-- 4. ServiceManifesto -->
@@ -245,6 +260,7 @@ const faqs: FAQItem[] = [
         title="Servicios complementarios para el bienestar familiar"
         description="Las pautas familiares pueden necesitar apoyos específicos cuando hay TDAH, altas capacidades o cambios propios de la adolescencia. Estos servicios ayudan a adaptar el acompañamiento a cada situación."
         services={relatedServicesList}
+        articles={relatedArticlesList}
     />
 
     <!-- 7. ServiceFAQ -->

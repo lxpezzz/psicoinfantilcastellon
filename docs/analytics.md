@@ -103,6 +103,42 @@ Descarga la etiqueta pública actual y ejecuta ese código, sin sustituir su ló
 
 Comprueba consentimiento/rechazo, reaceptación, visita única, scroll, salida, contactos, error/éxito del formulario, parámetros, cambios de historial, navegación entre documentos y retirada. Usa pausas para permitir los lotes reales de gtag. No certifica la recepción en Tiempo real/DebugView ni todas las reglas privadas de eventos clave.
 
+## Atribución de canales saneada (preparada, pendiente de aprobación)
+
+### Efecto de la configuración actual por defecto (`PUBLIC_GA_ATTRIBUTION_REVIEWED=false`)
+
+Mientras `PUBLIC_GA_ATTRIBUTION_REVIEWED` permanezca en `false` (valor por defecto en `.env.example` y en el build actual), `src/scripts/analytics.ts` mantiene intactos `ignore_referrer: true`, `page_referrer: ""`, `campaign_source: "(direct)"` y `campaign_medium: "(none)"`. Su efecto real comprobado es que **todas las sesiones consentidas se registran en GA4 como `(direct) / (none)`**, impidiendo separar visitas de Google Orgánico, Bing Orgánico, Google Business Profile o referencias externas.
+
+### Diseño preparado en `src/scripts/analytics-attribution.mjs`
+
+Cuando se apruebe explícitamente la ampliación de privacidad (`PUBLIC_GA_ATTRIBUTION_REVIEWED=true`), el módulo aplica la lista blanca `acquisitionAttribution` definida en `src/data/analytics-privacy.json`:
+
+1. **Orígenes de referencia permitidos (solo protocolo + host):** si `document.referrer` pertenece a un dominio externo expresamente listado (`allowedReferrerHosts`: buscadores públicos como Google, Bing, DuckDuckGo, Yahoo, Ecosia, Brave; `maps.google.com`/`maps.google.es`; y dominios profesionales verificados como `cop-cv.org`), se envía en `page_referrer` **únicamente el origen con barra final** (p. ej. `https://www.google.es/`), eliminando siempre ruta, parámetros de búsqueda, fragmentos y credenciales. No se fuerza manualmente `google / organic` sobre cualquier referencia de Google: GA4 clasifica de forma nativa el origen permitido (por ejemplo, diferenciando buscador de `maps.google.com`). Cualquier referrer no listado (webmail, intranets, portales externos o enlaces privados) se descarta y se envía vacío.
+2. **Parámetros UTM controlados para Google Business Profile (`allowedCampaigns`):** se acepta únicamente una combinación exacta, no sensible y preaprobada:
+   - Enlace web en GBP: `https://psicoinfantilcastellon.com/?utm_source=google&utm_medium=gbp&utm_campaign=ficha_google&utm_content=web`
+   - Enlace de cita en GBP: `https://psicoinfantilcastellon.com/contacto/?utm_source=google&utm_medium=gbp&utm_campaign=ficha_google&utm_content=cita`
+   `page_location` sigue siendo siempre la URL canónica limpia sin parámetros. Cualquier otro UTM (`utm_term`, `utm_id` o valores no listados) se descarta por completo.
+3. **Sin retroactividad:** activar esta mejora no altera datos históricos ni recupera atribuciones de sesiones anteriores.
+
+### Revisión de privacidad en contexto sanitario (por qué sigue desactivada hasta aprobación)
+
+Eliminar parámetros query **no basta por sí solo** para garantizar anonimato en una consulta de psicología infantil y juvenil:
+
+- Las rutas y títulos temáticos (`/tratamiento-tdah/`, `/tratamiento-dislexia/`, `/orientacion-adolescentes/`) combinados con un evento de contacto (`generate_lead`, `click_telefono`, `click_whatsapp`) o con el origen de llegada permiten inferencias indirectas sobre el motivo de consulta de una persona seudonimizada.
+- Por ello se mantienen obligatoriamente: Consent Mode v2 básico (sin carga ni pings antes de aceptar), Google Signals y publicidad desactivados, datos proporcionados por usuarios desactivados, salto `/ir-a-whatsapp/` sin teléfono, formulario sin lectura de campos, autorización independiente de Maps y el bloqueo `PUBLIC_GA_ATTRIBUTION_REVIEWED=false` hasta validación expresa de privacidad y actualización de la Política de Privacidad/Cookies si corresponde.
+
+### Cómo verificar la atribución en GA4 (tras aprobar y publicar)
+
+1. **Pruebas automatizadas antes de publicar (interceptadas, sin enviar datos reales):**
+   ```powershell
+   npm run build
+   node tests/analytics-attribution.browser.mjs
+   ```
+2. **Verificación en panel de GA4 con sesión controlada de prueba:**
+   - **Tiempo real / DebugView:** entrar desde una búsqueda real o usando la URL exacta de GBP con consentimiento aceptado; comprobar que `page_view` llega una sola vez con `page_location` canónica sin parámetros, sin `utm_term` ni PII, y con la fuente/medio esperada (`google / organic`, `bing / organic`, `google / gbp` o `(direct) / (none)`).
+   - **Informes → Adquisición → Adquisición de tráfico (24–48 h después):** cambiar la dimensión principal a **Fuente/medio de la sesión** y verificar la aparición diferenciada de `google / organic`, `bing / organic`, `google / gbp`, referencias permitidas y `(direct) / (none)`.
+   - **Eventos clave por canal y página de destino:** en **Exploraciones**, cruzar *Fuente/medio de la sesión* y *Página de destino* con `generate_lead`, `click_telefono` y `click_whatsapp`. Recordar que los usuarios que rechazan cookies no aparecen en GA4, por lo que los datos de GA4 deben contrastarse siempre con Search Console (clics orgánicos sin cookies) y el registro real de citas.
+
 ## Verificación y pendientes
 
 - Astro Check y build: correctos; 7 hints preexistentes de elementos no utilizados.

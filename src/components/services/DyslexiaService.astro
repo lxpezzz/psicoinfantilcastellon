@@ -168,6 +168,10 @@ const faqs: FAQItem[] = [
         question:
             "¿A qué edad se puede detectar e iniciar el tratamiento de la dislexia?",
         answer: "Pueden observarse señales de dificultad durante el aprendizaje inicial de la lectura y la escritura. La valoración tiene en cuenta la edad, la enseñanza recibida y la evolución. No es necesario esperar a un curso concreto para consultar por dificultades persistentes y valorar qué apoyos pueden ser útiles.",
+        link: {
+            text: "Conoce el proceso de evaluación psicopedagógica",
+            href: "/evaluacion-y-diagnostico/",
+        },
     },
     {
         question: "¿La dislexia se cura o desaparece con el tiempo?",
@@ -188,12 +192,12 @@ const faqs: FAQItem[] = [
 ];
 ---
 
-<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+<main id="contenido-principal" class="overflow-x-clip bg-[#f7f8f6] pt-[88px]">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
         breadcrumbLabel={dyslexiaService.shortTitle}
         eyebrow={dyslexiaService.title}
-        title="Cuando leer y escribir cuesta el triple de lo que debería"
+        title="Cuando leer y escribir requiere un esfuerzo que empieza a preocuparos"
         description="La dislexia puede dificultar la lectura y la escritura sin que ello implique falta de inteligencia o de esfuerzo. En PsicoInfantil Castellón valoramos las dificultades y su impacto escolar para orientar una reeducación psicopedagógica ajustada a las necesidades de cada niño o adolescente."
         image={dyslexiaService.heroImage}
         imageAlt={dyslexiaService.alt}
@@ -209,7 +213,7 @@ const faqs: FAQItem[] = [
     <!-- 3. ServiceAssessment -->
     <ServiceAssessment
         id="como-trabajamos"
-        title="Atacar la raíz neurocognitiva y metodológica del problema"
+        title="Comprender sus dificultades de lectura y escritura para orientar la intervención"
         description="El acompañamiento parte de las dificultades concretas de lectura y escritura. Los objetivos se ajustan a su nivel de aprendizaje y a las exigencias escolares, teniendo en cuenta también el esfuerzo y la frustración que puedan aparecer."
         perspectives={perspectives}
     />

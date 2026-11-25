@@ -7,9 +7,35 @@ import Contact from "../../components/home/Contact.astro";
 import Footer from "../../components/layout/Footer.astro";
 import BottomNav from "../../components/layout/BottomNav.astro";
 import BlogCard from "../../components/blog/BlogCard.astro";
+import { businessEntity, homeUrl } from "../../data/home-schema";
+import { siteUrl } from "../../data/site.mjs";
 import { ChevronRight } from "lucide-astro";
 
 const sortedPosts = await getPublishedPosts();
+const blogUrl = new URL("/blog/", siteUrl).href;
+
+const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+        {
+            "@type": "Blog",
+            "@id": `${blogUrl}#blog`,
+            url: blogUrl,
+            name: "Blog de psicología infantil | PsicoInfantil Castellón",
+            description:
+                "Artículos sobre aprendizaje, desarrollo, dificultades escolares y acompañamiento a niños, adolescentes y familias.",
+            publisher: { "@id": businessEntity["@id"] },
+        },
+        businessEntity,
+        {
+            "@type": "BreadcrumbList",
+            itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Inicio", item: homeUrl },
+                { "@type": "ListItem", position: 2, name: "Blog", item: blogUrl },
+            ],
+        },
+    ],
+};
 ---
 
 <Layout
@@ -18,11 +44,12 @@ const sortedPosts = await getPublishedPosts();
     description="Artículos sobre aprendizaje, desarrollo, dificultades escolares y acompañamiento a niños, adolescentes y familias."
     type="website"
     robots={sortedPosts.length > 0 ? "index, follow" : "noindex, follow"}
+    jsonLd={jsonLd}
 >
     <Header />
     <MobileMenu />
 
-    <main class="site-main bg-[#faf9f5] min-h-[70vh]">
+    <main id="contenido-principal" class="site-main bg-[#faf9f5] min-h-[70vh]">
         <!-- Cabecera de la sección Blog -->
         <header class="border-b border-[rgba(23,54,97,0.08)] bg-white py-[clamp(2.75rem,5vw,4.25rem)]">
             <div class="mx-auto w-[min(100%-2.5rem,1220px)]">

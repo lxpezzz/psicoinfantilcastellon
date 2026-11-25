@@ -3,7 +3,7 @@ import { render } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { Image, getImage } from "astro:assets";
 import { getPublishedPosts } from "../../data/blog";
-import { professional } from "../../data/home-schema";
+import { businessEntity, professional } from "../../data/home-schema";
 import Layout from "../../layouts/Layout.astro";
 import Contact from "../../components/home/Contact.astro";
 import Header from "../../components/layout/Header.astro";
@@ -40,6 +40,8 @@ const formattedDate = post.data.publishDate.toLocaleDateString("es-ES", {
 
 const isoDate = post.data.publishDate.toISOString();
 
+const isAnaAuthor = post.data.author === professional.name;
+
 const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -49,13 +51,16 @@ const jsonLd = {
             description: post.data.description,
             datePublished: isoDate,
             ...(post.data.updatedDate && { dateModified: post.data.updatedDate.toISOString() }),
-            author: post.data.author === professional.name
+            author: isAnaAuthor
                 ? { "@id": professional["@id"] }
                 : { "@type": "Person", name: post.data.author },
+            publisher: { "@id": businessEntity["@id"] },
             image: imageUrl,
             url: articleUrl,
             mainEntityOfPage: { "@type": "WebPage", "@id": articleUrl },
         },
+        businessEntity,
+        ...(isAnaAuthor ? [professional] : []),
         {
             "@type": "BreadcrumbList",
             itemListElement: [
@@ -86,7 +91,7 @@ const jsonLd = {
     <Header />
     <MobileMenu />
 
-    <main class="site-main bg-[#faf9f5]">
+    <main id="contenido-principal" class="site-main bg-[#faf9f5]">
         <article class="py-[clamp(2rem,4vw,3.5rem)]">
             <div class="mx-auto w-[min(100%-2.5rem,880px)]">
                 <!-- Breadcrumbs accesibles -->
@@ -121,7 +126,16 @@ const jsonLd = {
                     <div class="mt-6 flex flex-wrap items-center gap-4 pt-5 border-t border-[rgba(23,54,97,0.08)] text-[0.88rem] text-[var(--color-text-soft)]">
                         <div class="flex items-center gap-1.5 font-medium text-[var(--color-primary-dark)]">
                             <User size={16} stroke-width={2} class="text-[var(--color-primary)]" aria-hidden="true" />
-                            <span>{post.data.author}</span>
+                            {isAnaAuthor ? (
+                                <a
+                                    href="/sobre-mi/"
+                                    class="transition-colors hover:text-[var(--color-primary)] hover:underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-primary)]"
+                                >
+                                    {post.data.author}
+                                </a>
+                            ) : (
+                                <span>{post.data.author}</span>
+                            )}
                         </div>
                         <span class="text-[var(--color-text-soft)]/40 select-none" aria-hidden="true">·</span>
                         <div class="flex items-center gap-1.5">
@@ -140,7 +154,7 @@ const jsonLd = {
                         alt={post.data.imageAlt}
                         widths={[480, 768, 1024, 1280]}
                         sizes="(max-width: 880px) 100vw, 880px"
-                        quality={100}
+                        quality={85}
                         loading="eager"
                         fetchpriority="high"
                         class="aspect-[4/3] w-full object-cover sm:aspect-[21/10]"

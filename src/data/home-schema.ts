@@ -2,17 +2,39 @@ import { location } from "./location";
 import { services } from "./services";
 import { siteUrl } from "./site.mjs";
 
-const homeUrl = new URL("/", siteUrl).href;
-const websiteId = `${homeUrl}#website`;
-const businessId = `${homeUrl}#business`;
-const brandName = "Psico Infantil Castellón";
+export const homeUrl = new URL("/", siteUrl).href;
+export const websiteId = `${homeUrl}#website`;
+export const businessId = `${homeUrl}#business`;
+export const brandName = "PsicoInfantil Castellón";
 
-// Nombre y puesto publicados en Sobre mí; áreas respaldadas por sus páginas de contenido.
+// Nombre, colegiación, formación y puesto publicados en Sobre mí; áreas respaldadas por sus páginas de contenido.
 export const professional = {
     "@type": "Person",
     "@id": `${homeUrl}#professional`,
     name: "Ana Díaz Berbel",
-    jobTitle: "psicóloga infantil y juvenil",
+    url: new URL("/sobre-mi/", siteUrl).href,
+    image: new URL("/og/sobre-mi.jpg", siteUrl).href,
+    jobTitle: "Psicóloga infantil y juvenil",
+    worksFor: { "@id": businessId },
+    identifier: {
+        "@type": "PropertyValue",
+        name: "Número de colegiada (COP Comunitat Valenciana)",
+        value: "CV08027",
+    },
+    memberOf: {
+        "@type": "Organization",
+        name: "Col·legi Oficial de Psicologia de la Comunitat Valenciana",
+    },
+    alumniOf: [
+        {
+            "@type": "CollegeOrUniversity",
+            name: "Universitat de València",
+        },
+        {
+            "@type": "CollegeOrUniversity",
+            name: "Universidad Internacional de La Rioja (UNIR)",
+        },
+    ],
     knowsAbout: [
         "Psicología infantil",
         "Psicología juvenil",
@@ -31,6 +53,13 @@ export const businessEntity = {
     "@id": businessId,
     name: brandName,
     url: homeUrl,
+    logo: new URL("/logo_psicoinfantil.svg", siteUrl).href,
+    image: new URL("/og/home.jpg", siteUrl).href,
+    hasMap: location.googleMapsUrl,
+    areaServed: {
+        "@type": "City",
+        name: "Castelló de la Plana",
+    },
     address: {
         "@type": "PostalAddress",
         streetAddress: location.streetAddress,
@@ -39,7 +68,7 @@ export const businessEntity = {
         addressRegion: "Castelló",
         addressCountry: "ES",
     },
-    // Teléfono publicado en Header.astro.
+    // Teléfono publicado en Header.astro y Footer.astro.
     telephone: "+34614992148",
 };
 
@@ -66,8 +95,6 @@ export const homeSchema = {
         },
         {
             ...businessEntity,
-            // Logo publicado en Header.astro.
-            logo: new URL("/logo_psicoinfantil.svg", siteUrl).href,
             subjectOf: { "@id": websiteId },
             makesOffer: serviceEntities.map((service) => ({
                 "@type": "Offer",

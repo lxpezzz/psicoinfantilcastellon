@@ -6,7 +6,7 @@ import ServiceSignals from "./ServiceSignals.astro";
 import ServiceAssessment from "./ServiceAssessment.astro";
 import ServiceManifesto from "./ServiceManifesto.astro";
 import ServiceAreas, { type AreaItem } from "./ServiceAreas.astro";
-import RelatedServices, { type RelatedServiceItem } from "./RelatedServices.astro";
+import RelatedServices, { type RelatedArticleItem, type RelatedServiceItem } from "./RelatedServices.astro";
 import ServiceFAQ, { type FAQItem } from "./ServiceFAQ.astro";
 import ServiceCTA from "./ServiceCTA.astro";
 
@@ -66,8 +66,6 @@ const perspectives = [
     },
 ];
 
-// Pendiente de validación de Ana: alcance de la atención en estas seis áreas,
-// especialmente sueño, control de esfínteres y cambios familiares.
 const areas: AreaItem[] = [
     {
         icon: ShieldCheck,
@@ -124,6 +122,14 @@ const relatedServicesList: RelatedServiceItem[] = [
     },
 ];
 
+const relatedArticlesList: RelatedArticleItem[] = [
+    {
+        title: "Qué hacer ante una rabieta infantil",
+        description: "Cómo acompañar los momentos de desbordamiento emocional con calma y límites.",
+        href: "/blog/que-hacer-ante-una-rabieta-infantil/",
+    },
+];
+
 const faqs: FAQItem[] = [
     {
         question: "¿Cómo sé si es una fase de su desarrollo o necesita ayuda?",
@@ -140,11 +146,15 @@ const faqs: FAQItem[] = [
     {
         question: "¿Se trabaja también con las familias?",
         answer: "Sí. La familia aporta información sobre las rutinas y sobre cómo vive el niño las dificultades. Las orientaciones se acuerdan teniendo en cuenta sus necesidades y lo que podéis poner en práctica en casa, revisando cómo va evolucionando la situación.",
+        link: {
+            text: "Conoce el servicio de asesoramiento a padres",
+            href: "/asesoramiento-a-padres/",
+        },
     },
 ];
 ---
 
-<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+<main id="contenido-principal" class="overflow-x-clip bg-[#f7f8f6] pt-[88px]">
     <ServiceIntro
         breadcrumbLabel={childhoodService.shortTitle}
         eyebrow="PSICOLOGÍA INFANTIL · EMOCIONES Y HÁBITOS"
@@ -185,6 +195,7 @@ const faqs: FAQItem[] = [
         title="Otros apoyos que pueden ayudaros"
         description="Si lo que necesitáis es revisar vuestra forma de acompañarle como cuidadores, podéis consultar el asesoramiento a padres. Para dificultades propias de la adolescencia, el apoyo se adapta a esa etapa."
         services={relatedServicesList}
+        articles={relatedArticlesList}
     />
 
     <ServiceFAQ title="Preguntas frecuentes sobre emociones y hábitos infantiles" faqs={faqs} />

@@ -169,6 +169,10 @@ const faqs: FAQItem[] = [
         question:
             "¿Cómo diferenciar si es TDAH o simplemente inmadurez o falta de atención temporal?",
         answer: "No se distingue por una conducta aislada. Se valora la persistencia de las dificultades, su intensidad, su evolución y cómo interfieren en casa, en el colegio y en otros entornos. La evaluación ayuda a explorar si son compatibles con TDAH o si conviene considerar otras explicaciones.",
+        link: {
+            text: "Ver en qué consiste la evaluación psicopedagógica",
+            href: "/evaluacion-y-diagnostico/",
+        },
     },
     {
         question: "¿Es imprescindible medicar a un niño con diagnóstico de TDAH?",
@@ -189,7 +193,7 @@ const faqs: FAQItem[] = [
 ];
 ---
 
-<main class="overflow-x-clip bg-[#f7f8f6] pt-[88px]" id="servicios">
+<main id="contenido-principal" class="overflow-x-clip bg-[#f7f8f6] pt-[88px]">
     <!-- 1. ServiceIntro -->
     <ServiceIntro
         breadcrumbLabel={adhdService.shortTitle}
@@ -210,17 +214,17 @@ const faqs: FAQItem[] = [
     <!-- 3. ServiceAssessment -->
     <ServiceAssessment
         id="como-trabajamos"
-        title="La atención es como un músculo: si no se entrena correctamente, se debilita"
+        title="Comprender sus dificultades de atención para adaptar los apoyos"
         description="Antes de orientar los apoyos, valoramos cómo se presentan las dificultades, desde cuándo se observan y cómo afectan a distintos ámbitos. La información recogida permite explorar posibles explicaciones y concretar objetivos de acompañamiento con la familia y, cuando procede, con el centro escolar."
         perspectives={perspectives}
     />
 
     <!-- 4. ServiceManifesto -->
     <ServiceManifesto
-        secondaryPhrase="El TDAH no se cura con castigos."
-        secondaryHighlight="castigos"
-        mainPhrase="Se entrena como una habilidad ejecutiva."
-        mainHighlight="habilidad ejecutiva"
+        secondaryPhrase="El TDAH no es falta de voluntad."
+        secondaryHighlight="falta de voluntad"
+        mainPhrase="El apoyo se adapta a cada niño y su entorno."
+        mainHighlight="cada niño"
         explanation="No es un niño 'malo' ni 'vago', sino alguien cuya función ejecutiva y control de la conducta funcionan de forma diferente. El objetivo no es que obedezca sin más, sino que aprenda a comprenderse, autorregularse y desarrollar todo su potencial con seguridad."
     />
 
